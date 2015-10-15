@@ -1,0 +1,24 @@
+Accueil:
+	-association
+	-mission
+	-ateliers/prestations
+	-témoignages
+Espace Recruteur:
+	-profil
+	-poster offre
+	-rechercher CV
+Espace candidat:
+	-profil
+	-modifier CV
+	-rechercher offre
+Espace STAFF:
+	-profil
+	-acces au profils/CV/offres
+	(adresse mail @entremploi.org?)
+	STAFFMASTER:
+		-modifier page d'accueil
+		-moderation offres/CV
+		-création/suppression de recherche de benevoles
+Espace Benevole:
+	-liste des besoins en benevoles
+	-repondre a une demande
