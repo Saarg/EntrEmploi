@@ -1,23 +1,21 @@
 Accueil:
-	-association
+	-association (qui sommes nous ?)
 	-mission
 	-ateliers/prestations
 	-témoignages
+Offres d'emploi 
+	-liste des offre
 Espace Recruteur:
-	-profil
-	-poster offre
-	-rechercher CV
-Espace candidat:
-	-profil
-	-modifier CV
-	-rechercher offre
+	-Acces a la description sans identification
+	-Acces au CV avec inscription (CV-thèque)
+	-Envoyer une offre à Entr'Emploi
 Espace STAFF:
 	-profil
-	-acces au profils/CV/offres
+	-acces et ajout au profils/CV/offres 
 	(adresse mail @entremploi.org?)
+	-moderation offres/CV
 	STAFFMASTER:
 		-modifier page d'accueil
-		-moderation offres/CV
 		-création/suppression de recherche de benevoles
 Espace Benevole:
 	-liste des besoins en benevoles
