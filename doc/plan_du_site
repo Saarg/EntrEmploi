@@ -29,3 +29,15 @@ fichiers (maquette 1) :
 	-liste des offres
 	acces aux description des CV
 	Espace Bénévoles
+	
+Ajouter une page <nompage>:
+	1/
+		modifier public/js/appRoutes.js
+		.when('/nompage', {
+			  templateUrl: 'views/nompage.html',
+			  controller: 'NompageController'	
+		})
+	2/
+		Créer la page html dans public/views/nompage.html
+	3/
+		Utiliser les veriables {{nom_de_var}} pour les zones de texte que le controller devrat fournir.
