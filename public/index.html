@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <base href="/">
 
@@ -25,29 +25,30 @@
     <script src="js/services/StaffService.js"></script>
     <script src="js/controllers/BenevoleCtrl.js"></script>
     <script src="js/services/BenevoleService.js"></script>
-    
+
     <script src="js/appRoutes.js"></script>
     <script src="js/app.js"></script>
-  </head>
-  <body ng-app="sampleApp" ng-controller="MainController">
+</head>
+<body ng-app="sampleApp" ng-controller="MainController">
     <div class="container">
-      
-      <!-- HEADER -->
-      <nav class="navbar navbar-inverse">
-	<div class="navbar-header">
-	  <a class="navbar-brand" href="/">Entr'Emploi</a>
-	</div>
-	<ul class="nav navbar-nav">
-	  <li><a href="/offres">Offres</a></li>
-	  <li><a href="/recruteur">Recruteur</a></li>
-	  <li><a href="/staff">Staff</a></li>
-	  <li><a href="/benevole">Benevole</a></li>
-	</ul>
-      </nav>
 
-      <!-- ANGULAR DYNAMIC CONTENT -->
-      <div ng-view></div>
+        <!-- HEADER -->
+        <nav class="navbar navbar-inverse">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Entr'Emploi</a>
+            </div>
+            <ul class="nav navbar-nav pull-right">
+                <li><a href="/offres">Offres</a></li>
+                <li><a href="/recruteur">Recruteur</a></li>
+                <li><a href="/staff">Staff</a></li>
+                <li><a href="/benevole">Benevole</a></li>
+            </ul>
+        </nav>
+        <!-- HEADER END -->
+
+        <!-- ANGULAR DYNAMIC CONTENT -->
+        <div ng-view></div>
 
     </div>
-  </body>
+</body>
 </html>
