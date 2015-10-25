@@ -10,3 +10,4 @@ Projet réalisé par Noé Maillard et Jean Milsonneau.
 2: Installer les dependences bower: bower install
 3: démarrer le serveur: node server.js
 4: http://localhost:8080
+
