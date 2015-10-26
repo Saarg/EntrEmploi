@@ -3,24 +3,19 @@ var Profils = require('./models/Profils');
 var Entreprises = require('./models/Entreprises');
 var Staff = require('./models/Staff');
 var MainArticles = require('./models/MainArticles');
+var AppelsBenevole = require('./models/AppelsBenevole');
 
 module.exports = function(app) {
 
     // backend routes ===========================================================
-    // api 
     // authentication routes
 
     // api route
     app.get('/api/offres', function(req, res) {
-        // Recuperation de toutes les offres dans la db avec mongoose
         Offres.find(function(err, offres) {
-
-            // Si pb 
             if (err)
-                res.send(err); // Return
-	    
-	    // TODO alert si temps de recherche trop long
-            res.json(offres); // retourne les offres sur un format json
+                res.send(err);
+            res.json(offres);
         });
     });
     app.get('/api/profils', function(req, res) {
@@ -49,6 +44,13 @@ module.exports = function(app) {
             if (err)
                 res.send(err);
             res.json(mainArticles); 
+        });
+    });
+    app.get('/api/appelsBenevole', function(req, res) {
+        AppelsBenevole.find(function(err, appels) {
+            if (err)
+                res.send(err);
+            res.json(appels); 
         });
     });
 
