@@ -46,7 +46,7 @@ module.exports = function(app) {
             res.json(mainArticles); 
         });
     });
-    app.get('/api/appelsBenevole', function(req, res) {
+   app.get('/api/appelsBenevole', function(req, res) {
         AppelsBenevole.find(function(err, appels) {
             if (err)
                 res.send(err);
@@ -55,7 +55,41 @@ module.exports = function(app) {
     });
 
     // route to handle creating goes here (app.post)
+    app.post('/api/offres', function(req, res) {
+	var offre = new Offres();
+	offre.titre = req.body.titre;
+	offre.contenu = req.body.contenu;
+	offre.numContact = req.body.numContact;
+	offre.mailContact = req.body.mailContact;
+	offre.date = Date();
+
+	offre.save(function(err) {
+            if (err)
+                res.send(err);
+            res.json({ message: 'Succes' });
+        });
+    });
+    // route to handle updates goes here (app.put)
+    app.put('/api/offres/:offre_id', function(req, res) {
+	Offres.findById(req.params.offre_id, function(err, offre) {
+            if (err)
+                res.send(err);
+            offre.titre = req.body.titre;
+            offre.save(function(err) {
+                if (err)
+                    res.send(err);
+                res.json({ message: 'Succes' });
+            });
+        });
+    });
     // route to handle delete goes here (app.delete)
+    app.delete('/api/offres/:offre_id', function(req, res) {
+	Offres.remove({_id: req.params.offre_id}, function(err, offre) {
+            if (err)
+                res.send(err);
+            res.json({ message: 'Succes' });
+        });	
+    });
 
     // frontend routes =========================================================
     app.get('*', function(req, res) {

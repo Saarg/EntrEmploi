@@ -8,7 +8,8 @@ var Edition = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Offre', {
-    titre : String
+    _id : ObjectId
+    , titre : String
     , contenu : String
     , numContact : String
     , mailContact : String

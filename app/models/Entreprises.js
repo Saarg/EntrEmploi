@@ -8,8 +8,9 @@ var Edition = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Entreprise', {
+    _id : ObjectId
     // Info entreprise
-     nom : String
+    , nom : String
     , tel : String
     , mail : String
     , adresse : String

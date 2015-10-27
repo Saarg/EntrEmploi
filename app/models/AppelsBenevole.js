@@ -8,7 +8,8 @@ var Edition = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Appel', {
-    titre : String
+    _id : ObjectId
+    , titre : String
     , contenu : String
     , date : {type : Date, default: Date()}
     , _createur : ObjectId

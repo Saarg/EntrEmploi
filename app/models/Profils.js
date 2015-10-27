@@ -24,8 +24,9 @@ var Edition = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Profil', {
+    _id : ObjectId
     // Info perso
-    nom : String
+    , nom : String
     , prenom : String
     , tel : String
     , mail : String

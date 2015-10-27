@@ -3,8 +3,9 @@ var mongoose = require('mongoose');
 var ObjectId = mongoose.Schema.Types.ObjectId;
 
 module.exports = mongoose.model('Staff', {
+    _id : ObjectId
     // Inof perso
-    nom : String
+    , nom : String
     , prenom : String
     , tel : String
     , mail : String

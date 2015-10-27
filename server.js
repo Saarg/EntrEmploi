@@ -5,6 +5,8 @@ var mongoose       = require('mongoose');
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
 
+var router = express.Router();
+
 // configuration ===========================================
 	
 // config files
@@ -22,6 +24,12 @@ app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-M
 app.use(express.static(__dirname + '/public')); // set the static files location /public/img will be /img for users
 
 // routes ==================================================
+router.use(function(req, res, next) {// middleware
+    console.log('Something is happening on the api.');
+    next(); // make sure we go to the next routes and don't stop here
+});
+app.use('/api', router);
+
 require('./app/routes')(app); // pass our application into our routes
 
 // start app ===============================================
