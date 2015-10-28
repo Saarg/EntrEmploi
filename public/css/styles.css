@@ -1,0 +1,25 @@
+.navbar-inverse {
+  margin: 0;
+  border-radius: 0;
+}
+.navbar-inverse .navbar-brand {
+  color: #FFF;
+}
+.offre {
+  border: 1px solid  #FFF;
+  position: relative;
+}
+.offre h1 {
+  text-decoration: underline;
+}
+.offre .date {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: .8em;
+  font-weight: bold;
+}
+.offre .description-offre {
+  text-align: justify;
+  font-size: 1.2em;
+}
