@@ -1,9 +1,41 @@
 .navbar-inverse {
   margin: 0;
+  background-color: #244395;
+  border: none;
   border-radius: 0;
+  font-family: 'Open Sans';
+}
+.navbar-inverse .container {
+  height: 120px;
 }
 .navbar-inverse .navbar-brand {
+  margin-top: 6px;
+  height: 90%;
+  width: 108px;
+  position: absolute;
+  box-sizing: padding-box;
+  background: #fff url('../images/Logo-spf.png') 0 0 no-repeat;
+  background-size: 100%;
+  border-radius: 50%;
+  margin-right: 10px;
+  border: 5px solid  #FFF;
   color: #FFF;
+}
+.navbar-inverse .navbar-brand:hover {
+  background-color: #fff;
+}
+.navbar-inverse .nav {
+  height: 100%;
+}
+.navbar-inverse .nav li a {
+  line-height: 90px;
+  color: #FFF;
+}
+.navbar-inverse .nav li a:hover {
+  background-color: #1a316c;
+}
+.container .jumbotron {
+  border-radius: 0;
 }
 .offre {
   border: 1px solid  #FFF;

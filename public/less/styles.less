@@ -1,15 +1,57 @@
 
 // ================ HEADER
-
+@navbar-bgc : #244395;
 .navbar-inverse {
+
     margin: 0;
+    background-color: @navbar-bgc;
+    border: none;
     border-radius: 0;
-    
-    .navbar-brand {
-        color: #FFF;
+    font-family: 'Open Sans';
+
+    .container {
+        height: 120px;
     }
     
+    .navbar-brand {
+        margin-top: 120 * 0.05px;
+        height: 90%;
+        width: 120 * 0.9px;
+        position: absolute;
+        box-sizing: padding-box;
+        background: #fff url('../images/Logo-spf.png') 0 0 no-repeat;
+        background-size: 100%;
+        border-radius: 50%;
+        margin-right: 10px;
+        border: 5px solid  #FFF;
+        color: #FFF;
 
+        &:hover {
+            background-color: #fff;
+        }
+    }
+
+    .nav {
+        height: 100%;
+        li {
+            a {
+                line-height: 90px;
+                color: #FFF;
+                &:hover {
+                    background-color: darken(@navbar-bgc, 10%)
+                }
+
+            }
+        }
+    }
+
+}
+
+
+// ================ GLOBAL
+
+.container .jumbotron {
+    border-radius: 0;
 }
 
 // ================ OFFRES
