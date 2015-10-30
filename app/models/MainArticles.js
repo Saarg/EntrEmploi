@@ -8,8 +8,7 @@ var Edition = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('MainArticle', {
-    _id : ObjectId
-    , titre : String
+    titre : String
     , contenu : String
     , date : {type : Date, default: Date()}
     , _auteur : ObjectId
