@@ -19,69 +19,101 @@
   font-family: 'Roboto', sans-serif;
 }
 .navbar-inverse {
-  margin: 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 2;
   border: none;
   border-radius: 0;
+  margin: 0;
+  height: 100px;
   background-color: #244395;
 }
 .navbar-inverse .container {
-  height: 120px;
-}
-.navbar-inverse .navbar-brand {
-  position: absolute;
-  box-sizing: padding-box;
-  width: 108px;
-  height: 90%;
-  margin-top: 6px;
-  margin-right: 10px;
-  color: #fff;
-  border-radius: 50%;
-  background: #fff url('../images/Logo-spf.png') 0 0 no-repeat;
-  background-size: 100%;
-}
-.navbar-inverse .navbar-brand:hover {
-  background-color: #fff;
-}
-.navbar-inverse .nav {
+  margin: auto;
   height: 100%;
+  opacity: .9;
+  position: relative;
 }
-.navbar-inverse .nav li a {
-  line-height: 90px;
+.navbar-inverse .container .navbar-brand {
+  position: absolute;
+  color: #fff;
+  transform: translate3d(0, -50%, 0);
+  top: 50%;
+}
+.navbar-inverse .container .nav {
+  position: absolute;
+  transform: translate3d(0, -50%, 0);
+  top: 50%;
+  right: 0;
+}
+.navbar-inverse .container .nav li a {
   color: #fff;
 }
-.navbar-inverse .nav li a:hover {
+.navbar-inverse .container .nav li a:hover {
+  transition: border-radius 0.1s;
+  transition: background-color 0.3s;
+  border-radius: 6px;
   background-color: #1a316c;
-}
-.container-fluid .jumbotron {
-  margin: 0;
-  border-radius: 0;
-}
-.container-fluid .container {
-  background-color: #fafafa;
 }
 .container-fluid {
   margin: 0;
+  padding: 0;
   border-radius: 0;
+  line-height: 0;
 }
-.offre {
-  position: relative;
-  border: 1px solid  #fff;
-}
-.offre h1 {
-  font-family: 'Copse', serif;
-}
-.offre .date {
-  font-size: .8em;
-  font-weight: bold;
-  position: absolute;
+.header-scrolldown {
+  height: 60px;
+  position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  background-color: #244395;
 }
-.offre .description-offre {
-  font-size: 1.2em;
-  text-align: justify;
+.hero {
+  position: relative;
+  background: #fff url('../images/hero-offres.jpg') 0 0 no-repeat;
+  background-size: cover;
+  background-position-y: -200px;
+  height: 500px;
 }
-.panel-footer {
+.hero .bg-shadow {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  /* Fallback solid color for old browsers */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%);
+  /* W3C */
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%);
+  /* FF 3.6+ */
+  background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%);
+  /* IE 10+ */
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%);
+  /* Opera 11.10+ */
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%);
+  /* Chrome 10+, Safari 5.1+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.5)), color-stop(100%, rgba(0, 0, 0, 0.3)));
+  /* Chrome, Safari 4+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr= 'rgba(0, 0, 0, 0.5)', endColorstr= 'rgba(0, 0, 0, 0.3)', GradientType=0);
+  /* IE 6-9 */
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+.hero h1.accroche {
+  position: relative;
+  font-family: 'Copse', serif;
+  color: #FFF;
+  text-align: center;
+  width: 200px;
+  margin: 0 auto;
+  top: 400px;
+}
+.page-footer {
+  height: 100px;
+  margin: 0;
   color: #fff;
   background-color: #414040;
 }
