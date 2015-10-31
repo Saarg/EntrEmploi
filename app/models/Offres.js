@@ -12,6 +12,9 @@ module.exports = mongoose.model('Offre', {
     , contenu : String
     , numContact : String
     , mailContact : String
+    , categ : String
+    , location : String
+    , contract : String
     , date : {type : Date, default: Date()}
     , _createur : ObjectId
     , _editeurs : [Edition]
