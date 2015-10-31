@@ -20,32 +20,32 @@
 }
 .navbar-inverse {
   position: fixed;
-  width: 100%;
-  top: 0;
   z-index: 2;
+  top: 0;
+  width: 100%;
+  height: 100px;
+  margin: 0;
   border: none;
   border-radius: 0;
-  margin: 0;
-  height: 100px;
   background-color: #244395;
 }
 .navbar-inverse .container {
-  margin: auto;
-  height: 100%;
-  opacity: .9;
   position: relative;
+  height: 100%;
+  margin: auto;
+  opacity: .9;
 }
 .navbar-inverse .container .navbar-brand {
   position: absolute;
-  color: #fff;
-  transform: translate3d(0, -50%, 0);
   top: 50%;
+  transform: translate3d(0, -50%, 0);
+  color: #fff;
 }
 .navbar-inverse .container .nav {
   position: absolute;
-  transform: translate3d(0, -50%, 0);
   top: 50%;
   right: 0;
+  transform: translate3d(0, -50%, 0);
 }
 .navbar-inverse .container .nav li a {
   line-height: 10px;
@@ -58,29 +58,25 @@
   background-color: #1a316c;
 }
 .container-fluid {
+  line-height: 0;
   margin: 0;
   padding: 0;
   border-radius: 0;
-  line-height: 0;
-}
-.header-scrolldown {
-  height: 60px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  background-color: #244395;
 }
 .hero {
   position: relative;
-  background: #fff url('../images/hero-offres.jpg') 0 0 no-repeat;
-  background-size: cover;
-  background-position-y: -200px;
   height: 500px;
+  background: #fff url('../images/hero-offres.jpg') 0 0 no-repeat;
+  background-position-y: -200px;
+  background-size: cover;
 }
 .hero .bg-shadow {
   position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.5);
   /* Fallback solid color for old browsers */
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%);
@@ -97,28 +93,45 @@
   /* Chrome, Safari 4+ */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr= 'rgba(0, 0, 0, 0.5)', endColorstr= 'rgba(0, 0, 0, 0.3)', GradientType=0);
   /* IE 6-9 */
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 0;
 }
 .hero h1.accroche {
-  position: relative;
   font-family: 'Copse', serif;
-  color: #FFF;
-  text-align: center;
+  position: relative;
+  top: 400px;
   width: 200px;
   margin: 0 auto;
-  top: 400px;
+  text-align: center;
+  color: #fff;
 }
-.content {
+.parallaxe {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
-  position: relative;
-  background-color: #FFF;
-  z-index: 1;
-  color: #FFF;
+  color: #000;
+  background-color: #fff;
+}
+.parallaxe .offre a {
+  margin-bottom: 5px;
+  color: #7491de;
+}
+.parallaxe .offre a:hover {
+  cursor: pointer;
+}
+.parallaxe .offre ul {
+  color: #959EA7;
+  margin: 0;
+  padding: 0;
+}
+.parallaxe .offre ul li {
+  display: inline-block;
+  padding-right: 10px;
+}
+.parallaxe .offre ul li i {
+  padding-right: 5px;
+}
+.parallaxe .offre ul li .type {
+  font-weight: bold;
 }
 .page-footer {
   height: 100px;
