@@ -1,21 +1,22 @@
 {
-    "name": "starter-node-angular",
-    "main": "server.js",
-    "dependencies": {
-	"express": "~4.5.1",
-	"mongoose": "~3.8.0",
-	"body-parser": "~1.4.2",
-	"method-override": "~2.0.2"
-    },
-    "devDependencies": {
-	"gulp": "^3.9.0",
-	"gulp-jshint": "^1.11.2",
-	"gulp-less": "^3.0.3",
-	"gulp-load-plugins": "^1.0.0",
-	"gulp-minify-css": "^1.2.1",
-	"gulp-recess": "^1.1.2",
-	"gulp-util": "^3.0.7",
-	"gulp-watch": "^4.3.5",
-	"gulp-watch-less": "^1.0.1"
-    }
+  "name": "starter-node-angular",
+  "main": "server.js",
+  "dependencies": {
+    "express": "~4.5.1",
+    "mongoose": "~3.8.0",
+    "body-parser": "~1.4.2",
+    "method-override": "~2.0.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-jshint": "^1.11.2",
+    "gulp-less": "^3.0.3",
+    "gulp-livereload": "^3.8.1",
+    "gulp-load-plugins": "^1.0.0",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-recess": "^1.1.2",
+    "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.5",
+    "gulp-watch-less": "^1.0.1"
+  }
 }
