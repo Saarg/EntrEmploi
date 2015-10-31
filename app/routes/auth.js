@@ -7,7 +7,8 @@ module.exports = function(app) {
 
     app.post('/api/auth', function(req, res) {
 	Staff.findOne({
-	    nom: req.body.nom
+	    nom: req.body.nom,
+	    prenom: req.body.prenom
 	}, function(err, user) {
 	    if (err) throw err;
 

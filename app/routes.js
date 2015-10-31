@@ -1,4 +1,5 @@
-var morgan = require('morgan');
+// modules =================================================
+var morgan         = require('morgan');
 
 module.exports = function(app) {
     // use morgan to log requests to the console
@@ -7,6 +8,9 @@ module.exports = function(app) {
     // backend routes ===========================================================
     // authentication routes
     require('./routes/auth')(app);
+
+    // middleware
+    require('./routes/middleware')(app);
 
     // api route
     require('./routes/Offres')(app);
