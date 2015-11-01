@@ -6,7 +6,7 @@ module.exports = function(app) {
         Staff.find(function(err, staff) {
             if (err)
                 res.json({ success: false, message: err });
-            res.json({ success: true });
+            res.json(staff);
         });
     });
     // POST
