@@ -5,8 +5,8 @@ module.exports = function(app) {
     app.get('/api/staff', function(req, res) {
         Staff.find(function(err, staff) {
             if (err)
-                res.send(err);
-            res.json(staff); 
+                res.json({ success: false, message: err });
+            res.json({ success: true });
         });
     });
     // POST
@@ -25,8 +25,8 @@ module.exports = function(app) {
 
 	staff.save(function(err) {
             if (err)
-                res.send(err);
-            res.json({ message: 'Succes' });
+                res.json({ success: false, message: err });
+            res.json({ success: true });
         });
     });
     // PUT
@@ -35,8 +35,8 @@ module.exports = function(app) {
     app.delete('/api/staff/:staff_id', function(req, res) {
 	Staff.remove({_id: req.params.staff_id}, function(err, staff) {
             if (err)
-                res.send(err);
-            res.json({ message: 'Succes' });
+                res.json({ success: false, message: err });
+            res.json({ success: true });
         });	
     });
 }
