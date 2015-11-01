@@ -9,35 +9,35 @@ module.exports = function(app) {
         Offres.find(function(err, offres) {
             if (err)
                 res.json({ success: false, message: err });
-            res.json({ success: true });
+            res.json(offres);
         });
     });
     app.get('/api/profils', function(req, res) {
         Profils.find(function(err, profils) {
             if (err)
                 res.json({ success: false, message: err });
-            res.json({ success: true }); 
+            res.json(profils); 
         });
     });
     app.get('/api/entreprises', function(req, res) {
         Entreprises.find(function(err, entreprises) {
             if (err)
                 res.json({ success: false, message: err });
-            res.json({ success: true });
+            res.json(entreprises); 
         });
     });
     app.get('/api/mainArticles', function(req, res) {
         MainArticles.find(function(err, mainArticles) {
             if (err)
                 res.json({ success: false, message: err });
-            res.json({ success: true });
+            res.json(mainArticles); 
         });
     });
     app.get('/api/appelsBenevole', function(req, res) {
         AppelsBenevole.find(function(err, appels) {
             if (err)
                 res.json({ success: false, message: err });
-            res.json({ success: true });
+            res.json(appels); 
         });
     });
 }
