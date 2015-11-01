@@ -1,5 +1,5 @@
 {
-  "name": "starter-node-angular",
+  "name": "EntrEmploi",
   "main": "server.js",
   "dependencies": {
     "express": "~4.5.1",
@@ -17,6 +17,8 @@
     "gulp-recess": "^1.1.2",
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.5",
-    "gulp-watch-less": "^1.0.1"
+    "gulp-watch-less": "^1.0.1",
+    "jsonwebtoken": "^5.4.1",
+    "morgan": "^1.6.1"
   }
 }
