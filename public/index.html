@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="EntrEmploi">
 <head>
     <meta charset="UTF-8">
     <base href="/">
@@ -36,7 +36,7 @@
     <script src="js/main.js"></script>
 
 </head>
-<body ng-app="EntrEmploi">
+<body>
 
     <!-- HEADER -->
     <nav class="navbar navbar-inverse" id="nav-header">
@@ -55,11 +55,11 @@
     <!-- HEADER END -->
     <!-- BODY -->
     <!-- ANGULAR DYNAMIC CONTENT -->
-
-    <div ng-view></div>
+    <div class="container-fluid">
+        <div ng-view></div>
+    </div>
     <!-- BODY END -->
-
-    <div class="page-footer parallaxe">
+    <div class="page-footer">
         <div class="container">
             <div class="credits">
                 <p>Ce site a été crée par Jean Milsonneau et Noé Maillard dans le cadre d'un projet IHH</p>
