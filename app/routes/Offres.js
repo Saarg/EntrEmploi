@@ -1,14 +1,6 @@
 var Offres = require('./../models/Offres');
 
 module.exports = function(app) {
-    // GET
-    app.get('/api/offres', function(req, res) {
-        Offres.find(function(err, offres) {
-            if (err)
-                res.send(err);
-            res.json(offres);
-        });
-    });
     // POST
     app.post('/api/offres', function(req, res) {
 	var offre = new Offres();
@@ -22,8 +14,8 @@ module.exports = function(app) {
 
 	offre.save(function(err) {
             if (err)
-                res.send(err);
-            res.json({ message: 'Succes' });
+                res.json({ success: false, message: err });
+            res.json({ success: true });
         });
     });
     // PUT
@@ -40,8 +32,8 @@ module.exports = function(app) {
 
             offre.save(function(err) {
                 if (err)
-                    res.send(err);
-                res.json({ message: 'Succes' });
+                    res.json({ success: false, message: err });
+		res.json({ success: true });
             });
         });
     });
@@ -49,8 +41,8 @@ module.exports = function(app) {
     app.delete('/api/offres/:offre_id', function(req, res) {
 	Offres.remove({_id: req.params.offre_id}, function(err, offre) {
             if (err)
-                res.send(err);
-            res.json({ message: 'Succes' });
+                res.json({ success: false, message: err });
+            res.json({ success: true });
         });	
     });
 }
