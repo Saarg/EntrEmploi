@@ -27,4 +27,8 @@ $(function() {
         }
         previousScroll = currentScroll;
     });
+
+    $('#carousel-temoins').carousel({
+
+    });
 });
