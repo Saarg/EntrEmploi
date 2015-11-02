@@ -6,11 +6,15 @@ $(function() {
 
         if (currentScroll > 0 && $("#nav-header").height() > 50) {
             // ajustement de la taille du header quand on scrolle vers le bas
-            $("#nav-header").css('height', $("#nav-header").height() - currentScroll/10 + 'px');
+            $("#nav-header").css('height', $("#nav-header").height() - currentScroll/10.0 + 'px');
+            $('.header-spacer').css('transform', 'translateY(' + 100 - currentScroll/10.0 + 'px)');
+
         }
         else if (currentScroll == 0) {
             // reset quand on arrive a 0
-            $("#nav-header").css('height', '100px');            
+            $("#nav-header").css('height', '100px');
+            $('.header-spacer').css('transform', 'translateY(' + 100 + 'px)');
+
         }
 
         var scrollHeight = $(document).height();
