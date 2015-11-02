@@ -5,10 +5,11 @@ $(function() {
         var currentScroll = $(this).scrollTop();
 
         if (currentScroll > 0 && $("#nav-header").height() > 50) {
-            // ajustement de la taille du header
+            // ajustement de la taille du header quand on scrolle vers le bas
             $("#nav-header").css('height', $("#nav-header").height() - currentScroll/10 + 'px');
         }
         else if (currentScroll == 0) {
+            // reset quand on arrive a 0
             $("#nav-header").css('height', '100px');            
         }
 
