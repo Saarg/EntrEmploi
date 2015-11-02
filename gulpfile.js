@@ -3,12 +3,14 @@ var less       = require('gulp-less');
 var watch      = require('gulp-watch');
 var livereload = require('gulp-livereload');
 var minify     = require('gulp-minify-css');
+var concat     = require('gulp-concat');
 
 // LESS
 gulp.task('compile-less', function() {  
-  gulp.src('./public/less/styles.less')
+  gulp.src('./public/less/*.less')
   .pipe(less())
   .pipe(minify())
+  .pipe(concat('styles.css'))
   .pipe(gulp.dest('./public/css/'))
   .pipe(livereload());
 });
@@ -24,7 +26,7 @@ gulp.task('html', function() {
 /* Task to watch less changes */
 gulp.task('watch', function() { 
     livereload.listen(); 
-    gulp.watch('./public/less/styles.less' , ['compile-less']);
+    gulp.watch('./public/less/*.less' , ['compile-less']);
     gulp.watch('./public/**/*.html', ['html']);
 });
 
