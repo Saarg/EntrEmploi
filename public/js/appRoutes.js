@@ -27,3 +27,17 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
     $locationProvider.html5Mode(true);
 
 }]);
+
+angular.module('appAdminRoutes', []).config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+
+    $routeProvider
+
+    // home page
+	.when('/admin/auth', {
+	    templateUrl: 'views/auth.html',
+	    controller: 'AuthController'
+	});
+
+    $locationProvider.html5Mode(true);
+
+}]);

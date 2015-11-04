@@ -1,0 +1,13 @@
+<div class="jumbotron text-center">
+  <form ng-submit="submit()">
+    <input ng-model="user.nom" type="text" name="nom" placeholder="Nom" />
+    <input ng-model="user.prenom" type="text" name="prenom" placeholder="Prenom" />
+    <input ng-model="user.password" type="password" name="pass" placeholder="Password" />
+    <input type="submit" value="Login" />
+  </form>
+  <p>{{ success }}</p>
+  <p>{{ message }}</p>
+  <p>{{ user.nom }}</p>
+  <p>{{ user.prenom }}</p>
+  <p>{{ user.password }}</p>
+</div>
