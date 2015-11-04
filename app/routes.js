@@ -24,6 +24,9 @@ module.exports = function(app) {
     require('./routes/AppelsBenevole')(app);
 
     // frontend routes =========================================================
+    app.get('/admin/*', function(req, res) {
+	res.sendfile('./public/admin.html');
+    });
     app.get('*', function(req, res) {
 	res.sendfile('./public/index.html');
     });
