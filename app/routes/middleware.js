@@ -17,8 +17,7 @@ module.exports = function(app) {
 		if (err) {
 		    return res.json({ success: false, message: 'Failed to authenticate token.' });    
 		} else {
-		    // if everything is good, save to request for use in other routes
-		    req.decoded = decoded;    
+		    req.decoded = decoded;
 		    next();
 		}
 	    });
@@ -35,4 +34,26 @@ module.exports = function(app) {
 	}
     });
     app.use('/api', apiRoutes);
+
+    var adminRoutes = express.Router();
+    adminRoutes.use(function(req, res, next) {
+	var token = req.body.token || req.query.token || req.headers['x-access-token'];
+	// var token = $window.sessionStorage.token;
+	if (token) {
+	    jwt.verify(token, app.get('superSecret'), function(err, decoded) {      
+		if (err) {
+		    return res.json({ success: false, message: 'Failed to authenticate token.' });    
+		} else {
+		    req.decoded = decoded;
+		    next();
+		}
+	    });
+	} else {
+	    return res.status(403).send({ 
+		success: false, 
+		message: 'No token provided.' 
+	    });
+	}
+    });
+    app.use('/admin', adminRoutes);
 }
