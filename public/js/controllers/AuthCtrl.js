@@ -1,4 +1,4 @@
-angular.module('AuthCtrl', []).controller('AuthController', ['$scope', 'Auth', '$window', function($scope, Auth, $window) {
+angular.module('AuthCtrl', []).controller('AuthController', ['$scope', 'Auth', '$window', '$location', function($scope, Auth, $window, $location) {
 
     $scope.submit = function () {
 	Auth.loggin($scope).then(function(res){
@@ -7,6 +7,7 @@ angular.module('AuthCtrl', []).controller('AuthController', ['$scope', 'Auth', '
 	    
 	    if(res.data.success) {
 		$window.sessionStorage.token = res.data.token;
+		$location.path("/admin/");
 	    } else {
 		// Erase the token if the user fails to log in
 		delete $window.sessionStorage.token;

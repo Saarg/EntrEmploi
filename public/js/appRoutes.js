@@ -1,8 +1,6 @@
 angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
     $routeProvider
-
-    // home page
 	.when('/', {
 	    templateUrl: 'views/home.html',
 	    controller: 'MainController'
@@ -22,22 +20,42 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 	.when('/benevole', {
 	    templateUrl: 'views/benevole.html',
 	    controller: 'BenevoleController'	
-	});
+	})
+	.otherwise({
+            redirectTo: '/'
+        });
 
     $locationProvider.html5Mode(true);
 
 }]);
 
-angular.module('appAdminRoutes', []).config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+angular.module('appAdminRoutes', []).config(['$routeProvider', '$locationProvider', '$httpProvider', function($routeProvider, $locationProvider, $httpProvider) {
 
+    $httpProvider.interceptors.push(['$q', '$window', function($q, $window) {
+	return {
+	    'request': function(config) {
+		if ($window.sessionStorage.token) {
+		    config.headers['x-access-token'] = $window.sessionStorage.token;
+		}
+		return config;
+	    }
+	};
+    }]);
+    
     $routeProvider
-
-    // home page
-	.when('/admin/auth', {
+	.when('/admin/', {
+	    templateUrl: 'views/mainAdmin.html',
+	    controller: 'MainAdminController'
+	})
+	.when('/login', {
 	    templateUrl: 'views/auth.html',
 	    controller: 'AuthController'
-	});
+	})
+	.otherwise({
+            redirectTo: '/'
+        });
 
     $locationProvider.html5Mode(true);
 
 }]);
+
