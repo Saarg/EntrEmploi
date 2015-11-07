@@ -1,5 +1,6 @@
 // modules =================================================
 var morgan         = require('morgan');
+var jwt            = require('jsonwebtoken');
 
 module.exports = function(app) {
     // use morgan to log requests to the console
@@ -24,8 +25,15 @@ module.exports = function(app) {
     require('./routes/AppelsBenevole')(app);
 
     // frontend routes =========================================================
+    app.get('/admin/*', function(req, res) {
+	res.sendfile('./public/admin.html');
+    });
+    app.get('/login', function(req, res) {
+	res.sendfile('./public/admin.html');
+    });
     app.get('*', function(req, res) {
 	res.sendfile('./public/index.html');
     });
 
 };
+
