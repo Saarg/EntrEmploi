@@ -21,6 +21,8 @@
 
 
     <!-- ANGULAR CUSTOM -->
+    <script src="js/controllers/NavCtrl.js"></script>
+    <script src="js/services/NavService.js"></script>
     <script src="js/controllers/AuthCtrl.js"></script>
     <script src="js/services/AuthService.js"></script>
     <script src="js/controllers/MainAdminCtrl.js"></script>
@@ -34,12 +36,12 @@
 
     <!-- HEADER -->
     <nav class="navbar navbar-inverse" id="nav-header">
-        <div class="container">
+        <div class="container" ng-controller="NavController">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/admin/">Entr'Emploi AdminZone</a>
+                <a class="navbar-brand" href="/admin/">Entr'Emploi admin zone</a>
             </div>
             <ul class="nav navbar-nav pull-right">
-                <li><a href="/admin/auth">Auth</a></li>
+	      <li><a href="/admin/profil">{{ nom }} {{ prenom }}</a></li>
             </ul>
         </div>
     </nav> 

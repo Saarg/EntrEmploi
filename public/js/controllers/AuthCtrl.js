@@ -1,17 +1,23 @@
 angular.module('AuthCtrl', []).controller('AuthController', ['$scope', 'Auth', '$window', '$location', function($scope, Auth, $window, $location) {
-
-    $scope.submit = function () {
-	Auth.loggin($scope).then(function(res){
-	    $scope.success = res.data.success;
-	    $scope.message = res.data.message;
-	    
-	    if(res.data.success) {
-		$window.sessionStorage.token = res.data.token;
-		$location.path("/admin/");
-	    } else {
-		// Erase the token if the user fails to log in
-		delete $window.sessionStorage.token;
-	    }
-	});
-    };
+    if($window.sessionStorage.token){
+	$location.path("/admin/");
+    } else {
+	$scope.submit = function () {
+	    Auth.loggin($scope).then(function(res){
+		$scope.success = res.data.success;
+		$scope.message = res.data.message;
+		
+		if(res.data.success) {
+		    $window.sessionStorage.token = res.data.token;
+		    $window.sessionStorage.nom = res.data.nom;
+		    $window.sessionStorage.prenom = res.data.prenom;
+		    $location.path("/admin/");
+		} else {
+		    delete $window.sessionStorage.token;
+		    delete $window.sessionStorage.nom;
+		    delete $window.sessionStorage.prenom;
+		}
+	    });
+	};	
+    }
 }]);

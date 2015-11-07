@@ -47,7 +47,7 @@ angular.module('appAdminRoutes', []).config(['$routeProvider', '$locationProvide
 	    templateUrl: 'views/mainAdmin.html',
 	    controller: 'MainAdminController'
 	})
-	.when('/login', {
+	.when('/admin/login', {
 	    templateUrl: 'views/auth.html',
 	    controller: 'AuthController'
 	})

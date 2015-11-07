@@ -49,11 +49,10 @@ module.exports = function(app) {
 		}
 	    });
 	} else {
-	    return res.status(403).send({ 
-		success: false, 
-		message: 'No token provided.' 
-	    });
+	    res.redirect('/admin/login');
+	    next();
 	}
+
     });
     app.use('/admin', adminRoutes);
 }

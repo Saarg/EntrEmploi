@@ -13,6 +13,10 @@ module.exports = function(app) {
     // routes qui ne passent pas par le middleware, donc sans auth (GET only)
     require('./routes/publicRoutes')(app);
 
+    app.get('/admin/login', function(req, res) {
+	res.sendfile('./public/admin.html');
+    });
+    
     // middleware
     require('./routes/middleware')(app);
 
@@ -27,10 +31,7 @@ module.exports = function(app) {
     // frontend routes =========================================================
     app.get('/admin/*', function(req, res) {
 	res.sendfile('./public/admin.html');
-    });
-    app.get('/login', function(req, res) {
-	res.sendfile('./public/admin.html');
-    });
+    });   
     app.get('*', function(req, res) {
 	res.sendfile('./public/index.html');
     });
