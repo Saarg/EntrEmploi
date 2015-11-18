@@ -1,59 +1,48 @@
-<div class="jumbotron text-center">
-    <div id="carousel-temoins" class="carousel slide" data-ride="carousel">
-        <!-- Menu -->
-        <ol class="carousel-indicators">
-            <li data-target="#carousel-temoins" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-temoins" data-slide-to="1"></li>
-            <li data-target="#carousel-temoins" data-slide-to="2"></li>
-        </ol>
-        
-        <!-- Items -->
-        <div class="carousel-inner">
+<div class="image-carousel">
+    <uib-carousel interval="interval" template-url="views/carousel.html">
+        <uib-slide ng-repeat="image in images" active="image.active">
+           <img ng-src="{{image.link}}">
+        </uib-slide>
+    </uib-carousel>
+</div>
 
-            <div class="item active">
-                <img src="http://lorempixel.com/1500/50/abstract/2" alt="Slide 1" />
-            </div>
-            <div class="item">
-                <img src="http://lorempixel.com/1500/50/abstract/2" alt="Slide 2" />
-            </div>
-            <div class="item">
-                <img src="http://lorempixel.com/1500/50/abstract/3" alt="Slide 3" />
-            </div>
-        </div> 
-        <a href="#carousel-temoins" class="left carousel-control" data-slide="prev">
-          <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
-        <a href="#carousel-temoins" class="right carousel-control" data-slide="next">
-          <span class="glyphicon glyphicon-chevron-right"></span>
-        </a>
+<div class="presentation container">
+    <h2>Notre Association</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+
+<div class="mission container">
+    <h2>Notre Mission</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+
+<div class="ateliers container">
+    <h2>Les Ateliers</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+
+
+<div class="jumbotron text-center">
+    <div>
+        <uib-carousel interval="interval" template-url="views/carousel.html">
+            <uib-slide ng-repeat="slide in slides" active="slide.active">
+                <p>{{slide.text}} </p>
+            </uib-slide>
+        </uib-carousel>
     </div>
 </div>
-<div class="container">
-  <div class="row">
-    <h1>Adultam adultam pueritiae ad in.</h1>
-    <p class="infos">
-      <span class="glyphicon glyphicon-user">Martin Joe</span>
-      <span class="glyphicon glyphicon-time">9/11/15</span>
-    </p>
-    <p>Et est admodum mirum videre plebem innumeram mentibus ardore quodam infuso cum dimicationum curulium eventu pendentem. haec similiaque memorabile nihil vel serium agi Romae permittunt. ergo redeundum ad textum.
-      <br/><br/>
-      Oportunum est, ut arbitror, explanare nunc causam, quae ad exitium praecipitem Aginatium inpulit iam inde a priscis maioribus nobilem, ut locuta est pertinacior fama. nec enim super hoc ulla documentorum rata est fides.
-      <br/><br/>
-      Sed tamen haec cum ita tutius observentur, quidam vigore artuum inminuto rogati ad nuptias ubi aurum dextris manibus cavatis offertur, inpigre vel usque Spoletium pergunt. haec nobilium sunt instituta.</p>
-  </div>
-  <hr/>
-  <div class="row">
-    <h1>Illuc equos agitant quod Sannione.</h1>
-    <p class="infos">
-      <span class="glyphicon glyphicon-user">Martin Joe</span>
-      <span class="glyphicon glyphicon-time">9/11/15</span>
-    </p>
-    <p>Nemo quaeso miretur, si post exsudatos labores itinerum longos congestosque adfatim commeatus fiducia vestri ductante barbaricos pagos adventans velut mutato repente consilio ad placidiora deverti.
-      <br/><br/>
-      Quam ob rem cave Catoni anteponas ne istum quidem ipsum, quem Apollo, ut ais, sapientissimum iudicavit; huius enim facta, illius dicta laudantur. De me autem, ut iam cum utroque vestrum loquar, sic habetote.
-      <br/><br/>
-      Utque aegrum corpus quassari etiam levibus solet offensis, ita animus eius angustus et tener, quicquid increpuisset, ad salutis suae dispendium existimans factum aut cogitatum, insontium caedibus fecit victoriam luctuosam.</p>
-  </div>
-  <hr/>
-</div>
-<div class="filler"></div>

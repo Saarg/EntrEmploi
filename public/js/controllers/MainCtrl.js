@@ -1,5 +1,35 @@
-angular.module('MainCtrl', []).controller('MainController', function($scope, MainArticle) {
+angular.module('MainCtrl', ['ui.bootstrap', 'ngAnimate']).controller('MainController', function($scope, MainArticle) {
+    // Trucs pour le carousel
+    $scope.interval = 5000;
+    $scope.slides = [
+    {
+        text : "Super Equipe !"
+    },
+    {
+        text : "Pas Mal du tout"
+    },
+    {
+        text : "J'ai trouvé un boulot !"
+    }
+    ];
 
-	$scope.tagline = 'To the moon and back!';	
+    $scope.images = [
+    {
+        link :"http://lorempixel.com/1300/400/business/"
+    },
+    {
+        link :"http://lorempixel.com/1300/400/sports/"
+    },
+    {
+        link :"http://lorempixel.com/1300/400/business/"
+    },
+    {
+        link :"http://lorempixel.com/1300/400/business/"
+    },
+    {
+        link :"http://lorempixel.com/1300/400/business/"
+    },
+    ];
+
 
 });
