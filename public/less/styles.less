@@ -26,7 +26,8 @@
     border: none;
     border-radius: 0;
     background-color: @blue;
-    .container, .container-fluid {
+    .container,
+    .container-fluid {
         position: relative;
 
         height: 100%;
@@ -39,7 +40,6 @@
             transform: translate3d(0, -50%, 0);
 
             color: #fff;
-	    
         }
         .nav {
             position: absolute;
@@ -90,24 +90,26 @@
 // ================= FOOTER
 
 .page-footer {
-
     margin: 0;
 
     color: #fff;
     background: #414040;
-    .container{
-	color: #fff;
-	background: url("/images/footer-logo-spf.png") no-repeat scroll left top / 20% auto;
-	min-height: 25em;
-	padding-bottom: 2em;
+    .container {
+        min-height: 25em;
+        padding-bottom: 2em;
+        padding-top: 20px;
+
+        color: #fff;
+        background: url('/images/footer-logo-spf.png') no-repeat scroll left top / 20% auto;
+        background-position-y: 20px;
     }
-    .infos{
-	height: 300px;
+    .infos {
+        height: 300px;
     }
-    .credits{
-	padding-top: 10px;
-    } 
-    ul{
-	list-style: outside none none;
+    .credits {
+        padding-top: 10px;
+    }
+    ul {
+        list-style: outside none none;
     }
 }

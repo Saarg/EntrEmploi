@@ -1,7 +1,8 @@
 <div class="image-carousel">
-    <uib-carousel interval="interval" template-url="views/carousel.html">
+    <uib-carousel interval="intervalImages" template-url="views/carousel.html">
         <uib-slide ng-repeat="image in images" active="image.active">
            <img ng-src="{{image.link}}">
+           
         </uib-slide>
     </uib-carousel>
 </div>
