@@ -20,5 +20,8 @@ results
 npm-debug.log
 node_modules
 
+config/db.js
 public/libs
 .DS_Store
+
+doc/dossier/dossier.pdf
