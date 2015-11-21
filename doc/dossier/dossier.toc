@@ -1,4 +1,5 @@
-\contentsline {chapter}{\numberline {1}Pr\IeC {\'e}sentation du besoin}{2}
+\select@language {french}
+\contentsline {chapter}{\numberline {1}Le projet Entr'Emploi}{2}
 \contentsline {section}{\numberline {1.1}L'action d'Entr'Emploi au secours populaire}{2}
 \contentsline {section}{\numberline {1.2}Notre place dans cette action}{2}
 \contentsline {chapter}{\numberline {2}Analyse de l\IeC {\textquoteright }op\IeC {\'e}ration}{3}
