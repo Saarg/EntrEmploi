@@ -1,8 +1,7 @@
 var Offres = require('./../models/Offres');
 var Profils = require('./../models/Profils');
-var Entreprises = require('./../models/Entreprises');
+var Entreprises = require('./../models/Partenaires');
 var MainArticles = require('./../models/MainArticles');
-var AppelsBenevole = require('./../models/AppelsBenevole');
 
 module.exports = function(app) {
     app.get('/api/offres', function(req, res) {
@@ -19,7 +18,7 @@ module.exports = function(app) {
             res.json(profils); 
         });
     });
-    app.get('/api/entreprises', function(req, res) {
+    app.get('/api/partenaires', function(req, res) {
         Entreprises.find(function(err, entreprises) {
             if (err)
                 res.json({ success: false, message: err });
@@ -31,13 +30,6 @@ module.exports = function(app) {
             if (err)
                 res.json({ success: false, message: err });
             res.json(mainArticles); 
-        });
-    });
-    app.get('/api/appelsBenevole', function(req, res) {
-        AppelsBenevole.find(function(err, appels) {
-            if (err)
-                res.json({ success: false, message: err });
-            res.json(appels); 
         });
     });
 }

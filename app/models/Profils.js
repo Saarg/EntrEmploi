@@ -2,25 +2,10 @@ var mongoose = require('mongoose');
 
 var ObjectId = mongoose.Schema.Types.ObjectId;
 
-// Schema pour une ligne de cv
-var Lignes = new mongoose.Schema({
-    date : Date
-    , nom : String
-    , dersciption : String
-});
-
-// Schema d'un cv
-var CV = new mongoose.Schema({
-    nom : String
-    , lignes : [Lignes]
-});
-
 // Schema d'historique des éditions
 var Edition = new mongoose.Schema({
     _editeur : ObjectId
     , date : {type : Date, default: Date()}
-    , lignesOld : [Lignes]
-    , lignesNew : [Lignes]
 });
 
 module.exports = mongoose.model('Profil', {
@@ -35,8 +20,10 @@ module.exports = mongoose.model('Profil', {
     , codePostal : Number
     , dateNaissance : Date
     , photo : String
-    // CV rangé par categories avec un titre et n linges[date nom description]
-    , categories : [CV]
+    // Infos a acces libre
+    , CV : String
+    , accroche : String
+    , job : String
     // Historique profil createur et editions
     , _createur : ObjectId
     , _editions : [Edition]

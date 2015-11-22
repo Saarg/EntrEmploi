@@ -6,11 +6,13 @@ module.exports = function(app) {
 	var offre = new Offres();
 	offre.titre = req.body.titre;
 	offre.contenu = req.body.contenu;
+	offre.entreprise = req.body.entreprise;
+	offre.siteEntreprise = req.body.siteEntreprise;
 	offre.numContact = req.body.numContact;
 	offre.mailContact = req.body.mailContact;
 	offre.date = Date();
+	offre.dateFin = req.body.dateFin;
 	offre._createur = req.body._createur;
-	offre._entreprise = req.body._entreprise;
 
 	offre.save(function(err) {
             if (err)
@@ -25,10 +27,11 @@ module.exports = function(app) {
                 res.send(err);
             offre.titre = req.body.titre;
 	    offre.contenu = req.body.contenu;
+	    offre.entreprise = req.body.entreprise;
+	    offre.siteEntreprise = req.body.siteEntreprise;
 	    offre.numContact = req.body.numContact;
 	    offre.mailContact = req.body.mailContact;
-	    offre._entreprise = req.body._entreprise;
-	    // TODO liste des editeurs
+	    offre.dateFin = req.body.dateFin;
 
             offre.save(function(err) {
                 if (err)

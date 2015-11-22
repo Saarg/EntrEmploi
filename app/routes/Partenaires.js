@@ -1,4 +1,4 @@
-var AppelsBenevole = require('./../models/AppelsBenevole');
+var Entreprises = require('./../models/Partenaires');
 
 module.exports = function(app) {
     // POST

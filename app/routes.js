@@ -24,9 +24,8 @@ module.exports = function(app) {
     require('./routes/Offres')(app);
     require('./routes/Staff')(app);
     require('./routes/Profils')(app);
-    require('./routes/Entreprises')(app);
+    require('./routes/Partenaires')(app);
     require('./routes/MainArticles')(app);
-    require('./routes/AppelsBenevole')(app);
 
     // frontend routes =========================================================
     app.get('/admin/*', function(req, res) {
