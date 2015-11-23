@@ -6,12 +6,28 @@
 \usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
 \usepackage[francais]{babel} 
 
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\addtocontents{toc}{\protect\thispagestyle{fancy}}
+
+\pagestyle{fancy}
+\setlength\headheight{12mm} 
+\fancyhf{}
+\lhead{\includegraphics[height=1cm]{../../public/images/Logo-spf-sm.png}}
+\chead{}
+\rhead{\includegraphics[height=8mm]{../../public/images/Logo-entremploi-sm.png}}
+\lfoot{\today}
+\cfoot{}
+\rfoot{page \thepage \ / \pageref{LastPage}}
+
 \title{Entr'Emploi}
 \author{MAILLARD Noé MILSONNEAU Jean}
 
 \begin{document}
 
 \begin{titlepage}
+	\thispagestyle{empty}
     \centering
     {\bfseries\Large
         Projet IHH 2015-206\\
@@ -30,9 +46,9 @@
 \end{titlepage}
 
 \tableofcontents
-
  
 \chapter{Le projet Entr'Emploi}
+\thispagestyle{fancy}
 \section{L'action d'Entr'Emploi au secours populaire}
 Entr'Emploi propose un accompagnement personnalisé pour les chercheurs d'emploi plus ou moins éloigné du marché du travail de puis cette année dans la région de Brest.\\
 Ils les aident à clarifier leur projet, s'orienter vers des formations et à organiser leur recherche d'emploi.\\
@@ -45,20 +61,24 @@ Le but est d'offrir plus de visibilité a l'équipe d'Entr'Emploi tout en leur f
 La création du site doit se faire en cohérence et en lien avec le site national du secours populaire tout en offrant sa propre identité au projet Entr'Emploi.\\
 
 \chapter{Analyse de l’opération}
+\thispagestyle{fancy}
 \section{Pourquoi une plate-forme web}
 \section{Fonctionnalités du site}
 
 \chapter{Calendrier prévisionnel}
+\thispagestyle{fancy}
 \section{Dates clés}
 \section{Réunions}
 
 \chapter{Résultats envisagés}
+\thispagestyle{fancy}
 \section{Outils de mesure}
 \section{Objectif visé}
 
 \newpage
 \appendix
 \chapter{}
+\thispagestyle{fancy}
 \section{Charte Graphique}
 \section{Diagramme de Gantt}
 \newpage
