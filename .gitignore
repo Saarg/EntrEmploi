@@ -27,3 +27,5 @@ public/libs
 doc/dossier/dossier.pdf
 *.aux
 *.toc
+*.fls
+*.fdb_latexmk
