@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2015-10-01" view-index="0" gantt-divider-location="354" resource-divider-location="300" version="2.7.1" locale="fr_FR">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2015-10-01" view-index="0" gantt-divider-location="494" resource-divider-location="300" version="2.7.1" locale="fr">
     <description/>
     <view zooming-state="default:9" id="gantt-chart">
-        <field id="tpd3" name="Nom" width="57" order="0"/>
-        <field id="tpd4" name="Date de début" width="21" order="1"/>
-        <field id="tpd5" name="Date de fin" width="21" order="2"/>
+        <field id="tpd3" name="Nom" width="50" order="0"/>
+        <field id="tpd4" name="Date de début" width="24" order="1"/>
+        <field id="tpd5" name="Date de fin" width="24" order="2"/>
         <option id="color.recent"><![CDATA[#33ff33 #ff1465]]></option>
     </view>
     <view id="resource-table">
@@ -39,7 +39,8 @@
         <task id="17" name="Definition des Objectifs" color="#8cb6ce" meeting="false" start="2015-10-08" duration="5" complete="0" expand="true"/>
         <task id="5" name="Charte Graphique" color="#8cb6ce" meeting="false" start="2015-10-08" duration="5" complete="0" expand="true"/>
         <task id="15" name="Création Maquette 1 (graphique et BDD)" color="#8cb6ce" meeting="false" start="2015-10-15" duration="26" complete="0" expand="true"/>
-        <task id="29" name="Correction maquette" color="#8cb6ce" meeting="false" start="2015-11-19" duration="6" complete="0" expand="true"/>
+        <task id="47" name="Dossier" meeting="false" start="2015-11-19" duration="6" complete="0" expand="true"/>
+        <task id="29" name="Correction maquette" color="#8cb6ce" meeting="false" start="2015-11-26" duration="6" complete="0" expand="true"/>
         <task id="32" name="Prototype 1 (sans formulaire)" color="#8cb6ce" meeting="false" start="2015-11-26" duration="36" complete="0" expand="true"/>
         <task id="36" name="Prototype 2 (avec formulaire)" color="#8cb6ce" meeting="false" start="2016-01-14" duration="36" complete="0" expand="true"/>
         <task id="42" name="Preparation à la mise en ligne" meeting="false" start="2016-03-03" duration="21" complete="0" expand="true"/>
@@ -62,9 +63,9 @@
         <displaycolumn property-id="tpd2" order="-1" width="75" visible="false"/>
         <displaycolumn property-id="tpd7" order="-1" width="75" visible="false"/>
         <displaycolumn property-id="tpd12" order="-1" width="75" visible="false"/>
-        <displaycolumn property-id="tpd3" order="0" width="199" visible="true"/>
-        <displaycolumn property-id="tpd4" order="1" width="75" visible="true"/>
-        <displaycolumn property-id="tpd5" order="2" width="74" visible="true"/>
+        <displaycolumn property-id="tpd3" order="0" width="247" visible="true"/>
+        <displaycolumn property-id="tpd4" order="1" width="122" visible="true"/>
+        <displaycolumn property-id="tpd5" order="2" width="121" visible="true"/>
         <displaycolumn property-id="tpd6" order="-1" width="75" visible="false"/>
         <displaycolumn property-id="tpd10" order="-1" width="75" visible="false"/>
         <displaycolumn property-id="tpd11" order="-1" width="75" visible="false"/>
