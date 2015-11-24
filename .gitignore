@@ -25,7 +25,7 @@ public/libs
 .DS_Store
 
 doc/dossier/dossier.pdf
-*.aux
-*.toc
+doc/dossier/dossier.aux
+doc/dossier/dossier.toc
 *.fls
 *.fdb_latexmk
