@@ -25,3 +25,5 @@ public/libs
 .DS_Store
 
 doc/dossier/dossier.pdf
+*.aux
+*.toc
