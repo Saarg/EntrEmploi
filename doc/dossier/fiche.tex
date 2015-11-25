@@ -1,0 +1,76 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{appendix}
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\usepackage[francais]{babel}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=black,
+    linktoc=all
+}
+
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\addtocontents{toc}{\protect\thispagestyle{fancy}}
+
+\pagestyle{fancy}
+\setlength\headheight{12mm}
+\fancyhf{}
+\lhead{\includegraphics[height=1cm]{../../public/images/Logo-spf-sm.png}}
+\chead{}
+\rhead{\includegraphics[height=8mm]{../../public/images/Logo-entremploi-sm.png}}
+\lfoot{\today}
+\cfoot{}
+\rfoot{Fiche synthèse}
+
+\usepackage{multicol}
+
+\begin{document}
+\begin{center}\Huge Site Web Entr'Emploi\end{center}
+\vskip2cm
+
+\begin{multicols}{2}
+\section*{Entr'Emploi}
+Entr'Emploi propose un accompagnement personnalisé pour les chercheurs d'emploi plus ou moins éloigné du marché du travail depuis cette année dans la région de Brest.Ils les aident à clarifier leur projet, s'orienter vers des formations et à organiser leur recherche d'emploi.
+
+\section*{Plan du Site}
+Le plan du site représente le squelette de notre travail, il liste les fonctionnalités principales du site que nous souhaitons mettre en place.
+\begin{itemize}
+    \item Présentation du projet
+    \item Prestations (aide au CV, simulation d'entretien...)
+    \item CVthèque
+    \item Offres d'emploi
+    \item Liste de partenaires
+    \item Lien vers la fédération/don/bénévolat
+\end{itemize}
+
+\section*{Notre projet}
+La création du site doit permettre a l'équipe du secours populaire de se faire connaître et d'aider les demandeurs d'emploi à trouver une panoplie d'offres d'emplois et surtout de faire
+appel aux services proposés par Entr'Emploi (Ateliers CV, estime de soi, simulation d'entretien).\\
+Le site doit également servir de vitrine au projet Entr'Emploi dans le but d'étendre l’initiative a d'autres villes.
+
+\section*{Secours Populaire}
+%\includegraphics[width=6cm]{../../public/images/Logo-spf.png}
+Nous sommes déjà en contact avec l'équipe de Brest que nous avons rencontré a plusieurs reprise. Nous avons Définis le plan du site ci-contre avec eux pour répondre le mieux possible à leur besoin.\\
+Le budget nécessaire a l’hébergement du site est pris en charge par le secours populaire
+\end{multicols}
+
+\begin{center}
+\vskip2cm
+\begin{tabular}{p{4cm} p{4cm} p{4cm}}
+\begin{center}Maillard Noé\end{center} 
+&
+\begin{center}Parain: Mr Redou\end{center}
+&
+\begin{center}Milsonneau Jean\end{center}
+\end{tabular}
+\end{center}
+
+\includegraphics[width=16cm]{banner.png}
+
+\end{document}
