@@ -24,8 +24,8 @@ config/db.js
 public/libs
 .DS_Store
 
-doc/dossier/dossier.pdf
-doc/dossier/dossier.aux
-doc/dossier/dossier.toc
+*.pdf
+*.aux
+*.toc
 *.fls
 *.fdb_latexmk
