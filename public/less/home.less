@@ -1,50 +1,62 @@
 .container-fluid {
-    .jumbotron {
-        margin: 0;
-
-        border-radius: 0;
-        p {
-            margin: 0;
-
-        }
+    article: nth-child(even) {
+        background-color: #f5f6f7;
     }
+
+        .presentation {
+            h2 {
+                font-size: 2em;
+                font-weight: 900;
+
+                overflow: hidden;
+
+                text-align: center;
+                text-transform: uppercase;
+
+                color: #444;
+                // les lignes de chaques coté du texte
+                &::after,
+                &::before {
+                    position: relative;
+
+                    display: inline-block;
+
+                    width: 50%;
+                    height: 1px;
+
+                    content: '';
+                    vertical-align: middle;
+
+                    background-color: #444;
+                }
+
+                &::before {
+                    right: .5em;
+
+                    margin-left: -50%;
+                }
+
+                &::after {
+                    left: .5em;
+
+                    margin-right: -50%;
+                }
+
+                span {
+                    font-weight: 500;
+                }
+            }
+        }
+            .jumbotron {
+                margin: 0;
+
+                border-radius: 0;
+                background-color: #f5f6f7;
+                p {
+                    margin: 0;
+                }
+            }
 }
-
-.presentation {
-    h2 {
-        color: #444;
-        overflow: hidden;
-        text-align: center;
-        font-size: 2em;
-        font-weight: 900;
-        text-transform: uppercase;
-
-        &::after, &::before {
-            background-color: #444;
-            content: "";
-            display: inline-block;
-            height: 1px;
-            position: relative;
-            vertical-align: middle;
-            width: 50%;
-        }
-
-        &::before {
-            right: .5em;
-            margin-left: -50%;
-        }
-
-        &::after {
-            left: .5em;
-            margin-right: -50%;
-        }
-
-        span {
-            font-weight: 500;
-        }
-    }
-}
-
 
 img {
     width: 100%;
