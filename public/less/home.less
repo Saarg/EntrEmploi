@@ -10,6 +10,40 @@
     }
 }
 
+.presentation {
+    h2 {
+        color: #444;
+        overflow: hidden;
+        text-align: center;
+        font-size: 2em;
+        font-weight: 900;
+        text-transform: uppercase;
+
+        &::after, &::before {
+            background-color: #444;
+            content: "";
+            display: inline-block;
+            height: 1px;
+            position: relative;
+            vertical-align: middle;
+            width: 50%;
+        }
+
+        &::before {
+            right: .5em;
+            margin-left: -50%;
+        }
+
+        &::after {
+            left: .5em;
+            margin-right: -50%;
+        }
+
+        span {
+            font-weight: 500;
+        }
+    }
+}
 
 
 img {
