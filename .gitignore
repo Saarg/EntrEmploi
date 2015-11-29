@@ -30,3 +30,4 @@ public/libs
 *.fls
 *.fdb_latexmk
 .csscomb.json
+**/bourbon

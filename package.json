@@ -16,6 +16,7 @@
     "gulp-load-plugins": "^1.0.0",
     "gulp-minify-css": "^1.2.1",
     "gulp-recess": "^1.1.2",
+    "gulp-sass": "^2.1.0",
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.5",
     "gulp-watch-less": "^1.0.1",

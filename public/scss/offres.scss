@@ -1,9 +1,9 @@
-@import 'mixins.less';
+@import "bourbon/bourbon";
 
 // ================ VARIABLES
 
-@blue : #244395;
-@red : #ff1719;
+$blue : #244395;
+$red : #ff1719;
 
 
 .hero {
@@ -23,7 +23,7 @@
         width: 100%;
         height: 100%;
 
-        .gradient-vertical(rgba(0, 0, 0, .5), rgba(0, 0, 0, .3));
+        @include linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .3));
     }
 }
 
@@ -36,7 +36,7 @@
         a {
             margin-bottom: 5px;
 
-            color: lighten(@blue, 30%);
+            color: lighten($blue, 30%);
             &:hover {
                 cursor: pointer;
             }

@@ -1,9 +1,9 @@
-@import 'mixins.less';
+@import "bourbon/bourbon";
 
 // ================ VARIABLES
 
-@blue : #244395;
-@red : #ff1719;
+$blue : #244395;
+$red : #ff1719;
 
 // ================================== HEADER ==================================
 // Si on change la taille du header il faut penser a changer le margin-top dans .header-spacer
@@ -23,7 +23,7 @@
 
     border: none;
     border-radius: 0;
-    background-color: @blue;
+    background-color: $blue;
     .container,
     .container-fluid {
         position: relative;
@@ -49,14 +49,14 @@
 		padding-left: 2px;
                 a {
                     line-height: 10px;
-		    
+
                     color: #fff;
                     &:hover {
                         transition: border-radius .1s;
                         transition: background-color .3s;
 
                         border-radius: 6px;
-                        background-color: darken(@blue, 10%);
+                        background-color: darken($blue, 10%);
                     }
                 }
             }
@@ -73,7 +73,7 @@
 }
 
 p {
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .container-fluid {
@@ -121,6 +121,3 @@ p {
         list-style: outside none none;
     }
 }
-
-
-

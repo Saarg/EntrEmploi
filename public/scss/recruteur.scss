@@ -1,9 +1,9 @@
-@blue : #244395;
-@red : #ff1719;
+$blue : #244395;
+$red : #ff1719;
 
 
 h1.nom {
-    color: lighten(@blue, 30%);
+    color: lighten($blue, 30%);
 }
 
 .infos {

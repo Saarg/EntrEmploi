@@ -1,5 +1,5 @@
 var gulp       = require('gulp');
-var less       = require('gulp-sass');
+var sass       = require('gulp-sass');
 var watch      = require('gulp-watch');
 var livereload = require('gulp-livereload');
 var minify     = require('gulp-minify-css');
@@ -8,7 +8,7 @@ var concat     = require('gulp-concat');
 // LESS
 gulp.task('compile-sass', function() {
     gulp.src('./public/scss/*.scss')
-    .pipe(sass())
+    .pipe(sass().on('error', sass.logError))
     .pipe(minify())
     .pipe(concat('styles.css'))
     .pipe(gulp.dest('./public/css/'))
@@ -26,7 +26,7 @@ gulp.task('html', function() {
 /* Task to watch less changes */
 gulp.task('watch', function() {
     livereload.listen();
-    gulp.watch('./public/less/*.scss' , ['compile-scss']);
+    gulp.watch('./public/scss/*.scss' , ['compile-sass']);
     gulp.watch('./public/**/*.html', ['html']);
 });
 
