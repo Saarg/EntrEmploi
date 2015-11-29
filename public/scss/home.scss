@@ -1,5 +1,53 @@
+
+
+@import 'bourbon/bourbon';
+
+$blue: #244395;
+
+@mixin vertical-align {
+    position: relative;
+    top: 50%;
+
+    -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+}
+
+
 .container-fluid {
     article {
+        &:nth-child(even) {
+            height: 200px;
+
+            background-color: #f5f6f7;
+            box-shadow: inset 0 10px 40px -10px rgba(0, 0, 0, .05),
+            inset 0 -10px 40px -10px rgba(0, 0, 0, .05);
+        }
+
+        &.liens {
+            ul {
+                width: 400px;
+
+                list-style: none;
+
+                text-decoration: none;
+
+                @include vertical-align();
+
+                li {
+                    display: inline-block;
+
+                    .pill {
+                        box-sizing: padding-box;
+                        padding: 10px 20px;
+
+                        border: 1px solid  $blue;
+                        border-radius: 27px;
+                    }
+                }
+            }
+        }
+
         h2 {
             font-size: 2.3em;
             font-weight: 900;
@@ -36,10 +84,6 @@
                 left: .5em;
 
                 margin-right: -50%;
-            }
-
-            &:nth-child(even) {
-                background-color: #4f4f4f;
             }
 
             span {
