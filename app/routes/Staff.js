@@ -37,6 +37,6 @@ module.exports = function(app) {
             if (err)
                 res.json({ success: false, message: err });
             res.json({ success: true });
-        });	
+        });
     });
 }

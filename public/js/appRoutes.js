@@ -19,11 +19,23 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 	})
 	.when('/benevole', {
 	    templateUrl: 'views/benevole.html',
-	    controller: 'BenevoleController'
+	    controller: 'BenevoleController',
+        resolve: {
+            logged: ['$window', '$location', function($window, $location){
+                if(!$window.sessionStorage.token){
+                    $location.path('/login');
+                    $location.replace();
+                }
+            }]
+        }
+	})
+    .when('/login', {
+	    templateUrl: 'views/login.html',
+	    controller: 'AuthController',
 	})
 	.otherwise({
-            redirectTo: '/'
-        });
+        redirectTo: '/'
+    });
 
     $locationProvider.html5Mode(true);
 
