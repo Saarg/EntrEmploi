@@ -21,12 +21,9 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 	    templateUrl: 'views/benevole.html',
 	    controller: 'BenevoleController',
         resolve: {
-            logged: ['$window', '$location', function($window, $location){
-                if(!$window.sessionStorage.token){
-                    $location.path('/login');
-                    $location.replace();
-                }
-            }]
+            logged: function(Auth){
+                return Auth.logged();
+            }
         }
 	})
     .when('/login', {

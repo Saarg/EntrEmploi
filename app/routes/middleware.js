@@ -23,7 +23,6 @@ module.exports = function(app) {
 	    });
 
 	} else {
-
 	    // if there is no token
 	    // return an error
 	    return res.status(403).send({
@@ -33,4 +32,5 @@ module.exports = function(app) {
 
 	}
     });
+    app.use('/api', apiRoutes);
 }
