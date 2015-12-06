@@ -19,17 +19,21 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 	})
 	.when('/benevole', {
 	    templateUrl: 'views/benevole.html',
-	    controller: 'BenevoleController',
+	    controller: 'BenevoleController'
+	})
+    .when('/login', {
+	    templateUrl: 'views/login.html',
+	    controller: 'AuthController'
+	})
+    .when('/admin', {
+        templateUrl: 'views/admin.html',
+	    controller: 'AdminController',
         resolve: {
             logged: function(Auth){
                 return Auth.logged();
             }
         }
-	})
-    .when('/login', {
-	    templateUrl: 'views/login.html',
-	    controller: 'AuthController',
-	})
+    })
 	.otherwise({
         redirectTo: '/'
     });

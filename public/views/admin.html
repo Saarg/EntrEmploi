@@ -1,0 +1,28 @@
+<div class="container">
+        <tabs>
+            <pane class="well" title="Page accueil">
+                <div class="row" ng-repeat="i in [1,2,3]">
+                    <form ng-submit="submit()">
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="titre" value="Titre">
+                            <textarea class="form-control" type="text" name="contenu">Contenu</textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-sm">Modifier</button>
+                        <button type="button" class="btn btn-danger btn-sm pull-right">Supprimer</button>
+                        <button type="reset" class="btn btn-warning btn-sm pull-right">Reinitialiser</button>
+                    </form>
+                    <hr/>
+                </div>
+            </pane>
+            <pane class="well" title="Offres">
+                Espace Admin Offres
+            </pane>
+            <pane class="well" title="Candidats">
+                Espace Admin Candidat
+            </pane>
+            <pane class="well" title="Pied de page">
+                Espace Admin Pied de page
+            </pane>
+        </tabs>
+</div>
+<div class="filler"></div>

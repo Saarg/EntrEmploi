@@ -1,7 +1,7 @@
 module.exports = function(app) {
     // backend routes ===========================================================
     // authentication routes
-    require('./routes/auth')(app);
+    require('./routes/apiAuth')(app);
 
     // routes qui ne passent pas par le middleware, donc sans auth (GET only)
     require('./routes/publicRoutes')(app);

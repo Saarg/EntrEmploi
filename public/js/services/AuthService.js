@@ -12,7 +12,6 @@ angular.module('AuthService', []).factory('Auth', ['$http', '$window', '$locatio
                 }
             }
             $location.path('/login');
-            $location.replace();
             return false;
         },
         decodeToken: function(){

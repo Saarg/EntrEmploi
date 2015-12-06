@@ -1,4 +1,4 @@
-angular.module('AuthCtrl', []).controller('AuthController', ['$scope', 'Auth', '$window', function($scope, Auth, $window) {
+angular.module('AuthCtrl', []).controller('AuthController', ['$scope', 'Auth', '$window', '$location', function($scope, Auth, $window, $location) {
     if ($window.sessionStorage.nom)
         $scope.message = "déjà co";
     $scope.submit = function () {
@@ -10,7 +10,7 @@ angular.module('AuthCtrl', []).controller('AuthController', ['$scope', 'Auth', '
     	    $window.sessionStorage.token = res.data.token;
     	    $window.sessionStorage.nom = res.data.nom;
     	    $window.sessionStorage.prenom = res.data.prenom;
-    	    //$location.path("/admin/");
+    	    $location.path("/admin");
     	} else {
     	    delete $window.sessionStorage.token;
     	    delete $window.sessionStorage.nom;
