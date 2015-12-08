@@ -4,6 +4,5 @@ angular.module('OffresService', []).factory('Offre', ['$http', function($http) {
         getOffres : function() {
             return $http.get('/api/offres');
         }
-    }       
+    }
 }]);
-

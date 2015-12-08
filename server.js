@@ -1,11 +1,25 @@
 // modules =================================================
-var express        = require('express');
-var app            = express();
-var mongoose       = require('mongoose');
-var bodyParser     = require('body-parser');
-var methodOverride = require('method-override');
+var express        	= require('express');
+var session        	= require('express-session');
+var app            	= express();
+var mongoose       	= require('mongoose');
+var bodyParser     	= require('body-parser');
+var cookieParser   	= require('cookie-parser');
+var methodOverride 	= require('method-override');
+
+var morgan      	= require('morgan');
+
 
 // configuration ===========================================
+
+=======
+app.use(morgan('dev')); // log every request to the console
+app.use(cookieParser()); // read cookies (needed for auth)
+app.use(bodyParser()); // get information from html forms
+
+// required for passport
+app.use(session({ secret: 'TODOCHANGERCETEXT' })); // session secret
+
 
 // config files
 var db = require('./config/db');

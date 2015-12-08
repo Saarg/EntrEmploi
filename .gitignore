@@ -31,3 +31,4 @@ public/libs
 *.fdb_latexmk
 .csscomb.json
 **/bourbon
+public/css/*.css

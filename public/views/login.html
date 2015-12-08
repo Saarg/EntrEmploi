@@ -1,0 +1,24 @@
+<div class="container-fluid">
+    <div class="col-sm-6 col-sm-offset-3">
+
+        <h1><span class="fa fa-sign-in"></span> Login</h1>
+
+        <div ng-if="message" class="alert alert-danger">{{ message }}</div>
+
+        <!-- LOGIN FORM -->
+        <form ng-submit="submit()">
+            <div class="form-group">
+                <label>Nom</label>
+                <input class="form-control" ng-model="user.nom" type="text" name="nom" placeholder="Nom">
+                <label>Prenom</label>
+                <input class="form-control" ng-model="user.prenom" type="text" name="prenom" placeholder="Prenom">
+                <label>Password</label>
+                <input class="form-control" ng-model="user.password" type="password" name="password" placeholder="Password">
+            </div>
+
+            <button type="submit" class="btn btn-warning btn-lg">Login</button>
+        </form>
+
+    </div>
+</div>
+<div class="filler"></div>

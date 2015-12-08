@@ -1,8 +1,9 @@
 var mongoose = require('mongoose');
+var bcrypt   = require('bcrypt-nodejs');
 
 var ObjectId = mongoose.Schema.Types.ObjectId;
 
-module.exports = mongoose.model('Staff', {
+var StaffSchema = mongoose.Schema({
     // Info perso
     nom : String
     , prenom : String
@@ -16,5 +17,16 @@ module.exports = mongoose.model('Staff', {
     // Liste des profils contribué
     , _profils : [ObjectId]
     // Mot de passe encrypter
-    , passwd : String // bcrypt??
+    , passwd : String // bcrypt
 });
+
+// methods ======================
+StaffSchema.methods.generateHash = function(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
+StaffSchema.methods.validPassword = function(password) {
+    //return bcrypt.compareSync(password, this.passwd);
+    return password == this.passwd;
+};
+
+module.exports = mongoose.model('Staff', StaffSchema);

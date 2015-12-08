@@ -2,10 +2,13 @@
   "name": "EntrEmploi",
   "main": "server.js",
   "dependencies": {
-    "express": "~4.5.1",
-    "mongoose": "~3.8.0",
     "body-parser": "~1.4.2",
-    "method-override": "~2.0.2"
+    "bourbon": "^4.2.6",
+    "express": "~4.5.1",
+    "method-override": "~2.0.2",
+    "mongoose": "~3.8.0",
+    "bcrypt-nodejs" : "latest",
+    "jsonwebtoken": "^5.4.1"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
@@ -15,12 +18,12 @@
     "gulp-livereload": "^3.8.1",
     "gulp-load-plugins": "^1.0.0",
     "gulp-minify-css": "^1.2.1",
+    "gulp-uglify": "latest",
     "gulp-recess": "^1.1.2",
     "gulp-sass": "^2.1.0",
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.5",
     "gulp-watch-less": "^1.0.1",
-    "jsonwebtoken": "^5.4.1",
     "morgan": "^1.6.1"
   }
 }

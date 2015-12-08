@@ -3,6 +3,7 @@ var sass       = require('gulp-sass');
 var watch      = require('gulp-watch');
 var livereload = require('gulp-livereload');
 var minify     = require('gulp-minify-css');
+var uglify     = require('gulp-uglify');
 var concat     = require('gulp-concat');
 
 // LESS
@@ -14,6 +15,20 @@ gulp.task('compile-sass', function() {
     .pipe(gulp.dest('./public/css/'))
     .pipe(livereload());
 });
+
+// JS
+gulp.task('concatJS', function() {
+  return gulp.src('./public/js/**/*.js')
+    .pipe(concat('EntrEmploi.js'))
+    .pipe(gulp.dest('./public/js/'));
+});
+
+gulp.task('compressJS', function() {
+  return gulp.src('./public/js/EntrEmploi.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('./public/libs/EntrEmploi/'));
+});
+
 
 // HTML
 gulp.task('html', function() {
@@ -28,7 +43,8 @@ gulp.task('watch', function() {
     livereload.listen();
     gulp.watch('./public/scss/*.scss' , ['compile-sass']);
     gulp.watch('./public/**/*.html', ['html']);
+    gulp.watch('./public/js/**/*.js', ['concatJS']);
 });
 
 /* Task when running `gulp` from terminal */
-gulp.task('default', ['compile-sass', 'html', 'watch']);
+gulp.task('default', ['compile-sass', 'concatJS', 'compressJS', 'html', 'watch']);

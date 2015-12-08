@@ -13,9 +13,9 @@ module.exports = function(app) {
 	if (token) {
 
 	    // verifies secret and checks exp
-	    jwt.verify(token, app.get('superSecret'), function(err, decoded) {      
+	    jwt.verify(token, app.get('superSecret'), function(err, decoded) {
 		if (err) {
-		    return res.json({ success: false, message: 'Failed to authenticate token.' });    
+		    return res.json({ success: false, message: 'Failed to authenticate token.' });
 		} else {
 		    req.decoded = decoded;
 		    next();
@@ -23,36 +23,14 @@ module.exports = function(app) {
 	    });
 
 	} else {
-
 	    // if there is no token
 	    // return an error
-	    return res.status(403).send({ 
-		success: false, 
-		message: 'No token provided.' 
+	    return res.status(403).send({
+		success: false,
+		message: 'No token provided.'
 	    });
-	    
+
 	}
     });
     app.use('/api', apiRoutes);
-
-    var adminRoutes = express.Router();
-    adminRoutes.use(function(req, res, next) {
-	var token = req.body.token || req.query.token || req.headers['x-access-token'];
-	// var token = $window.sessionStorage.token;
-	if (token) {
-	    jwt.verify(token, app.get('superSecret'), function(err, decoded) {      
-		if (err) {
-		    return res.json({ success: false, message: 'Failed to authenticate token.' });    
-		} else {
-		    req.decoded = decoded;
-		    next();
-		}
-	    });
-	} else {
-	    res.redirect('/admin/login');
-	    next();
-	}
-
-    });
-    app.use('/admin', adminRoutes);
 }
