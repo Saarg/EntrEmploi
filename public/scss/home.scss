@@ -18,7 +18,6 @@ $blue: #244395;
     article {
         &:nth-child(even) {
             height: 200px;
-
             background-color: #f5f6f7;
             box-shadow: inset 0 10px 40px -10px rgba(0, 0, 0, .05),
             inset 0 -10px 40px -10px rgba(0, 0, 0, .05);
@@ -26,16 +25,32 @@ $blue: #244395;
 
         &.liens {
             ul {
+                margin: auto;
                 width: 400px;
 
                 list-style: none;
 
                 text-decoration: none;
-
                 @include vertical-align();
 
                 li {
+                    position: relative;
                     display: inline-block;
+                    margin: 0 auto;
+                    top: 0;
+                    bottom: 0;
+
+                    &.don {
+                        position: absolute;
+                        left: 0;
+                        @include transform(translateX(-50%));
+                    }
+
+                    &.benevole {
+                        position: absolute;
+                        right: 0;
+                        @include transform(translateX(50%));
+                    }
 
                     .pill {
                         box-sizing: padding-box;
@@ -43,6 +58,13 @@ $blue: #244395;
 
                         border: 1px solid  $blue;
                         border-radius: 27px;
+
+
+                        &:hover {
+                            padding: 15px 30px;
+                            border: none;
+                            background-color: #5C5E60;
+                        }
                     }
                 }
             }
