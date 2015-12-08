@@ -46,23 +46,28 @@
 <body>
 
     <!-- HEADER -->
-    <nav class="navbar navbar-inverse" id="nav-header">
+    <header id="header">
+        <div class="container">
+            <img src="images/Logo-spf.png" class="pull-left logo-spf">
+            <img src="images/Logo-entremploi-xl.png" class="pull-right logo-entremploi">
+        </div>
+    </header>
+    <nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="200" id="nav">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/">Entr'Emploi</a>
+                <a class="navbar-brand" href="/"><i class="glyphicon glyphicon-home"></i></a>
             </div>
             <ul class="nav navbar-nav pull-right">
-	        <li><a href="https://www.secourspopulaire.fr/29/">La fédération</a></li>
-		<li><a href="/offres">Nos offres</a></li>
-		<li><a href="/recruteur">Nos candidats</a></li>
-		<li><a href="/benevole">Contact</a></li>
+    	       <li><a href="https://www.secourspopulaire.fr/29/">La fédération</a></li>
+            	<li><a href="/offres">Nos offres</a></li>
+            	<li><a href="/recruteur">Nos candidats</a></li>
+            	<li><a href="/benevole">Contact</a></li>
             </ul>
         </div>
     </nav>
     <!-- HEADER END -->
     <!-- BODY -->
     <!-- ANGULAR DYNAMIC CONTENT -->
-    <div class="header-spacer"></div>
     <div class="container-fluid">
         <div ng-view></div>
     </div>
