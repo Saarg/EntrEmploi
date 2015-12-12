@@ -36,9 +36,6 @@ $blue: #244395;
                 li {
                     position: relative;
                     display: inline-block;
-                    margin: 0 auto;
-                    top: 0;
-                    bottom: 0;
 
                     &.don {
                         position: absolute;
@@ -53,17 +50,21 @@ $blue: #244395;
                     }
 
                     .pill {
-                        box-sizing: padding-box;
+                        @include transform(translateY(-50%));
                         padding: 10px 20px;
 
                         border: 1px solid  $blue;
                         border-radius: 27px;
+                        @include transition(all .1s ease);
+
 
 
                         &:hover {
+                            @include transition(all .1s ease);
+                            color: #FFF;
                             padding: 15px 30px;
                             border: none;
-                            background-color: #5C5E60;
+                            background-color: $blue;
                         }
                     }
                 }
