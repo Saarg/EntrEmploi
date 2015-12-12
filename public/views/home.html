@@ -6,7 +6,7 @@
     </uib-carousel>
 </div>
 <div class="container-fluid">
-    <article class="presentation">
+    <section class="presentation">
         <div class="container">
             <h2><span>Notre</span> Association</h2>
             <p>
@@ -18,14 +18,14 @@
                 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
         </div>
-    </article>
-    <article class="liens">
+    </section>
+    <section class="liens">
         <ul class="container center-block">
             <li class="don"><a class="btn pill" href="https://www.secourspopulaire.fr/don">Faire un don</a></li>
             <li class="benevole"><a class="btn pill" href="https://www.secourspopulaire.fr/devenir-benevole">Devenir benevole</a></li>
         </ul>
-    </article>
-    <article class="mission">
+    </section>
+    <section class="mission">
         <div class="container">
             <div class="row">
                 <h2><span>Notre</span> Mission</h2>
@@ -45,11 +45,11 @@
                 </div>
             </div>
         </div>
-    </article>
-    <article class="partenaires">
+    </section>
+    <section class="partenaires">
 
-    </article>
-    <article class="ateliers">
+    </section>
+    <section class="ateliers">
         <div class="container">
 
             <h2><span>Les</span> Ateliers</h2>
@@ -60,16 +60,17 @@
                 consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                 cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </article>
+            </p>
         </div>
-    </div>
-</div>
-<div class="jumbotron text-center">
-    <div>
-        <uib-carousel interval="interval" template-url="views/carousel.html">
-            <uib-slide ng-repeat="slide in slides" active="slide.active">
-                <p>{{slide.text}}</p>
-            </uib-slide>
-        </uib-carousel>
-    </div>
+    </section>
+
+    <section class="temoignages">
+        <div class="carousel-temoignages">
+            <uib-carousel interval="interval" template-url="views/carousel.html">
+                <uib-slide ng-repeat="slide in slides" active="slide.active">
+                    <p>{{slide.text}}</p>
+                </uib-slide>
+            </uib-carousel>
+        </div>
+    </section>
 </div>
