@@ -17,17 +17,13 @@ gulp.task('compile-sass', function() {
 });
 
 // JS
-gulp.task('concatJS', function() {
+gulp.task('js', function() {
   return gulp.src('./public/js/**/*.js')
-    .pipe(concat('EntrEmploi.js'))
-    .pipe(gulp.dest('./public/js/'));
-});
-
-gulp.task('compressJS', function() {
-  return gulp.src('./public/js/EntrEmploi.js')
     .pipe(uglify())
+    .pipe(concat('EntrEmploi.js'))
     .pipe(gulp.dest('./public/libs/EntrEmploi/'));
 });
+
 
 
 // HTML
@@ -43,8 +39,8 @@ gulp.task('watch', function() {
     livereload.listen();
     gulp.watch('./public/scss/*.scss' , ['compile-sass']);
     gulp.watch('./public/**/*.html', ['html']);
-    gulp.watch('./public/js/**/*.js', ['concatJS']);
+    gulp.watch('./public/js/**/*.js', ['js']);
 });
 
 /* Task when running `gulp` from terminal */
-gulp.task('default', ['compile-sass', 'concatJS', 'compressJS', 'html', 'watch']);
+gulp.task('default', ['compile-sass', 'js', 'html', 'watch']);
