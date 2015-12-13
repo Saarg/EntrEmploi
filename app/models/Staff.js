@@ -25,8 +25,8 @@ StaffSchema.methods.generateHash = function(password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 StaffSchema.methods.validPassword = function(password) {
-    //return bcrypt.compareSync(password, this.passwd);
-    return password == this.passwd;
+    return bcrypt.compareSync(password, this.passwd);
+    //return password == this.passwd;
 };
 
 module.exports = mongoose.model('Staff', StaffSchema);
