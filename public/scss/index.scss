@@ -1,9 +1,9 @@
-@import "bourbon/bourbon";
+@import 'bourbon/bourbon';
 
 // ================ VARIABLES
 
-$blue : #244395;
-$red : #ff1719;
+$blue: #244395;
+$red: #ff1719;
 
 // ================================== HEADER ==================================
 // Si on change la taille du header il faut penser a changer le margin-top dans .header-spacer
@@ -11,24 +11,24 @@ $red : #ff1719;
 
 
 
-header{
-    height:150px;
+header {
+    height: 150px;
     margin: 10px 0;
-    .logo-spf{
-        padding: 10px;
-        max-height:150px;
-        max-width:40%;
+    .logo-spf {
+        max-width: 40%;
         height: auto;
+        max-height: 150px;
+        padding: 10px;
     }
-    .logo-entremploi{
-        padding: 10px;
-        max-height:150px;
-        max-width:60%;
+    .logo-entremploi {
+        max-width: 60%;
         height: auto;
+        max-height: 150px;
+        padding: 10px;
     }
 }
 
-.affix{
+.affix {
     position: fixed;
     z-index: 999;
     top: 0;
@@ -64,7 +64,7 @@ header{
 
             transform: translate3d(0, -50%, 0);
             li {
-		padding-left: 2px;
+                padding-left: 2px;
                 a {
                     line-height: 10px;
 
@@ -122,8 +122,8 @@ p {
     background: #414040;
     .container {
         min-height: 25em;
-        padding-bottom: 2em;
         padding-top: 20px;
+        padding-bottom: 2em;
 
         color: #fff;
         background: url('/images/footer-logo-spf.png') no-repeat scroll left top / 20% auto;

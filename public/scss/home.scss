@@ -9,8 +9,8 @@ $blue: #244395;
     top: 50%;
 
     -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
 }
 
 
@@ -19,6 +19,7 @@ $blue: #244395;
     section {
         &:nth-child(even) {
             height: 120px;
+
             background-color: #f5f6f7;
             box-shadow: inset 0 10px 40px -10px rgba(0, 0, 0, .05),
             inset 0 -10px 40px -10px rgba(0, 0, 0, .05);
@@ -26,46 +27,55 @@ $blue: #244395;
 
         &.liens {
             ul {
-                margin: auto;
                 width: 400px;
+                margin: auto;
 
                 list-style: none;
 
                 text-decoration: none;
+
                 @include vertical-align();
 
                 li {
                     position: relative;
+
                     display: inline-block;
 
                     &.don {
                         position: absolute;
                         left: 0;
+
                         @include transform(translateX(-50%));
                     }
 
                     &.benevole {
                         position: absolute;
                         right: 0;
+
                         @include transform(translateX(50%));
                     }
 
                     .pill {
-                        @include transform(translateY(-50%));
-                        padding: 10px 20px;
-                        color: $blue;
                         font-weight: bold;
+
+                        padding: 10px 20px;
+
+                        color: $blue;
                         border: 2px solid  $blue;
                         border-radius: 27px;
+
+                        @include transform(translateY(-50%));
                         @include transition(all .1s ease);
 
 
 
                         &:hover {
-                            @include transition(all .1s ease);
-                            color: #FFF;
                             padding: 15px 30px;
+
+                            color: #fff;
                             background-color: $blue;
+
+                            @include transition(all .1s ease);
                         }
                     }
                 }
