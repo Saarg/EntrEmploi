@@ -1,4 +1,4 @@
-angular.module('ContactCtrl', []).controller('ContactController', function($scope) {
+angular.module('ContactCtrl', []).controller('ContactController', ['$scope', function($scope) {
 
 	$scope.submit = function () {
 		//TODO envoyer le mail depuis le site avec node-mandrill apr exemple
@@ -10,4 +10,4 @@ angular.module('ContactCtrl', []).controller('ContactController', function($scop
 			window.open('mailto:j3milson@enib.fr?subject=' + $scope.mail.sujet + '&body=' + $scope.mail.message);
 	};
 
-});
+}]);

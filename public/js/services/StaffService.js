@@ -1,6 +1,6 @@
 angular.module('StaffService', []).factory('Staff', ['$http', function($http) {
     return {
-	// gestion des offres
+        // gestion des offres
         getOffres : function() {
             return $http.get('/api/offres');
         },
@@ -10,8 +10,8 @@ angular.module('StaffService', []).factory('Staff', ['$http', function($http) {
         deleteOffre : function(id) {
             return $http.delete('/api/offres/' + id);
         },
-	// gestion des profils
-	getProfils : function() {
+        // gestion des profils
+        getProfils : function() {
             return $http.get('/api/profils');
         },
         createProfil : function(Data) {
@@ -20,8 +20,8 @@ angular.module('StaffService', []).factory('Staff', ['$http', function($http) {
         deleteProfil : function(id) {
             return $http.delete('/api/profils/' + id);
         },
-	// gestion des articles de la mainpage
-	getMainArticles : function() {
+        // gestion des articles de la mainpage
+        getMainArticles : function() {
             return $http.get('/api/mainArticles');
         },
         createMainArticle : function(Data) {
@@ -30,5 +30,5 @@ angular.module('StaffService', []).factory('Staff', ['$http', function($http) {
         deleteMainArticle : function(id) {
             return $http.delete('/api/mainArticles/' + id);
         }
-    }     
+    };
 }]);

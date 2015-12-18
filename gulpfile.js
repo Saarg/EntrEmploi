@@ -19,7 +19,7 @@ gulp.task('compile-sass', function() {
 // JS
 gulp.task('js', function() {
   return gulp.src('./public/js/**/*.js')
-    //.pipe(uglify()) marche pas
+    //.pipe(uglify())
     .pipe(concat('EntrEmploi.js'))
     .pipe(gulp.dest('./public/libs/EntrEmploi/'));
 });
