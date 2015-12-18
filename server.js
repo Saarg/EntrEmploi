@@ -15,13 +15,6 @@ var morgan      	= require('morgan');
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 
-// required for passport
-app.use(session({
-    secret: 'TODOCHANGERCETEXT',
-    resave: false,
-    saveUninitialized : false
-})); // session secret
-
 
 // config files
 var db = require('./config/db');
