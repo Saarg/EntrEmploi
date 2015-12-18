@@ -15,4 +15,6 @@ angular.module('HomeCtrl', ['ui.bootstrap', 'ngAnimate']).controller('HomeContro
             { link :"http://lorempixel.com/1300/400/business/" },
             { link :"http://lorempixel.com/1300/400/business/" },
         ];
+
+    $scope.succes = 10;
 }]);
