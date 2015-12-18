@@ -1,4 +1,4 @@
-angular.module('AuthService', []).factory('Auth', ['$http', '$window', '$location', function($http, $window, $location) {
+angular.module('AuthService', []).factory('AuthService', ['$http', '$window', '$location', function($http, $window, $location) {
     return {
     	loggin : function($scope) {
     	    return $http.post('/login', { nom: $scope.user.nom, prenom: $scope.user.prenom, passwd: $scope.user.password });

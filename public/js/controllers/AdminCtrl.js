@@ -1,4 +1,4 @@
-angular.module('AdminCtrl', []).controller('AdminController', ['$scope', 'Admin', '$window', function($scope, Auth, $window) {
+angular.module('AdminCtrl', []).controller('AdminController', ['$scope', '$window', function($scope, $window) {
 
 }])
 .directive('tabs', function() {

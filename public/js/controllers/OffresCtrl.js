@@ -1,7 +1,7 @@
-angular.module('OffresCtrl', []).controller('OffresController', function($scope, Offre) {
+angular.module('OffresCtrl', []).controller('OffresController', ['$scope', 'OffresService', function($scope, OffresService) {
 
-    Offre.getOffres().then(function(res){
-        $scope.offres = res.data;                
+    OffresService.getOffres().then(function(res){
+        $scope.offres = res.data;
     });
 
-});
+}]);

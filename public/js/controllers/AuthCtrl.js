@@ -1,4 +1,4 @@
-angular.module('AuthCtrl', []).controller('AuthController', ['$scope', 'Auth', '$window', '$location', function($scope, Auth, $window, $location) {
+angular.module('AuthCtrl', []).controller('AuthController', ['$scope', 'AuthService', '$window', '$location', function($scope, Auth, $window, $location) {
     if ($window.sessionStorage.nom)
         $scope.message = "déjà co";
     $scope.submit = function () {
