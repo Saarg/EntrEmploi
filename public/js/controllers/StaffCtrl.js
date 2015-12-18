@@ -1,5 +1,5 @@
-angular.module('StaffCtrl', []).controller('StaffController', ['$scope', function($scope) {
+angular.module('StaffCtrl', []).controller('StaffController', function($scope) {
 
-	$scope.tagline = 'Staff';
+	$scope.tagline = 'Staff';	
 
-}]);
+});

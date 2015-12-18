@@ -1,4 +1,4 @@
-angular.module('AdminService', []).factory('AdminService', ['$http', '$window', '$location', function($http, $window, $location) {
+angular.module('AdminService', []).factory('Admin', ['$http', '$window', '$location', function($http, $window, $location) {
     return {
 
     }
