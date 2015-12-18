@@ -17,9 +17,9 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 	    templateUrl: 'views/staff.html',
 	    controller: 'StaffController'
 	})
-	.when('/benevole', {
-	    templateUrl: 'views/benevole.html',
-	    controller: 'BenevoleController'
+	.when('/contact', {
+	    templateUrl: 'views/contact.html',
+	    controller: 'ContactController'
 	})
     .when('/login', {
 	    templateUrl: 'views/login.html',

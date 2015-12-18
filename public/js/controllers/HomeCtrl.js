@@ -1,4 +1,4 @@
-angular.module('HomeCtrl', ['ui.bootstrap', 'ngAnimate']).controller('HomeController', function($scope, MainArticle) {
+angular.module('HomeCtrl', ['ui.bootstrap', 'ngAnimate']).controller('HomeController', ['$scope', 'MainArticle', function($scope, MainArticle) {
     // Trucs pour le carousel
     $scope.intervalImages = 7000;
     $scope.interval = 6000;
@@ -15,4 +15,4 @@ angular.module('HomeCtrl', ['ui.bootstrap', 'ngAnimate']).controller('HomeContro
             { link :"http://lorempixel.com/1300/400/business/" },
             { link :"http://lorempixel.com/1300/400/business/" },
         ];
-});
+}]);
