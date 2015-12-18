@@ -1,4 +1,22 @@
-angular.module('AdminCtrl', []).controller('AdminController', ['$scope', 'Admin', '$window', function($scope, Auth, $window) {
+angular.module('AdminCtrl', []).controller('AdminController', ['$scope', 'Admin', 'MainArticle', '$window', function($scope, Admin, MainArticle, $window) {
+
+    MainArticle.getArticleCount().then(function(res){
+        $scope.MainArticlesCount  = res.data;
+    });
+    MainArticle.getArticles().then(function(res){
+        $scope.MainArticles  = res.data;
+    });
+
+    $scope.newArticle = {};
+    $scope.addArticle = function () {
+        $scope.newArticle.priority = $scope.MainArticlesCount+1;
+        Admin.postArticle($scope);
+	};
+
+    $scope.oldArticle = {};
+    $scope.deleteArticle = function (article_id) {
+        Admin.deleteArticle(article_id);
+	};
 
 }])
 .directive('tabs', function() {

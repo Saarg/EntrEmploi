@@ -1,6 +1,7 @@
 angular.module('AuthCtrl', []).controller('AuthController', ['$scope', 'Auth', '$window', '$location', function($scope, Auth, $window, $location) {
     if ($window.sessionStorage.nom)
-        $scope.message = "déjà co";
+        $location.path("/admin");
+
     $scope.submit = function () {
         Auth.loggin($scope).then(function(res){
     	$scope.success = res.data.success;

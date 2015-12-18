@@ -18,9 +18,9 @@ module.exports = function(app) {
     // PUT
     app.put('/api/mainArticles/:article_id', function(req, res) {
 	MainArticles.findById(req.params.article_id, function(err, article) {
-            if (err)
-                res.send(err);
-            article.titre = req.body.titre;
+        if (err)
+            res.send(err);
+        article.titre = req.body.titre;
 	    article.contenu = req.body.contenu;
 	    article._auteur = req.body.auteur;
 	    article.priority = req.body.priority;
@@ -38,6 +38,6 @@ module.exports = function(app) {
             if (err)
                  res.json({ success: false, message: err });
             res.json({ success: true });
-        });	
+        });
     });
 }
