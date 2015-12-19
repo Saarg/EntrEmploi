@@ -5,6 +5,7 @@
 <div class="container">
 
     <div ng-if="error" class="col-md-10 col-md-offset-1 alert alert-danger">{{ error }}</div>
+    <div ng-if="message" class="col-md-10 col-md-offset-1 alert alert-success">{{ message }}</div>
 
     <!-- LOGIN FORM -->
     <form class="col-md-10 col-md-offset-1" ng-submit="submit()">
