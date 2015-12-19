@@ -10,7 +10,8 @@
     "express-session": "^1.12.1",
     "jsonwebtoken": "^5.4.1",
     "method-override": "~2.0.2",
-    "mongoose": "~3.8.0"
+    "mongoose": "~3.8.0",
+    "nodemailer": "0.7.1"
   },
   "devDependencies": {
     "gulp": "^3.9.0",

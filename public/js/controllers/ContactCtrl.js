@@ -1,13 +1,16 @@
-angular.module('ContactCtrl', []).controller('ContactController', ['$scope', function($scope) {
+angular.module('ContactCtrl', []).controller('ContactController', ['$scope', 'Contact', function($scope, Contact) {
 
 	$scope.submit = function () {
-		//TODO envoyer le mail depuis le site avec node-mandrill apr exemple
 		if(!$scope.mail.sujet)
 			$scope.error = "Vous n'avez pas précisé le sujet de votre message."
 		else if(!$scope.mail.message)
 			$scope.error = "Vous n'avez pas entré de message."
+		else if(!$scope.mail.nom || !$scope.mail.prenom)
+			$scope.error = "Vous n'avez pas donné votre nom ou prenom."
+		else if(!$scope.mail.phone && !$scope.mail.email)
+			$scope.error = "Vous n'avez pas entré d'information de contact."
 		else
-			window.open('mailto:j3milson@enib.fr?subject=' + $scope.mail.sujet + '&body=' + $scope.mail.message);
+			Contact.sendMail($scope);
 	};
 
 }]);

@@ -9,7 +9,6 @@ var methodOverride 	= require('method-override');
 
 var morgan      	= require('morgan');
 
-
 // configuration ===========================================
 
 app.use(morgan('dev')); // log every request to the console
