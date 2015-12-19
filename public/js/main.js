@@ -1,6 +1,0 @@
-$(function() {
-
-    $('#carousel-temoins').carousel({
-
-    });
-});
