@@ -1,7 +1,7 @@
 angular.module('AuthService', []).factory('Auth', ['$http', '$window', '$location', function($http, $window, $location) {
     return {
     	loggin : function($scope) {
-    	    return $http.post('/login', { nom: $scope.user.nom, prenom: $scope.user.prenom, passwd: $scope.user.password });
+    	    return $http.post('/login', { nom: $scope.user.nom.toLowerCase(), prenom: $scope.user.prenom.toLowerCase(), passwd: $scope.user.password });
     	},
         logged: function(){
             var token   = $window.sessionStorage.token;
