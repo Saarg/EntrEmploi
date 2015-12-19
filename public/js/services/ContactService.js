@@ -4,9 +4,10 @@ angular.module('ContactService', []).factory('Contact', ['$http', function($http
             return $http.get('/api/appelsBenevole');
         },
         sendMail : function($scope) {
+            sujet = '[' + $scope.mail.nom + '] ' + $scope.mail.sujet
             return $http.post('/contact/send', {
                 sender: $scope.mail.email,
-                sujet: $scope.mail.sujet,
+                sujet: sujet,
                 message: $scope.mail.message
             });
         }
