@@ -2,6 +2,7 @@
 <html lang="en" ng-app="EntrEmploi">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <base href="/">
 
     <title>Entr'Emploi</title>
@@ -29,22 +30,41 @@
 <body>
 
     <!-- HEADER -->
-    <header id="header">
+    <header id="header" >
         <div class="container">
-            <img src="images/Logo-spf.png" class="pull-left logo-spf">
-            <img src="images/Logo-entremploi-xl.png" class="pull-right logo-entremploi">
+            <div class="row">
+                <div class="hidden-xs hidden-sm col-md-4">
+                    <img src="images/Logo-spf.png" class="pull-left logo-spf">
+                </div>
+                <div class="col-sm-12 col-md-8">
+                    <img src="images/Logo-entremploi-xl.png" class="pull-right logo-entremploi">
+                </div>
+            </div>
         </div>
         <nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="150" id="nav">
             <div class="container">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="/"><i class="glyphicon glyphicon-home"></i></a>
                 </div>
-                <ul class="nav navbar-nav pull-right">
+                <ul class="nav navbar-nav pull-right hidden-xs">
                     <li><a href="https://www.secourspopulaire.fr/29/">La fédération</a></li>
                     <li><a href="/offres">Nos offres</a></li>
                     <li><a href="/recruteur">Nos candidats</a></li>
                     <li><a href="/contact">Contact</a></li>
                 </ul>
+                <div class="nav navbar-nav pull-right visible-xs">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <ul class="navbar-collapse collapse">
+                        <li><a href="https://www.secourspopulaire.fr/29/">La fédération</a></li>
+                        <li><a href="/offres">Nos offres</a></li>
+                        <li><a href="/recruteur">Nos candidats</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>
@@ -55,10 +75,10 @@
         <div ng-view></div>
     </div>
     <!-- BODY END -->
-    <div class="page-footer">
+    <div class="page-footer hidden-xs">
         <div class="container">
             <div class="row infos">
-                <div class="col-md-3 pull-right">
+                <div class="col-xs-3 pull-right">
                     <h3>Où nous trouver?</h3>
                     <ul class="address">
                         <li class="address">31. rue F. Chopin</li>
@@ -67,7 +87,7 @@
                         <li class="phone">02.98.44.80.43</li>
                     </ul>
                 </div>
-                <div class="col-md-3 pull-right">
+                <div class="col-xs-3 pull-right">
                     <h3>Partenaires</h3>
                     <ul>
                         <li>ANPE?</li>
@@ -76,7 +96,7 @@
                         <li>entreprise3</li>
                     </ul>
                 </div>
-                <div class="col-md-3 pull-right">
+                <div class="col-xs-3 pull-right">
                     <h3>Qui sommes nous?</h3>
                     <ul>
                         <li>Nos succes</li>
