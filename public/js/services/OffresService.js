@@ -1,4 +1,8 @@
-angular.module('OffresService', []).factory('Offre', ['$http', function($http) {
+angular.module('OffresService', []).factory('OffresService', OffresService);
+
+OffresService.$inject = ['$http'];
+
+function OffresService($http) {
     return {
         // appel pour recup les offres
         getOffres : (function() {
@@ -7,4 +11,4 @@ angular.module('OffresService', []).factory('Offre', ['$http', function($http) {
             return res.data;
         })
     }
-}]);
+}

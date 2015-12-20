@@ -1,4 +1,8 @@
-angular.module('StaffService', []).factory('Staff', ['$http', function($http) {
+angular.module('StaffService', []).factory('StaffService', StaffService);
+
+StaffService.$inject = ['$http'];
+
+function StaffService($http) {
     return {
         // gestion des offres
         getOffres : function() {
@@ -31,4 +35,4 @@ angular.module('StaffService', []).factory('Staff', ['$http', function($http) {
             return $http.delete('/api/mainArticles/' + id);
         }
     };
-}]);
+}

@@ -1,8 +1,12 @@
-angular.module('AuthService', []).factory('Auth', ['$http', '$window', '$location', function($http, $window, $location) {
+angular.module('AuthService', []).factory('AuthService', AuthService);
+
+AuthService.$inject = ['$http', '$window', '$location'];
+
+function AuthService($http, $window, $location) {
     return {
-    	loggin : function($scope) {
-    	    return $http.post('/login', { nom: $scope.user.nom.toLowerCase(), prenom: $scope.user.prenom.toLowerCase(), passwd: $scope.user.password });
-    	},
+        loggin : function($scope) {
+            return $http.post('/login', { nom: $scope.user.nom.toLowerCase(), prenom: $scope.user.prenom.toLowerCase(), passwd: $scope.user.password });
+        },
         logged: function(){
             var token   = $window.sessionStorage.token;
             if(token){
@@ -25,4 +29,4 @@ angular.module('AuthService', []).factory('Auth', ['$http', '$window', '$locatio
             return false;
         }
     }
-}]);
+}

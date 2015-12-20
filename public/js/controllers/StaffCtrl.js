@@ -1,5 +1,9 @@
-angular.module('StaffCtrl', []).controller('StaffController', ['$scope', function($scope) {
+angular.module('StaffCtrl', []).controller('StaffController', StaffController);
 
-	$scope.tagline = 'Staff';
+StaffController.$inject = ['$scope'];
 
-}]);
+function StaffController($scope) {
+
+    $scope.tagline = 'Staff';
+
+}

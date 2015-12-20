@@ -1,30 +1,11 @@
-angular.module('AdminCtrl', []).controller('AdminController', ['$scope', 'Admin', 'MainArticle', '$window', function($scope, Admin, MainArticle, $window) {
+angular.module('AdminCtrl', []).controller('AdminController', AdminController)
 
-    MainArticle.getArticleCount().then(function(res){
-        $scope.MainArticlesCount  = res.data;
-    });
-    MainArticle.getArticles().then(function(res){
-        $scope.MainArticles  = res.data;
-    });
-
-    $scope.newArticle = {};
-    $scope.addArticle = function () {
-        $scope.newArticle.priority = $scope.MainArticlesCount+1;
-        Admin.postArticle($scope);
-	};
-
-    $scope.oldArticle = {};
-    $scope.deleteArticle = function (article_id) {
-        Admin.deleteArticle(article_id);
-	};
-
-}])
 .directive('tabs', function() {
     return {
         restrict: 'E',
         transclude: true,
         scope: {},
-        controller: function($scope, $element) {
+        controller: function($scope) {
             var panes = $scope.panes = [];
 
             $scope.select = function(pane) {
@@ -35,20 +16,20 @@ angular.module('AdminCtrl', []).controller('AdminController', ['$scope', 'Admin'
             }
 
             this.addPane = function(pane) {
-              if (panes.length == 0) $scope.select(pane);
-              panes.push(pane);
+                if (panes.length == 0) $scope.select(pane);
+                panes.push(pane);
             }
         },
         template:
-            '<div class="tabbable">' +
-                '<ul class="nav nav-tabs">' +
-                    '<li ng-repeat="pane in panes" ng-class="{active:pane.selected}">'+
-                        '<a href="" ng-click="select(pane)">{{pane.title}}</a>' +
-                    '</li>' +
-                '</ul>' +
-                '<div class="tab-content" ng-transclude></div>' +
-            '</div>',
-            replace: true
+        '<div class="tabbable">' +
+        '<ul class="nav nav-tabs">' +
+        '<li ng-repeat="pane in panes" ng-class="{active:pane.selected}">'+
+        '<a href="" ng-click="select(pane)">{{pane.title}}</a>' +
+        '</li>' +
+        '</ul>' +
+        '<div class="tab-content" ng-transclude></div>' +
+        '</div>',
+        replace: true
     };
 })
 .directive('pane', function() {
@@ -61,8 +42,31 @@ angular.module('AdminCtrl', []).controller('AdminController', ['$scope', 'Admin'
             tabsController.addPane(scope);
         },
         template:
-            '<div class="tab-pane" ng-class="{active: selected}" ng-transclude>' +
-            '</div>',
-            replace: true
+        '<div class="tab-pane" ng-class="{active: selected}" ng-transclude>' +
+        '</div>',
+        replace: true
     };
 });
+
+AdminController.$inject =['$scope', 'Admin', 'MainArticle', '$window'];
+
+function AdminController($scope, Admin, MainArticle) {
+
+    MainArticle.getArticleCount().then(function(res){
+        $scope.MainArticlesCount  = res.data;
+    });
+    MainArticle.getArticles().then(function(res){
+        $scope.MainArticles  = res.data;
+    });
+
+    $scope.newArticle = {};
+    $scope.addArticle = function () {
+        $scope.newArticle.priority = $scope.MainArticlesCount+1;
+        Admin.postArticle($scope);
+    }
+
+    $scope.oldArticle = {};
+    $scope.deleteArticle = function (article_id) {
+        Admin.deleteArticle(article_id);
+    }
+}

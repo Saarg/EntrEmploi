@@ -1,4 +1,8 @@
-angular.module('HomeService', []).factory('MainArticle', ['$http', function($http) {
+angular.module('HomeService', []).factory('HomeService', HomeService);
+
+HomeService.$inject = ['$http'];
+
+function HomeService($http) {
     return {
         getArticles : function() {
             return $http.get('/api/mainArticles');
@@ -7,4 +11,4 @@ angular.module('HomeService', []).factory('MainArticle', ['$http', function($htt
             return $http.get('/api/mainArticles/count');
         }
     }
-}]);
+}

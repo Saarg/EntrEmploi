@@ -1,5 +1,9 @@
-angular.module('RecruteurCtrl', []).controller('RecruteurController', ['$scope', function($scope) {
+angular.module('RecruteurCtrl', []).controller('RecruteurController', RecruteurController);
 
-	$scope.tagline = 'Tu es un Recruteur?';
+RecruteurController.$inject = ['$scope'];
 
-}]);
+function RecruteurController($scope) {
+
+    $scope.tagline = 'Tu es un Recruteur?';
+
+}
