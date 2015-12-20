@@ -75,4 +75,8 @@ function AdminController($scope, AdminService, HomeService) {
         AdminService.deleteArticle(article_id);
         window.location.reload(true);
     }
+
+    $scope.ArticleTracker= function(article) {
+      return article.priority + article._id;
+    }
 }

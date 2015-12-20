@@ -1,8 +1,8 @@
 <div class="container">
         <tabs>
             <pane title="Page accueil">
-                <div class="row" ng-repeat="article in MainArticles track by article.titre">
-                    <form ng-submit="editArticle($index)">
+                <div class="row" ng-repeat="article in MainArticles | orderBy: 'priority' as filtered_result track by ArticleTracker(article)">
+                    <form ng-submit="editArticle(MainArticles.indexOf(article))">
                         <div class="form-group col-md-10">
                             <label for="sel1">Titre:</label>
                             <input class="form-control" ng-model="article.titre" type="text" name="titre">
