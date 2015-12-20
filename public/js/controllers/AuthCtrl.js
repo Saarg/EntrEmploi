@@ -1,14 +1,14 @@
 angular.module('AuthCtrl', []).controller('AuthController', AuthController);
 
-AuthController.$inject = ['$scope', 'Auth', '$window', '$location'];
+AuthController.$inject = ['$scope', 'AuthService', '$window', '$location'];
 
-function AuthController($scope, Auth, $window, $location) {
+function AuthController($scope, AuthService, $window, $location) {
     if ($window.sessionStorage.nom) {
         $location.path("/admin");
     }
 
     $scope.submit = function () {
-        Auth.loggin($scope).then(function(res){
+        AuthService.loggin($scope).then(function(res){
             $scope.success = res.data.success;
             $scope.message = res.data.message;
 

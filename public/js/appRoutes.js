@@ -29,8 +29,8 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
         templateUrl: 'views/admin.html',
 	    controller: 'AdminController',
         resolve: {
-            logged: function(Auth){
-                return Auth.logged();
+            logged: function(AuthService){
+                return AuthService.logged();
             }
         }
     })
