@@ -1,33 +1,34 @@
 <div ng-if="alert" class="jumbotron">
-
+    {{ jumbotron }}
 </div>
 <br/>
 <div class="container">
+    <div class="col-md-10 col-md-offset-1 well ">
+        <div ng-if="error" class="alert alert-danger">{{ error }}</div>
+        <div ng-if="message" class="alert alert-success">{{ message }}</div>
 
-    <div ng-if="error" class="col-md-10 col-md-offset-1 alert alert-danger">{{ error }}</div>
-    <div ng-if="message" class="col-md-10 col-md-offset-1 alert alert-success">{{ message }}</div>
-
-    <!-- LOGIN FORM -->
-    <form class="col-md-10 col-md-offset-1" ng-submit="submit()">
-        <div class="form-group col-sm-6">
-            <label>Nom</label>
-            <input class="form-control" ng-model="mail.nom" type="text" name="nom" placeholder="Nom">
-        </div>
-        <div class="form-group col-sm-6">
-            <label>Email</label>
-            <input class="form-control" ng-model="mail.email" type="text" name="email" placeholder="Email">
-        </div>
-        <div class="form-group col-sm-12">
-            <label>Sujet</label>
-            <input class="form-control" ng-model="mail.sujet" type="text" name="sujet" placeholder="Sujet">
-        </div>
-        <div class="form-group col-sm-12">
-            <label>Message</label>
-            <textarea class="form-control" rows="10" type="text" ng-model="mail.message" name="message"></textarea>
-        </div>
-
-        <button type="submit" class="btn btn-primary btn-sm col-sm-12">Envoyer</button>
-    </form>
-
+        <!-- LOGIN FORM -->
+        <form ng-submit="submit()">
+            <div class="form-group col-sm-6">
+                <label>Nom</label>
+                <input class="form-control" ng-model="mail.nom" type="text" name="nom" placeholder="Nom">
+            </div>
+            <div class="form-group col-sm-6">
+                <label>Email</label>
+                <input class="form-control" ng-model="mail.email" type="text" name="email" placeholder="Email">
+            </div>
+            <div class="form-group col-sm-12">
+                <label>Sujet</label>
+                <input class="form-control" ng-model="mail.sujet" type="text" name="sujet" placeholder="Sujet">
+            </div>
+            <div class="form-group col-sm-12">
+                <label>Message</label>
+                <textarea class="form-control" rows="10" type="text" ng-model="mail.message" name="message"></textarea>
+            </div>
+            <div class="form-group col-md-12">
+                <button type="submit" class="btn btn-primary btn-md col-sm-12">Envoyer</button>
+            </div>
+        </form>
+    </div>
 </div>
 <br/>

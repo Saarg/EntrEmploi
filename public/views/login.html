@@ -1,5 +1,6 @@
+</br></br></br>
 <div class="container-fluid">
-    <div class="col-sm-6 col-sm-offset-3">
+    <div class="col-sm-6 col-sm-offset-3 well">
 
         <h1><span class="fa fa-sign-in"></span> Connexion</h1>
 
@@ -7,18 +8,23 @@
 
         <!-- LOGIN FORM -->
         <form ng-submit="submit()">
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label>Nom</label>
                 <input class="form-control" ng-model="user.nom" type="text" name="nom" placeholder="Nom">
+            </div>
+            <div class="form-group col-md-6">
                 <label>Prenom</label>
                 <input class="form-control" ng-model="user.prenom" type="text" name="prenom" placeholder="Prenom">
+            </div>
+            <div class="form-group col-md-12">
                 <label>Password</label>
                 <input class="form-control" ng-model="user.password" type="password" name="password" placeholder="Password">
             </div>
-
-            <button type="submit" class="btn btn-warning btn-lg">Login</button>
+            <div class="form-group col-md-12">
+                <button type="submit" class="btn btn-primary btn-md col-md-12">Connexion</button>
+            </div>
         </form>
 
     </div>
 </div>
-<div class="filler"></div>
+</br></br></br>
