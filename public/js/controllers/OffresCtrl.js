@@ -1,9 +1,9 @@
 angular.module('OffresCtrl', []).controller('OffresController', OffresController);
 
-OffresController.$inject = ['$scope', 'Offre'];
+OffresController.$inject = ['$scope', 'OffresService'];
 
-function OffresController($scope, Offre) {
+function OffresController($scope, OffresService) {
 
-    $scope.offres = Offre.getOffres;
+    $scope.offres = OffresService.getOffres;
 
 }
