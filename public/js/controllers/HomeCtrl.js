@@ -20,5 +20,9 @@ function HomeController($scope, HomeService) {
         { link :"http://lorempixel.com/1300/400/business/" }
     ];
 
+    HomeService.getArticles().then(function(res){
+        $scope.MainArticles  = res.data;
+    });
+
     $scope.succes = 10;
 }

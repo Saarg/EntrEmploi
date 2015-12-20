@@ -63,10 +63,16 @@ function AdminController($scope, AdminService, HomeService) {
     $scope.addArticle = function () {
         $scope.newArticle.priority = $scope.MainArticlesCount+1;
         AdminService.postArticle($scope);
+        window.location.reload(true);
     }
 
     $scope.oldArticle = {};
+    $scope.editArticle = function (index) {
+        AdminService.editArticle($scope, index);
+        window.location.reload(true);
+    }
     $scope.deleteArticle = function (article_id) {
         AdminService.deleteArticle(article_id);
+        window.location.reload(true);
     }
 }
