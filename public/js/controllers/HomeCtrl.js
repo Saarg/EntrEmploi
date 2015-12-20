@@ -1,8 +1,8 @@
 angular.module('HomeCtrl', ['ui.bootstrap', 'ngAnimate']).controller('HomeController', HomeController);
 
-HomeController.$inject = ['$scope', 'MainArticle'];
+HomeController.$inject = ['$scope', 'HomeService'];
 
-function HomeController($scope, MainArticle) {
+function HomeController($scope, HomeService) {
     // Trucs pour le carousel
     $scope.intervalImages = 7000;
     $scope.interval = 6000;

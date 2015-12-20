@@ -48,25 +48,25 @@ angular.module('AdminCtrl', []).controller('AdminController', AdminController)
     };
 });
 
-AdminController.$inject =['$scope', 'Admin', 'MainArticle', '$window'];
+AdminController.$inject =['$scope', 'AdminService', 'HomeService', '$window'];
 
-function AdminController($scope, Admin, MainArticle) {
+function AdminController($scope, AdminService, HomeService) {
 
-    MainArticle.getArticleCount().then(function(res){
+    HomeService.getArticleCount().then(function(res){
         $scope.MainArticlesCount  = res.data;
     });
-    MainArticle.getArticles().then(function(res){
+    HomeService.getArticles().then(function(res){
         $scope.MainArticles  = res.data;
     });
 
     $scope.newArticle = {};
     $scope.addArticle = function () {
         $scope.newArticle.priority = $scope.MainArticlesCount+1;
-        Admin.postArticle($scope);
+        AdminService.postArticle($scope);
     }
 
     $scope.oldArticle = {};
     $scope.deleteArticle = function (article_id) {
-        Admin.deleteArticle(article_id);
+        AdminService.deleteArticle(article_id);
     }
 }
