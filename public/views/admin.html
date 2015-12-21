@@ -1,7 +1,7 @@
 <div class="container">
         <tabs>
             <pane title="Page accueil">
-                <div class="row" ng-repeat="article in MainArticles | orderBy: 'priority' as filtered_result track by ArticleTracker(article)">
+                <div class="row" ng-repeat="article in MainArticlesSorted">
                     <form ng-submit="editArticle(MainArticles.indexOf(article))">
                         <div class="form-group col-md-10">
                             <label for="sel1">Titre:</label>
@@ -9,7 +9,7 @@
                         </div>
                         <div class="form-group col-md-2">
                             <label for="sel1">Position:</label>
-                            <input class="form-control" ng-model="article.priority" type="text" name="priority">
+                            <input class="form-control" ng-model="article.priority" type="text" name="priority" model-change-blur>
                         </div>
                         <div class="form-group col-md-12">
                             <label for="sel1">Article:</label>

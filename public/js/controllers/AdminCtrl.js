@@ -48,15 +48,16 @@ angular.module('AdminCtrl', []).controller('AdminController', AdminController)
     };
 });
 
-AdminController.$inject =['$scope', 'AdminService', 'HomeService', '$window'];
+AdminController.$inject =['$scope', '$filter', 'AdminService', 'HomeService', '$window'];
 
-function AdminController($scope, AdminService, HomeService) {
+function AdminController($scope, $filter, AdminService, HomeService) {
 
     HomeService.getArticleCount().then(function(res){
         $scope.MainArticlesCount  = res.data;
     });
     HomeService.getArticles().then(function(res){
         $scope.MainArticles  = res.data;
+        $scope.MainArticlesSorted  = $filter('orderBy')($scope.MainArticles, 'priority');
     });
 
     $scope.newArticle = {};
