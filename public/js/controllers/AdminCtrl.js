@@ -57,6 +57,9 @@ function AdminController($scope, $filter, AdminService, HomeService) {
     });
     HomeService.getArticles().then(function(res){
         $scope.MainArticles  = res.data;
+        for(i in $scope.MainArticles){
+            $scope.MainArticles[i].contenu = $scope.MainArticles[i].contenu.replace(/<br\s*[\/]?>/gi, "\n");
+        }
         $scope.MainArticlesSorted  = $filter('orderBy')($scope.MainArticles, 'priority');
     });
 

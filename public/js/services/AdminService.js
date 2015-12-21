@@ -7,14 +7,14 @@ function AdminService($http, $window) {
         postArticle : function($scope) {
             return $http.post('/api/mainArticles', { token: $window.sessionStorage.token,
                 titre: $scope.newArticle.titre,
-                contenu: $scope.newArticle.contenu,
+                contenu: $scope.newArticle.contenu.replace(/\n/g, "<"+"br/>"),
                 priority: $scope.newArticle.priority
             });
         },
         editArticle : function($scope, index) {
             return $http.put('/api/mainArticles/' + $scope.MainArticles[index]._id, { token: $window.sessionStorage.token,
                 titre: $scope.MainArticles[index].titre,
-                contenu: $scope.MainArticles[index].contenu,
+                contenu: $scope.MainArticles[index].contenu.replace(/\n/g, "<"+"br/>"),
                 priority: $scope.MainArticles[index].priority
             });
         },

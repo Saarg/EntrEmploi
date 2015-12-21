@@ -8,15 +8,8 @@
 <div class="container-fluid">
     <section class="presentation">
         <div class="container">
-            <h2><span>Notre</span> Association</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+            <h2><span>{{ MainArticles[0].titre[0] }}</span> {{ MainArticles[0].titre[1] }}</h2>
+            <p ng-bind-html="MainArticles[0].contenu"></p>
         </div>
     </section>
     <section class="liens hidden-xs">
@@ -28,20 +21,13 @@
     <section class="mission">
         <div class="container">
             <div class="row">
-                <h2><span>Notre</span> Mission</h2>
+                <h2><span>{{ MainArticles[1].titre[0] }}</span> {{ MainArticles[1].titre[1] }}</h2>
                 <div class="col-xs-2">
-                    <img class="compteur" src="http://lorempixel.com/100/100/business/">
+                    <img class="compteur" src="https://www.secourspopulaire.fr/29/sites/default/files/styles/panoramique/public/sites/default/files/atoms/images/entremploi_spf_29.jpg?itok=WeUTxY0c">
                 </div>
                 <div class="mission col-xs-10 text-justify">
 
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
+                    <p ng-bind-html="MainArticles[1].contenu"></p>
                 </div>
             </div>
         </div>
@@ -56,15 +42,8 @@
     <section class="ateliers">
         <div class="container">
 
-            <h2><span>Les</span> Ateliers</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+            <h2><span>{{ MainArticles[2].titre[0] }}</span> {{ MainArticles[2].titre[1] }}</h2>
+            <p ng-bind-html="MainArticles[2].contenu"></p>
         </div>
     </section>
 
