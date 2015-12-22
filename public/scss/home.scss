@@ -17,6 +17,29 @@ $blue: #244395;
 
 .container-fluid {
     section {
+        &:nth-child(odd) {
+            img {
+                width: 20%;
+                height: auto;
+                margin: 10px;
+            }
+            .FL {
+                float: left;
+            }
+            .FR {
+                float: right;
+            }
+
+            ul {
+                display:table;
+                margin-bottom: 0px;
+                list-style-position: inside;
+                li{
+                    list-style: circle;
+                    margin-top: -20px;
+                }
+            }
+        }
         &:nth-child(even) {
             height: 120px;
 
