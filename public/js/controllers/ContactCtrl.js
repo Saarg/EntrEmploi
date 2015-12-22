@@ -1,4 +1,4 @@
-angular.module('ContactCtrl', []).controller('ContactController', ['$scope', 'Contact', function($scope, Contact) {
+angular.module('ContactCtrl', []).controller('ContactController', ['$scope', 'ContactService', function($scope, ContactService) {
     var sended = false;
     $scope.submit = function () {
         if(sended) {
@@ -14,7 +14,7 @@ angular.module('ContactCtrl', []).controller('ContactController', ['$scope', 'Co
         } else if(!$scope.mail.email) {
             $scope.error = "Vous n'avez pas entré votre adresse mail";
         } else {
-            var rep = Contact.sendMail($scope);
+            var rep = ContactService.sendMail($scope);
             if(rep.success) {
                 $scope.message = "Votre message a bien été envoyé.";
                 $scope.error = false;

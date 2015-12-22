@@ -48,25 +48,39 @@ angular.module('AdminCtrl', []).controller('AdminController', AdminController)
     };
 });
 
-AdminController.$inject =['$scope', 'Admin', 'MainArticle', '$window'];
+AdminController.$inject =['$scope', '$filter', 'AdminService', 'HomeService', '$window'];
 
-function AdminController($scope, Admin, MainArticle) {
+function AdminController($scope, $filter, AdminService, HomeService) {
 
-    MainArticle.getArticleCount().then(function(res){
+    HomeService.getArticleCount().then(function(res){
         $scope.MainArticlesCount  = res.data;
     });
-    MainArticle.getArticles().then(function(res){
+    HomeService.getArticles().then(function(res){
         $scope.MainArticles  = res.data;
+        for(i in $scope.MainArticles){
+            $scope.MainArticles[i].contenu = $scope.MainArticles[i].contenu.replace(/<br\s*[\/]?>/gi, "\n");
+        }
+        $scope.MainArticlesSorted  = $filter('orderBy')($scope.MainArticles, 'priority');
     });
 
     $scope.newArticle = {};
     $scope.addArticle = function () {
         $scope.newArticle.priority = $scope.MainArticlesCount+1;
-        Admin.postArticle($scope);
+        AdminService.postArticle($scope);
+        window.location.reload(true);
     }
 
     $scope.oldArticle = {};
+    $scope.editArticle = function (index) {
+        AdminService.editArticle($scope, index);
+        window.location.reload(true);
+    }
     $scope.deleteArticle = function (article_id) {
-        Admin.deleteArticle(article_id);
+        AdminService.deleteArticle(article_id);
+        window.location.reload(true);
+    }
+
+    $scope.ArticleTracker= function(article) {
+      return article.priority + article._id;
     }
 }

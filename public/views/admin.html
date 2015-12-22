@@ -1,17 +1,39 @@
 <div class="container">
         <tabs>
-            <pane class="well" title="Page accueil">
-                <div class="row" ng-repeat="article in MainArticles">
-                    <form ng-submit="editArticle()">
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="titre" value="{{article.titre}}">
+            <pane title="Page accueil">
+                <div class="row" ng-repeat="article in MainArticlesSorted">
+                    <form ng-submit="editArticle(MainArticles.indexOf(article))">
+                        <div class="form-group col-md-10">
+                            <label for="sel1">Titre:</label>
+                            <input class="form-control" ng-model="article.titre" type="text" name="titre">
                         </div>
-                        <div class="form-group">
-                            <textarea class="form-control" type="text" name="contenu">{{article.contenu}}</textarea>
+                        <div class="form-group col-md-2">
+                            <label for="sel1">Position:</label>
+                            <input class="form-control" ng-model="article.priority" type="text" name="priority" model-change-blur>
                         </div>
-                        <button type="submit" class="btn btn-success btn-sm">Modifier</button>
-                        <button type="button" ng-click="deleteArticle(article._id);" class="btn btn-danger btn-sm pull-right">Supprimer</button>
-                        <button type="reset" class="btn btn-warning btn-sm pull-right">Reinitialiser</button>
+                        <div class="form-group col-md-12">
+                            <label for="sel1">Article:</label>
+                            <textarea class="form-control" ng-model="article.contenu" type="text" rows="5" name="contenu"></textarea>
+                        </div>
+                        <!-- TODO Media
+                        <div class="form-group col-md-2">
+                            <label for="sel1">Media:</label>
+                            <select class="form-control" id="sel1">
+                                <option>Aucun</option>
+                                <option>Photo</option>
+                                <option>Vidéo</option>
+                            </select>
+                        </div>
+                        <div class = "form-group col-md-10">
+                            <label for="sel1">Fichier a envoyer:</label>
+                            <input type="file" id="inputfile"/>
+                        </div>
+                        -->
+                        <div class="form-group col-md-12">
+                            <button type="submit" class="btn btn-success btn-sm">Modifier</button>
+                            <button type="button" ng-click="deleteArticle(article._id);" class="btn btn-danger btn-sm pull-right">Supprimer</button>
+                            <button type="reset" class="btn btn-warning btn-sm pull-right">Reinitialiser</button>
+                        </div>
                     </form>
                     <hr/>
                 </div>
@@ -21,7 +43,7 @@
                             <input class="form-control" ng-model="newArticle.titre" type="text" name="titre" value="Titre">
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" ng-model="newArticle.contenu" type="text" name="contenu">Contenu</textarea>
+                            <textarea class="form-control" rows="5" ng-model="newArticle.contenu" type="text" name="contenu">Contenu</textarea>
                         </div>
                         <button type="submit" class="btn btn-success btn-sm">Ajouter</button>
                         <button type="reset" class="btn btn-warning btn-sm pull-right">Reinitialiser</button>
