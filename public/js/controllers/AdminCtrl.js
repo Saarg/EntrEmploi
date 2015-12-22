@@ -93,9 +93,9 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
         OffresService.postOffre(newOffre);
     }
 
-    $scope.curOffre = {};
-    $scope.activateOffre = function(offre) {
-        $scope.curOffre = offre;
+    $scope.curOffreIndex = 0;
+    $scope.activateOffre = function(index) {
+        $scope.curOffreIndex = index;
     }
 
     $scope.newOffre = {};

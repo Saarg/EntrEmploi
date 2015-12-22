@@ -1,5 +1,33 @@
-@import "bourbon/bourbon";
+@import 'bourbon/bourbon';
 
-textarea{
-    resize:vertical;
+textarea {
+    resize: vertical;
+}
+
+
+.offres-list {
+    border-right: 1px solid #d9d9da;
+
+    ul {
+        margin: 0;
+        padding: 0;
+
+        list-style: none;
+
+        li {
+            margin: 0;
+            padding: 5px 0 5px 5px;
+            @include transition(background-color .4s ease);
+
+            &:hover {
+                cursor: pointer;
+
+                background-color: lighten(#a0a0a0, 20%);
+            }
+
+            &.active {
+                background-color: lighten(#a0a0a0, 10%);
+            }
+        }
+    }
 }
