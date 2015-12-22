@@ -85,7 +85,9 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
         return article.priority + article._id;
     }
 
-    $scope.offres = OffresService.getOffres();
+    OffresService.getOffres().then(function (res) {
+        $scope.offres = res.data;
+    });
 
     $scope.addOffre = function (newOffre) {
         OffresService.postOffre(newOffre);

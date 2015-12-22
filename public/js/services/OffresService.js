@@ -6,11 +6,7 @@ function OffresService($http, $window) {
     return {
         // appel pour recup les offres
         getOffres : function() {
-            (function() {
-                return $http.get('/api/offres');
-            })().then(function (res) {
-                return res.data;
-            })
+            return $http.get('/api/offres');
         },
         // nouvelle offre
         postOffre : function (offre) {

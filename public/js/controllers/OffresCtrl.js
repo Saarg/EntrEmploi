@@ -4,6 +4,8 @@ OffresController.$inject = ['$scope', 'OffresService'];
 
 function OffresController($scope, OffresService) {
 
-    $scope.offres = OffresService.getOffres();
+    OffresService.getOffres().then(function (res) {
+        $scope.offres = res.data;
+    });
 
 }
