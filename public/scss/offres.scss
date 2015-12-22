@@ -32,8 +32,12 @@ $red: #ff1719;
 
     color: #000;
     background-color: #fff;
+
+    li {
+        list-style: none;
+    }
     .offre {
-        a {
+        h3 {
             margin-bottom: 5px;
 
             color: lighten($blue, 30%);
