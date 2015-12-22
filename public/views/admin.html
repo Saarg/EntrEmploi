@@ -52,7 +52,20 @@
             </pane>
 
             <pane class="well" title="Offres">
-                Espace Admin Offres
+                <div class="row">
+                    <div class="col-md-4 offres-list">
+                        <button type="button" ng-click="newOffrePopup()">Ajouter une offre</button>
+                        <ul ng-repeat="offre in offres">
+                            <li ng-click="activateOffre(offre)">{{offre.title}}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-8 edit-offre">
+                        <form ng-submit="editOffre(curOffre)">
+                            <input type="text" name="Titre" ng-model="curOffre.titre">
+                            <input type="text" name="Description" ng-model="curOffre.contenu">
+                        </form>
+                    </div>
+                </div>
             </pane>
 
             <pane class="well" title="Candidats">

@@ -1,4 +1,4 @@
-angular.module('AdminCtrl', []).controller('AdminController', AdminController)
+angular.module('AdminCtrl', ['ngDialog']).controller('AdminController', AdminController)
 
 .directive('tabs', function() {
     return {
@@ -48,16 +48,17 @@ angular.module('AdminCtrl', []).controller('AdminController', AdminController)
     };
 });
 
-AdminController.$inject =['$scope', '$filter', 'AdminService', 'HomeService', '$window'];
+AdminController.$inject =['$scope', '$filter', 'AdminService', 'HomeService', 'OffresService', '$window', 'ngDialog'];
 
-function AdminController($scope, $filter, AdminService, HomeService) {
+function AdminController($scope, $filter, AdminService, HomeService, OffresService, $window, ngDialog) {
 
     HomeService.getArticleCount().then(function(res){
         $scope.MainArticlesCount  = res.data;
     });
+
     HomeService.getArticles().then(function(res){
         $scope.MainArticles  = res.data;
-        for(i in $scope.MainArticles){
+        for(var i in $scope.MainArticles){
             $scope.MainArticles[i].contenu = $scope.MainArticles[i].contenu.replace(/<br\s*[\/]?>/gi, "\n");
         }
         $scope.MainArticlesSorted  = $filter('orderBy')($scope.MainArticles, 'priority');
@@ -67,20 +68,41 @@ function AdminController($scope, $filter, AdminService, HomeService) {
     $scope.addArticle = function () {
         $scope.newArticle.priority = $scope.MainArticlesCount+1;
         AdminService.postArticle($scope);
-        window.location.reload(true);
+        $window.location.reload(true);
     }
 
     $scope.oldArticle = {};
     $scope.editArticle = function (index) {
         AdminService.editArticle($scope, index);
-        window.location.reload(true);
+        $window.location.reload(true);
     }
     $scope.deleteArticle = function (article_id) {
         AdminService.deleteArticle(article_id);
-        window.location.reload(true);
+        $window.location.reload(true);
     }
 
-    $scope.ArticleTracker= function(article) {
-      return article.priority + article._id;
+    $scope.ArticleTracker = function(article) {
+        return article.priority + article._id;
+    }
+
+    $scope.offres = OffresService.getOffres();
+
+    $scope.addOffre = function (newOffre) {
+        OffresService.postOffre(newOffre);
+    }
+
+    $scope.curOffre = {};
+    $scope.activateOffre = function(offre) {
+        $scope.curOffre = offre;
+    }
+
+    $scope.newOffre = {};
+    $scope.newOffrePopup = function () {
+        ngDialog.open({
+            template : '../templates/newOffre.html',
+            className: 'ngdialog-theme-default',
+            disableAnimation : true,
+            scope: $scope
+        });
     }
 }
