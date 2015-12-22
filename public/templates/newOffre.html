@@ -1,0 +1,19 @@
+<div class="newoffre">
+    <h2>Creer Une nouvelle Offre</h2>
+    {{test}}
+    <form ng-submit="addOffre(newOffre) && closeThisDialog()">
+        <input type="text" name="titre" ng-model="newOffre.titre" placeholder="titre">
+        <input type="text" name="entreprise" ng-model="newOffre.entreprise" placeholder="entreprise">
+        <input type="text" name="siteEntreprise" ng-model="newOffre.siteEntreprise" placeholder="site web de l'entreprise">
+        <input type="text" name="numContact" ng-model="newOffre.numContact" placeholder="Télephone Contact">
+        <input type="text" name="mailContact" ng-model="newOffre.mailContact" placeholder="Mail contact">
+        <input type="text" name="categ" ng-model="newOffre.categ" placeholder="catégorie">
+        <input type="text" name="location" ng-model="newOffre.location" placeholder="Ville">
+        <select name="contract" ng-model="newOffre.contract">
+            <option value="CDI">CDI</option>
+            <option value="CDD">CDD</option>
+        </select>
+        <textarea name="description" rows="5" ng-model="newOffre.contenu" placeholder="Description"></textarea>
+        <input type="submit" name="name" value="Ajouter">
+    </form>
+</div>
