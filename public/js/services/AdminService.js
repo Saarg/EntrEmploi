@@ -12,7 +12,8 @@ function AdminService($http, $window) {
             });
         },
         editArticle : function($scope, index) {
-            return $http.put('/api/mainArticles/' + $scope.MainArticles[index]._id, { token: $window.sessionStorage.token,
+            return $http.put('/api/mainArticles/' + $scope.MainArticles[index]._id, {
+                token: $window.sessionStorage.token,
                 titre: $scope.MainArticles[index].titre,
                 contenu: $scope.MainArticles[index].contenu.replace(/\n/g, "<"+"br/>"),
                 priority: $scope.MainArticles[index].priority
