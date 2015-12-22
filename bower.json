@@ -8,6 +8,7 @@
     "angular-carousel": "~1.0.1",
     "angular-animate": "~1.4.7",
     "angular-bootstrap": "~0.14.3",
-    "angular-sanitize": "latest"
+    "angular-sanitize": "latest",
+    "ng-dialog": "latest"
   }
 }
