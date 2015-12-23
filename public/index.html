@@ -100,7 +100,7 @@
                 <div class="col-xs-3 pull-right">
                     <h3>Qui sommes nous?</h3>
                     <ul>
-                        <li ng-repeat="a in MainArticles">{{ a.titre }}</li>
+                        <li ng-repeat="a in MainArticles"><a href="#{{ a.titre }}">{{ a.titre }}</a></li>
                     </ul>
                 </div>
             </div>

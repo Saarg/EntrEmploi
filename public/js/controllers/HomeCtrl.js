@@ -23,7 +23,7 @@ function HomeController($scope, $filter, HomeService) {
     HomeService.getArticles().then(function(res){
         $scope.MainArticles  = $filter('orderBy')(res.data, 'priority');
         for(i in $scope.MainArticles){
-            $scope.MainArticles[i].titre = $scope.MainArticles[i].titre.split(" ", 2);
+            $scope.MainArticles[i].Stitre = $scope.MainArticles[i].titre.split(" ", 2);
         }
     });
 

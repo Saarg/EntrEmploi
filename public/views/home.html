@@ -6,9 +6,10 @@
     </uib-carousel>
 </div>
 <div class="container-fluid">
-    <section class="presentation">
+    <section>
+        <a class="anchor" id="{{ MainArticles[0].titre }}"></a>
         <div class="container">
-            <h2><span>{{ MainArticles[0].titre[0] }}</span> {{ MainArticles[0].titre[1] }}</h2>
+            <h2><span>{{ MainArticles[0].Stitre[0] }}</span> {{ MainArticles[0].Stitre[1] }}</h2>
             <p ng-bind-html="MainArticles[0].contenu"></p>
         </div>
     </section>
@@ -18,10 +19,11 @@
             <li class="benevole"><a class="btn pill" href="https://www.secourspopulaire.fr/devenir-benevole">Devenir benevole</a></li>
         </ul>
     </section>
-    <section class="mission">
+    <section>
+        <a class="anchor" id="{{ MainArticles[1].titre }}"></a>
         <div class="container">
             <div class="row">
-                <h2><span>{{ MainArticles[1].titre[0] }}</span> {{ MainArticles[1].titre[1] }}</h2>
+                <h2><span>{{ MainArticles[1].Stitre[0] }}</span> {{ MainArticles[1].Stitre[1] }}</h2>
                 <img class="FL"src="https://www.secourspopulaire.fr/29/sites/default/files/styles/panoramique/public/sites/default/files/atoms/images/entremploi_spf_29.jpg?itok=WeUTxY0c">
                 <p ng-bind-html="MainArticles[1].contenu"></p>
             </div>
@@ -34,9 +36,10 @@
             </p>
         </div>
     </section>
-    <section class="ateliers">
+    <section>
+        <a class="anchor" id="{{ MainArticles[2].titre }}"></a>
         <div class="container">
-            <h2><span>{{ MainArticles[2].titre[0] }}</span> {{ MainArticles[2].titre[1] }}</h2>
+            <h2><span>{{ MainArticles[2].Stitre[0] }}</span> {{ MainArticles[2].Stitre[1] }}</h2>
             <img class="FR"src="https://www.secourspopulaire.fr/29/sites/default/files/styles/panoramique/public/sites/default/files/atoms/images/entremploi_spf_29.jpg?itok=WeUTxY0c">
             <p ng-bind-html="MainArticles[2].contenu"></p>
         </div>
