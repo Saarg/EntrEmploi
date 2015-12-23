@@ -146,7 +146,6 @@ p {
 .page-footer {
     margin: 0;
 
-    color: #fff;
     background: #414040;
     .container {
         min-height: 25em;
@@ -163,7 +162,16 @@ p {
     .credits {
         padding-top: 10px;
     }
+    h3 {
+        color: #FFF;
+    }
     ul {
         list-style: outside none none;
+        a {
+            color: #A0A0A0;
+            &:hover{
+                color: #FFF;
+            }
+        }
     }
 }
