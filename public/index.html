@@ -79,7 +79,7 @@
         <div ng-view></div>
     </div>
     <!-- BODY END -->
-    <div class="page-footer hidden-xs">
+    <div class="page-footer hidden-xs" ng-controller="FooterController">
         <div class="container">
             <div class="row infos">
                 <div class="col-xs-3 pull-right">
@@ -94,19 +94,13 @@
                 <div class="col-xs-3 pull-right">
                     <h3>Partenaires</h3>
                     <ul>
-                        <li>ANPE?</li>
-                        <li>entreprise1</li>
-                        <li>entreprise2</li>
-                        <li>entreprise3</li>
+                        <li ng-repeat="p in Partenaires">{{ p.nom }}</li>
                     </ul>
                 </div>
                 <div class="col-xs-3 pull-right">
                     <h3>Qui sommes nous?</h3>
                     <ul>
-                        <li>Nos succes</li>
-                        <li>Nos Benevoles</li>
-                        <li>Nos Actions</li>
-                        <li>Notre Equipe</li>
+                        <li ng-repeat="a in MainArticles">{{ a.titre }}</li>
                     </ul>
                 </div>
             </div>

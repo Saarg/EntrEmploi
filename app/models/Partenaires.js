@@ -7,7 +7,7 @@ var Edition = new mongoose.Schema({
     date : {type : Date, default: Date()}
 });
 
-module.exports = mongoose.model('Entreprise', {
+module.exports = mongoose.model('Partenaire', {
     // Info entreprise
     nom : String,
     tel : String,

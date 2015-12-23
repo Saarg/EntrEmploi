@@ -48,9 +48,9 @@ angular.module('AdminCtrl', ['ngDialog']).controller('AdminController', AdminCon
     };
 });
 
-AdminController.$inject =['$scope', '$filter', 'AdminService', 'HomeService', 'OffresService', '$window', 'ngDialog'];
+AdminController.$inject =['$scope', '$filter', 'AdminService', 'HomeService', 'OffresService', 'PartenairesService', '$window', 'ngDialog'];
 
-function AdminController($scope, $filter, AdminService, HomeService, OffresService, $window, ngDialog) {
+function AdminController($scope, $filter, AdminService, HomeService, OffresService, PartenairesService, $window, ngDialog) {
 
     HomeService.getArticleCount().then(function(res){
         $scope.MainArticlesCount  = res.data;
@@ -67,22 +67,22 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
     $scope.newArticle = {};
     $scope.addArticle = function () {
         $scope.newArticle.priority = $scope.MainArticlesCount+1;
-        AdminService.postArticle($scope);
+        HomeService.postArticle($scope);
         $window.location.reload(true);
     }
 
     $scope.oldArticle = {};
     $scope.editArticle = function (index) {
-        AdminService.editArticle($scope, index);
+        HomeService.editArticle($scope, index);
         $window.location.reload(true);
     }
     $scope.deleteArticle = function (article_id) {
-        AdminService.deleteArticle(article_id);
+        HomeService.deleteArticle(article_id);
         $window.location.reload(true);
     }
 
     $scope.ArticleTracker = function(article) {
-        return article.priority + article._id;
+        return article.priority + article.titre;
     }
 
     OffresService.getOffres().then(function (res) {
@@ -102,6 +102,33 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
     $scope.newOffrePopup = function () {
         ngDialog.open({
             template : '../templates/newOffre.html',
+            className: 'ngdialog-theme-default',
+            disableAnimation : true,
+            scope: $scope
+        });
+    }
+
+    PartenairesService.getPartenaires().then(function (res) {
+        $scope.Partenaires = res.data;
+    });
+
+    $scope.newPartenaire = {};
+    $scope.addPartenaire = function (newPartenaire) {
+        PartenairesService.postPartenaire(newPartenaire);
+        $window.location.reload(true);
+    }
+    $scope.editPartenaire = function (partenaire) {
+        PartenairesService.editPartenaire(partenaire);
+        $window.location.reload(true);
+    }
+    $scope.deletePartenaire = function (partenaire_id) {
+        PartenairesService.deletePartenaire(partenaire_id);
+        $window.location.reload(true);
+    }
+
+    $scope.PartenairePopup = function (p) {
+        ngDialog.open({
+            template : '../templates/newPartenaire.html',
             className: 'ngdialog-theme-default',
             disableAnimation : true,
             scope: $scope

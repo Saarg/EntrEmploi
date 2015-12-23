@@ -1,6 +1,6 @@
 <div class="container">
         <tabs>
-            <pane title="Page accueil">
+            <pane class="well" title="Page accueil">
                 <div class="row" ng-repeat="article in MainArticlesSorted">
                     <form ng-submit="editArticle(MainArticles.indexOf(article))">
                         <div class="form-group col-md-10">
@@ -73,7 +73,33 @@
             </pane>
 
             <pane class="well" title="Pied de page">
-                Espace Admin Pied de page
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3>Qui sommes nous?</h3>
+                        <ul>
+                            <li ng-repeat="article in MainArticlesSorted">{{ article.titre }}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Partenaires</h3>
+                        <form class="row" ng-repeat="partenaire in Partenaires" ng-submit="editPartenaire(partenaire)">
+                            <input class="col-xs-5" ng-model="partenaire.nom" type="text" name="nom">
+                            <input class="col-xs-5" ng-model="partenaire.site" type="text" name="site">
+                            <button type="button" class="btn btn-danger btn-xs" ng-click="deletePartenaire(partenaire._id)"><span class="glyphicon glyphicon-remove"></button>
+                            <button type="submit" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-ok"></button>
+                        </form>
+                        <button type="button" class="btn btn-success btn-xs col-xs-12" ng-click="PartenairePopup()"><span class="glyphicon glyphicon-plus-sign"></button>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Où nous trouver?</h3>
+                        <div class="row">
+                            <p class="col-xs-10">anpe</p>
+                            <button type="button" class="btn btn-danger btn-xs" ng-click="deleteLigneAdresse()"><span class="glyphicon glyphicon-trash"></button>
+                            <button type="button" class="btn btn-primary btn-xs" ng-click="LigneAdressePopup()"><span class="glyphicon glyphicon-pencil"></button>
+                        </div>
+                        <button type="button" class="btn btn-success btn-xs col-xs-12" ng-click="LigneAdressePopup()"><span class="glyphicon glyphicon-plus-sign"></button>
+                    </div>
+                </div>
             </pane>
         </tabs>
 </div>
