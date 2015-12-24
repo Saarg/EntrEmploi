@@ -74,6 +74,9 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
     $scope.ArticleTracker = function(article) {
         return article.priority + article.titre;
     }
+    $scope.reload = function() {
+        $window.location.reload(true);
+    }
 
     OffresService.getOffres().then(function (res) {
         $scope.offres = res.data;
