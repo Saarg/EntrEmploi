@@ -5,10 +5,13 @@
 
 $blue: #244395;
 $red: #ff1719;
-
+$backgroud-grey: rgba(40,44,42,.05);
+$tab-grey: #dee3e1;
+$tab-grey-active: #e7ecea;
+$text-grey: #777a7e;
 
 .admin-container {
-    background-color: rgba(40,44,42,.05);
+    background-color: $backgroud-grey;
 
     textarea {
         resize: vertical;
@@ -18,24 +21,23 @@ $red: #ff1719;
         margin: 20px 0 0 0;
 
         li {
-            padding-top: 20px;
-            width: 25%;
-
             display: inline-block;
-            background-color: #dee3e1;
 
+            width: 25%;
+            padding-top: 20px;
 
             border: 1px solid rgba(40,44,42,.1);
+            background-color: $tab-grey;
             &.active {
                 position: relative;
-                border-bottom-color: #e7ecea;
+
+                border-bottom-color: $tab-grey-active;
                 border-radius: 0;
-                background-color: #e7ecea;
+                background-color: $tab-grey-active;
 
                 &::after {
                     position: absolute;
                     top: -1px;
-
 
                     width: 100%;
                     height: 5px;
@@ -45,8 +47,8 @@ $red: #ff1719;
                     background-color: $blue;
                 }
                 a {
-                    background-color: inherit;
                     color: $blue;
+                    background-color: inherit;
                 }
             }
 
@@ -55,7 +57,6 @@ $red: #ff1719;
             }
 
             &:hover {
-
                 cursor: pointer;
                 a {
                     color: $blue;
@@ -63,10 +64,12 @@ $red: #ff1719;
             }
 
             a {
-                color: #777a7e;
-                text-transform: uppercase;
                 font-weight: bold;
+
                 text-align: center;
+                text-transform: uppercase;
+
+                color: $text-grey;
 
                 &:hover {
                     background-color: inherit;
@@ -76,11 +79,23 @@ $red: #ff1719;
     }
 
     .admin-section {
-        background-color: #e7ecea;
         padding: 10px;
-        border-left: 1px solid rgba(40,44,42,.1);
+
+        border-right: 1px solid rgba(40,44,42,.1);
         border-bottom: 1px solid rgba(40,44,42,.1);
-        border-right:  1px solid rgba(40,44,42,.1);
+        border-left: 1px solid rgba(40,44,42,.1);
+        background-color: $tab-grey-active;
+
+        input , textarea {
+            border: none;
+            border-radius: 0px;
+            background-color: $tab-grey;
+            box-shadow: inset 0 -2px 0 $text-grey;
+
+            &:focus {
+                box-shadow: inset 0 -4px 0 $blue;
+            }
+        }
     }
 
 
