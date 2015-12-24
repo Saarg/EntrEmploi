@@ -34,7 +34,7 @@
 <body>
 
     <!-- HEADER -->
-    <header id="header" >
+    <header id="header" ng-controller="HeaderController">
         <div class="container">
             <div class="row">
                 <div class="hidden-xs hidden-sm col-md-4">
@@ -52,9 +52,10 @@
                 </div>
                 <ul class="nav navbar-nav pull-right hidden-xs">
                     <li><a href="https://www.secourspopulaire.fr/29/">La fédération</a></li>
-                    <li><a href="/offres">Nos offres</a></li>
+                    <li><a href="/offres" ng-if="showOffres">Nos offres</a></li>
                     <li><a href="/recruteur">Nos candidats</a></li>
                     <li><a href="/contact">Contact</a></li>
+                    <li><a href="" ng-click="logout()" ng-if="logged">Se déconnecter</a></li>
                 </ul>
                 <div class="nav navbar-nav pull-right visible-xs">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -64,7 +65,7 @@
                     </button>
                     <ul class="navbar-collapse collapse">
                         <li><a href="https://www.secourspopulaire.fr/29/">La fédération</a></li>
-                        <li><a href="/offres">Nos offres</a></li>
+                        <li><a href="/offres" ng-if="showOffres">Nos offres</a></li>
                         <li><a href="/recruteur">Nos candidats</a></li>
                         <li><a href="/contact">Contact</a></li>
                     </ul>

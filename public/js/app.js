@@ -16,5 +16,6 @@ angular.module('EntrEmploi', [
     'AdminCtrl',
     'AdminService',
     'FooterCtrl',
-    'PartenairesService'
+    'PartenairesService',
+    'HeaderCtrl'
 ]);
