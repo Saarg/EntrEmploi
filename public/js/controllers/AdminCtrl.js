@@ -116,7 +116,7 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
         $window.location.reload(true);
     }
 
-    $scope.PartenairePopup = function (p) {
+    $scope.PartenairePopup = function () {
         ngDialog.open({
             template : '../templates/newPartenaire.html',
             className: 'ngdialog-theme-default',
