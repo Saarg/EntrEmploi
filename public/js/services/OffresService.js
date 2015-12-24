@@ -8,6 +8,9 @@ function OffresService($http, $window) {
         getOffres : function() {
             return $http.get('/api/offres');
         },
+        getOffresCount : function() {
+            return $http.get('/api/offres/count');
+        },
         // nouvelle offre
         postOffre : function (offre) {
             return $http.post('/api/offres', {

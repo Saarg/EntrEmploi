@@ -1,8 +1,8 @@
 angular.module('HomeService', []).factory('HomeService', HomeService);
 
-HomeService.$inject = ['$http'];
+HomeService.$inject = ['$http', '$window'];
 
-function HomeService($http) {
+function HomeService($http, $window) {
     return {
         getArticles : function() {
             return $http.get('/api/mainArticles');
