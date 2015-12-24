@@ -1,7 +1,7 @@
 <div class="admin-container">
     <div class="container">
         <tabs>
-            <pane class="well" title="Page accueil">
+            <pane class="admin-section" title="Page accueil">
                 <div class="row" ng-repeat="article in MainArticlesSorted">
                     <form ng-submit="editArticle(MainArticles.indexOf(article))">
                         <div class="form-group col-md-10">
@@ -51,7 +51,7 @@
     </div>
 </pane>
 
-<pane class="well" title="Offres">
+<pane class="admin-section" title="Offres">
     <div class="row">
         <div class="col-md-4 offres-list">
             <button type="button" ng-click="newOffrePopup()" class="btn btn-primary">Ajouter une offre</button>
@@ -68,11 +68,11 @@
     </div>
 </pane>
 
-<pane class="well" title="Candidats">
+<pane class="admin-section" title="Candidats">
     Espace Admin Candidat
 </pane>
 
-<pane class="well" title="Pied de page">
+<pane class="admin-section" title="Pied de page">
     <div class="row">
         <div class="col-md-4">
             <h3>Qui sommes nous?</h3>
