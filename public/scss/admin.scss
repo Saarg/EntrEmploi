@@ -7,7 +7,7 @@ $blue: #244395;
 $red: #ff1719;
 $backgroud-grey: rgba(40,44,42,.05);
 $tab-grey: #dee3e1;
-$tab-grey-active: #e7ecea;
+$active-pane-color: #fcfcfc;
 $text-grey: #777a7e;
 
 
@@ -21,6 +21,9 @@ $text-grey: #777a7e;
     .nav {
         margin: 20px 0 0 0;
 
+        box-shadow: 0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23);
+
+
         li {
             display: inline-block;
 
@@ -32,9 +35,9 @@ $text-grey: #777a7e;
             &.active {
                 position: relative;
 
-                border-bottom-color: $tab-grey-active;
+                border-bottom-color: $active-pane-color;
                 border-radius: 0;
-                background-color: $tab-grey-active;
+                background-color: $active-pane-color;
 
                 &::after {
                     position: absolute;
@@ -61,6 +64,8 @@ $text-grey: #777a7e;
                 cursor: pointer;
                 a {
                     color: $blue;
+
+                    @include transition(color .3s ease);
                 }
             }
 
@@ -85,22 +90,44 @@ $text-grey: #777a7e;
         border-right: 1px solid rgba(40,44,42,.1);
         border-bottom: 1px solid rgba(40,44,42,.1);
         border-left: 1px solid rgba(40,44,42,.1);
-        background-color: $tab-grey-active;
+        background-color: $active-pane-color;
+        box-shadow: 0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23);
 
-        input , textarea {
-            border: none;
-            border-radius: 0px;
-            background-color: $tab-grey;
-            box-shadow: inset 0 -2px 0 $text-grey;
+        .form-group {
+            margin: 20px 0;
 
-            &:focus {
-                box-shadow: inset 0 -4px 0 $blue;
-                outline: none;
+            label {
+                position: absolute;
+                padding-left: 12px;
+                top: -1.1em;
+                pointer-events: none;
             }
-        }
 
-        .btn {
-            margin-right: 3px;
+            input:not([type=file]):not([type=submit]),
+            textarea {
+                border: none;
+                border-radius: 0;
+                background-color: $active-pane-color;
+                box-shadow: inset 0 -2px 0 $text-grey;
+
+                @include transition(all .5s ease);
+
+                &:focus, &:valid {
+                    outline: none;
+                    box-shadow: inset 0 -3px 0 $blue;
+
+                }
+
+                &:focus ~ label,
+                &:valid ~ label {
+                    top: -1em;
+                }
+            }
+
+
+            .btn {
+                margin-right: 3px;
+            }
         }
     }
 }
