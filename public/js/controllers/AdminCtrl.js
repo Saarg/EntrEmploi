@@ -41,7 +41,7 @@ angular.module('AdminCtrl', ['ngDialog']).controller('AdminController', AdminCon
 AdminController.$inject =['$scope', '$filter', 'AdminService', 'HomeService', 'OffresService', 'PartenairesService', '$window', 'ngDialog'];
 
 function AdminController($scope, $filter, AdminService, HomeService, OffresService, PartenairesService, $window, ngDialog) {
-
+    // HOME
     HomeService.getArticleCount().then(function(res){
         $scope.MainArticlesCount  = res.data;
     });
@@ -53,6 +53,8 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
         }
         $scope.MainArticlesSorted  = $filter('orderBy')($scope.MainArticles, 'priority');
     });
+
+    
 
     $scope.newArticle = {};
     $scope.addArticle = function () {
@@ -101,6 +103,7 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
         });
     }
 
+    // PARTENAIRES
     PartenairesService.getPartenaires().then(function (res) {
         $scope.Partenaires = res.data;
     });
