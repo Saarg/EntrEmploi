@@ -25,7 +25,7 @@ function HomeService($http, $window) {
                 titre: $scope.MainArticles[index].titre,
                 contenu: $scope.MainArticles[index].contenu.replace(/\n/g, "<"+"br/>"),
                 media: $scope.MainArticles[index].media,
-                lienMedia: $scope.MainArticles[index].lienMedia,
+                lienMedia: $scope.MainArticles[index].lienMedia.replace("watch?v=", "embed/"),
                 priority: $scope.MainArticles[index].priority
             });
         },
