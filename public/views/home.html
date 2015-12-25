@@ -24,7 +24,8 @@
         <div class="container">
             <div class="row">
                 <h2><span>{{ MainArticles[1].Stitre[0] }}</span> {{ MainArticles[1].Stitre[1] }}</h2>
-                <img class="FL"src="https://www.secourspopulaire.fr/29/sites/default/files/styles/panoramique/public/sites/default/files/atoms/images/entremploi_spf_29.jpg?itok=WeUTxY0c">
+                <img ng-if="MainArticles[1].media=='Photo'" class="FR" src="https://www.secourspopulaire.fr/29/sites/default/files/styles/panoramique/public/sites/default/files/atoms/images/entremploi_spf_29.jpg?itok=WeUTxY0c">
+                <iframe ng-if="MainArticles[1].media=='Vidéo'" class="FL YT" ng-src="{{ MainArticles[1].lienMedia }}" frameborder="0" allowfullscreen></iframe>
                 <p ng-bind-html="MainArticles[1].contenu"></p>
             </div>
         </div>
@@ -40,7 +41,8 @@
         <a class="anchor" id="{{ MainArticles[2].titre }}"></a>
         <div class="container">
             <h2><span>{{ MainArticles[2].Stitre[0] }}</span> {{ MainArticles[2].Stitre[1] }}</h2>
-            <img class="FR"src="https://www.secourspopulaire.fr/29/sites/default/files/styles/panoramique/public/sites/default/files/atoms/images/entremploi_spf_29.jpg?itok=WeUTxY0c">
+            <img ng-if="MainArticles[2].media=='Photo'" class="FR" src="https://www.secourspopulaire.fr/29/sites/default/files/styles/panoramique/public/sites/default/files/atoms/images/entremploi_spf_29.jpg?itok=WeUTxY0c">
+            <iframe ng-if="MainArticles[2].media=='Vidéo'" class="FR YT" ng-src="{{ MainArticles[2].lienMedia }}" frameborder="0" allowfullscreen></iframe>
             <p ng-bind-html="MainArticles[2].contenu"></p>
         </div>
     </section>

@@ -6,6 +6,14 @@ module.exports = function(app) {
         var article = new MainArticles();
         article.titre = req.body.titre;
         article.contenu = req.body.contenu;
+        if(req.body.media && req.body.lienMedia) {
+          article.media = req.body.media;
+          article.lienMedia = req.body.lienMedia;
+        }
+        else if (req.body.media) {
+          res.json({ success: false, message: 'Pas de lien vers le media choisi.' });
+          return;
+        }
         article._auteur = req.body.auteur;
         article.priority = req.body.priority;
 
@@ -22,6 +30,14 @@ module.exports = function(app) {
             article.contenu = req.body.contenu;
             article._auteur = req.body.auteur;
             article.priority = req.body.priority;
+            if(req.body.media && req.body.lienMedia) {
+              article.media = req.body.media;
+              article.lienMedia = req.body.lienMedia;
+            }
+            else if (req.body.media) {
+              res.json({ success: false, message: 'Pas de lien vers le media choisi.' });
+              return;
+            }
 
             article.save(function(err) {
                 if (err) res.json({ success: false, message: err });

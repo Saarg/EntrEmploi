@@ -21,13 +21,21 @@ $blue: #244395;
             img {
                 width: 20%;
                 height: auto;
-                margin: 10px;
+                margin-bottom: 10px;
             }
             .FL {
                 float: left;
+                margin-right: 10px;
             }
             .FR {
                 float: right;
+                margin-left: 10px;
+            }
+            .YT {
+              width:100%;
+              min-height: 360px;
+              max-width: 640px;
+              margin-bottom: 10px;
             }
 
             ul {

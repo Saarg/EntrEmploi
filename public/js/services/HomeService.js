@@ -14,7 +14,9 @@ function HomeService($http, $window) {
             return $http.post('/api/mainArticles', { token: $window.sessionStorage.token,
                 titre: $scope.newArticle.titre,
                 contenu: $scope.newArticle.contenu.replace(/\n/g, "<"+"br/>"),
-                priority: $scope.newArticle.priority
+                priority: $scope.newArticle.priority,
+                media: $scope.newArticle.media,
+                lienMedia: $scope.newArticle.lienMedia
             });
         },
         editArticle : function($scope, index) {
@@ -22,6 +24,8 @@ function HomeService($http, $window) {
                 token: $window.sessionStorage.token,
                 titre: $scope.MainArticles[index].titre,
                 contenu: $scope.MainArticles[index].contenu.replace(/\n/g, "<"+"br/>"),
+                media: $scope.MainArticles[index].media,
+                lienMedia: $scope.MainArticles[index].lienMedia,
                 priority: $scope.MainArticles[index].priority
             });
         },

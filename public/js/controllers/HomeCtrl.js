@@ -1,8 +1,8 @@
 angular.module('HomeCtrl', ['ui.bootstrap', 'ngAnimate', 'ngSanitize']).controller('HomeController', HomeController);
 
-HomeController.$inject = ['$scope', '$filter', 'HomeService'];
+HomeController.$inject = ['$scope', '$filter', "$sce", 'HomeService'];
 
-function HomeController($scope, $filter, HomeService) {
+function HomeController($scope, $filter, $sce, HomeService) {
     // Trucs pour le carousel
     $scope.intervalImages = 7000;
     $scope.interval = 6000;
@@ -24,6 +24,7 @@ function HomeController($scope, $filter, HomeService) {
         $scope.MainArticles  = $filter('orderBy')(res.data, 'priority');
         for(i in $scope.MainArticles){
             $scope.MainArticles[i].Stitre = $scope.MainArticles[i].titre.split(" ", 2);
+            $scope.MainArticles[i].lienMedia = $sce.trustAsResourceUrl($scope.MainArticles[i].lienMedia);
         }
     });
 
