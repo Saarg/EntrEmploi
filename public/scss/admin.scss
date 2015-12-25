@@ -10,6 +10,7 @@ $tab-grey: #dee3e1;
 $tab-grey-active: #e7ecea;
 $text-grey: #777a7e;
 
+
 .admin-container {
     background-color: $backgroud-grey;
 
@@ -94,13 +95,14 @@ $text-grey: #777a7e;
 
             &:focus {
                 box-shadow: inset 0 -4px 0 $blue;
+                outline: none;
             }
 
-        .btn {
-            margin-right: 3px;
+            .btn {
+                margin-right: 3px;
+            }
         }
     }
-
 
     .offres-list {
         border-right: 1px solid #d9d9da;
