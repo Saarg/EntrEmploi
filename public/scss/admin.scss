@@ -99,36 +99,35 @@ $text-grey: #777a7e;
             }
         }
 
-            .btn {
-                margin-right: 3px;
-            }
+        .btn {
+            margin-right: 3px;
         }
     }
+}
 
-    .offres-list {
-        border-right: 1px solid #d9d9da;
+.offres-list {
+    border-right: 1px solid #d9d9da;
 
-        ul {
+    ul {
+        margin: 0;
+        padding: 0;
+
+        list-style: none;
+
+        li {
             margin: 0;
-            padding: 0;
+            padding: 5px 0 5px 5px;
 
-            list-style: none;
+            @include transition(background-color .4s ease);
 
-            li {
-                margin: 0;
-                padding: 5px 0 5px 5px;
+            &:hover {
+                cursor: pointer;
 
-                @include transition(background-color .4s ease);
+                background-color: lighten(#a0a0a0, 20%);
+            }
 
-                &:hover {
-                    cursor: pointer;
-
-                    background-color: lighten(#a0a0a0, 20%);
-                }
-
-                &.active {
-                    background-color: lighten(#a0a0a0, 10%);
-                }
+            &.active {
+                background-color: lighten(#a0a0a0, 10%);
             }
         }
     }

@@ -1,121 +1,120 @@
 <div class="admin-container">
-<div class="container">
-<tabs>
-<pane class="admin-section" title="Page accueil">
-    <div class="row" ng-repeat="article in MainArticlesSorted">
-    <form ng-submit="editArticle(MainArticles.indexOf(article))">
-        <div class="form-group col-md-10">
-            <label for="sel1">Titre:</label>
-            <input class="form-control" ng-model="article.titre" type="text" name="titre">
-        </div>
-        <div class="form-group col-md-2">
-            <label for="sel1">Position:</label>
-            <input class="form-control" ng-model="article.priority" type="text" name="priority" model-change-blur>
-        </div>
-        <div class="form-group col-md-12">
-            <label for="sel1">Article:</label>
-            <textarea class="form-control" ng-model="article.contenu" type="text" rows="5" name="contenu"></textarea>
-        </div>
-        <!-- TODO Media
-        <div class="form-group col-md-2">
-            <label for="sel1">Media:</label>
-            <select class="form-control" id="sel1">
-                <option>Aucun</option>
-                <option>Photo</option>
-                <option>Vidéo</option>
-            </select>
-        </div>
-        <div class = "form-group col-md-10">
-            <label for="sel1">Fichier a envoyer:</label>
-            <input type="file" id="inputfile"/>
-        </div> -->
-        <div class="form-group col-md-12">
-            <button type="submit" class="btn btn-success btn-sm">Modifier</button>
-            <button type="button" ng-click="deleteArticle(article._id);" class="btn btn-danger btn-sm pull-right">Supprimer</button>
-            <button type="reset" ng-click="reload();" class="btn btn-warning btn-sm pull-right">Reinitialiser</button>
-        </div>
-    </form>
-    <hr/>
-    </div>
-    <div class="row">
-        <form ng-submit="addArticle()" class="col-md-12">
-            <div class="form-group">
-                <input class="form-control" ng-model="newArticle.titre" type="text" name="titre" value="Titre">
-            </div>
-            <div class="form-group">
-                <textarea class="form-control" rows="5" ng-model="newArticle.contenu" type="text" name="contenu">Contenu</textarea>
-            </div>
-            <button type="submit" class="btn btn-success btn-sm">Ajouter</button>
-            <button type="reset" class="btn btn-warning btn-sm pull-right">Reinitialiser</button>
-        </form>
-    </div>
-</pane>
+    <div class="container">
+        <tabs>
+            <pane class="admin-section" title="Page accueil">
+                <div class="row" ng-repeat="article in MainArticlesSorted">
+                    <form ng-submit="editArticle(MainArticles.indexOf(article))">
+                        <div class="form-group col-md-10">
+                            <label for="sel1">Titre:</label>
+                            <input class="form-control" ng-model="article.titre" type="text" name="titre">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="sel1">Position:</label>
+                            <input class="form-control" ng-model="article.priority" type="text" name="priority" model-change-blur>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="sel1">Article:</label>
+                            <textarea class="form-control" ng-model="article.contenu" type="text" rows="5" name="contenu"></textarea>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="sel1">Media:</label>
+                            <select class="form-control" id="sel1">
+                                <option>Aucun</option>
+                                <option>Photo</option>
+                                <option>Vidéo</option>
+                            </select>
+                        </div>
+                        <div class = "form-group col-md-10">
+                            <label for="sel1">Fichier a envoyer:</label>
+                            <input type="file" id="inputfile"/>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <button type="submit" class="btn btn-success btn-sm">Modifier</button>
+                            <button type="button" ng-click="deleteArticle(article._id);" class="btn btn-danger btn-sm pull-right">Supprimer</button>
+                            <button type="reset" ng-click="reload();" class="btn btn-warning btn-sm pull-right">Reinitialiser</button>
+                        </div>
+                    </form>
+                    <hr/>
+                </div>
+                <div class="row">
+                    <form ng-submit="addArticle()" class="col-md-12">
+                        <div class="form-group">
+                            <input class="form-control" ng-model="newArticle.titre" type="text" name="titre" value="Titre">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="5" ng-model="newArticle.contenu" type="text" name="contenu">Contenu</textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-sm">Ajouter</button>
+                        <button type="reset" class="btn btn-warning btn-sm pull-right">Reinitialiser</button>
+                    </form>
+                </div>
+            </pane>
 
-<pane class="admin-section" title="Offres">
-    <div class="row">
-        <div class="col-md-4 offres-list">
-            <button type="button" ng-click="newOffrePopup()" class="btn btn-primary">Ajouter une offre</button>
-            <ul>
-                <li class="offre-item" ng-repeat="offre in offres" ng-click="activateOffre(offres.indexOf(offre))" ng-class="{active : offres.indexOf(offre) === curOffreIndex}">{{offre.titre}} - {{offre.location}}</li>
-            </ul>
-        </div>
-        <div class="col-md-8 edit-offre">
-            <form ng-submit="editOffre(curOffreIndex)">
-                
-                <input type="text" name="Titre" ng-model="offres[curOffreIndex].titre">
-                <input type="text" name="entreprise" ng-model="offres[curOffreIndex].entreprise" placeholder="entreprise">
-                <input type="text" name="siteEntreprise" ng-model="offres[curOffreIndex].siteEntreprise" placeholder="site web de l'entreprise">
-                <input type="text" name="numContact" ng-model="offres[curOffreIndex].numContact" placeholder="Télephone Contact">
-                <input type="text" name="mailContact" ng-model="offres[curOffreIndex].mailContact" placeholder="Mail contact">
-                <input type="text" name="categ" ng-model="offres[curOffreIndex].categ" placeholder="catégorie">
-                <input type="text" name="location" ng-model="offres[curOffreIndex].location" placeholder="Ville">
-                <select name="contract" ng-model="offres[curOffreIndex].contract">
-                    <option value="CDI">CDI</option>
-                    <option value="CDD">CDD</option>
-                </select>
-                <textarea name="description" rows="5" ng-model="offres[curOffreIndex].contenu" placeholder="Description"></textarea>
-                <input type="submit" name="name" value="Sauvegarder">
-            </form>
-        </div>
-    </div>
-</pane>
+            <pane class="admin-section" title="Offres">
+                <div class="row">
+                    <div class="col-md-4 offres-list">
+                        <button type="button" ng-click="newOffrePopup()" class="btn btn-primary">Ajouter une offre</button>
+                        <ul>
+                            <li class="offre-item" ng-repeat="offre in offres" ng-click="activateOffre(offres.indexOf(offre))" ng-class="{active : offres.indexOf(offre) === curOffreIndex}">{{offre.titre}} - {{offre.location}}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-8 edit-offre">
+                        <form ng-submit="editOffre(curOffreIndex)">
 
-<pane class="admin-section" title="Candidats">
-    Espace Admin Candidat
-</pane>
+                            <input type="text" name="Titre" ng-model="offres[curOffreIndex].titre">
+                            <input type="text" name="entreprise" ng-model="offres[curOffreIndex].entreprise" placeholder="entreprise">
+                            <input type="text" name="siteEntreprise" ng-model="offres[curOffreIndex].siteEntreprise" placeholder="site web de l'entreprise">
+                            <input type="text" name="numContact" ng-model="offres[curOffreIndex].numContact" placeholder="Télephone Contact">
+                            <input type="text" name="mailContact" ng-model="offres[curOffreIndex].mailContact" placeholder="Mail contact">
+                            <input type="text" name="categ" ng-model="offres[curOffreIndex].categ" placeholder="catégorie">
+                            <input type="text" name="location" ng-model="offres[curOffreIndex].location" placeholder="Ville">
+                            <select name="contract" ng-model="offres[curOffreIndex].contract">
+                                <option value="CDI">CDI</option>
+                                <option value="CDD">CDD</option>
+                            </select>
+                            <textarea name="description" rows="5" ng-model="offres[curOffreIndex].contenu" placeholder="Description"></textarea>
+                            <input type="submit" name="name" value="Sauvegarder">
+                        </form>
+                    </div>
+                </div>
+            </pane>
 
-<pane class="admin-section" title="Pied de page">
-    <div class="row">
-        <div class="col-md-4">
-            <h3>Qui sommes nous?</h3>
-            <ul>
-                <li ng-repeat="article in MainArticlesSorted">{{ article.titre }}</li>
-            </ul>
-        </div>
-        <div class="col-md-4">
-            <h3>Partenaires</h3>
-            <form class="row" ng-repeat="partenaire in Partenaires" ng-submit="editPartenaire(partenaire)">
-                <input class="col-xs-5" ng-model="partenaire.nom" type="text" name="nom">
-                <input class="col-xs-5" ng-model="partenaire.site" type="text" name="site">
-                <button type="submit" title="valider" class="btn btn-primary btn-xs pull-right"><span class="glyphicon glyphicon-ok"></button>
-                <button type="button" title="supprimer" class="btn btn-danger btn-xs pull-right" ng-click="deletePartenaire(partenaire._id)"><span class="glyphicon glyphicon-remove"></button>
-            </form>
-            <div class="row">
-                <button type="button" title="ajouter un partenaire" class="btn btn-success btn-xs col-xs-12" ng-click="PartenairePopup()"><span class="glyphicon glyphicon-plus-sign"></button>
+            <pane class="admin-section" title="Candidats">
+                Espace Admin Candidat
+            </pane>
+
+            <pane class="admin-section" title="Pied de page">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3>Qui sommes nous?</h3>
+                        <ul>
+                            <li ng-repeat="article in MainArticlesSorted">{{ article.titre }}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Partenaires</h3>
+                        <form class="row" ng-repeat="partenaire in Partenaires" ng-submit="editPartenaire(partenaire)">
+                            <input class="col-xs-5" ng-model="partenaire.nom" type="text" name="nom">
+                            <input class="col-xs-5" ng-model="partenaire.site" type="text" name="site">
+                            <button type="submit" title="valider" class="btn btn-primary btn-xs pull-right"><span class="glyphicon glyphicon-ok"></button>
+                                <button type="button" title="supprimer" class="btn btn-danger btn-xs pull-right" ng-click="deletePartenaire(partenaire._id)"><span class="glyphicon glyphicon-remove"></button>
+                                </form>
+                                <div class="row">
+                                    <button type="button" title="ajouter un partenaire" class="btn btn-success btn-xs col-xs-12" ng-click="PartenairePopup()"><span class="glyphicon glyphicon-plus-sign"></button>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <h3>Où nous trouver?</h3>
+                                    <ul class="address">
+                                        <li class="address">31. rue F. Chopin</li>
+                                        <li>29200 Brest</li>
+                                        <li class="email">emploi@spf29.org</li>
+                                        <li class="phone">02.98.44.80.43</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </pane>
+                    </tabs>
+                </div>
+                <div class="filler"></div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <h3>Où nous trouver?</h3>
-            <ul class="address">
-                <li class="address">31. rue F. Chopin</li>
-                <li>29200 Brest</li>
-                <li class="email">emploi@spf29.org</li>
-                <li class="phone">02.98.44.80.43</li>
-            </ul>
-        </div>
-    </div>
-</pane>
-</tabs>
-</div>
-<div class="filler"></div>
-</div>
