@@ -194,7 +194,9 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
 
     $scope.newArticle = {};
     $scope.addArticle = function () {
-        $scope.newArticle.priority = $scope.MainArticlesCount+1;
+        if(!$scope.newArticle.priority) {
+            $scope.newArticle.priority = $scope.MainArticlesSorted[$scope.MainArticlesCount]+1;
+        }
         HomeService.postArticle($scope);
         $window.location.reload(true);
     }
