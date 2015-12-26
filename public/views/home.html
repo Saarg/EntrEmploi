@@ -12,7 +12,7 @@
             <div>
                 <h2><span>{{ MainArticles[0].Stitre[0] }}</span> {{ MainArticles[0].Stitre[1] }}</h2>
                 <img ng-if="MainArticles[0].media=='Photo'" class="FR" ng-src="{{ MainArticles[0].lienMedia }}">
-                <iframe ng-if="MainArticles[0].media=='Vidéo'" class="FL YT" ng-src="{{ MainArticles[0].lienMedia }}" frameborder="0" allowfullscreen></iframe>
+                <iframe ng-if="MainArticles[0].media=='Vidéo'" class="FR YT" ng-src="{{ MainArticles[0].lienMedia }}" frameborder="0" allowfullscreen></iframe>
                 <p ng-bind-html="MainArticles[0].contenu"></p>
             </div>
         </div>
@@ -28,7 +28,7 @@
         <div class="container">
             <div>
                 <h2><span>{{ MainArticles[1].Stitre[0] }}</span> {{ MainArticles[1].Stitre[1] }}</h2>
-                <img ng-if="MainArticles[1].media=='Photo'" class="FR" ng-src="{{ MainArticles[1].lienMedia }}">
+                <img ng-if="MainArticles[1].media=='Photo'" class="FL" ng-src="{{ MainArticles[1].lienMedia }}">
                 <iframe ng-if="MainArticles[1].media=='Vidéo'" class="FL YT" ng-src="{{ MainArticles[1].lienMedia }}" frameborder="0" allowfullscreen></iframe>
                 <p ng-bind-html="MainArticles[1].contenu"></p>
             </div>
