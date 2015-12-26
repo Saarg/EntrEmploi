@@ -62,7 +62,7 @@ angular.module('AdminCtrl', ['ngDialog']).controller('AdminController', AdminCon
         var maxHeight = options.resizeMaxHeight || 300;
         var maxWidth = options.resizeMaxWidth || 250;
         var quality = options.resizeQuality || 0.7;
-        var type = options.resizeType || 'image/jpg';
+        var type = options.resizeType || 'image/jpeg';
 
         var canvas = getResizeArea();
 
