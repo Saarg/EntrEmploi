@@ -13,7 +13,7 @@
             <p ng-bind-html="MainArticles[0].contenu"></p>
         </div>
     </section>
-    <section class="liens hidden-xs">
+    <section class="liens">
         <ul class="container center-block">
             <li class="don"><a class="btn pill" href="https://www.secourspopulaire.fr/don">Faire un don</a></li>
             <li class="benevole"><a class="btn pill" href="https://www.secourspopulaire.fr/devenir-benevole">Devenir benevole</a></li>
@@ -22,7 +22,7 @@
     <section>
         <a class="anchor" id="{{ MainArticles[1].titre }}"></a>
         <div class="container">
-            <div class="row">
+            <div>
                 <h2><span>{{ MainArticles[1].Stitre[0] }}</span> {{ MainArticles[1].Stitre[1] }}</h2>
                 <img ng-if="MainArticles[1].media=='Photo'" class="FR" src="https://www.secourspopulaire.fr/29/sites/default/files/styles/panoramique/public/sites/default/files/atoms/images/entremploi_spf_29.jpg?itok=WeUTxY0c">
                 <iframe ng-if="MainArticles[1].media=='Vidéo'" class="FL YT" ng-src="{{ MainArticles[1].lienMedia }}" frameborder="0" allowfullscreen></iframe>

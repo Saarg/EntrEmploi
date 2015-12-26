@@ -1,5 +1,4 @@
 
-
 @import 'bourbon/bourbon';
 
 $blue: #244395;
@@ -17,6 +16,10 @@ $blue: #244395;
 
 .container-fluid {
     section {
+
+        @media (max-width: 544px) {
+            text-align: justify;
+        }
         &:nth-child(odd) {
             img {
                 width: 20%;
@@ -59,6 +62,9 @@ $blue: #244395;
         &.liens {
             ul {
                 width: 400px;
+                @media (max-width: 544px) {
+                    width: 180px;
+                };
                 margin: auto;
 
                 list-style: none;
@@ -70,7 +76,9 @@ $blue: #244395;
                 li {
                     position: relative;
 
-                    display: inline-block;
+                    @media (min-width: 544px) {
+                        display: inline-block;
+                    }
 
                     &.don {
                         position: absolute;
