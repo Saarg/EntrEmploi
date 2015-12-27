@@ -205,7 +205,6 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
     $scope.currentArticle = {}
     $scope.editArticle = function (index) {
         $scope.currentArticle = $scope.MainArticles[index];
-        //$scope.currentArticle.image = $scope.article.image
         HomeService.editArticle($scope.currentArticle);
         $window.location.reload(true);
     }
