@@ -178,7 +178,7 @@ AdminController.$inject =['$scope', '$filter', 'AdminService', 'HomeService', 'O
 
 function AdminController($scope, $filter, AdminService, HomeService, OffresService, PartenairesService, StaffService, $window, ngDialog) {
     //$scope.accesLevel = $window.sessionStorage.accesLevel;
-    $scope.accesLevel = 2;
+    $scope.accesLevel = 3;
 
     // ======  HOME  ======
     // GET
