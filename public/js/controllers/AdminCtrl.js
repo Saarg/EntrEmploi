@@ -174,10 +174,11 @@ angular.module('AdminCtrl', ['ngDialog']).controller('AdminController', AdminCon
     };
 });
 
-AdminController.$inject =['$scope', '$filter', 'AdminService', 'HomeService', 'OffresService', 'PartenairesService', '$window', 'ngDialog'];
+AdminController.$inject =['$scope', '$filter', 'AdminService', 'HomeService', 'OffresService', 'PartenairesService', 'StaffService', '$window', 'ngDialog'];
 
-function AdminController($scope, $filter, AdminService, HomeService, OffresService, PartenairesService, $window, ngDialog) {
-    // HOME
+function AdminController($scope, $filter, AdminService, HomeService, OffresService, PartenairesService, StaffService, $window, ngDialog) {
+    // ======  HOME  ======
+    // GET
     HomeService.getArticleCount().then(function(res){
         $scope.MainArticlesCount  = res.data;
     });
@@ -190,22 +191,42 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
         $scope.MainArticlesSorted  = $filter('orderBy')($scope.MainArticles, 'priority');
     });
 
-
-
+    // ADD
     $scope.newArticle = {};
     $scope.addArticle = function () {
         if(!$scope.newArticle.priority) {
             $scope.newArticle.priority = $scope.MainArticlesSorted[$scope.MainArticlesCount]+1;
         }
-        HomeService.postArticle($scope);
+        HomeService.postArticle($scope.newArticle);
         $window.location.reload(true);
     }
 
-    $scope.oldArticle = {};
+    // EDIT
+    $scope.currentArticle = {}
     $scope.editArticle = function (index) {
-        HomeService.editArticle($scope, index);
+        $scope.currentArticle = $scope.MainArticles[index];
+        //$scope.currentArticle.image = $scope.article.image
+        HomeService.editArticle($scope.currentArticle);
         $window.location.reload(true);
     }
+    $scope.infoArticle = function (index) {
+        $scope.currentArticle = $scope.MainArticles[index];
+
+        StaffService.getUser($scope.currentArticle._auteur).then(function(res){
+            $scope.currentArticle.auteur  = res.data[0];
+        });
+        StaffService.getUser($scope.currentArticle._editeur).then(function(res){
+            $scope.currentArticle.editeur  = res.data[0];
+        });
+        ngDialog.open({
+            template : '../templates/infoArticle.html',
+            className: 'ngdialog-theme-default',
+            disableAnimation : true,
+            scope: $scope
+        });
+    }
+
+    // DELETE
     $scope.deleteArticle = function (article_id) {
         HomeService.deleteArticle(article_id);
         $window.location.reload(true);

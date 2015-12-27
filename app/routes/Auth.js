@@ -37,7 +37,7 @@ module.exports = function(app) {
             else if (!user.validPassword(password))
                 res.json({ success: false, message: 'Oops Wrong password' });
             else {
-                var token = jwt.sign(user._id, app.get('superSecret'), {
+                var token = jwt.sign({ _id:user._id, nom:user.nom, prenom:user.prenom}, app.get('superSecret'), {
                     expiresIn: 86400 // expires in 24 hours
                 });
                 res.json({ success: true, message:'bonjour', user: user, token: token });

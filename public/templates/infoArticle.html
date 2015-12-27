@@ -1,0 +1,7 @@
+<div class="container">
+    <h2>{{ currentArticle.titre }}</h2>
+    <div class="row"><label>Date: </label> {{ currentArticle.date }}</div>
+    <div class="row"><label>Auteur: </label> {{ currentArticle.auteur.nom }} {{ currentArticle.auteur.prenom }}</div>
+    <div class="row"><label>Date de dernière edition: </label> {{ currentArticle.dateEdition }}</div>
+    <div class="row"><label>Dernier editeur: </label> {{ currentArticle.editeur.nom }} {{ currentArticle.editeur.prenom }}</div>
+</div>

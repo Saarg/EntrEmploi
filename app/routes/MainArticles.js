@@ -14,8 +14,9 @@ module.exports = function(app) {
           res.json({ success: false, message: 'Pas de lien vers le media choisi.' });
           return;
         }
-        article._auteur = req.body.auteur;
+        article._auteur = req.decoded._id;
         article.priority = req.body.priority;
+        article._editeur = req.decoded._id;
 
         article.save(function(err) {
             if (err) res.json({ success: false, message: err });
@@ -28,7 +29,8 @@ module.exports = function(app) {
             if (err) res.send(err);
             article.titre = req.body.titre;
             article.contenu = req.body.contenu;
-            article._auteur = req.body.auteur;
+            article.dateEdition = Date();
+            article._editeur = req.decoded._id;
             article.priority = req.body.priority;
             if(req.body.media && req.body.lienMedia) {
               article.media = req.body.media;

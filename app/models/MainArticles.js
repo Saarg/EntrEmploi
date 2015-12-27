@@ -9,5 +9,7 @@ module.exports = mongoose.model('MainArticle', {
     media : {type : String, default: 'Aucun'},
     lienMedia : String,
     _auteur : ObjectId,
+    dateEdition : {type : Date, default: Date()},
+    _editeur : ObjectId,
     priority : {type : Number, default: -1}// -1:caché 0:brouillon x>0:ordre d'affichage
 });
