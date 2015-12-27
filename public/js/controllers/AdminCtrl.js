@@ -177,6 +177,9 @@ angular.module('AdminCtrl', ['ngDialog']).controller('AdminController', AdminCon
 AdminController.$inject =['$scope', '$filter', 'AdminService', 'HomeService', 'OffresService', 'PartenairesService', 'StaffService', '$window', 'ngDialog'];
 
 function AdminController($scope, $filter, AdminService, HomeService, OffresService, PartenairesService, StaffService, $window, ngDialog) {
+    //$scope.accesLevel = $window.sessionStorage.accesLevel;
+    $scope.accesLevel = 2;
+
     // ======  HOME  ======
     // GET
     HomeService.getArticleCount().then(function(res){

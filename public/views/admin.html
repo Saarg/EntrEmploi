@@ -1,7 +1,7 @@
 <div class="admin-container">
     <div class="container">
         <tabs>
-            <pane class="admin-section" title="Page accueil">
+            <pane class="admin-section" title="Page accueil" ng-if="accesLevel == 3">
                 <div class="row" ng-repeat="article in MainArticlesSorted">
                     <form ng-submit="editArticle(MainArticles.indexOf(article))">
                         <div class="form-group col-md-10">
@@ -85,7 +85,7 @@
                 </div>
             </pane>
 
-            <pane class="admin-section" title="Offres">
+            <pane class="admin-section" title="Offres" ng-if="accesLevel >= 1">
                 <div class="row">
                     <div class="col-md-4 offres-list">
                         <button type="button" ng-click="newOffrePopup()" class="btn btn-primary">Ajouter une offre</button>
@@ -114,11 +114,11 @@
                 </div>
             </pane>
 
-            <pane class="admin-section" title="Candidats">
+            <pane class="admin-section" title="Candidats" ng-if="accesLevel >= 0">
                 Espace Admin Candidat
             </pane>
 
-            <pane class="admin-section" title="Pied de page">
+            <pane class="admin-section" title="Pied de page" ng-if="accesLevel == 3">
                 <div class="row">
                     <div class="col-md-4">
                         <h3>Qui sommes nous?</h3>
