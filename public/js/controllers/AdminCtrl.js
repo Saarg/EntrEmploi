@@ -38,21 +38,21 @@ angular.module('AdminCtrl', ['ngDialog']).controller('AdminController', AdminCon
     };
 })
 // https://github.com/Mischi/angularjs-imageupload-directive
-.directive('image', function($q) {
+.directive('image', function($q, $document, $window) {
     'use strict'
 
-    var URL = window.URL || window.webkitURL;
+    var URL = $window.URL || $window.webkitURL;
 
     var getResizeArea = function () {
         var resizeAreaId = 'fileupload-resize-area';
 
-        var resizeArea = document.getElementById(resizeAreaId);
+        var resizeArea = $document.getElementById(resizeAreaId);
 
         if (!resizeArea) {
-            resizeArea = document.createElement('canvas');
+            resizeArea = $document.createElement('canvas');
             resizeArea.id = resizeAreaId;
             resizeArea.style.visibility = 'hidden';
-            document.body.appendChild(resizeArea);
+            $document.body.appendChild(resizeArea);
         }
 
         return resizeArea;
@@ -118,16 +118,16 @@ angular.module('AdminCtrl', ['ngDialog']).controller('AdminController', AdminCon
             resizeMaxHeight: '@?',
             resizeMaxWidth: '@?',
             resizeQuality: '@?',
-            resizeType: '@?',
+            resizeType: '@?'
         },
-        link: function postLink(scope, element, attrs, ctrl) {
+        link: function postLink(scope, element, attrs) {
 
             var doResizing = function(imageResult, callback) {
                 createImage(imageResult.url, function(image) {
                     var dataURL = resizeImage(image, scope);
                     imageResult.resized = {
                         dataURL: dataURL,
-                        type: dataURL.match(/:(.+\/.+);/)[1],
+                        type: dataURL.match(/:(.+\/.+);/)[1]
                     };
                     callback(imageResult);
                 });
