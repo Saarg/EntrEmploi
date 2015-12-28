@@ -26,9 +26,9 @@
                         </div>
                         <div class="form-group col-md-10" ng-if="article.media=='Photo'">
                             <input class="col-md-4" type="file" accept="image/*" image="article.image"
-                                    resize-max-height="300"
-                                    resize-max-width="250"
-                                    resize-quality="0.7" />
+                            resize-max-height="300"
+                            resize-max-width="250"
+                            resize-quality="0.7" />
                             <img ng-show="article.image" ng-src="{{article.image.resized.dataURL}}" />
                         </div>
                         <div class="form-group col-md-10" ng-if="article.media=='Vidéo'">
@@ -68,9 +68,9 @@
                         </div>
                         <div class="form-group col-md-10" ng-if="newArticle.media=='Photo'">
                             <input class="col-md-4" type="file" accept="image/*" image="newArticle.image"
-                                    resize-max-height="300"
-                                    resize-max-width="250"
-                                    resize-quality="0.7" />
+                            resize-max-height="300"
+                            resize-max-width="250"
+                            resize-quality="0.7" />
                             <img ng-show="newArticle.image" ng-src="{{newArticle.image.resized.dataURL}}" />
                         </div>
                         <div class="form-group col-md-10" ng-if="newArticle.media=='Vidéo'">
@@ -131,25 +131,25 @@
                         <form class="row" ng-repeat="partenaire in Partenaires" ng-submit="editPartenaire(partenaire)">
                             <input class="col-xs-5" ng-model="partenaire.nom" type="text" name="nom">
                             <input class="col-xs-5" ng-model="partenaire.site" type="text" name="site">
-                            <button type="submit" title="valider" class="btn btn-primary btn-xs pull-right"><span class="glyphicon glyphicon-ok"></button>
-                                <button type="button" title="supprimer" class="btn btn-danger btn-xs pull-right" ng-click="deletePartenaire(partenaire._id)"><span class="glyphicon glyphicon-remove"></button>
-                                </form>
-                                <div class="row">
-                                    <button type="button" title="ajouter un partenaire" class="btn btn-success btn-xs col-xs-12" ng-click="PartenairePopup()"><span class="glyphicon glyphicon-plus-sign"></button>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <h3>Où nous trouver?</h3>
-                                    <ul class="address">
-                                        <li class="address">31. rue F. Chopin</li>
-                                        <li>29200 Brest</li>
-                                        <li class="email">emploi@spf29.org</li>
-                                        <li class="phone">02.98.44.80.43</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </pane>
-                    </tabs>
+                            <button type="submit" title="valider" class="btn btn-primary btn-xs pull-right"><span class="glyphicon glyphicon-ok"></span></button>
+                            <button type="button" title="supprimer" class="btn btn-danger btn-xs pull-right" ng-click="deletePartenaire(partenaire._id)"><span class="glyphicon glyphicon-remove"></span></button>
+                        </form>
+                        <div class="row">
+                            <button type="button" title="ajouter un partenaire" class="btn btn-success btn-xs col-xs-12" ng-click="PartenairePopup()"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Où nous trouver?</h3>
+                        <ul class="address">
+                            <li class="address">31. rue F. Chopin</li>
+                            <li>29200 Brest</li>
+                            <li class="email">emploi@spf29.org</li>
+                            <li class="phone">02.98.44.80.43</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="filler"></div>
-            </div>
+            </pane>
+        </tabs>
+    </div>
+    <div class="filler"></div>
+</div>
