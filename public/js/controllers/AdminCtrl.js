@@ -38,7 +38,7 @@ angular.module('AdminCtrl', ['ngDialog']).controller('AdminController', AdminCon
     };
 })
 // https://github.com/Mischi/angularjs-imageupload-directive
-.directive('image', function($q, $document, $window) {
+.directive('image', function($q, $window) {
     'use strict'
 
     var URL = $window.URL || $window.webkitURL;
@@ -46,13 +46,13 @@ angular.module('AdminCtrl', ['ngDialog']).controller('AdminController', AdminCon
     var getResizeArea = function () {
         var resizeAreaId = 'fileupload-resize-area';
 
-        var resizeArea = $document.getElementById(resizeAreaId);
+        var resizeArea = document.getElementById(resizeAreaId);
 
         if (!resizeArea) {
-            resizeArea = $document.createElement('canvas');
+            resizeArea = document.createElement('canvas');
             resizeArea.id = resizeAreaId;
             resizeArea.style.visibility = 'hidden';
-            $document.body.appendChild(resizeArea);
+            document.body.appendChild(resizeArea);
         }
 
         return resizeArea;
@@ -264,25 +264,17 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
         });
     }
 
-    // PARTENAIRES
+    // ====== PARTENAIRES ======
     PartenairesService.getPartenaires().then(function (res) {
         $scope.Partenaires = res.data;
     });
 
+    // ADD
     $scope.newPartenaire = {};
     $scope.addPartenaire = function (newPartenaire) {
         PartenairesService.postPartenaire(newPartenaire);
         $window.location.reload(true);
     }
-    $scope.editPartenaire = function (partenaire) {
-        PartenairesService.editPartenaire(partenaire);
-        $window.location.reload(true);
-    }
-    $scope.deletePartenaire = function (partenaire_id) {
-        PartenairesService.deletePartenaire(partenaire_id);
-        $window.location.reload(true);
-    }
-
     $scope.PartenairePopup = function () {
         ngDialog.open({
             template : '../templates/newPartenaire.html',
@@ -290,5 +282,15 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
             disableAnimation : true,
             scope: $scope
         });
+    }
+    // EDIT
+    $scope.editPartenaire = function (partenaire) {
+        PartenairesService.editPartenaire(partenaire);
+        $window.location.reload(true);
+    }
+    // DELETE
+    $scope.deletePartenaire = function (partenaire_id) {
+        PartenairesService.deletePartenaire(partenaire_id);
+        $window.location.reload(true);
     }
 }
