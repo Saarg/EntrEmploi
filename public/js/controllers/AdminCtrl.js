@@ -62,7 +62,7 @@ angular.module('AdminCtrl', ['ngDialog']).controller('AdminController', AdminCon
         var maxHeight = options.resizeMaxHeight || 300;
         var maxWidth = options.resizeMaxWidth || 250;
         var quality = options.resizeQuality || 0.7;
-        var type = options.resizeType || 'image/jpeg';
+        var type = options.resizeType || 'image/png';
 
         var canvas = getResizeArea();
 
@@ -174,9 +174,9 @@ angular.module('AdminCtrl', ['ngDialog']).controller('AdminController', AdminCon
     };
 });
 
-AdminController.$inject =['$scope', '$filter', 'AdminService', 'HomeService', 'OffresService', 'PartenairesService', 'StaffService', '$window', 'ngDialog'];
+AdminController.$inject =['$scope', '$filter', 'AdminService', 'HomeService', 'OffresService', 'PartenairesService', 'StaffService', 'ConfigService', '$window', 'ngDialog'];
 
-function AdminController($scope, $filter, AdminService, HomeService, OffresService, PartenairesService, StaffService, $window, ngDialog) {
+function AdminController($scope, $filter, AdminService, HomeService, OffresService, PartenairesService, StaffService, ConfigService, $window, ngDialog) {
     //$scope.accesLevel = $window.sessionStorage.accesLevel;
     $scope.accesLevel = 3;
 
@@ -264,7 +264,25 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
         });
     }
 
-    // ====== PARTENAIRES ======
+    // ====== HEADER ======
+    $scope.logoSPF = {};
+    ConfigService.getConfig("LogoSPF").then(function(res){
+        $scope.logoSPF.image  = res.data;
+    });
+    $scope.editLogoSPF = function () {
+        ConfigService.editConfig("LogoSPF", $scope.logoSPF.image.resized.dataURL);
+        $window.location.reload(true);
+    }
+    $scope.logoEntrEmploi = {};
+    ConfigService.getConfig("LogoEntrEmploi").then(function(res){
+        $scope.logoEntrEmploi.image  = res.data;
+    });
+    $scope.editLogoEntrEmploi = function () {
+        ConfigService.editConfig("LogoEntrEmploi", $scope.logoEntrEmploi.image.resized.dataURL);
+        $window.location.reload(true);
+    }
+
+    // ====== FOOTER ======
     PartenairesService.getPartenaires().then(function (res) {
         $scope.Partenaires = res.data;
     });

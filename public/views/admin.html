@@ -120,6 +120,26 @@
 
             <pane class="admin-section" title="Pied de page" ng-if="accesLevel == 3">
                 <div class="row">
+                    <h1>Haut de page</h1>
+                    <form class="col-md-6" ng-submit="editLogoSPF()">
+                        <input class="col-md-4" type="file" accept="image/*" image="logoSPF.image"
+                            resize-max-height="150"
+                            resize-max-width="500"
+                            resize-quality="0.7" />
+                        <img class="col-md-8" ng-show="logoSPF.image" ng-src="{{logoSPF.image.resized.dataURL}}" />
+                        <button type="submit" class="btn btn-success btn-sm">Valider</button>
+                    </form>
+                    <form class="col-md-6" ng-submit="editLogoEntrEmploi()">
+                        <input class="col-md-4" type="file" accept="image/*" image="logoEntrEmploi.image"
+                            resize-max-height="150"
+                            resize-max-width="1000"
+                            resize-quality="0.7" />
+                        <img class="col-md-8" ng-show="logoEntrEmploi.image" ng-src="{{logoEntrEmploi.image.resized.dataURL}}" />
+                        <button type="submit" class="btn btn-success btn-sm">Valider</button>
+                    </form>
+                </div>
+                <div class="row">
+                    <h1>Pied de page</h1>
                     <div class="col-md-4">
                         <h3>Qui sommes nous?</h3>
                         <ul>
@@ -149,6 +169,7 @@
                     </div>
                 </div>
             </pane>
+
         </tabs>
     </div>
     <div class="filler"></div>

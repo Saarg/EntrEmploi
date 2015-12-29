@@ -15,6 +15,7 @@ module.exports = function(app) {
     require('./routes/Profils')(app);
     require('./routes/Partenaires')(app);
     require('./routes/MainArticles')(app);
+    require('./routes/Config')(app);
 
     // Outils pour l'auth de la page admin
     require('./routes/Auth')(app);
