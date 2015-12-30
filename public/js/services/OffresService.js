@@ -26,6 +26,26 @@ function OffresService($http, $window) {
                 contract : offre.contract,
                 date : Date()
             });
+        },
+
+        editOffre : function (offre) {
+            return $http.put('/api/offres/' + offre._id, {
+                token: $window.sessionStorage.token,
+                titre : offre.titre,
+                contenu : offre.contenu,
+                entreprise : offre.entreprise,
+                siteEntreprise : offre.siteEntreprise,
+                numContact : offre.numContact,
+                mailContact : offre.mailContact,
+                categ : offre.categ,
+                location : offre.location,
+                contract : offre.contract,
+                date : Date()
+            });
+        },
+
+        deleteOffre : function (offre) {
+            return $http.delete('/api/offres/' + offre._id);
         }
     }
 }
