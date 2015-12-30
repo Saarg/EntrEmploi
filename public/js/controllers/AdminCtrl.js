@@ -190,6 +190,7 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
         $scope.MainArticles  = res.data;
         for(var i in $scope.MainArticles){
             $scope.MainArticles[i].contenu = $scope.MainArticles[i].contenu.replace(/<br\s*[\/]?>/gi, "\n");
+            $scope.MainArticles[i].image = $scope.MainArticles[i].lienMedia;
         }
         $scope.MainArticlesSorted  = $filter('orderBy')($scope.MainArticles, 'priority');
     });
