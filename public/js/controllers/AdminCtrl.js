@@ -68,12 +68,21 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
         $window.location.reload(true);
     }
 
+    // =========== OFFRES ================ //
+
     OffresService.getOffres().then(function (res) {
         $scope.offres = res.data;
     });
 
     $scope.addOffre = function (newOffre) {
         OffresService.postOffre(newOffre);
+        $scope.newOffre = {}; // reset la nouvelle offre
+    }
+
+    $scope.editOffre = function (index) {
+        OffresService.editOffre($scope.offres[index]).then(function () {
+
+        });
     }
 
     $scope.curOffreIndex = 0;
@@ -89,6 +98,10 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
             disableAnimation : true,
             scope: $scope
         });
+    }
+
+    $scope.deleteOffre = function (index) {
+        OffresService.deleteOffre($scope.offres[index]);
     }
 
     // ====== HEADER ======
