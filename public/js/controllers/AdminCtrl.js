@@ -38,7 +38,7 @@ angular.module('AdminCtrl', ['ngDialog']).controller('AdminController', AdminCon
     };
 })
 // https://github.com/Mischi/angularjs-imageupload-directive
-.directive('image', function($q, $document, $window) {
+.directive('image', function($q, $window) {
     'use strict'
 
     var URL = $window.URL || $window.webkitURL;
@@ -46,13 +46,13 @@ angular.module('AdminCtrl', ['ngDialog']).controller('AdminController', AdminCon
     var getResizeArea = function () {
         var resizeAreaId = 'fileupload-resize-area';
 
-        var resizeArea = $document.getElementById(resizeAreaId);
+        var resizeArea = document.getElementById(resizeAreaId);
 
         if (!resizeArea) {
-            resizeArea = $document.createElement('canvas');
+            resizeArea = document.createElement('canvas');
             resizeArea.id = resizeAreaId;
             resizeArea.style.visibility = 'hidden';
-            $document.body.appendChild(resizeArea);
+            document.body.appendChild(resizeArea);
         }
 
         return resizeArea;
@@ -62,7 +62,7 @@ angular.module('AdminCtrl', ['ngDialog']).controller('AdminController', AdminCon
         var maxHeight = options.resizeMaxHeight || 300;
         var maxWidth = options.resizeMaxWidth || 250;
         var quality = options.resizeQuality || 0.7;
-        var type = options.resizeType || 'image/jpeg';
+        var type = options.resizeType || 'image/png';
 
         var canvas = getResizeArea();
 
@@ -174,9 +174,9 @@ angular.module('AdminCtrl', ['ngDialog']).controller('AdminController', AdminCon
     };
 });
 
-AdminController.$inject =['$scope', '$filter', 'AdminService', 'HomeService', 'OffresService', 'PartenairesService', 'StaffService', '$window', 'ngDialog'];
+AdminController.$inject =['$scope', '$filter', 'AdminService', 'HomeService', 'OffresService', 'PartenairesService', 'StaffService', 'ConfigService', '$window', 'ngDialog'];
 
-function AdminController($scope, $filter, AdminService, HomeService, OffresService, PartenairesService, StaffService, $window, ngDialog) {
+function AdminController($scope, $filter, AdminService, HomeService, OffresService, PartenairesService, StaffService, ConfigService, $window, ngDialog) {
     //$scope.accesLevel = $window.sessionStorage.accesLevel;
     $scope.accesLevel = 3;
 
@@ -190,6 +190,7 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
         $scope.MainArticles  = res.data;
         for(var i in $scope.MainArticles){
             $scope.MainArticles[i].contenu = $scope.MainArticles[i].contenu.replace(/<br\s*[\/]?>/gi, "\n");
+            $scope.MainArticles[i].image = $scope.MainArticles[i].lienMedia;
         }
         $scope.MainArticlesSorted  = $filter('orderBy')($scope.MainArticles, 'priority');
     });
@@ -264,25 +265,35 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
         });
     }
 
-    // PARTENAIRES
+    // ====== HEADER ======
+    $scope.logoSPF = {};
+    ConfigService.getConfig("LogoSPF").then(function(res){
+        $scope.logoSPF.image  = res.data;
+    });
+    $scope.editLogoSPF = function () {
+        ConfigService.editConfig("LogoSPF", $scope.logoSPF.image.resized.dataURL);
+        $window.location.reload(true);
+    }
+    $scope.logoEntrEmploi = {};
+    ConfigService.getConfig("LogoEntrEmploi").then(function(res){
+        $scope.logoEntrEmploi.image  = res.data;
+    });
+    $scope.editLogoEntrEmploi = function () {
+        ConfigService.editConfig("LogoEntrEmploi", $scope.logoEntrEmploi.image.resized.dataURL);
+        $window.location.reload(true);
+    }
+
+    // ====== FOOTER ======
     PartenairesService.getPartenaires().then(function (res) {
         $scope.Partenaires = res.data;
     });
 
+    // ADD
     $scope.newPartenaire = {};
     $scope.addPartenaire = function (newPartenaire) {
         PartenairesService.postPartenaire(newPartenaire);
         $window.location.reload(true);
     }
-    $scope.editPartenaire = function (partenaire) {
-        PartenairesService.editPartenaire(partenaire);
-        $window.location.reload(true);
-    }
-    $scope.deletePartenaire = function (partenaire_id) {
-        PartenairesService.deletePartenaire(partenaire_id);
-        $window.location.reload(true);
-    }
-
     $scope.PartenairePopup = function () {
         ngDialog.open({
             template : '../templates/newPartenaire.html',
@@ -290,5 +301,15 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
             disableAnimation : true,
             scope: $scope
         });
+    }
+    // EDIT
+    $scope.editPartenaire = function (partenaire) {
+        PartenairesService.editPartenaire(partenaire);
+        $window.location.reload(true);
+    }
+    // DELETE
+    $scope.deletePartenaire = function (partenaire_id) {
+        PartenairesService.deletePartenaire(partenaire_id);
+        $window.location.reload(true);
     }
 }

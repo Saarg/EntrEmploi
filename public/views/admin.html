@@ -29,7 +29,7 @@
                             resize-max-height="300"
                             resize-max-width="250"
                             resize-quality="0.7" />
-                            <img ng-show="article.image" ng-src="{{article.image.resized.dataURL}}" />
+                            <img class="pull-right" ng-show="article.image" ng-src="{{article.image.resized.dataURL || article.image}}" />
                         </div>
                         <div class="form-group col-md-10" ng-if="article.media=='Vidéo'">
                             <input class="form-control" ng-model="article.lienMedia" type="text" name="lienYT" id="youtube-video">
@@ -139,8 +139,34 @@
                 Espace Admin Candidat
             </pane>
 
-            <pane class="admin-section" title="Pied de page" ng-if="accesLevel == 3">
+            <pane class="admin-section" title="Gestion site" ng-if="accesLevel == 3">
                 <div class="row">
+                    <h1>Haut de page</h1>
+                    <form class="col-md-6" ng-submit="editLogoSPF()">
+                        <h2>Logo secours populaire</h2>
+                        <input class="col-md-10" type="file" accept="image/*" image="logoSPF.image"
+                            resize-max-height="150"
+                            resize-max-width="300"
+                            resize-quality="0.7" />
+                        <button type="submit" class="btn btn-success btn-sm col-md-2">Valider</button>
+                        <div class="col-md-12">
+                            <img class="logo" ng-show="logoSPF.image" ng-src="{{logoSPF.image.resized.dataURL || logoSPF.image}}" />
+                        </div>
+                    </form>
+                    <form class="col-md-6" ng-submit="editLogoEntrEmploi()">
+                        <h2>Logo EntrEmploi</h2>
+                        <input class="col-md-10" type="file" accept="image/*" image="logoEntrEmploi.image"
+                            resize-max-height="150"
+                            resize-max-width="1000"
+                            resize-quality="0.7" />
+                        <button type="submit" class="btn btn-success btn-sm  col-md-2">Valider</button>
+                        <div class="col-md-12">
+                            <img class="logo" ng-show="logoEntrEmploi.image" ng-src="{{logoEntrEmploi.image.resized.dataURL || logoEntrEmploi.image}}" />
+                        </div>
+                    </form>
+                </div>
+                <div class="row">
+                    <h1>Pied de page</h1>
                     <div class="col-md-4">
                         <h3>Qui sommes nous?</h3>
                         <ul>
@@ -170,6 +196,7 @@
                     </div>
                 </div>
             </pane>
+
         </tabs>
     </div>
     <div class="filler"></div>

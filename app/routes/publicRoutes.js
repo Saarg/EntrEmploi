@@ -2,8 +2,19 @@ var Offres = require('./../models/Offres');
 var Profils = require('./../models/Profils');
 var Entreprises = require('./../models/Partenaires');
 var MainArticles = require('./../models/MainArticles');
+var Configs = require('./../models/Config');
 
 module.exports = function(app) {
+    // Config
+    app.get('/api/config/:name', function(req, res) {
+        Configs.findOne({ name:req.params.name },function(err, config) {
+            if (err) {
+                res.json({ success: false, message: err });
+                return;
+            }
+            res.json(config.value);
+        });
+    });
     // Offres
     app.get('/api/offres', function(req, res) {
         Offres.find(function(err, offres) {
