@@ -96,13 +96,34 @@
                     <div class="col-md-8 edit-offre">
                         <form ng-submit="editOffre(curOffreIndex)">
 
-                            <input type="text" name="Titre" ng-model="offres[curOffreIndex].titre">
-                            <input type="text" name="entreprise" ng-model="offres[curOffreIndex].entreprise" placeholder="entreprise">
-                            <input type="text" name="siteEntreprise" ng-model="offres[curOffreIndex].siteEntreprise" placeholder="site web de l'entreprise">
-                            <input type="text" name="numContact" ng-model="offres[curOffreIndex].numContact" placeholder="Télephone Contact">
-                            <input type="text" name="mailContact" ng-model="offres[curOffreIndex].mailContact" placeholder="Mail contact">
-                            <input type="text" name="categ" ng-model="offres[curOffreIndex].categ" placeholder="catégorie">
-                            <input type="text" name="location" ng-model="offres[curOffreIndex].location" placeholder="Ville">
+                            <div class="form-group">
+                                <input type="text" name="Titre" ng-model="offres[curOffreIndex].titre">
+                                <label>Titre</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="entreprise" ng-model="offres[curOffreIndex].entreprise" placeholder="entreprise">
+                                <label>Entreprise</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="siteEntreprise" ng-model="offres[curOffreIndex].siteEntreprise" placeholder="site web de l'entreprise">
+                                <label>Site web de L'entreprise</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="numContact" ng-model="offres[curOffreIndex].numContact" placeholder="Télephone Contact">
+                                <label>Téléphone</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="mailContact" ng-model="offres[curOffreIndex].mailContact" placeholder="Mail contact">
+                                <label>E-mail</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="categ" ng-model="offres[curOffreIndex].categ" placeholder="catégorie">
+                                <label>Catégorie</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="location" ng-model="offres[curOffreIndex].location" placeholder="Ville">
+                                <label>Ville</label>
+                            </div>
                             <select name="contract" ng-model="offres[curOffreIndex].contract">
                                 <option value="CDI">CDI</option>
                                 <option value="CDD">CDD</option>
