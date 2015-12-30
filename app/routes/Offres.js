@@ -29,7 +29,9 @@ module.exports = function(app) {
             offre.siteEntreprise = req.body.siteEntreprise;
             offre.numContact = req.body.numContact;
             offre.mailContact = req.body.mailContact;
-            offre.dateFin = req.body.dateFin;
+            offre.categ = req.body.categ;
+            offre.location = req.body.location;
+            offre.contract = req.body.contract;
 
             offre.save(function(err) {
                 if (err) res.json({ success: false, message: err });
@@ -39,7 +41,7 @@ module.exports = function(app) {
     });
     // DELETE
     app.delete('/api/offres/:offre_id', function(req, res) {
-        Offres.remove({_id: req.params.offre_id}, function(err, offre) {
+        Offres.remove({_id: req.params.offre_id}, function(err) {
             if (err) res.json({ success: false, message: err });
             res.json({ success: true });
         });
