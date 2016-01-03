@@ -10,12 +10,22 @@ function StaffService($http, $window) {
         getUser : function(userId) {
             return $http.get('/api/staff/'+userId +'?token='+ $window.sessionStorage.token);
         },
+        postUser : function (user) {
+            return $http.post('/api/staff', {
+                token: $window.sessionStorage.token,
+                nom: user.nom,
+                prenom: user.prenom,
+                accesLevel: user.accesLevel,
+                passwd: user.passwd
+            });
+        },
         editUser : function(user) {
             return $http.put('/api/staff/' + user._id, {
                 token: $window.sessionStorage.token,
                 nom: user.nom,
                 prenom: user.prenom,
-                accesLevel: user.accesLevel
+                accesLevel: user.accesLevel,
+                newPasswd: user.newPasswd
             });
         },
         deleteUser : function(user_id) {

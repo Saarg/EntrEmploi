@@ -126,6 +126,13 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
     StaffService.getUsers().then(function(res){
         $scope.users  = res.data;
     });
+    // ADD
+    $scope.newUser = {};
+    $scope.addUser = function (newUser) {
+        // TODO generation aleatoire password
+        StaffService.postUser(newUser);
+        $window.location.reload(true);
+    }
     // EDIT
     $scope.editUser = function (user) {
         StaffService.editUser(user);
@@ -133,7 +140,7 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
     }
     // DELETE
     $scope.deleteUser = function (user_id) {
-        UserService.deleteUser(user_id);
+        StaffService.deleteUser(user_id);
         $window.location.reload(true);
     }
 

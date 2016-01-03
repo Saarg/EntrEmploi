@@ -1,4 +1,4 @@
-var Staff = require('./../models/Staff');
+var Staff           = require('./../models/Staff');
 
 module.exports = function(app) {
     // GET
@@ -31,8 +31,8 @@ module.exports = function(app) {
     	staff.compAdresse = req.body.compAdresse;
     	staff.ville = req.body.ville;
     	staff.codePostal = req.body.codePostal;
-    	staff.accesLevel = req.body.accesLecel;
-    	staff.passwd = req.body.passwd;
+    	staff.accesLevel = req.body.accesLevel;
+    	staff.passwd = staff.generateHash(req.body.passwd);
 
     	staff.save(function(err) {
             if (err) {
@@ -49,6 +49,9 @@ module.exports = function(app) {
             staff.nom = req.body.nom;
             staff.prenom = req.body.prenom;
             staff.accesLevel = req.body.accesLevel
+            if(req.body.newPasswd) {
+                staff.passwd = staff.generateHash(req.body.newPasswd);
+            }
 
             staff.save(function(err) {
                 if (err) res.json({ success: false, message: err });
