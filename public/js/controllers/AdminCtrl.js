@@ -3,8 +3,7 @@ angular.module('AdminCtrl', ['ngDialog']).controller('AdminController', AdminCon
 AdminController.$inject =['$scope', '$filter', 'AdminService', 'HomeService', 'OffresService', 'PartenairesService', 'StaffService', 'ConfigService', '$window', 'ngDialog'];
 
 function AdminController($scope, $filter, AdminService, HomeService, OffresService, PartenairesService, StaffService, ConfigService, $window, ngDialog) {
-    //$scope.accesLevel = $window.sessionStorage.accesLevel;
-    $scope.accesLevel = 3;
+    $scope.accesLevel = $window.sessionStorage.accesLevel;
 
     // ======  HOME  ======
     // GET

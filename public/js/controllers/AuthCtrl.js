@@ -14,9 +14,9 @@ function AuthController($scope, AuthService, $window, $location) {
 
             if(res.data.success) {
                 $window.sessionStorage.token = res.data.token;
-                $window.sessionStorage.nom = res.data.nom;
-                $window.sessionStorage.prenom = res.data.prenom;
-                $window.sessionStorage.accesLevel = res.data.accesLevel;
+                $window.sessionStorage.nom = res.data.user.nom;
+                $window.sessionStorage.prenom = res.data.user.prenom;
+                $window.sessionStorage.accesLevel = res.data.user.accesLevel;
                 $window.location.href = "/admin";
             } else {
                 delete $window.sessionStorage.token;
