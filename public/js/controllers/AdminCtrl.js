@@ -122,6 +122,21 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
         $window.location.reload(true);
     }
 
+    // ====== STAFF  ======
+    StaffService.getUsers().then(function(res){
+        $scope.users  = res.data;
+    });
+    // EDIT
+    $scope.editUser = function (user) {
+        StaffService.editUser(user);
+        $window.location.reload(true);
+    }
+    // DELETE
+    $scope.deleteUser = function (user_id) {
+        UserService.deleteUser(user_id);
+        $window.location.reload(true);
+    }
+
     // ====== FOOTER ======
     PartenairesService.getPartenaires().then(function (res) {
         $scope.Partenaires = res.data;

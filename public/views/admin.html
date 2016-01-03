@@ -172,6 +172,38 @@
                     </form>
                 </div>
                 <div class="row">
+                    <h1>Gestion du staff</h1>
+                    <div class="row">
+                        <label class="col-md-3" for="titre">Nom</label>
+                        <label class="col-md-3" for="titre">Prenom</label>
+                        <label class="col-md-3" for="titre">Nouveau mot de passe</label>
+                        <label class="col-md-2" for="titre">niveau d'acces</label>
+                    </div>
+                    <div class="row" ng-repeat="user in users">
+                        <form class="container" ng-submit="editUser(user)">
+                            <div class="form-group col-md-3">
+                                <input class="form-control" ng-model="user.nom" type="text" id="nom" required>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <input class="form-control" ng-model="user.prenom" type="text" id="prenom" required>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <input class="form-control" ng-model="user.newPasswd" type="text" id="newPasswf">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <input class="form-control" ng-model="user.accesLevel" type="text" id="accesLevel" required>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" title="valider" class="btn btn-primary btn-xs pull-right"><span class="glyphicon glyphicon-ok"></span></button>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" title="supprimer" class="btn btn-danger btn-xs pull-right" ng-click="deleteUser(user._id)"><span class="glyphicon glyphicon-remove"></span></button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="row">
                     <h1>Pied de page</h1>
                     <div class="col-md-4">
                         <h3>Qui sommes nous?</h3>
@@ -182,10 +214,18 @@
                     <div class="col-md-4">
                         <h3>Partenaires</h3>
                         <form class="row" ng-repeat="partenaire in Partenaires" ng-submit="editPartenaire(partenaire)">
-                            <input class="col-xs-5" ng-model="partenaire.nom" type="text" name="nom">
-                            <input class="col-xs-5" ng-model="partenaire.site" type="text" name="site">
-                            <button type="submit" title="valider" class="btn btn-primary btn-xs pull-right"><span class="glyphicon glyphicon-ok"></span></button>
-                            <button type="button" title="supprimer" class="btn btn-danger btn-xs pull-right" ng-click="deletePartenaire(partenaire._id)"><span class="glyphicon glyphicon-remove"></span></button>
+                            <div class="form-group">
+                                <input class="col-xs-5" ng-model="partenaire.nom" type="text" name="nom">
+                            </div>
+                            <div class="form-group">
+                                <input class="col-xs-5" ng-model="partenaire.site" type="text" name="site">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" title="valider" class="btn btn-primary btn-xs pull-right"><span class="glyphicon glyphicon-ok"></span></button>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" title="supprimer" class="btn btn-danger btn-xs pull-right" ng-click="deletePartenaire(partenaire._id)"><span class="glyphicon glyphicon-remove"></span></button>
+                            </div>
                         </form>
                         <div class="row">
                             <button type="button" title="ajouter un partenaire" class="btn btn-success btn-xs col-xs-12" ng-click="PartenairePopup()"><span class="glyphicon glyphicon-plus-sign"></span></button>

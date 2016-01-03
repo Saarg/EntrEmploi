@@ -43,7 +43,19 @@ module.exports = function(app) {
         });
     });
     // PUT
-    ///TODO
+    app.put('/api/staff/:staff_id', function(req, res) {
+        Staff.findById(req.params.staff_id, function(err, staff) {
+            if (err) res.send(err);
+            staff.nom = req.body.nom;
+            staff.prenom = req.body.prenom;
+            staff.accesLevel = req.body.accesLevel
+
+            staff.save(function(err) {
+                if (err) res.json({ success: false, message: err });
+                res.json({ success: true });
+            });
+        });
+    });
     // DELETE
     app.delete('/api/staff/:staff_id', function(req, res) {
 	Staff.remove({_id: req.params.staff_id}, function(err, staff) {
