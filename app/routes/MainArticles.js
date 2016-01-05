@@ -10,7 +10,7 @@ module.exports = function(app) {
             article.media = req.body.media;
             article.lienMedia = req.body.lienMedia;
         }
-        else if (req.body.media) {
+        else if (req.body.media != "Aucun") {
             res.json({ success: false, message: 'Pas de lien vers le media choisi.' });
             return;
         }
@@ -19,7 +19,10 @@ module.exports = function(app) {
         article._editeur = req.decoded._id;
 
         article.save(function(err) {
-            if (err) res.json({ success: false, message: err });
+            if (err) {
+                res.json({ success: false, message: err });
+                return;
+            }
             res.json({ success: true });
         });
     });
@@ -42,7 +45,10 @@ module.exports = function(app) {
             }
 
             article.save(function(err) {
-                if (err) res.json({ success: false, message: err });
+                if (err) {
+                    res.json({ success: false, message: err });
+                    return;
+                }
                 res.json({ success: true });
             });
         });
@@ -50,7 +56,10 @@ module.exports = function(app) {
     // DELETE
     app.delete('/api/mainArticles/:article_id', function(req, res) {
         MainArticles.remove({_id: req.params.article_id}, function(err, article) {
-            if (err) res.json({ success: false, message: err });
+            if (err) {
+                res.json({ success: false, message: err });
+                return;
+            }
             res.json({ success: true });
         });
     });

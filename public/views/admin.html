@@ -2,49 +2,57 @@
     <div class="container">
         <tabs>
             <pane class="admin-section" title="Page accueil" ng-if="accesLevel == 3">
-                <div class="row" ng-repeat="article in MainArticlesSorted">
-                    <form ng-submit="editArticle(MainArticles.indexOf(article))">
-                        <div class="form-group col-md-10">
-                            <input class="form-control" ng-model="article.titre" type="text" id="titre" required>
-                            <label for="titre">Titre</label>
-                        </div>
-                        <div class="form-group col-md-2">
-                            <input class="form-control" ng-model="article.priority" type="text" name="priority" id="position">
-                            <label for="position">Position:</label>
-                        </div>
-                        <div class="form-group col-md-12">
-                            <textarea class="form-control" ng-model="article.contenu" type="text" rows="5" name="contenu" id="article" required></textarea>
-                            <label for="article">Article</label>
-                        </div>
-                        <div class="form-group col-md-2">
-                            <select class="form-control" ng-model="article.media" id="media">
-                                <option>Aucun</option>
-                                <option>Photo</option>
-                                <option>Vidéo</option>
-                            </select>
-                            <label for="media">Media</label>
-                        </div>
-                        <div class="form-group col-md-10" ng-if="article.media=='Photo'">
-                            <input class="col-md-4" type="file" accept="image/*" image="article.image"
-                            resize-max-height="300"
-                            resize-max-width="250"
-                            resize-quality="0.7" />
-                            <img class="pull-right" ng-show="article.image" ng-src="{{article.image.resized.dataURL || article.image}}" />
-                        </div>
-                        <div class="form-group col-md-10" ng-if="article.media=='Vidéo'">
-                            <input class="form-control" ng-model="article.lienMedia" type="text" name="lienYT" id="youtube-video">
-                            <label for="youtube-video">Lien de la video youtube</label>
-                        </div>
-                        <div class="form-group col-md-12">
-                            <button type="submit" class="btn btn-success btn-sm">Modifier</button>
-                            <button type="button" ng-click="infoArticle(MainArticles.indexOf(article))" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>
-                            <button type="button" ng-click="deleteArticle(article._id);" class="btn btn-danger btn-sm pull-right">Supprimer</button>
-                            <button type="reset" ng-click="reload();" class="btn btn-warning btn-sm pull-right">Reinitialiser</button>
-                        </div>
-                        <hr/>
-                    </form>
+                <div class="row">
+                    <div class="col-md-3 item-list">
+                        <ul>
+                            <li class="offre-item" ng-repeat="article in MainArticlesSorted" ng-click="activateArticle(MainArticlesSorted.indexOf(article))"  ng-class="{active : MainArticlesSorted.indexOf(article) === curArticleIndex}">{{article.titre}}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-9 edit-article">
+                        <form ng-submit="editArticle(curArticleIndex)">
+                            <div class="form-group col-md-10">
+                                <input class="form-control" ng-model="MainArticlesSorted[curArticleIndex].titre" type="text" id="titre" required>
+                                <label for="titre">Titre</label>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <input class="form-control" ng-model="MainArticlesSorted[curArticleIndex].priority" type="text" name="priority" id="position">
+                                <label for="position">Position:</label>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <textarea class="form-control" ng-model="MainArticlesSorted[curArticleIndex].contenu" type="text" rows="5" name="contenu" id="article" required></textarea>
+                                <label for="article">Article</label>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <select class="form-control" ng-model="MainArticlesSorted[curArticleIndex].media" id="media">
+                                    <option>Aucun</option>
+                                    <option>Photo</option>
+                                    <option>Vidéo</option>
+                                </select>
+                                <label for="media">Media</label>
+                            </div>
+                            <div class="form-group col-md-10" ng-if="MainArticlesSorted[curArticleIndex].media=='Photo'">
+                                <input class="col-md-4" type="file" accept="image/*" image="MainArticlesSorted[curArticleIndex].image"
+                                resize-max-height="300"
+                                resize-max-width="250"
+                                resize-quality="0.7" />
+                                <img class="pull-right" ng-show="MainArticlesSorted[curArticleIndex].image" ng-src="{{MainArticlesSorted[curArticleIndex].image.resized.dataURL || MainArticlesSorted[curArticleIndex].image}}" />
+                            </div>
+                            <div class="form-group col-md-10" ng-if="MainArticlesSorted[curArticleIndex].media=='Vidéo'">
+                                <input class="form-control" ng-model="MainArticlesSorted[curArticleIndex].lienMedia" type="text" name="lienYT" id="youtube-video">
+                                <label for="youtube-video">Lien de la video youtube</label>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <button type="submit" class="btn btn-success btn-sm">Modifier</button>
+                                <button type="button" ng-click="infoArticle(curArticleIndex)" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>
+                                <button type="button" ng-click="deleteArticle(MainArticlesSorted[curArticleIndex]._id);" class="btn btn-danger btn-sm pull-right">Supprimer</button>
+                                <button type="reset" ng-click="reload();" class="btn btn-warning btn-sm pull-right">Reinitialiser</button>
+                            </div>
+                            <hr/>
+                        </form>
+                    </div>
                 </div>
                 <div class="row">
+                    <h2>Ajouter un article</h2>
                     <form ng-submit="addArticle()">
                         <div class="form-group col-md-10">
                             <input class="form-control" ng-model="newArticle.titre" type="text" name="titre" id="titre" required>
@@ -87,7 +95,7 @@
 
             <pane class="admin-section" title="Offres" ng-if="accesLevel >= 1">
                 <div class="row">
-                    <div class="col-md-3 offres-list">
+                    <div class="col-md-3 item-list">
                         <button type="button" ng-click="newOffrePopup()" class="btn btn-primary">Ajouter une offre</button>
                         <ul>
                             <li class="offre-item" ng-repeat="offre in offres" ng-click="activateOffre(offres.indexOf(offre))" ng-class="{active : offres.indexOf(offre) === curOffreIndex}">{{offre.titre}} - {{offre.location}}</li>
@@ -147,9 +155,9 @@
 
             <pane class="admin-section" title="Gestion site" ng-if="accesLevel == 3">
                 <div class="row">
-                    <h1>Haut de page</h1>
+                    <h2>Haut de page</h2>
                     <form class="col-md-6" ng-submit="editLogoSPF()">
-                        <h2>Logo secours populaire</h2>
+                        <h3>Logo secours populaire</h3>
                         <input class="col-md-10" type="file" accept="image/*" image="logoSPF.image"
                         resize-max-height="150"
                         resize-max-width="300"
@@ -160,7 +168,7 @@
                         </div>
                     </form>
                     <form class="col-md-6" ng-submit="editLogoEntrEmploi()">
-                        <h2>Logo EntrEmploi</h2>
+                        <h3>Logo EntrEmploi</h3>
                         <input class="col-md-10" type="file" accept="image/*" image="logoEntrEmploi.image"
                         resize-max-height="150"
                         resize-max-width="1000"
@@ -172,7 +180,7 @@
                     </form>
                 </div>
                 <div class="row">
-                    <h1>Gestion du staff</h1>
+                    <h2>Gestion du staff</h2>
                     <div class="row">
                         <label class="col-md-3" for="titre">Nom</label>
                         <label class="col-md-3" for="titre">Prenom</label>
@@ -223,7 +231,7 @@
 
                 </div>
                 <div class="row">
-                    <h1>Pied de page</h1>
+                    <h2>Pied de page</h2>
                     <div class="col-md-4">
                         <h3>Qui sommes nous?</h3>
                         <ul>

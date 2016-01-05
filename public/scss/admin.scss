@@ -93,6 +93,10 @@ $text-grey: #777a7e;
         background-color: $active-pane-color;
         box-shadow: 0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23);
 
+        h2 {
+            margin-left: 10px;
+        }
+
         .form-group {
             position: relative;
 
@@ -159,7 +163,7 @@ $text-grey: #777a7e;
     }
 }
 
-.offres-list {
+.item-list {
     border-right: 1px solid #d9d9da;
 
     ul {

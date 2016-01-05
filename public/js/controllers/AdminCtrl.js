@@ -22,6 +22,7 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
 
     // ADD
     $scope.newArticle = {};
+    $scope.newArticle.media = "Aucun";
     $scope.addArticle = function () {
         if(!$scope.newArticle.priority) {
             $scope.newArticle.priority = $scope.MainArticlesSorted[$scope.MainArticlesCount]+1;
@@ -60,6 +61,11 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
         $window.location.reload(true);
     }
 
+    // UTILS
+    $scope.curArticleIndex = 0;
+    $scope.activateArticle = function(index) {
+        $scope.curArticleIndex = index;
+    }
     $scope.ArticleTracker = function(article) {
         return article.priority + article.titre;
     }
