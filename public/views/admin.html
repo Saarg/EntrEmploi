@@ -9,7 +9,7 @@
                         </ul>
                     </div>
                     <div class="col-md-9 edit-article">
-                        <form ng-submit="editArticle(curArticleIndex)">
+                        <form ng-submit="editArticle(MainArticles.indexOf(MainArticlesSorted[curArticleIndex]))">
                             <div class="form-group col-md-10">
                                 <input class="form-control" ng-model="MainArticlesSorted[curArticleIndex].titre" type="text" id="titre" required>
                                 <label for="titre">Titre</label>
@@ -43,7 +43,7 @@
                             </div>
                             <div class="form-group col-md-12">
                                 <button type="submit" class="btn btn-success btn-sm">Modifier</button>
-                                <button type="button" ng-click="infoArticle(curArticleIndex)" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>
+                                <button type="button" ng-click="infoArticle(MainArticles.indexOf(MainArticlesSorted[curArticleIndex]))" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>
                                 <button type="button" ng-click="deleteArticle(MainArticlesSorted[curArticleIndex]._id);" class="btn btn-danger btn-sm pull-right">Supprimer</button>
                                 <button type="reset" ng-click="reload();" class="btn btn-warning btn-sm pull-right">Reinitialiser</button>
                             </div>
