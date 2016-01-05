@@ -143,7 +143,7 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
         $window.location.reload(true);
     }
 
-    // ====== FOOTER ======
+    // ==== PARTENAIRE ====
     PartenairesService.getPartenaires().then(function (res) {
         $scope.Partenaires = res.data;
     });
@@ -172,4 +172,25 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
         PartenairesService.deletePartenaire(partenaire_id);
         $window.location.reload(true);
     }
+
+    // ====== COORDS ======
+    $scope.addr = [];
+    ConfigService.getConfig("addr1").then(function(res){
+        $scope.addr.push(res.data);
+    });
+    ConfigService.getConfig("addr2").then(function(res){
+        $scope.addr.push(res.data);
+    });
+    ConfigService.getConfig("addr3").then(function(res){
+        $scope.addr.push(res.data);
+    });
+    ConfigService.getConfig("addr4").then(function(res){
+        $scope.addr.push(res.data);
+    });
+    // EDIT
+    $scope.editAddr = function (index, value) {
+        ConfigService.editConfig("addr"+(index+1), value);
+        $window.location.reload(true);
+    }
+
 }
