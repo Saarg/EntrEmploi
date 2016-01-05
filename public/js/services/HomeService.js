@@ -25,7 +25,7 @@ function HomeService($http, $window) {
             });
         },
         editArticle : function(article) {
-            if(article.media == 'Photo' && article.image) {
+            if(article.media == 'Photo' && article.image.resized) {
                 article.lienMedia = article.image.resized.dataURL;
             } else if (article.media == 'Photo' && !article.lienMedia) {
                 article.media = 'Aucun';
