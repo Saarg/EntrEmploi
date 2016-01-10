@@ -54,7 +54,10 @@ module.exports = function(app) {
             }
 
             staff.save(function(err) {
-                if (err) res.json({ success: false, message: err });
+                if (err) {
+                    res.json({ success: false, message: err });
+                    return;
+                }
                 res.json({ success: true });
             });
         });

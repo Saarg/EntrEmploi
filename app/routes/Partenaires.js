@@ -8,7 +8,10 @@ module.exports = function(app) {
         partenaire.site = req.body.site;
 
         partenaire.save(function(err) {
-            if (err) res.json({ success: false, message: err });
+            if (err) {
+                res.json({ success: false, message: err });
+                return;
+            }
             res.json({ success: true });
         });
     });
@@ -20,7 +23,10 @@ module.exports = function(app) {
             partenaire.site = req.body.site;
 
             partenaire.save(function(err) {
-                if (err) res.json({ success: false, message: err });
+                if (err) {
+                    res.json({ success: false, message: err });
+                    return;
+                }
                 res.json({ success: true });
             });
         });
@@ -28,7 +34,10 @@ module.exports = function(app) {
     // DELETE
     app.delete('/api/partenaires/:partenaire_id', function(req, res) {
         Partenaires.remove({_id: req.params.partenaire_id}, function(err, partenaire) {
-            if (err) res.json({ success: false, message: err });
+            if (err) {
+                res.json({ success: false, message: err });
+                return;
+            }
             res.json({ success: true });
         });
     });
