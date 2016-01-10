@@ -5,10 +5,77 @@
 $blue: #244395;
 $red: #ff1719;
 
+
 // ================================== HEADER ==================================
 // Si on change la taille du header il faut penser a changer le margin-top dans .header-spacer
 // ============================================================================
 
+
+.menu-button {
+    font-size: 0;
+
+    position: absolute;
+    top: 50%;
+    right: 10px;
+
+    display: block;
+    overflow: hidden;
+
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+
+    cursor: pointer;
+    transition: background .3s;
+    text-indent: -9999px;
+
+    border: none;
+    border-radius: none;
+    box-shadow: none;
+
+    appearance: none;
+    background-color: transparent;
+
+    @include transform(translateY(-50%));
+
+    &:focus {
+        outline: none;
+    }
+
+    span {
+        display: block;
+        position: absolute;
+        top: 18px;
+        left: 4px;
+        right: 4px;
+        height: 4px;
+        background-color: #FFF;
+
+        &::after,
+        &::before {
+            display: block;
+            position: absolute;
+            height: 4px;
+            width: 100%;
+            left: 0;
+            content: '';
+            background-color: #FFF;
+        }
+
+        &::before {
+            top: -10px;
+        }
+
+        &::after {
+            bottom: -10px;
+        }
+    }
+
+    @media (min-width: 544px) {
+        display: none;
+    }
+}
 
 
 header {
@@ -18,14 +85,14 @@ header {
         height: 150px;
         .logo-spf {
             max-width: 100%;
-            max-height: 150px;
             height: auto;
+            max-height: 150px;
             padding: 10px;
         }
         .logo-entremploi {
             max-width: 100%;
-            max-height: 150px;
             height: auto;
+            max-height: 150px;
             padding: 10px;
         }
     }
@@ -38,9 +105,10 @@ header {
 
 .navbar-inverse {
     z-index: 999;
+
     width: 100%;
     height: 50px;
-    margin: 0px;
+    margin: 0;
 
     border: none;
     border-radius: 0;
@@ -64,33 +132,14 @@ header {
             position: absolute;
             top: 50%;
             right: 0;
-            margin: 0px;
 
-            .navbar-collapse {
-                background-color: $blue;
-                position: absolute;
-                top: 50px;
-                left: -240px;
-                list-style-type: none;
-                width: 300px;
-                border: 0px;
-
-            }
-            .navbar-toggle {
-                border: 0px;
-                &:focus {
-                    background-color: transparent;
-                }
-                &:hover {
-                    transition: border-radius .1s;
-                    transition: background-color .3s;
-
-                    border-radius: 6px;
-                    background-color: darken($blue, 10%);
-                }
-            }
+            margin: 0;
 
             transform: translate3d(0, -50%, 0);
+
+            @media (max-width: 33.9em) {
+                display: none;
+            }
             li {
                 padding-left: 2px;
                 a {
@@ -113,25 +162,20 @@ header {
 
 // ================ GLOBAL
 
-* {
-    font-family: 'Copse', serif;
+html {
     font-family: 'Roboto', sans-serif;
+    font-size: calc(.75em + 1vmin);
 }
 
 p {
-    @media (max-width: 544px) {
-        font-size: 1em;
-    }
-
-    @media (min-width: 544px) {
-        font-size: 1.3em;
-    }
+    font-size: 1rem;
 }
 
 a.anchor {
-    display: block;
     position: relative;
     top: -50px;
+
+    display: block;
     visibility: hidden;
 }
 
@@ -176,14 +220,14 @@ a.anchor {
         padding-top: 10px;
     }
     h3 {
-        color: #FFF;
+        color: #fff;
     }
     ul {
         list-style: outside none none;
         a {
-            color: #A0A0A0;
-            &:hover{
-                color: #FFF;
+            color: #a0a0a0;
+            &:hover {
+                color: #fff;
             }
         }
     }
