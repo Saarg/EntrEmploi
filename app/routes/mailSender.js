@@ -22,6 +22,7 @@ module.exports = function(app) {
         transporter.sendMail(mailOptions, function(error, info){
             if(error){
                 res.json({ success: false, error: error });
+                return;
             }
             res.json({ success: true});
         });

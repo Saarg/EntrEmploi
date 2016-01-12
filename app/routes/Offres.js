@@ -15,7 +15,10 @@ module.exports = function(app) {
         offre._createur = req.body._createur;
 
         offre.save(function(err) {
-            if (err) res.json({ success: false, message: err });
+            if (err) {
+                res.json({ success: false, message: err });
+                return;
+            }
             res.json({ success: true });
         });
     });
@@ -34,7 +37,10 @@ module.exports = function(app) {
             offre.contract = req.body.contract;
 
             offre.save(function(err) {
-                if (err) res.json({ success: false, message: err });
+                if (err) {
+                    res.json({ success: false, message: err });
+                    return;
+                }
                 res.json({ success: true });
             });
         });
@@ -42,7 +48,10 @@ module.exports = function(app) {
     // DELETE
     app.delete('/api/offres/:offre_id', function(req, res) {
         Offres.remove({_id: req.params.offre_id}, function(err) {
-            if (err) res.json({ success: false, message: err });
+            if (err) {
+                res.json({ success: false, message: err });
+                return;
+            }
             res.json({ success: true });
         });
     });

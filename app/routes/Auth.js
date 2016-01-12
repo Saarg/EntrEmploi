@@ -9,7 +9,7 @@ module.exports = function(app) {
         if (token) {
             jwt.verify(token, app.get('superSecret'), function(err, decoded) {
                 if (err) {
-                    res.json({ success: false, message: 'Failed to authenticate token.' });
+                    res.json({ success: false, message: 'Le token n\'est pas reconnu.' });
                 } else {
                     res.json({ success: true, decoded: decoded });
                 }
@@ -18,7 +18,7 @@ module.exports = function(app) {
         } else {
             res.status(403).send({
                 success: false,
-                message: 'No token provided.'
+                message: 'Aucun token fournis.'
             });
         }
     });
@@ -33,14 +33,14 @@ module.exports = function(app) {
             if (err)
                 res.json({ success: false, message: err });
             else if (!user)
-                res.json({ success: false, message: 'No user found' });
+                res.json({ success: false, message: 'L\'utilisateur n\'existe pas' });
             else if (!user.validPassword(password))
-                res.json({ success: false, message: 'Oops Wrong password' });
+                res.json({ success: false, message: 'Mauvais mot de passe' });
             else {
                 var token = jwt.sign({ _id:user._id, nom:user.nom, prenom:user.prenom}, app.get('superSecret'), {
                     expiresIn: 86400 // expires in 24 hours
                 });
-                res.json({ success: true, message:'bonjour', user: user, token: token });
+                res.json({ success: true, message:'Connexion valide', user: user, token: token });
             }
         });
     });

@@ -4,12 +4,18 @@ module.exports = function(app) {
     // PUT
     app.put('/api/config/:name', function(req, res) {
         Config.findOne({name:req.params.name}, function(err, config) {
-            if (err) res.send(err);
+            if (err) {
+                res.send(err);
+                return;
+            }
             //config.name = req.body.name || req.params.name;
             config.value = req.body.value;
 
             config.save(function(err) {
-                if (err) res.json({ success: false, message: err });
+                if (err) {
+                    res.json({ success: false, message: err });
+                    return;
+                }
                 res.json({ success: true });
             });
         });

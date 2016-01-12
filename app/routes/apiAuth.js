@@ -13,12 +13,12 @@ module.exports = function(app) {
             if (err) throw err;
 
             if (!user) {
-                res.json({ success: false, message: 'Authentication failed. User not found.' });
+                res.json({ success: false, message: 'Utilisateur inconnu.' });
             } else if (user) {
 
                 // check if password matches
                 if (user.passwd != req.body.passwd) {
-                    res.json({ success: false, message: 'Authentication failed. Wrong password.' });
+                    res.json({ success: false, message: 'Mauvais mot de passe.' });
                 } else {
 
                     // if user is found and password is right
