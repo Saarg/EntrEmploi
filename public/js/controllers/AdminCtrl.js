@@ -106,7 +106,9 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
     }
 
     $scope.deleteOffre = function (index) {
-        OffresService.deleteOffre($scope.offres[index]);
+        OffresService.deleteOffre($scope.offres[index]).then(function () {
+            $scope.offres.splice(index, 1);
+        })
     }
 
     // ====== HEADER ======

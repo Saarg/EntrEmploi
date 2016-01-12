@@ -45,7 +45,7 @@ function OffresService($http, $window) {
         },
 
         deleteOffre : function (offre) {
-            return $http.delete('/api/offres/' + offre._id);
+            return $http.delete('/api/offres/' + offre._id + '?token=' + $window.sessionStorage.token);
         }
     }
 }
