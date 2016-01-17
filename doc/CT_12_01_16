@@ -1,0 +1,11 @@
+1- Suppression des sections pair de la homepage (boutons, compteur...)
+
+2- Suppression de la page offres qui representent trop de travail à maintenir pour les benevoles
+
+3- Ajout page prestations qui liste les differentes prestations offertes avec possibilité de s'inscrire
+    - prestation: nom description nbmax
+    - incription: nom prenom (prenom_acceuil || tel || mail)
+    - rendre visible les nouveaux inscrit qu'il faut recontacter
+    - notifier quand une activité à le bon nombre d'inscrit
+
+4- laisser la possibilité de ne pas mettre le nom de famille des candidats
