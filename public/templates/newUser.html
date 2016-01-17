@@ -1,0 +1,24 @@
+<div class="newUser">
+    <h2>Ajouter un utilisateur</h2>
+    <form ng-submit="addUser() && closeThisDialog()">
+        <div class="form-group">
+            <label for="titre">Nom</label>
+            <input class="form-control" ng-model="newUser.nom" type="text" id="nom" required>
+        </div>
+        <div class="form-group">
+            <label for="titre">Prenom</label>
+            <input class="form-control" ng-model="newUser.prenom" type="text" id="prenom" required>
+        </div>
+        <div class="form-group">
+            <label for="titre">Mot de passe</label>
+            <input class="form-control" ng-model="newUser.passwd" type="password" id="newPasswf">
+        </div>
+        <div class="form-group">
+            <label for="titre">niveau d'acces</label>
+            <input class="form-control" ng-model="newUser.accesLevel" type="text" id="accesLevel" required>
+        </div>
+        <div class="form-group">
+            <input type="submit" name="name" value="Ajouter">
+        </div>
+    </form>
+</div>

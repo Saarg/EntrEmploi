@@ -3,6 +3,7 @@
         <tabs>
             <pane class="admin-section" title="Page accueil" ng-if="accesLevel == 3">
                 <div class="row">
+                    <h2>Editer un article</h2>
                     <div class="col-md-3 item-list">
                         <ul>
                             <li class="offre-item" ng-repeat="article in MainArticlesSorted" ng-click="activateArticle(MainArticlesSorted.indexOf(article))"  ng-class="{active : MainArticlesSorted.indexOf(article) === curArticleIndex}">{{article.titre}}</li>
@@ -44,13 +45,14 @@
                             <div class="form-group col-md-12">
                                 <button type="submit" class="btn btn-success btn-sm">Modifier</button>
                                 <button type="button" ng-click="infoArticle(MainArticles.indexOf(MainArticlesSorted[curArticleIndex]))" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>
-                                <button type="button" ng-click="deleteArticle(MainArticlesSorted[curArticleIndex]._id);" class="btn btn-danger btn-sm pull-right">Supprimer</button>
-                                <button type="reset" ng-click="reload();" class="btn btn-warning btn-sm pull-right">Reinitialiser</button>
+                                <button type="button" ng-click="deleteArticle(curUserIndex);" class="btn btn-danger btn-sm pull-right">Supprimer</button>
+                                <button type="reset" ng-click="loadArticles();" class="btn btn-warning btn-sm pull-right">Reinitialiser</button>
                             </div>
                             <hr/>
                         </form>
                     </div>
                 </div>
+                <hr/>
                 <div class="row">
                     <h2>Ajouter un article</h2>
                     <form ng-submit="addArticle()">
@@ -182,50 +184,35 @@
                 </div>
                 <div class="row">
                     <h2>Gestion du staff</h2>
-                    <div class="row">
-                        <label class="col-md-3" for="titre">Nom</label>
-                        <label class="col-md-3" for="titre">Prenom</label>
-                        <label class="col-md-3" for="titre">Nouveau mot de passe</label>
-                        <label class="col-md-2" for="titre">niveau d'acces</label>
+                    <div class="col-md-3 item-list">
+                        <button type="button" ng-click="newUserPopup()" class="btn btn-primary">Ajouter un utilisateur</button>
+                        <ul>
+                            <li class="offre-item" ng-repeat="user in users" ng-click="activateUser(users.indexOf(user))" ng-class="{active : users.indexOf(user) === curUserIndex}">{{user.nom}} - {{user.prenom}}</li>
+                        </ul>
                     </div>
-                    <div class="row" ng-repeat="user in users">
-                        <form class="container" ng-submit="editUser(user)">
-                            <div class="form-group col-md-3">
-                                <input class="form-control" ng-model="user.nom" type="text" id="nom" required>
+                    <div class="col-md-9 edit-offre">
+                        <form ng-submit="editUser(users[curUserIndex])">
+                            <div class="form-group col-md-6">
+                                <label for="titre">Nom</label>
+                                <input class="form-control" ng-model="users[curUserIndex].nom" type="text" id="nom" required>
                             </div>
-                            <div class="form-group col-md-3">
-                                <input class="form-control" ng-model="user.prenom" type="text" id="prenom" required>
+                            <div class="form-group col-md-6">
+                                <label for="titre">Prenom</label>
+                                <input class="form-control" ng-model="users[curUserIndex].prenom" type="text" id="prenom" required>
                             </div>
-                            <div class="form-group col-md-3">
-                                <input class="form-control" ng-model="user.newPasswd" type="password" id="newPasswf">
+                            <div class="form-group col-md-6">
+                                <label for="titre">Nouveau mot de passe</label>
+                                <input class="form-control" ng-model="users[curUserIndex].newPasswd" type="password" id="newPasswf">
                             </div>
-                            <div class="form-group col-md-2">
-                                <input class="form-control" ng-model="user.accesLevel" type="text" id="accesLevel" required>
+                            <div class="form-group col-md-6">
+                                <label for="titre">niveau d'acces</label>
+                                <input class="form-control" ng-model="users[curUserIndex].accesLevel" type="text" id="accesLevel" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" ng-if="users[curUserIndex]._id">
                                 <button type="submit" title="valider" class="btn btn-primary btn-xs pull-right"><span class="glyphicon glyphicon-ok"></span></button>
                             </div>
-                            <div class="form-group">
-                                <button type="button" title="supprimer" class="btn btn-danger btn-xs pull-right" ng-click="deleteUser(user._id)"><span class="glyphicon glyphicon-remove"></span></button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="row">
-                        <form class="container" ng-submit="addUser(newUser)">
-                            <div class="form-group col-md-3">
-                                <input class="form-control" ng-model="newUser.nom" type="text" id="nom" required>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <input class="form-control" ng-model="newUser.prenom" type="text" id="prenom" required>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <input class="form-control" ng-model="newUser.passwd" type="password" id="passwd">
-                            </div>
-                            <div class="form-group col-md-2">
-                                <input class="form-control" ng-model="newUser.accesLevel" type="text" id="accesLevel" required>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" title="valider" class="btn btn-success btn-xs pull-right"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                            <div class="form-group" ng-if="users[curUserIndex]._id">
+                                <button type="button" title="supprimer" class="btn btn-danger btn-xs pull-right" ng-click="deleteUser(curUserIndex)"><span class="glyphicon glyphicon-remove"></span></button>
                             </div>
                         </form>
                     </div>
