@@ -11,8 +11,8 @@
         <div class="container">
             <div>
                 <h2><span>{{ article.Stitre[0] }}</span> {{ article.Stitre[1] }}</h2>
-                <img ng-if="article.media=='Photo'" class="FR" ng-src="{{ article.lienMedia }}">
-                <iframe ng-if="article.media=='Vidéo'" class="FR YT" ng-src="{{ article.lienMedia }}" frameborder="0" allowfullscreen></iframe>
+                <img ng-if="article.media=='Photo'" class="media" ng-src="{{ article.lienMedia }}">
+                <iframe ng-if="article.media=='Vidéo'" class="media YT" ng-src="{{ article.lienMedia }}" frameborder="0" allowfullscreen></iframe>
                 <p ng-bind-html="article.contenu"></p>
             </div>
         </div>
