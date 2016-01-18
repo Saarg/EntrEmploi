@@ -5,7 +5,7 @@
         <button type="button" ng-click="logout()" class="btn btn-danger btn-sm pull-right">Deconnexion</button>
     </div>
     <div class="row">
-        <form>
+        <form ng-submit="editUser()">
             <div class="form-group col-md-6">
                 <label for="nom">Nom</label>
                 <input class="form-control" ng-model="user.nom" type="text" id="nom">

@@ -24,6 +24,12 @@ function StaffService($http, $window) {
                 token: $window.sessionStorage.token,
                 nom: user.nom,
                 prenom: user.prenom,
+                tel : user.tel,
+                mail : user.mail,
+                adresse :user.adresse,
+                compAdresse : user.compAdresse,
+                ville : user.ville,
+                codePostal : user.codePostal,
                 accesLevel: user.accesLevel,
                 newPasswd: user.newPasswd
             });

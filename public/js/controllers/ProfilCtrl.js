@@ -16,5 +16,8 @@ function ProfilController($scope, $window, StaffService) {
         $window.location.reload(true);
     }
 
+    $scope.editUser = function () {
+        StaffService.editUser($scope.user);
+    }
 
 }
