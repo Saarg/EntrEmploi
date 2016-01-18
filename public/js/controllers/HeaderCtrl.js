@@ -13,7 +13,7 @@ function HeaderController($scope, $window, OffresService, AuthService, ConfigSer
 
     // GET OFFRESCOUNT
     OffresService.getOffresCount().then(function(res){
-        $scope.showOffres = res.data > 5;
+        $scope.showOffres = res.data >= 3;
     });
 
     // AUTH
