@@ -85,7 +85,9 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
     });
 
     $scope.addOffre = function (newOffre) {
-        OffresService.postOffre(newOffre);
+        OffresService.postOffre(newOffre).then(function () {
+            $scope.offres.push(newOffre);
+        });
         $scope.newOffre = {}; // reset la nouvelle offre
     }
 
