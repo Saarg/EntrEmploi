@@ -34,6 +34,15 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
             }
         }
     })
+    .when('/profil', {
+        templateUrl: 'views/profil.html',
+        controller: 'ProfilController',
+        resolve: {
+            logged: function(AuthService){
+                return AuthService.logged();
+            }
+        }
+    })
     .otherwise({
         redirectTo: '/'
     });

@@ -17,13 +17,6 @@ function HeaderController($scope, $window, OffresService, AuthService, ConfigSer
     });
 
     // AUTH
-    $scope.logout = function() {
-        delete $window.sessionStorage.token;
-        delete $window.sessionStorage.nom;
-        delete $window.sessionStorage.prenom;
-        $window.location.reload(true);
-    }
-
     $scope.logged = $window.sessionStorage.token;
 
 }
