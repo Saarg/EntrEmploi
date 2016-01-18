@@ -20,43 +20,44 @@ $blue: #244395;
         @media (max-width: 544px) {
             text-align: justify;
         }
-        &:nth-child(odd) {
-            img {
-                width: 20%;
-                height: auto;
-                margin-bottom: 10px;
+
+        img {
+            width: 20%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .YT {
+          width:100%;
+          min-height: 360px;
+          max-width: 640px;
+          margin-bottom: 10px;
+        }
+
+        ul {
+            display:table;
+            margin-bottom: 0px;
+            list-style-position: inside;
+            li{
+                list-style: circle;
+                margin-top: -20px;
             }
-            .FL {
+        }
+
+        &:nth-child(odd) {
+            .media {
                 float: left;
                 margin-right: 10px;
             }
-            .FR {
-                float: right;
-                margin-left: 10px;
-            }
-            .YT {
-              width:100%;
-              min-height: 360px;
-              max-width: 640px;
-              margin-bottom: 10px;
-            }
-
-            ul {
-                display:table;
-                margin-bottom: 0px;
-                list-style-position: inside;
-                li{
-                    list-style: circle;
-                    margin-top: -20px;
-                }
-            }
         }
         &:nth-child(even) {
-            height: 120px;
-
             background-color: #f5f6f7;
             box-shadow: inset 0 10px 40px -10px rgba(0, 0, 0, .05),
             inset 0 -10px 40px -10px rgba(0, 0, 0, .05);
+
+            .media {
+                float: right;
+                margin-left: 10px;
+            }
         }
 
         &.liens {
@@ -178,10 +179,6 @@ $blue: #244395;
             margin: 0 auto;
 
             @include vertical-align();
-        }
-        img {
-            width: 100%;
-            height: 100%;
         }
     }
     .image-carousel {

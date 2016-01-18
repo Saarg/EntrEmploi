@@ -6,58 +6,15 @@
     </uib-carousel>
 </div>
 <div class="container-fluid">
-    <section>
-        <a class="anchor" id="{{ MainArticles[0].titre }}"></a>
+    <section ng-repeat="article in MainArticles">
+        <a class="anchor" id="{{ article.titre }}"></a>
         <div class="container">
             <div>
-                <h2><span>{{ MainArticles[0].Stitre[0] }}</span> {{ MainArticles[0].Stitre[1] }}</h2>
-                <img ng-if="MainArticles[0].media=='Photo'" class="FR" ng-src="{{ MainArticles[0].lienMedia }}">
-                <iframe ng-if="MainArticles[0].media=='Vidéo'" class="FR YT" ng-src="{{ MainArticles[0].lienMedia }}" frameborder="0" allowfullscreen></iframe>
-                <p ng-bind-html="MainArticles[0].contenu"></p>
+                <h2><span>{{ article.Stitre[0] }}</span> {{ article.Stitre[1] }}</h2>
+                <img ng-if="article.media=='Photo'" class="media" ng-src="{{ article.lienMedia }}">
+                <iframe ng-if="article.media=='Vidéo'" class="media YT" ng-src="{{ article.lienMedia }}" frameborder="0" allowfullscreen></iframe>
+                <p ng-bind-html="article.contenu"></p>
             </div>
-        </div>
-    </section>
-    <section class="liens">
-        <ul class="container center-block">
-            <li class="don"><a class="btn pill" href="https://www.secourspopulaire.fr/don">Faire un don</a></li>
-            <li class="benevole"><a class="btn pill" href="https://www.secourspopulaire.fr/devenir-benevole">Devenir benevole</a></li>
-        </ul>
-    </section>
-    <section>
-        <a class="anchor" id="{{ MainArticles[1].titre }}"></a>
-        <div class="container">
-            <div>
-                <h2><span>{{ MainArticles[1].Stitre[0] }}</span> {{ MainArticles[1].Stitre[1] }}</h2>
-                <img ng-if="MainArticles[1].media=='Photo'" class="FL" ng-src="{{ MainArticles[1].lienMedia }}">
-                <iframe ng-if="MainArticles[1].media=='Vidéo'" class="FL YT" ng-src="{{ MainArticles[1].lienMedia }}" frameborder="0" allowfullscreen></iframe>
-                <p ng-bind-html="MainArticles[1].contenu"></p>
-            </div>
-        </div>
-    </section>
-    <section class="compteur-succes">
-        <div class="container center-block">
-            <p>
-                Depuis le 20 mars 2015, <strong>{{succes}}</strong> personnes ont trouvé du travail grâce à nous.
-            </p>
-        </div>
-    </section>
-    <section>
-        <a class="anchor" id="{{ MainArticles[2].titre }}"></a>
-        <div class="container">
-            <h2><span>{{ MainArticles[2].Stitre[0] }}</span> {{ MainArticles[2].Stitre[1] }}</h2>
-            <img ng-if="MainArticles[2].media=='Photo'" class="FR" ng-src="{{ MainArticles[2].lienMedia }}">
-            <iframe ng-if="MainArticles[2].media=='Vidéo'" class="FR YT" ng-src="{{ MainArticles[2].lienMedia }}" frameborder="0" allowfullscreen></iframe>
-            <p ng-bind-html="MainArticles[2].contenu"></p>
-        </div>
-    </section>
-
-    <section class="temoignages">
-        <div class="carousel-temoignages">
-            <uib-carousel interval="interval" template-url="views/carousel.html">
-                <uib-slide ng-repeat="slide in slides" active="slide.active">
-                    <p>{{slide.text}}</p>
-                </uib-slide>
-            </uib-carousel>
         </div>
     </section>
 </div>

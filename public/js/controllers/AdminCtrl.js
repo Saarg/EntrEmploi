@@ -11,14 +11,17 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
         $scope.MainArticlesCount  = res.data;
     });
 
-    HomeService.getArticles().then(function(res){
-        $scope.MainArticles  = res.data;
-        for(var i in $scope.MainArticles){
-            $scope.MainArticles[i].contenu = $scope.MainArticles[i].contenu.replace(/<br\s*[\/]?>/gi, "\n");
-            $scope.MainArticles[i].image = $scope.MainArticles[i].lienMedia;
-        }
-        $scope.MainArticlesSorted  = $filter('orderBy')($scope.MainArticles, 'priority');
-    });
+    $scope.loadArticles = function () {
+        HomeService.getArticles().then(function(res){
+            $scope.MainArticles  = res.data;
+            for(var i in $scope.MainArticles){
+                $scope.MainArticles[i].contenu = $scope.MainArticles[i].contenu.replace(/<br\s*[\/]?>/gi, "\n");
+                $scope.MainArticles[i].image = $scope.MainArticles[i].lienMedia;
+            }
+            $scope.MainArticlesSorted  = $filter('orderBy')($scope.MainArticles, 'priority');
+        });
+    }
+    $scope.loadArticles();
 
     // ADD
     $scope.newArticle = {};
@@ -28,7 +31,9 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
             $scope.newArticle.priority = $scope.MainArticlesSorted[$scope.MainArticlesCount]+1;
         }
         HomeService.postArticle($scope.newArticle);
-        $window.location.reload(true);
+        $scope.loadArticles();
+        $scope.newArticle = {};
+        $scope.newArticle.media = "Aucun";
     }
 
     // EDIT
@@ -36,7 +41,6 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
     $scope.editArticle = function (index) {
         $scope.currentArticle = $scope.MainArticles[index];
         HomeService.editArticle($scope.currentArticle);
-        $window.location.reload(true);
     }
     $scope.infoArticle = function (index) {
         $scope.currentArticle = $scope.MainArticles[index];
@@ -56,9 +60,10 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
     }
 
     // DELETE
-    $scope.deleteArticle = function (article_id) {
-        HomeService.deleteArticle(article_id);
-        $window.location.reload(true);
+    $scope.deleteArticle = function (index) {
+        HomeService.deleteArticle($scope.MainArticles[index]._id).then(function () {
+            $scope.MainArticles.splice(index, 1);
+        });
     }
 
     // UTILS
@@ -132,25 +137,42 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
     }
 
     // ====== STAFF  ======
-    StaffService.getUsers().then(function(res){
-        $scope.users  = res.data;
-    });
+    $scope.loadUsers = function () {
+        StaffService.getUsers().then(function(res){
+            $scope.users  = res.data;
+        });
+    }
+    $scope.loadUsers();
     // ADD
     $scope.newUser = {};
-    $scope.addUser = function (newUser) {
+    $scope.newUserPopup = function () {
+        ngDialog.open({
+            template : '../templates/newUser.html',
+            className: 'ngdialog-theme-default',
+            disableAnimation : true,
+            scope: $scope
+        });
+    }
+    $scope.addUser = function () {
         // TODO generation aleatoire password
-        StaffService.postUser(newUser);
-        $window.location.reload(true);
+        StaffService.postUser($scope.newUser);
+        $scope.loadUsers();
+        $scope.newUser = {};
     }
     // EDIT
     $scope.editUser = function (user) {
         StaffService.editUser(user);
-        $window.location.reload(true);
     }
     // DELETE
-    $scope.deleteUser = function (user_id) {
-        StaffService.deleteUser(user_id);
-        $window.location.reload(true);
+    $scope.deleteUser = function (index) {
+        StaffService.deleteUser($scope.users[index]._id).then(function () {
+            $scope.users.splice(index, 1);
+        });
+    }
+
+    $scope.curUserIndex = 0;
+    $scope.activateUser = function(index) {
+        $scope.curUserIndex = index;
     }
 
     // ==== PARTENAIRE ====
