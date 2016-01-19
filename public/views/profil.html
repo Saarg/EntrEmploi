@@ -5,6 +5,8 @@
         <button type="button" ng-click="logout()" class="btn btn-danger btn-sm pull-right">Deconnexion</button>
     </div>
     <div class="row">
+        <div ng-if="EPalert && !EPsuccess" class="alert alert-danger">{{ EPalert }}</div>
+        <div ng-if="EPsuccess && !EPalert" class="alert alert-success">{{ EPsuccess }}</div>
         <form ng-submit="editUser()">
             <div class="form-group col-md-6">
                 <label for="nom">Nom</label>
@@ -47,14 +49,16 @@
         </form>
     </div>
     <div class="row">
-        <form>
+        <div ng-if="CPalert && !CPsuccess" class="alert alert-danger">{{ CPalert }}</div>
+        <div ng-if="CPsuccess && !CPalert" class="alert alert-success">{{ CPsuccess }}</div>
+        <form ng-submit="changePasswd()">
             <div class="form-group col-md-6">
                 <label for="newPasswd">Nouveau mot de passe</label>
-                <input class="form-control" ng-model="user.newPasswd" type="text" id="newPasswd">
+                <input class="form-control" ng-model="user.newPasswd" type="password" id="newPasswd">
             </div>
             <div class="form-group col-md-6">
                 <label for="confPasswd">Confirmez nouveau mot de passe</label>
-                <input class="form-control" ng-model="user.confPasswd" type="text" id="confPasswd">
+                <input class="form-control" ng-model="user.confPasswd" type="password" id="confPasswd">
             </div>
             <div class="form-group col-md-12">
                 <button type="submit" class="btn btn-success btn-sm pull-right">Changer le mot de passe</button>

@@ -20,4 +20,16 @@ function ProfilController($scope, $window, StaffService) {
         StaffService.editUser($scope.user);
     }
 
+    $scope.changePasswd = function () {
+        if($scope.user.newPasswd == $scope.user.confPasswd) {
+            StaffService.editUser($scope.user);
+            delete $scope.CPalert;
+            $scope.CPsuccess = "mot de passe changé avec succes";
+        } else {
+            delete $scope.CPsuccess;
+            $scope.CPalert = "les mots de passe ne correspondent pas";
+        }
+
+    }
+
 }
