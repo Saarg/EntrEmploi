@@ -17,7 +17,16 @@ function ProfilController($scope, $window, StaffService) {
     }
 
     $scope.editUser = function () {
-        StaffService.editUser($scope.user);
+        StaffService.editUser($scope.user).then(function (res) {
+            console.log(res.data.success);
+            if(res.data.success){
+                delete $scope.EPalert;
+                $scope.EPsuccess = "Votre profil a bien été modifié";
+            } else {
+                delete $scope.EPsuccess;
+                $scope.EPalert = res.data.message;
+            }
+        });
     }
 
     $scope.changePasswd = function () {
