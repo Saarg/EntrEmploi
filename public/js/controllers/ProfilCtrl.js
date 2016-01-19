@@ -30,11 +30,11 @@ function ProfilController($scope, $window, StaffService) {
     }
 
     $scope.changePasswd = function () {
-        if($scope.user.newPasswd == $scope.user.confPasswd) {
+        if($scope.user.newPasswd == $scope.user.confPasswd && $scope.user.newPasswd) {
             StaffService.editUser($scope.user);
             delete $scope.CPalert;
             $scope.CPsuccess = "mot de passe changé avec succes";
-        } else {
+        } else if($scope.user.newPasswd) {
             delete $scope.CPsuccess;
             $scope.CPalert = "les mots de passe ne correspondent pas";
         }
