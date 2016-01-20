@@ -148,6 +148,7 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
     // ADD
     $scope.newUser = {};
     $scope.newUserPopup = function () {
+        $scope.newUser.accesLevel = 0;
         ngDialog.open({
             template : '../templates/newUser.html',
             className: 'ngdialog-theme-default',
