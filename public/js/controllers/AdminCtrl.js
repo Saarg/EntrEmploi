@@ -137,6 +137,8 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
     }
 
     // ====== STAFF  ======
+    $scope.accesValues = ["Lecture CV & prestations","Ecriture CV & prestations","Administation du site", "Dev"];
+
     $scope.loadUsers = function () {
         StaffService.getUsers().then(function(res){
             $scope.users  = res.data;
