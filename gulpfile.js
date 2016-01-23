@@ -8,7 +8,7 @@ var concat     = require('gulp-concat');
 
 // LESS
 gulp.task('compile-sass', function() {
-    gulp.src('./public/scss/*.scss')
+    gulp.src('./public/scss/index.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(minify())
     .pipe(concat('styles.css'))
