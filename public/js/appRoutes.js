@@ -9,9 +9,9 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
         templateUrl: 'views/offres.html',
         controller: 'OffresController'
     })
-    .when('/recruteur', {
-        templateUrl: 'views/recruteur.html',
-        controller: 'RecruteurController'
+    .when('/profils', {
+        templateUrl: 'views/profils.html',
+        controller: 'ProfilsController'
     })
     .when('/staff', {
         templateUrl: 'views/staff.html',

@@ -1,0 +1,24 @@
+<div class="newProfil">
+    <h2>Ajouter un candidat</h2>
+    <form ng-submit="addProfil() && closeThisDialog()">
+        <div class="form-group">
+            <label for="titre">Nom</label>
+            <input class="form-control" ng-model="newProfil.nom" type="text" id="nom">
+        </div>
+        <div class="form-group">
+            <label for="titre">Prenom</label>
+            <input class="form-control" ng-model="newProfil.prenom" type="text" id="prenom" required>
+        </div>
+        <div class="form-group">
+            <label for="accroche">Accroche</label>
+            <textarea class="form-control" name="accroche" ng-model="newProfil.accroche" id="Accroche" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="CV">CV</label>
+            <input name="CV" type="file" class="file-loading" id="CV">
+        </div>
+        <div class="form-group">
+            <input type="submit" name="name" value="Ajouter">
+        </div>
+    </form>
+</div>

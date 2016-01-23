@@ -1,8 +1,8 @@
 angular.module('AdminCtrl', ['ngDialog']).controller('AdminController', AdminController)
 
-AdminController.$inject =['$scope', '$filter', 'AdminService', 'HomeService', 'OffresService', 'PartenairesService', 'StaffService', 'ConfigService', '$window', 'ngDialog'];
+AdminController.$inject =['$scope', '$filter', 'AdminService', 'HomeService', 'OffresService', 'ProfilsService', 'PartenairesService', 'StaffService', 'ConfigService', '$window', 'ngDialog'];
 
-function AdminController($scope, $filter, AdminService, HomeService, OffresService, PartenairesService, StaffService, ConfigService, $window, ngDialog) {
+function AdminController($scope, $filter, AdminService, HomeService, OffresService, ProfilsService, PartenairesService, StaffService, ConfigService, $window, ngDialog) {
     $scope.accesLevel = $window.sessionStorage.accesLevel;
 
     // ======  HOME  ======
@@ -136,6 +136,47 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
         })
     }
 
+    // ====== PROFIL ======
+
+    ProfilsService.getProfils().then(function (res) {
+        $scope.profils = res.data;
+    });
+
+    $scope.newProfil = {};
+    $scope.addProfil = function () {
+        ProfilsService.postProfil($scope.newProfil).then(function () {
+            $scope.profils.push($scope.newProfil);
+        });
+        $scope.newProfil = {}; // reset
+    }
+
+    $scope.editProfil = function () {
+        ProfilsService.editProfil($scope.profils[$scope.curProfilIndex]).then(function () {
+
+        });
+    }
+
+    $scope.curProfilIndex = 0;
+    $scope.activateProfil = function(index) {
+        $scope.curProfilIndex = index;
+    }
+
+    $scope.newProfil = {};
+    $scope.newProfilPopup = function () {
+        ngDialog.open({
+            template : '../templates/newProfil.html',
+            className: 'ngdialog-theme-default',
+            disableAnimation : true,
+            scope: $scope
+        });
+    }
+
+    $scope.deleteProfil = function () {
+        ProfilsService.deleteProfil($scope.profils[$scope.curProfilIndex]).then(function () {
+            $scope.profils.splice($scope.curProfilIndex, 1);
+        })
+    }
+
     // ====== HEADER ======
     $scope.logoSPF = {};
     ConfigService.getConfig("LogoSPF").then(function(res){
@@ -155,7 +196,7 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
     }
 
     // ====== STAFF  ======
-    $scope.accesValues = ["Lecture CV & prestations","Ecriture CV & prestations","Administation du site", "Dev"];
+    $scope.accesValues = ["Lecture CV & prestations","Ecriture CV & prestations","Administation du site"];
 
     $scope.loadUsers = function () {
         StaffService.getUsers().then(function(res){
