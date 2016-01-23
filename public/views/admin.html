@@ -4,13 +4,15 @@
             <pane class="admin-section" title="Page accueil" ng-if="accesLevel >= 2">
                 <div class="row">
                     <h2>Editer un article</h2>
+                    <div ng-if="EAalert && !EAsuccess" class="alert alert-danger">{{ EAalert }}</div>
+                    <div ng-if="EAsuccess && !EAalert" class="alert alert-success">{{ EAsuccess }}</div>
                     <div class="col-md-3 item-list">
                         <ul>
                             <li class="offre-item" ng-repeat="article in MainArticlesSorted" ng-click="activateArticle(MainArticlesSorted.indexOf(article))"  ng-class="{active : MainArticlesSorted.indexOf(article) === curArticleIndex}">{{article.titre}}</li>
                         </ul>
                     </div>
                     <div class="col-md-9 edit-article">
-                        <form ng-submit="editArticle(MainArticles.indexOf(MainArticlesSorted[curArticleIndex]))">
+                        <form ng-submit="editArticle()">
                             <div class="form-group col-md-10">
                                 <input class="form-control" ng-model="MainArticlesSorted[curArticleIndex].titre" type="text" id="titre" required>
                                 <label for="titre">Titre</label>
@@ -44,9 +46,9 @@
                             </div>
                             <div class="form-group col-md-12">
                                 <button type="submit" class="btn btn-success btn-sm">Modifier</button>
-                                <button type="button" ng-click="infoArticle(MainArticles.indexOf(MainArticlesSorted[curArticleIndex]))" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>
-                                <button type="button" ng-click="deleteArticle(curUserIndex);" class="btn btn-danger btn-sm pull-right">Supprimer</button>
-                                <button type="reset" ng-click="loadArticles();" class="btn btn-warning btn-sm pull-right">Reinitialiser</button>
+                                <button type="button" ng-click="infoArticle()" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>
+                                <button type="button" ng-click="deleteArticle();" class="btn btn-danger btn-sm pull-right">Supprimer</button>
+                                <button type="reset" ng-click="reload();" class="btn btn-warning btn-sm pull-right">Reinitialiser</button>
                             </div>
                             <hr/>
                         </form>
@@ -55,6 +57,8 @@
                 <hr/>
                 <div class="row">
                     <h2>Ajouter un article</h2>
+                    <div ng-if="AAalert && !AAsuccess" class="alert alert-danger">{{ AAalert }}</div>
+                    <div ng-if="AAsuccess && !AAalert" class="alert alert-success">{{ AAsuccess }}</div>
                     <form ng-submit="addArticle()">
                         <div class="form-group col-md-10">
                             <input class="form-control" ng-model="newArticle.titre" type="text" name="titre" id="titre" required>

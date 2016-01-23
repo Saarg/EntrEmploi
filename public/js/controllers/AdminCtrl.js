@@ -30,7 +30,15 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
         if(!$scope.newArticle.priority) {
             $scope.newArticle.priority = $scope.MainArticlesSorted[$scope.MainArticlesCount]+1;
         }
-        HomeService.postArticle($scope.newArticle);
+        HomeService.postArticle($scope.newArticle).then(function (res) {
+            if(res.data.success){
+                delete $scope.AAalert;
+                $scope.AAsuccess = "L'article a bien été ajouté";
+            } else {
+                delete $scope.AAsuccess;
+                $scope.AAalert = res.data.message;
+            }
+        });
         $scope.loadArticles();
         $scope.newArticle = {};
         $scope.newArticle.media = "Aucun";
@@ -38,12 +46,20 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
 
     // EDIT
     $scope.currentArticle = {}
-    $scope.editArticle = function (index) {
-        $scope.currentArticle = $scope.MainArticles[index];
-        HomeService.editArticle($scope.currentArticle);
+    $scope.editArticle = function () {
+        $scope.currentArticle = $scope.MainArticlesSorted[$scope.curArticleIndex];
+        HomeService.editArticle($scope.currentArticle).then(function (res) {
+            if(res.data.success){
+                delete $scope.EAalert;
+                $scope.EAsuccess = "L'article a bien été édité";
+            } else {
+                delete $scope.EAsuccess;
+                $scope.EAalert = res.data.message;
+            }
+        });
     }
-    $scope.infoArticle = function (index) {
-        $scope.currentArticle = $scope.MainArticles[index];
+    $scope.infoArticle = function () {
+        $scope.currentArticle = $scope.MainArticlesSorted[$scope.curArticleIndex];
 
         StaffService.getUser($scope.currentArticle._auteur).then(function(res){
             $scope.currentArticle.auteur  = res.data[0];
@@ -61,18 +77,20 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
 
     // DELETE
     $scope.deleteArticle = function (index) {
-        HomeService.deleteArticle($scope.MainArticles[index]._id).then(function () {
+        HomeService.deleteArticle($scope.MainArticlesSorted[$scope.curArticleIndex]._id).then(function () {
             $scope.MainArticles.splice(index, 1);
+            $scope.MainArticlesSorted  = $filter('orderBy')($scope.MainArticles, 'priority');
         });
     }
 
     // UTILS
     $scope.curArticleIndex = 0;
     $scope.activateArticle = function(index) {
+        delete $scope.EAalert;
+        delete $scope.EAsuccess;
+        delete $scope.AAalert;
+        delete $scope.AAsuccess;
         $scope.curArticleIndex = index;
-    }
-    $scope.ArticleTracker = function(article) {
-        return article.priority + article.titre;
     }
     $scope.reload = function() {
         $window.location.reload(true);
