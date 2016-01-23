@@ -174,13 +174,21 @@
                                 <label>Prenom</label>
                                 <input class="form-control" type="text" name="Prenom" ng-model="profils[curProfilIndex].prenom">
                             </div>
+                            <div class="form-group col-md-6">
+                                <label>Ville</label>
+                                <input class="form-control" type="text" name="Ville" ng-model="profils[curProfilIndex].ville">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Travail</label>
+                                <input class="form-control" type="text" name="Travail" ng-model="profils[curProfilIndex].job">
+                            </div>
                             <div class="form-group col-md-12">
                                 <label for="accroche">Accroche</label>
-                                <textarea class="form-control" name="accroche" ng-model="newProfil.accroche" id="Accroche" required></textarea>
+                                <textarea class="form-control" name="accroche" ng-model="profils[curProfilIndex].accroche" id="Accroche"></textarea>
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="CV">CV</label>
-                                <input name="CV" type="file" class="file-loading" id="CV">
+                                <input name="CV" type="file" class="file-loading" ng-model="profils[curProfilIndex].CV" id="CV">
                             </div>
                             <input type="button" name="delete" value="Supprimer"class="btn btn-danger btn-sm pull-right" ng-click="deleteProfil()">
                             <input type="submit" name="name" value="Sauvegarder" class="btn btn-success btn-sm pull-right">

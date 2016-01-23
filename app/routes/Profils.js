@@ -6,6 +6,8 @@ module.exports = function(app) {
         var profil = new Profils();
         profil.nom = req.body.nom;
         profil.prenom = req.body.prenom;
+        profil.ville = req.body.ville;
+        profil.job = req.body.job;
         profil.accroche = req.body.accroche;
         profil.CV = req.body.CV;
         profil._createur = req.decoded._id;
@@ -24,6 +26,8 @@ module.exports = function(app) {
             if (err) res.send(err);
             profil.nom = req.body.nom;
             profil.prenom = req.body.prenom;
+            profil.ville = req.body.ville;
+            profil.job = req.body.job;
             profil.accroche = req.body.accroche;
             profil.CV = req.body.CV;
             profil._editeur = req.decoded._id;

@@ -15,6 +15,8 @@ function ProfilsService($http, $window) {
                 token: $window.sessionStorage.token,
                 nom : profil.nom,
                 prenom : profil.prenom,
+                ville : profil.ville,
+                job : profil.job,
                 accroche : profil.accroche,
                 CV : profil.CV
             });
@@ -24,6 +26,8 @@ function ProfilsService($http, $window) {
                 token: $window.sessionStorage.token,
                 nom : profil.nom,
                 prenom : profil.prenom,
+                ville : profil.ville,
+                job : profil.job,
                 accroche : profil.accroche,
                 CV : profil.CV
             });
