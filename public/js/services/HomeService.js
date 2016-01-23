@@ -29,7 +29,7 @@ function HomeService($http, $window) {
                 article.lienMedia = article.image.resized.dataURL;
             } else if (article.media == 'Photo' && !article.lienMedia) {
                 article.media = 'Aucun';
-            } else if (article.media == 'Vidéo') {
+            } else if (article.media == 'Vidéo' && article.lienMedia) {
                 article.lienMedia = article.lienMedia.replace("watch?v=", "embed/");
             }
             return $http.put('/api/mainArticles/' + article._id, {

@@ -15,7 +15,7 @@
         </div>
         <div class="form-group">
             <label for="titre">niveau d'acces</label>
-            <input class="form-control" ng-model="newUser.accesLevel" type="text" id="accesLevel" required>
+            <select class="form-control" ng-model="newUser.accesLevel" ng-options="accesValues.indexOf(selectedItem) as selectedItem for selectedItem in accesValues" id="accesLevel" required></select>
         </div>
         <div class="form-group">
             <input type="submit" name="name" value="Ajouter">

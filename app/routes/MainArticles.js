@@ -39,8 +39,12 @@ module.exports = function(app) {
                 article.media = req.body.media;
                 article.lienMedia = req.body.lienMedia;
             }
-            else if (req.body.media) {
-                res.json({ success: false, message: 'Pas de lien vers le media choisi.' });
+            else if (req.body.media == "Photo") {
+                res.json({ success: false, message: 'Pas d\'image choisi.' });
+                return;
+            }
+            else if (req.body.media == "Vidéo") {
+                res.json({ success: false, message: 'Pas de lien vers la vidéo.' });
                 return;
             }
 
