@@ -157,7 +157,44 @@
             </pane>
 
             <pane class="admin-section" title="Candidats" ng-if="accesLevel >= 0">
-                Espace Admin Candidat
+                <div class="row">
+                    <div class="col-md-3 item-list">
+                        <button type="button" ng-click="newProfilPopup()" class="btn btn-primary col-xs-12">Ajouter un profil</button>
+                        <ul>
+                            <li class="offre-item" ng-repeat="profil in profils" ng-click="activateProfil(profils.indexOf(profil))" ng-class="{active : profils.indexOf(profil) === curProfilIndex}">{{profil.nom}} - {{profil.prenom}}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-9 edit-offre">
+                        <form ng-submit="editProfil()">
+                            <div class="form-group col-md-6">
+                                <label>Nom</label>
+                                <input class="form-control" type="text" name="Nom" ng-model="profils[curProfilIndex].nom">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Prenom</label>
+                                <input class="form-control" type="text" name="Prenom" ng-model="profils[curProfilIndex].prenom">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Ville</label>
+                                <input class="form-control" type="text" name="Ville" ng-model="profils[curProfilIndex].ville">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Travail</label>
+                                <input class="form-control" type="text" name="Travail" ng-model="profils[curProfilIndex].job">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="accroche">Accroche</label>
+                                <textarea class="form-control" name="accroche" ng-model="profils[curProfilIndex].accroche" id="Accroche"></textarea>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="CV">CV</label>
+                                <input name="CV" type="file" class="file-loading" ng-model="profils[curProfilIndex].CV" id="CV">
+                            </div>
+                            <input type="button" name="delete" value="Supprimer"class="btn btn-danger btn-sm pull-right" ng-click="deleteProfil()">
+                            <input type="submit" name="name" value="Sauvegarder" class="btn btn-success btn-sm pull-right">
+                        </form>
+                    </div>
+                </div>
             </pane>
 
             <pane class="admin-section" title="Gestion site" ng-if="accesLevel >= 0">
@@ -190,7 +227,7 @@
                 <div class="row">
                     <h2>Gestion du staff</h2>
                     <div class="col-md-3 item-list">
-                        <button type="button" ng-click="newUserPopup()" class="btn btn-primary">Ajouter un utilisateur</button>
+                        <button type="button" ng-click="newUserPopup()" class="btn btn-primary col-xs-12">Ajouter un utilisateur</button>
                         <ul>
                             <li class="offre-item" ng-repeat="user in users" ng-click="activateUser(users.indexOf(user))" ng-class="{active : users.indexOf(user) === curUserIndex}">{{user.nom}} - {{user.prenom}}</li>
                         </ul>
