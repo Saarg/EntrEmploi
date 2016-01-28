@@ -22,6 +22,7 @@ node_modules
 
 config/db.js
 public/libs
+public/CV/*
 .DS_Store
 
 *.pdf

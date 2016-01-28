@@ -18,7 +18,6 @@ function ProfilsService($http, $window) {
                 ville : profil.ville,
                 job : profil.job,
                 accroche : profil.accroche,
-                CV : profil.CV
             });
         },
         editProfil : function (profil) {
@@ -29,7 +28,6 @@ function ProfilsService($http, $window) {
                 ville : profil.ville,
                 job : profil.job,
                 accroche : profil.accroche,
-                CV : profil.CV
             });
         },
         deleteProfil : function (profil) {

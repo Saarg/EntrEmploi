@@ -45,10 +45,10 @@
                                 <label for="youtube-video">Lien de la video youtube</label>
                             </div>
                             <div class="form-group col-md-12">
-                                <button type="submit" class="btn btn-success btn-sm">Modifier</button>
-                                <button type="button" ng-click="infoArticle()" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>
-                                <button type="button" ng-click="deleteArticle();" class="btn btn-danger btn-sm pull-right">Supprimer</button>
-                                <button type="reset" ng-click="reload();" class="btn btn-warning btn-sm pull-right">Reinitialiser</button>
+                                <button type="submit" class="btn btn-success btn-sm pull-right">Modifier</button>
+                                <button type="button" ng-click="infoArticle()" class="btn btn-primary btn-sm pull-right"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>
+                                <button type="button" ng-click="deleteArticle();" class="btn btn-danger btn-sm pull-left">Supprimer</button>
+                                <button type="reset" ng-click="reload();" class="btn btn-warning btn-sm pull-left">Reinitialiser</button>
                             </div>
                             <hr/>
                         </form>
@@ -188,10 +188,11 @@
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="CV">CV</label>
-                                <input name="CV" type="file" class="file-loading" ng-model="profils[curProfilIndex].CV" id="CV">
+                                <input type="file" ngf-select ng-model="profils[curProfilIndex].CV" name="CV" accept=".pdf" ngf-max-size="2MB">
                             </div>
-                            <input type="button" name="delete" value="Supprimer"class="btn btn-danger btn-sm pull-right" ng-click="deleteProfil()">
-                            <input type="submit" name="name" value="Sauvegarder" class="btn btn-success btn-sm pull-right">
+                            <input type="button" name="delete" value="Supprimer"class="btn btn-danger btn-sm pull-left" ng-click="deleteProfil()">
+                            <input type="submit" name="submit" value="Sauvegarder" class="btn btn-success btn-sm pull-right">
+                            <input type="button" name="uploadCV" value="Envoyer le CV" class="btn btn-warning btn-sm pull-right" ng-click="uploadCV()">
                         </form>
                     </div>
                 </div>

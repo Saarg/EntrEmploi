@@ -1,4 +1,5 @@
 var Profils = require('./../models/Profils');
+var fs      = require('fs');
 
 module.exports = function(app) {
     // POST
@@ -49,6 +50,19 @@ module.exports = function(app) {
                 return;
             }
             res.json({ success: true });
+        });
+    });
+    // Upload CV
+    app.post('/api/profils/upload/:profil_id', function(req, res) {
+        var data = new Buffer('');
+        req.on('data', function(chunk) {
+            data = Buffer.concat([data, chunk]);
+        });
+        req.on('end', function() {
+            req.rawBody = data;
+                fs.writeFile('public/CV/' + req.params.profil_id + '.pdf', data ,function(err){
+                    if(err) throw err;
+                });
         });
     });
 }
