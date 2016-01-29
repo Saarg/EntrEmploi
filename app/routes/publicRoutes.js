@@ -2,6 +2,7 @@ var Offres = require('./../models/Offres');
 var Profils = require('./../models/Profils');
 var Entreprises = require('./../models/Partenaires');
 var MainArticles = require('./../models/MainArticles');
+var Prestations = require('./../models/Prestations');
 var Configs = require('./../models/Config');
 
 module.exports = function(app) {
@@ -82,6 +83,7 @@ module.exports = function(app) {
             res.json(mainArticles);
         });
     });
+
     app.get('/api/mainArticles/count', function(req, res) {
         MainArticles.count(function(err, count) {
             if (err) {
@@ -90,5 +92,16 @@ module.exports = function(app) {
             }
             res.json(count);
         });
+    });
+
+    // Prestations
+    app.get('/api/prestations', function (req, res) {
+        Prestations.find(function (err, Prestations) {
+            if (err) {
+                res.json({ success: false, message: err});
+                return;
+            }
+            res.json(Prestations);
+        })
     });
 }
