@@ -11,6 +11,7 @@ module.exports = function(app) {
 
     // routes de l'api qui passent par le middleware
     require('./routes/Offres')(app);
+    require('./routes/Prestations')(app);
     require('./routes/Staff')(app);
     require('./routes/Profils')(app);
     require('./routes/Partenaires')(app);
