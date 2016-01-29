@@ -1,8 +1,8 @@
-angular.module('AdminCtrl', ['ngDialog']).controller('AdminController', AdminController)
+angular.module('AdminCtrl', ['ngDialog', 'ngFileUpload']).controller('AdminController', AdminController)
 
-AdminController.$inject =['$scope', '$filter', 'AdminService', 'HomeService', 'OffresService', 'ProfilsService', 'PartenairesService', 'StaffService', 'ConfigService', '$window', 'ngDialog'];
+AdminController.$inject =['$scope', '$filter', 'Upload', 'AdminService', 'HomeService', 'OffresService', 'ProfilsService', 'PartenairesService', 'StaffService', 'ConfigService', '$window', 'ngDialog'];
 
-function AdminController($scope, $filter, AdminService, HomeService, OffresService, ProfilsService, PartenairesService, StaffService, ConfigService, $window, ngDialog) {
+function AdminController($scope, $filter, Upload, AdminService, HomeService, OffresService, ProfilsService, PartenairesService, StaffService, ConfigService, $window, ngDialog) {
     $scope.accesLevel = $window.sessionStorage.accesLevel;
 
     // ======  HOME  ======
@@ -150,6 +150,19 @@ function AdminController($scope, $filter, AdminService, HomeService, OffresServi
         $scope.newProfil = {}; // reset
     }
 
+    $scope.uploadCV = function() {
+        cur = $scope.profils[$scope.curProfilIndex];
+        Upload.upload({
+            headers: { "x-access-token": $window.sessionStorage.token },
+            url: 'api/profils/upload/'+cur._id,
+            method: 'POST',
+            data: {file: cur.CV}
+        }).progress(function(evt) {
+            console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+        }).success(function(data, status, headers, config) {
+            console.log('done');
+        });
+    }
     $scope.editProfil = function () {
         ProfilsService.editProfil($scope.profils[$scope.curProfilIndex]).then(function () {
 
