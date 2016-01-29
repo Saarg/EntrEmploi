@@ -6,17 +6,9 @@ module.exports = mongoose.model('Profil', {
     // Info perso
     nom : String,
     prenom : String,
-    tel : String,
-    mail : String,
-    adresse :String,
-    compAdresse : String,
     ville : String,
-    codePostal : Number,
-    dateNaissance : Date,
-    photo : String,
-    CV : String,
-    accroche : String,
     job : String,
+    accroche : String,
     _createur : ObjectId,
     _editeur : ObjectId
 });

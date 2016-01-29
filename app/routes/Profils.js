@@ -10,7 +10,6 @@ module.exports = function(app) {
         profil.ville = req.body.ville;
         profil.job = req.body.job;
         profil.accroche = req.body.accroche;
-        profil.CV = req.body.CV;
         profil._createur = req.decoded._id;
 
         profil.save(function(err) {
@@ -30,7 +29,6 @@ module.exports = function(app) {
             profil.ville = req.body.ville;
             profil.job = req.body.job;
             profil.accroche = req.body.accroche;
-            profil.CV = req.body.CV;
             profil._editeur = req.decoded._id;
 
             profil.save(function(err) {
