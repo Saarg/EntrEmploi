@@ -12,6 +12,8 @@ Installation
   
   -Installer les dependences bower: bower install
   
+  -Modifier les fichiers config
+  
   -démarrer le serveur: node server.js
   
   -http://localhost:8080
