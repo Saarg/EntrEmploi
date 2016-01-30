@@ -144,7 +144,7 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
 
     $scope.newProfil = {};
     $scope.addProfil = function () {
-        ProfilsService.postProfil($scope.newProfil).then(function () {
+        ProfilsService.postProfil($scope.newProfil).then(function (res) {
             $scope.profils.push($scope.newProfil);
         });
         $scope.newProfil = {}; // reset
@@ -164,13 +164,21 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
         });
     }
     $scope.editProfil = function () {
-        ProfilsService.editProfil($scope.profils[$scope.curProfilIndex]).then(function () {
-
+        ProfilsService.editProfil($scope.profils[$scope.curProfilIndex]).then(function (res) {
+            if(res.data.success){
+                delete $scope.EPalert;
+                $scope.EPsuccess = "Le profil a bien été édité";
+            } else {
+                delete $scope.EPsuccess;
+                $scope.EPalert = res.data.message;
+            }
         });
     }
 
     $scope.curProfilIndex = 0;
     $scope.activateProfil = function(index) {
+        delete $scope.EPalert;
+        delete $scope.EPsuccess;
         $scope.curProfilIndex = index;
     }
 

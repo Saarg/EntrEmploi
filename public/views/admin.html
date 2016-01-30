@@ -3,7 +3,7 @@
         <tabs>
             <pane class="admin-section" title="Page accueil" ng-if="accesLevel >= 2">
                 <div class="row">
-                    <h2>Editer un article</h2>
+                    <h2  ng-if="!EAalert && !EAsuccess">Editer un article</h2>
                     <div ng-if="EAalert && !EAsuccess" class="alert alert-danger">{{ EAalert }}</div>
                     <div ng-if="EAsuccess && !EAalert" class="alert alert-success">{{ EAsuccess }}</div>
                     <div class="col-md-3 item-list">
@@ -56,7 +56,7 @@
                 </div>
                 <hr/>
                 <div class="row">
-                    <h2>Ajouter un article</h2>
+                    <h2  ng-if="!AAalert && !AAsuccess">Ajouter un article</h2>
                     <div ng-if="AAalert && !AAsuccess" class="alert alert-danger">{{ AAalert }}</div>
                     <div ng-if="AAsuccess && !AAalert" class="alert alert-success">{{ AAsuccess }}</div>
                     <form ng-submit="addArticle()">
@@ -158,6 +158,9 @@
 
             <pane class="admin-section" title="Candidats" ng-if="accesLevel >= 0">
                 <div class="row">
+                    <h2 ng-if="!EPalert && !EPsuccess">Gestion des Candidats</h2>
+                    <div ng-if="EPalert && !EPsuccess" class="alert alert-danger">{{ EPalert }}</div>
+                    <div ng-if="EPsuccess && !EPalert" class="alert alert-success">{{ EPsuccess }}</div>
                     <div class="col-md-3 item-list">
                         <button type="button" ng-click="newProfilPopup()" class="btn btn-primary col-xs-12">Ajouter un profil</button>
                         <ul>
