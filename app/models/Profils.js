@@ -8,6 +8,7 @@ module.exports = mongoose.model('Profil', {
     prenom : String,
     ville : String,
     job : String,
+    cv : { type: Boolean, default: false},
     accroche : String,
     _createur : ObjectId,
     _editeur : ObjectId

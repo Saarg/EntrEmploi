@@ -42,6 +42,7 @@ module.exports = function(app) {
     });
     // DELETE
     app.delete('/api/profils/:profil_id', function(req, res) {
+        fs.unlinkSync('public/CV/' + req.params.profil_id + '.pdf');
         Profils.remove({_id: req.params.profil_id}, function(err) {
             if (err) {
                 res.json({ success: false, message: err });
@@ -60,6 +61,13 @@ module.exports = function(app) {
             req.rawBody = data;
                 fs.writeFile('public/CV/' + req.params.profil_id + '.pdf', data ,function(err){
                     if(err) throw err;
+                });
+
+                Profils.findById(req.params.profil_id, function(err, profil) {
+                    if (err) res.send(err);
+                    profil.cv = true;
+
+                    profil.save();
                 });
         });
     });

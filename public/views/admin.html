@@ -161,7 +161,7 @@
                     <div class="col-md-3 item-list">
                         <button type="button" ng-click="newProfilPopup()" class="btn btn-primary col-xs-12">Ajouter un profil</button>
                         <ul>
-                            <li class="offre-item" ng-repeat="profil in profils" ng-click="activateProfil(profils.indexOf(profil))" ng-class="{active : profils.indexOf(profil) === curProfilIndex}">{{profil.nom}} - {{profil.prenom}}</li>
+                            <li class="offre-item" ng-repeat="profil in profils" ng-click="activateProfil(profils.indexOf(profil))" ng-class="{active : profils.indexOf(profil) === curProfilIndex, 'alert-danger' : !profil.cv}">{{profil.nom}} - {{profil.prenom}}</li>
                         </ul>
                     </div>
                     <div class="col-md-9 edit-offre">
@@ -186,13 +186,13 @@
                                 <label for="accroche">Accroche</label>
                                 <textarea class="form-control" name="accroche" ng-model="profils[curProfilIndex].accroche" id="Accroche"></textarea>
                             </div>
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-12" ng-class="{'alert alert-danger': !profils[curProfilIndex].cv}">
                                 <label for="CV">CV</label>
                                 <input type="file" ngf-select ng-model="profils[curProfilIndex].CV" name="CV" accept=".pdf" ngf-max-size="2MB">
                             </div>
                             <input type="button" name="delete" value="Supprimer"class="btn btn-danger btn-sm pull-left" ng-click="deleteProfil()">
                             <input type="submit" name="submit" value="Sauvegarder" class="btn btn-success btn-sm pull-right">
-                            <input type="button" name="uploadCV" value="Envoyer le CV" class="btn btn-warning btn-sm pull-right" ng-click="uploadCV()">
+                            <input type="button" name="uploadCV" value="Envoyer le CV" class="btn btn-warning btn-sm pull-right" ng-click="uploadCV()" ng-if="profils[curProfilIndex].CV">
                         </form>
                     </div>
                 </div>
