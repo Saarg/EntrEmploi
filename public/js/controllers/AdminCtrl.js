@@ -218,6 +218,8 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
 
     // ====== STAFF  ======
     $scope.accesValues = ["Lecture CV & prestations","Ecriture CV & prestations","Administation du site"];
+    if($scope.accesLevel == 3)
+        $scope.accesValues.push("Dev")
 
     $scope.loadUsers = function () {
         StaffService.getUsers().then(function(res){

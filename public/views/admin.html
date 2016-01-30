@@ -233,7 +233,11 @@
                     <div class="col-md-3 item-list">
                         <button type="button" ng-click="newUserPopup()" class="btn btn-primary col-xs-12">Ajouter un utilisateur</button>
                         <ul>
-                            <li class="offre-item" ng-repeat="user in users" ng-click="activateUser(users.indexOf(user))" ng-class="{active : users.indexOf(user) === curUserIndex}">{{user.nom}} - {{user.prenom}}</li>
+                            <li class="offre-item"  ng-repeat="user in users"
+                                                    ng-click="activateUser(users.indexOf(user))"
+                                                    ng-class="{active : users.indexOf(user) === curUserIndex}"
+                                                    ng-if="user.accesLevel < 3 || accesLevel == 3"
+                                                    >{{user.nom}} - {{user.prenom}}</li>
                         </ul>
                     </div>
                     <div class="col-md-9 edit-offre">
