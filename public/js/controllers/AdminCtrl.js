@@ -261,7 +261,15 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
     }
     // EDIT
     $scope.editUser = function (user) {
-        StaffService.editUser(user);
+        StaffService.editUser(user).then(function (res) {
+            if(res.data.success){
+                delete $scope.ESalert;
+                $scope.ESsuccess = "Le profil a bien été édité";
+            } else {
+                delete $scope.ESsuccess;
+                $scope.ESalert = res.data.message;
+            }
+        });
     }
     // DELETE
     $scope.deleteUser = function (index) {
@@ -272,19 +280,23 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
 
     $scope.curUserIndex = 0;
     $scope.activateUser = function(index) {
+        delete $scope.ESalert;
+        delete $scope.ESsuccess;
         $scope.curUserIndex = index;
     }
 
     // ==== PARTENAIRE ====
     PartenairesService.getPartenaires().then(function (res) {
-        $scope.Partenaires = res.data;
+        $scope.partenaires = res.data;
     });
 
     // ADD
     $scope.newPartenaire = {};
     $scope.addPartenaire = function (newPartenaire) {
-        PartenairesService.postPartenaire(newPartenaire);
-        $window.location.reload(true);
+        PartenairesService.postPartenaire(newPartenaire).then(function (res) {
+            $scope.partenaires.push(res.data.partenaire);
+        });
+
     }
     $scope.PartenairePopup = function () {
         ngDialog.open({
@@ -297,12 +309,12 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
     // EDIT
     $scope.editPartenaire = function (partenaire) {
         PartenairesService.editPartenaire(partenaire);
-        $window.location.reload(true);
     }
     // DELETE
-    $scope.deletePartenaire = function (partenaire_id) {
-        PartenairesService.deletePartenaire(partenaire_id);
-        $window.location.reload(true);
+    $scope.deletePartenaire = function (partenaire) {
+        PartenairesService.deletePartenaire(partenaire._id).then(function () {
+            $scope.partenaires.splice($scope.partenaires.indexOf(partenaire), 1);
+        });
     }
 
     // ====== COORDS ======
@@ -322,7 +334,6 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
     // EDIT
     $scope.editAddr = function (index, value) {
         ConfigService.editConfig("addr"+(index+1), value);
-        $window.location.reload(true);
     }
 
 }
