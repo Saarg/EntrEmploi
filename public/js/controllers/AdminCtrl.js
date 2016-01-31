@@ -11,14 +11,22 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
         $scope.MainArticlesCount  = res.data;
     });
 
+    var processArticle = function(a) {
+        a.contenu = a.contenu.replace(/<br\s*[\/]?>/gi, "\n");
+        a.image = a.lienMedia;
+    }
+
+    var sortArticles = function() {
+        $scope.MainArticlesSorted  = $filter('orderBy')($scope.MainArticles, 'priority');
+    }
+
     $scope.loadArticles = function () {
         HomeService.getArticles().then(function(res){
             $scope.MainArticles  = res.data;
             for(var i in $scope.MainArticles){
-                $scope.MainArticles[i].contenu = $scope.MainArticles[i].contenu.replace(/<br\s*[\/]?>/gi, "\n");
-                $scope.MainArticles[i].image = $scope.MainArticles[i].lienMedia;
+                processArticle($scope.MainArticles[i]);
             }
-            $scope.MainArticlesSorted  = $filter('orderBy')($scope.MainArticles, 'priority');
+            sortArticles();
         });
     }
     $scope.loadArticles();
@@ -33,13 +41,18 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
         HomeService.postArticle($scope.newArticle).then(function (res) {
             if(res.data.success){
                 delete $scope.AAalert;
+
+                a = res.data.article;
+                processArticle(a);
+                $scope.MainArticles.push(a);
+                sortArticles();
+
                 $scope.AAsuccess = "L'article a bien été ajouté";
             } else {
                 delete $scope.AAsuccess;
                 $scope.AAalert = res.data.message;
             }
         });
-        $scope.loadArticles();
         $scope.newArticle = {};
         $scope.newArticle.media = "Aucun";
     }
@@ -76,10 +89,10 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
     }
 
     // DELETE
-    $scope.deleteArticle = function (index) {
+    $scope.deleteArticle = function () {
         HomeService.deleteArticle($scope.MainArticlesSorted[$scope.curArticleIndex]._id).then(function () {
-            $scope.MainArticles.splice(index, 1);
-            $scope.MainArticlesSorted  = $filter('orderBy')($scope.MainArticles, 'priority');
+            $scope.MainArticles.splice($scope.MainArticles.indexOf($scope.MainArticlesSorted[$scope.curArticleIndex]), 1);
+            sortArticles();
         });
     }
 
@@ -145,7 +158,7 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
     $scope.newProfil = {};
     $scope.addProfil = function () {
         ProfilsService.postProfil($scope.newProfil).then(function (res) {
-            $scope.profils.push($scope.newProfil);
+            $scope.profils.push(res.data.profil);
         });
         $scope.newProfil = {}; // reset
     }
@@ -160,6 +173,7 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
         }).progress(function(evt) {
             console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
         }).success(function(data, status, headers, config) {
+            $scope.profils[$scope.curProfilIndex].cv = true;
             console.log('done');
         });
     }
@@ -240,8 +254,9 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
     }
     $scope.addUser = function () {
         // TODO generation aleatoire password
-        StaffService.postUser($scope.newUser);
-        $scope.loadUsers();
+        StaffService.postUser($scope.newUser).then(function (res) {
+            $scope.users.push(res.data.user);
+        });
         $scope.newUser = {};
     }
     // EDIT

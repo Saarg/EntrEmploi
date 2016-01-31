@@ -34,12 +34,12 @@ module.exports = function(app) {
     	staff.accesLevel = req.body.accesLevel;
     	staff.passwd = staff.generateHash(req.body.passwd);
 
-    	staff.save(function(err) {
+    	staff.save(function(err, user) {
             if (err) {
                 res.json({ success: false, message: err });
                 return;
             }
-            res.json({ success: true });
+            res.json({ success: true, user: user });
         });
     });
     // PUT

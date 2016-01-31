@@ -12,12 +12,12 @@ module.exports = function(app) {
         profil.accroche = req.body.accroche;
         profil._createur = req.decoded._id;
 
-        profil.save(function(err) {
+        profil.save(function(err, profil) {
             if (err) {
                 res.json({ success: false, message: err });
                 return;
             }
-            res.json({ success: true });
+            res.json({ success: true, profil: profil });
         });
     });
     // PUT
@@ -59,16 +59,21 @@ module.exports = function(app) {
         });
         req.on('end', function() {
             req.rawBody = data;
-                fs.writeFile('public/CV/' + req.params.profil_id + '.pdf', data ,function(err){
-                    if(err) throw err;
-                });
+            fs.writeFile('public/CV/' + req.params.profil_id + '.pdf', data ,function(err){
+                if(err) throw err;
+            });
 
-                Profils.findById(req.params.profil_id, function(err, profil) {
-                    if (err) res.send(err);
-                    profil.cv = true;
-
-                    profil.save();
+            Profils.findById(req.params.profil_id, function(err, profil) {
+                if (err) res.send(err);
+                profil.cv = true;
+                profil.save(function(err) {
+                    if (err) {
+                        res.json({ success: false, message: err });
+                        return;
+                    }
+                    res.json({ success: true });
                 });
+            });
         });
     });
 }
