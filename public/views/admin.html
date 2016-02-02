@@ -193,15 +193,17 @@
                                 <label for="CV">CV</label>
                                 <input type="file" ngf-select ng-model="profils[curProfilIndex].CV" name="CV" accept=".pdf" ngf-max-size="2MB">
                             </div>
-                            <input type="button" name="delete" value="Supprimer"class="btn btn-danger btn-sm pull-left" ng-click="deleteProfil()">
-                            <input type="submit" name="submit" value="Sauvegarder" class="btn btn-success btn-sm pull-right">
-                            <input type="button" name="uploadCV" value="Envoyer le CV" class="btn btn-warning btn-sm pull-right" ng-click="uploadCV()" ng-if="profils[curProfilIndex].CV">
+                            <div class="form-group"  ng-if="accesLevel >= 1">
+                                <button type="button" name="delete" class="btn btn-danger btn-sm pull-left" ng-click="deleteProfil()">Supprimer</button>
+                                <button type="submit" name="submit" class="btn btn-success btn-sm pull-right">Sauvegarder</button>
+                                <button type="button" name="uploadCV" class="btn btn-warning btn-sm pull-right" ng-click="uploadCV()" ng-if="profils[curProfilIndex].CV">Envoyer le CV</button>
+                            </div>
                         </form>
                     </div>
                 </div>
             </pane>
 
-            <pane class="admin-section" title="Gestion site" ng-if="accesLevel >= 0">
+            <pane class="admin-section" title="Gestion site" ng-if="accesLevel >= 2">
                 <div class="row">
                     <h2>Haut de page</h2>
                     <form class="col-md-6" ng-submit="editLogoSPF()">
