@@ -271,6 +271,15 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
             }
         });
     }
+    $scope.infoUserPopup = function () {
+        //users[curUserIndex]
+        ngDialog.open({
+            template : '../templates/infoUser.html',
+            className: 'ngdialog-theme-default',
+            disableAnimation : true,
+            scope: $scope
+        });
+    }
     // DELETE
     $scope.deleteUser = function (index) {
         StaffService.deleteUser($scope.users[index]._id).then(function () {
