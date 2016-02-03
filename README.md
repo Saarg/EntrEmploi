@@ -4,6 +4,27 @@ https://www.secourspopulaire.fr/29/entremploi-0
 
 Projet réalisé par Noé Maillard et Jean Milsonneau.
 
+Fichiers de config a créer dans le dossier config/
+  config.js
+    module.exports = {
+      secret: 'PhraseSecrette',
+      mail:{
+          host: 'smtp.bidon.fr',
+          secureConnection: false,
+          port: 587,
+          user: 'bidon',
+          passwd: 'passwdbidon',
+          contact: 'addresse contact'
+      }
+    }
+  
+  db.js
+    module.exports = {
+    	url : 'mongodb://user:passwd@localhost/DBname'
+    }
+
+
+
 Installation
 
   -Cloner le git
