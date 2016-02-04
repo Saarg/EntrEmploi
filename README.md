@@ -4,7 +4,7 @@ https://www.secourspopulaire.fr/29/entremploi-0
 
 Projet réalisé par Noé Maillard et Jean Milsonneau.
 
-# Fichiers de config a créer 
+# Fichiers de config a créer
 ## config/config.js
 ```
 module.exports = {
@@ -29,10 +29,9 @@ module.exports = {
 
 # Installation
 1. Cloner le git
-2. Installer npm modules: npm install
-3. Installer les dependences bower: bower install
+2. Installer npm modules: `npm install`
+3. Installer les dependences bower: `bower install`
+5. `bourbon install`
 4. Modifier les fichiers config
-5. démarrer le serveur: node server.js
+5. démarrer le serveur: `node server.js`
 6. http://localhost:8080
-  
-
