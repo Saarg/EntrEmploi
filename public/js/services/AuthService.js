@@ -1,4 +1,4 @@
-angular.module('AuthService', []).factory('AuthService', AuthService);
+angular.module('EntrEmploi').factory('AuthService', AuthService);
 
 AuthService.$inject = ['$http', '$window', '$location'];
 

@@ -1,4 +1,4 @@
-angular.module('FooterCtrl', []).controller('FooterController', FooterController);
+angular.module('EntrEmploi').controller('FooterController', FooterController);
 
 FooterController.$inject = ['$scope', '$filter', 'HomeService', 'PartenairesService', 'ConfigService'];
 

@@ -1,4 +1,4 @@
-angular.module('OffresCtrl', []).controller('OffresController', OffresController);
+angular.module('EntrEmploi').controller('OffresController', OffresController);
 
 OffresController.$inject = ['$scope', 'OffresService'];
 

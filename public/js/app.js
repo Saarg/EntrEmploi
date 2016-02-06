@@ -1,24 +1,7 @@
 angular.module('EntrEmploi', [
     'ngRoute',
-    'appRoutes',
-    'HomeCtrl',
-    'HomeService',
-    'OffresCtrl',
-    'OffresService',
-    'ProfilsCtrl',
-    'ProfilsService',
-    'StaffCtrl',
-    'StaffService',
-    'ContactCtrl',
-    'ContactService',
-    'AuthCtrl',
-    'AuthService',
-    'AdminCtrl',
-    'AdminService',
-    'AdminDirectives',
-    'FooterCtrl',
-    'PartenairesService',
-    'HeaderCtrl',
-    'ConfigService',
-    'ProfilCtrl'
+    'ui.bootstrap',
+    'ngAnimate',
+    'ngSanitize',
+    'ngDialog'
 ]);

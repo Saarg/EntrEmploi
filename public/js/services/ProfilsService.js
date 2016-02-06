@@ -1,4 +1,4 @@
-angular.module('ProfilsService', []).factory('ProfilsService', ProfilsService);
+angular.module('EntrEmploi').factory('ProfilsService', ProfilsService);
 
 ProfilsService.$inject = ['$http', '$window'];
 

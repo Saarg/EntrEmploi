@@ -1,4 +1,4 @@
-angular.module('ProfilCtrl', []).controller('ProfilController', ProfilController);
+angular.module('EntrEmploi').controller('ProfilController', ProfilController);
 
 ProfilController.$inject = ['$scope', '$window', 'StaffService'];
 

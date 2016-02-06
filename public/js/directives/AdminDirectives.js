@@ -1,4 +1,4 @@
-angular.module('AdminDirectives', [])
+angular.module('EntrEmploi')
 .directive('tabs', tabs)
 .directive('pane', pane)
 .directive('image', image);

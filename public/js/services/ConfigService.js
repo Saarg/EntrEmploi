@@ -1,4 +1,4 @@
-angular.module('ConfigService', []).factory('ConfigService', ConfigService);
+angular.module('EntrEmploi').factory('ConfigService', ConfigService);
 
 ConfigService.$inject = ['$http', '$window'];
 
