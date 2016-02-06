@@ -16,7 +16,7 @@ var StaffSchema = mongoose.Schema({
     accesLevel : {type : Number, default: 0},// 0:lecture cv & offre 1:creation/edition/suppression cv & offres 3:edition contenu du site
     // Liste des profils contribué
     _profils : [ObjectId],
-    // Mot de passe encrypter
+    // Mot de passe encrypté
     passwd : String // bcrypt
 });
 

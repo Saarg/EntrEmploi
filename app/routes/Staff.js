@@ -34,12 +34,12 @@ module.exports = function(app) {
     	staff.accesLevel = req.body.accesLevel;
     	staff.passwd = staff.generateHash(req.body.passwd);
 
-    	staff.save(function(err) {
+    	staff.save(function(err, user) {
             if (err) {
                 res.json({ success: false, message: err });
                 return;
             }
-            res.json({ success: true });
+            res.json({ success: true, user: user });
         });
     });
     // PUT
@@ -48,24 +48,12 @@ module.exports = function(app) {
             if (err) res.send(err);
             staff.nom = req.body.nom;
             staff.prenom = req.body.prenom;
-            if(req.body.tel) {
-                staff.tel = req.body.tel;
-            }
-            if(req.body.mail) {
-                staff.mail = req.body.mail;
-            }
-            if(req.body.adresse) {
-                staff.adresse = req.body.adresse;
-            }
-            if(req.body.compAdresse) {
-                staff.compAdresse = req.body.compAdresse;
-            }
-            if(req.body.ville) {
-                staff.ville = req.body.ville;
-            }
-            if(req.body.codePostal) {
-                staff.codePostal = req.body.codePostal;
-            }
+            staff.tel = req.body.tel;
+            staff.mail = req.body.mail;
+            staff.adresse = req.body.adresse;
+            staff.compAdresse = req.body.compAdresse;
+            staff.ville = req.body.ville;
+            staff.codePostal = req.body.codePostal;
             staff.accesLevel = req.body.accesLevel
             if(req.body.newPasswd) {
                 staff.passwd = staff.generateHash(req.body.newPasswd);

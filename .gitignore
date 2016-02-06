@@ -20,7 +20,8 @@ results
 npm-debug.log
 node_modules
 
-config/db.js
+config/*
+
 public/libs
 public/CV/*
 .DS_Store

@@ -18,12 +18,12 @@ module.exports = function(app) {
         article.priority = req.body.priority;
         article._editeur = req.decoded._id;
 
-        article.save(function(err) {
+        article.save(function(err, article) {
             if (err) {
                 res.json({ success: false, message: err });
                 return;
             }
-            res.json({ success: true });
+            res.json({ success: true, article: article });
         });
     });
     // PUT

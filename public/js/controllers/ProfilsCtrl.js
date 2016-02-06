@@ -1,9 +1,15 @@
 angular.module('ProfilsCtrl', []).controller('ProfilsController', ProfilsController);
 
-ProfilsController.$inject = ['$scope'];
+ProfilsController.$inject = ['$scope', '$window', 'ProfilsService'];
 
-function ProfilsController($scope) {
+function ProfilsController($scope, $window, ProfilsService) {
 
-    $scope.tagline = 'Tu es un Recruteur?';
+    ProfilsService.getProfils().then(function (res) {
+        $scope.profils = res.data;
+    });
 
+    $scope.openCV = function(id) {
+        // TODO faire l'auth et check si le cv est upload
+        $window.open("CV/"+id, '_blank');
+    }
 }
