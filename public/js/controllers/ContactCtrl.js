@@ -1,4 +1,9 @@
-angular.module('EntrEmploi').controller('ContactController', ['$scope', 'ContactService', function($scope, ContactService) {
+angular.module('EntrEmploi').controller('ContactController', ContactController);
+
+ContactController.$inject = ['$scope', 'ContactService'];
+
+function ContactController($scope, ContactService) {
+
     var sended = false;
     $scope.submit = function () {
         if(sended) {
