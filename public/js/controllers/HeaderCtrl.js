@@ -1,4 +1,4 @@
-angular.module('HeaderCtrl', []).controller('HeaderController', HeaderController);
+angular.module('EntrEmploi').controller('HeaderController', HeaderController);
 
 HeaderController.$inject = ['$scope', '$window', 'OffresService', 'AuthService', 'ConfigService'];
 

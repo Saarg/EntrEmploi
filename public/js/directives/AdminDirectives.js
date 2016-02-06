@@ -1,7 +1,7 @@
-angular.module('AdminDirectives', [])
-.directive('tabs', tabs)
-.directive('pane', pane)
-.directive('image', image);
+angular.module('EntrEmploi')
+    .directive('tabs', tabs)
+    .directive('pane', pane)
+    .directive('image', image);
 
 
 function tabs() {

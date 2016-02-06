@@ -1,4 +1,4 @@
-angular.module('ContactService', []).factory('ContactService', ContactService);
+angular.module('EntrEmploi').factory('ContactService', ContactService);
 
 ContactService.$inject = ['$http'];
 

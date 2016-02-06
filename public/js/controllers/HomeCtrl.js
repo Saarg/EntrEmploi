@@ -1,4 +1,4 @@
-angular.module('HomeCtrl', ['ui.bootstrap', 'ngAnimate', 'ngSanitize']).controller('HomeController', HomeController);
+angular.module('EntrEmploi').controller('HomeController', HomeController);
 
 HomeController.$inject = ['$scope', '$filter', "$sce", 'HomeService'];
 

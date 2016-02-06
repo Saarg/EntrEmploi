@@ -1,4 +1,4 @@
-angular.module('StaffService', []).factory('StaffService', StaffService);
+angular.module('EntrEmploi').factory('StaffService', StaffService);
 
 StaffService.$inject = ['$http', '$window'];
 

@@ -1,4 +1,4 @@
-angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+angular.module('EntrEmploi').config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
     $routeProvider
     .when('/', {
@@ -16,6 +16,10 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
     .when('/staff', {
         templateUrl: 'views/staff.html',
         controller: 'StaffController'
+    })
+    .when('/prestations', {
+        templateUrl: 'views/prestations.html',
+        controller: 'PrestationsController'
     })
     .when('/contact', {
         templateUrl: 'views/contact.html',

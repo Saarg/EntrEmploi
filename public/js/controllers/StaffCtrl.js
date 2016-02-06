@@ -1,4 +1,4 @@
-angular.module('StaffCtrl', []).controller('StaffController', StaffController);
+angular.module('EntrEmploi').controller('StaffController', StaffController);
 
 StaffController.$inject = ['$scope'];
 

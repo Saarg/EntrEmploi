@@ -1,4 +1,4 @@
-angular.module('HomeService', []).factory('HomeService', HomeService);
+angular.module('EntrEmploi').factory('HomeService', HomeService);
 
 HomeService.$inject = ['$http', '$window'];
 

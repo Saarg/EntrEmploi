@@ -1,4 +1,4 @@
-angular.module('AuthCtrl', []).controller('AuthController', AuthController);
+angular.module('EntrEmploi').controller('AuthController', AuthController);
 
 AuthController.$inject = ['$scope', 'AuthService', '$window', '$location'];
 

@@ -1,4 +1,4 @@
-angular.module('AdminCtrl', ['ngDialog', 'ngFileUpload']).controller('AdminController', AdminController)
+angular.module('EntrEmploi').controller('AdminController', AdminController)
 
 AdminController.$inject =['$scope', '$filter', 'Upload', 'AdminService', 'HomeService', 'OffresService', 'ProfilsService', 'PartenairesService', 'StaffService', 'ConfigService', '$window', 'ngDialog'];
 
