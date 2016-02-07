@@ -6,7 +6,7 @@
         <form ng-submit="loginEntreprise()">
             <div class="form-group">
                 <label for="mail">Adresse mail</label>
-                <input class="form-control" type="text" id="mail" required>
+                <input class="form-control" type="text" ng-model="entreprise.email" required>
                 <button type="submit" class="btn btn-success btn-sm col-md-12">Connexion</button>
             </div>
         </form>

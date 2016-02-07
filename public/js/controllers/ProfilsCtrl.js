@@ -1,27 +1,29 @@
 angular.module('ProfilsCtrl', ['ngDialog']).controller('ProfilsController', ProfilsController);
 
-ProfilsController.$inject = ['$scope', '$window', 'ProfilsService', 'ngDialog'];
+ProfilsController.$inject = ['$scope', '$window', 'ProfilsService', 'ngDialog', 'ProfilsService'];
 
-function ProfilsController($scope, $window, ProfilsService, ngDialog) {
+function ProfilsController($scope, $window, ProfilsService, ngDialog, ProfilsService) {
 
     ProfilsService.getProfils().then(function (res) {
         $scope.profils = res.data;
     });
 
+    $scope.entreprise = {};
     $scope.loginEntreprise = function() {
-        console.log("TODO implementer passwordless");
+        ProfilsService.loginEntreprise($scope.entreprise).then(function (res) {
+            console.log(res.data);
+        });
     }
 
     $scope.openCV = function(id) {
-        if($window.sessionStorage.token) {
-            $window.open("CV/"+id, '_blank');
-        } else {
-            ngDialog.open({
-                template : '../templates/loginEntreprise.html',
-                className: 'ngdialog-theme-default',
-                disableAnimation : true,
-                scope: $scope
-            });
-        }
+        $window.open("CV/"+id, '_blank');
+    }
+    $scope.popupLogiEntreprise = function() {
+        ngDialog.open({
+            template : '../templates/loginEntreprise.html',
+            className: 'ngdialog-theme-default',
+            disableAnimation : true,
+            scope: $scope
+        });
     }
 }
