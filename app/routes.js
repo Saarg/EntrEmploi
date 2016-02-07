@@ -1,10 +1,7 @@
-var fs      = require('fs');
-var passwordless    = require('passwordless');
-
-module.exports = function(app) {
+module.exports = function(app, db, config) {
     // backend routes ===========================================================
     // authentication routes
-    require('./routes/apiAuth')(app);
+    require('./routes/apiAuth')(app, config);
 
     // routes qui ne passent pas par le middleware, donc sans auth (GET only)
     require('./routes/publicRoutes')(app);
@@ -25,16 +22,7 @@ module.exports = function(app) {
     require('./routes/Config')(app);
 
     // Outils pour envoyer des mails
-    require('./routes/mailSender')(app);
-
-    app.get('/CV/:profil_id', passwordless.restricted(), function(req, res) {
-        var filename = req.params.profil_id+".pdf";
-
-        fs.readFile("./public/CV/"+filename, function (err,data){
-            res.contentType("application/pdf");
-            res.send(data);
-        });
-    });
+    require('./routes/mailSender')(app, config);
 
     app.get('*', function(req, res) {
         res.sendfile('./public/index.html');
