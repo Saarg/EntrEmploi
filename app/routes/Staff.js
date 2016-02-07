@@ -1,4 +1,4 @@
-var Staff           = require('./../models/Staff');
+var Staff = require('./../models/Staff');
 
 module.exports = function(app) {
     // GET

@@ -1,8 +1,6 @@
 var nodemailer  = require('nodemailer');
-var config      = require('./../../config/config.js');
 
-
-module.exports = function(app) {
+module.exports = function(app, config) {
     app.post('/contact/send', function(req, res) {
         var transporter = nodemailer.createTransport("SMTP", {
             host: config.mail.host,
