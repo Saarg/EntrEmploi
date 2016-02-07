@@ -3,5 +3,6 @@ angular.module('EntrEmploi', [
     'ui.bootstrap',
     'ngAnimate',
     'ngSanitize',
-    'ngDialog'
+    'ngDialog',
+    'ngFileUpload'
 ]);
