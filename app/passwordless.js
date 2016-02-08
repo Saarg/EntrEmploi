@@ -37,7 +37,7 @@ module.exports = function(app, db, config) {
     app.use(passwordless.acceptToken({ successRedirect: '/profils'}));
 
     // route pour envoyer les tokens passwordless
-    app.post('/sendtoken', passwordless.requestToken(
+    app.post('/passwordless/sendtoken', passwordless.requestToken(
         function(entreprise, delivery, callback, req) {
             callback(null, entreprise.email);
         }),
@@ -54,4 +54,13 @@ module.exports = function(app, db, config) {
             res.send(data);
         });
     });
+    // signal le loggedIn
+    app.get('/passwordless/isLoggedIn', function(req, res) {
+        if(req.user){
+            res.json({ loggedIn: true, entreprise: req.user });
+        } else{
+            res.json({ loggedIn: false });
+        }
+    });
+
 }

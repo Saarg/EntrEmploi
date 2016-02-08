@@ -32,9 +32,6 @@ function ProfilsService($http, $window) {
         },
         deleteProfil : function (profil) {
             return $http.delete('/api/profils/' + profil._id + '?token=' + $window.sessionStorage.token);
-        },
-        loginEntreprise : function(entreprise) {
-            return $http.post('/sendtoken', { user: entreprise });
         }
     }
 }

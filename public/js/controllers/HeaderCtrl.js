@@ -17,6 +17,15 @@ function HeaderController($scope, $window, OffresService, AuthService, ConfigSer
     });
 
     // AUTH
-    $scope.logged = $window.sessionStorage.token;
+    if( $window.sessionStorage.token )
+        $scope.adminLoggedIn = true;
+
+    else {
+        AuthService.isLoggedIn().then(function (res) {
+            $scope.loggedIn = res.data.loggedIn;
+            if( $scope.loggedIn )
+                $scope.entreprise = res.data.entreprise;
+        });
+    }
 
 }
