@@ -1,4 +1,4 @@
-angular.module('ProfilsCtrl', ['ngDialog']).controller('ProfilsController', ProfilsController);
+angular.module('EntrEmploi').controller('ProfilsController', ProfilsController);
 
 ProfilsController.$inject = ['$scope', '$window', 'ProfilsService', 'ngDialog', 'ProfilsService'];
 
