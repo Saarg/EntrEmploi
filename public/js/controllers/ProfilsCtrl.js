@@ -22,10 +22,12 @@ function ProfilsController($scope, $window, ProfilsService, ngDialog, ProfilsSer
     }
 
     $scope.openCV = function(id) {
-        if( $scope.loggedIn )
+        if( $scope.loggedIn ) {
+            console.log($scope.entreprise);
             $window.open("CV/"+id, '_blank');
-        else
+        } else {
             $scope.popupLogiEntreprise();
+        }
     }
     $scope.popupLogiEntreprise = function() {
         ngDialog.open({

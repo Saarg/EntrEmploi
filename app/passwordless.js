@@ -2,6 +2,7 @@ var passwordless    = require('passwordless');
 var MongoStore      = require('passwordless-mongostore');
 var nodemailer      = require('nodemailer');
 var fs              = require('fs');
+var Entreprise      = require('./models/Entreprise');
 
 module.exports = function(app, db, config) {
     // init passwordless
@@ -39,11 +40,31 @@ module.exports = function(app, db, config) {
     // route pour envoyer les tokens passwordless
     app.post('/passwordless/sendtoken', passwordless.requestToken(
         function(entreprise, delivery, callback, req) {
-            callback(null, entreprise.email);
-        }),
-    function(req, res, next) {
-        console.log("BOUM");
-    });
+            Entreprise.findOne({ mail: entreprise.email }, function(err, e) {
+                if(err) {
+                    console.error(err);
+                    callback(null, null);
+                }
+                else if(e)
+                    callback(null, e.mail);
+                else {
+                    ent = new Entreprise();
+                    ent.mail = entreprise.email;
+
+                    ent.save(function(err, e) {
+                        if (err) {
+                            console.error(err);
+                            return;
+                        }
+                        callback(null, entreprise.email);
+                    });
+                    //callback(null, entreprise.email);
+                }
+            });
+            //console.log(entreprise.email);
+            //callback(null, entreprise.email);
+        })
+    );
 
     // route pour lire les CV
     app.get('/CV/:profil_id', passwordless.restricted(), function(req, res) {
