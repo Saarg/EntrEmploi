@@ -1,8 +1,7 @@
 var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
-var config = require('./../../config/config'); // get our config file
 var Staff = require('./../models/Staff');
 
-module.exports = function(app) {
+module.exports = function(app, config) {
     app.set('superSecret', config.secret); // secret variable
 
     app.post('/api/auth', function(req, res) {

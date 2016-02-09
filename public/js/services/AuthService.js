@@ -30,6 +30,12 @@ function AuthService($http, $window, $location) {
                 }
             }
             return false;
+        },
+        isLoggedIn: function() {
+            return $http.get('/passwordless/isLoggedIn');
+        },
+        loginEntreprise : function(entreprise) {
+            return $http.post('/passwordless/sendtoken', { user: entreprise });
         }
     }
 }
