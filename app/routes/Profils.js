@@ -42,7 +42,9 @@ module.exports = function(app) {
     });
     // DELETE
     app.delete('/api/profils/:profil_id', function(req, res) {
-        fs.unlinkSync('public/CV/' + req.params.profil_id + '.pdf');
+        if(fs.existsSync('public/CV/' + req.params.profil_id + '.pdf'))
+            fs.unlinkSync('public/CV/' + req.params.profil_id + '.pdf');
+
         Profils.remove({_id: req.params.profil_id}, function(err) {
             if (err) {
                 res.json({ success: false, message: err });
