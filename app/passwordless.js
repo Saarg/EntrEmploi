@@ -58,11 +58,8 @@ module.exports = function(app, db, config) {
                         }
                         callback(null, entreprise.email);
                     });
-                    //callback(null, entreprise.email);
                 }
             });
-            //console.log(entreprise.email);
-            //callback(null, entreprise.email);
         })
     );
 

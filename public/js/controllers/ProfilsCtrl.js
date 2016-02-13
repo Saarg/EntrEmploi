@@ -16,9 +16,15 @@ function ProfilsController($scope, $window, ProfilsService, ngDialog, ProfilsSer
 
     $scope.entreprise = {};
     $scope.loginEntreprise = function() {
-        AuthService.loginEntreprise($scope.entreprise).then(function (res) {
+        $scope.entreprise.sent = true;
+        /*AuthService.loginEntreprise($scope.entreprise).then(function (res) {
             console.log(res.data);
-        });
+        });*/
+    }
+
+    $scope.resetMail = function() {
+        $scope.entreprise.email = "";
+        $scope.entreprise.sent  = false;
     }
 
     $scope.openCV = function(id) {
