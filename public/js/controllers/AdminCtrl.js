@@ -156,9 +156,15 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
     $scope.newProfil = {};
     $scope.addProfil = function () {
         ProfilsService.postProfil($scope.newProfil).then(function (res) {
-            $scope.profils.push(res.data.profil);
+            success = res.data.success;
+            if(res.data.success) {
+                $scope.profils.push(res.data.profil);
+                $scope.newProfil = {}; // reset
+            } else {
+                console.error(res.data.message);
+            }
         });
-        $scope.newProfil = {}; // reset
+        return 1;
     }
 
     $scope.uploadCV = function() {
@@ -256,6 +262,7 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
             $scope.users.push(res.data.user);
         });
         $scope.newUser = {};
+        return 1;
     }
     // EDIT
     $scope.editUser = function (user) {
@@ -303,7 +310,7 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
         PartenairesService.postPartenaire(newPartenaire).then(function (res) {
             $scope.partenaires.push(res.data.partenaire);
         });
-
+        return 1;
     }
     $scope.PartenairePopup = function () {
         ngDialog.open({
