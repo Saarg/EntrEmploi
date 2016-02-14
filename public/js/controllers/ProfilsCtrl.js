@@ -17,9 +17,9 @@ function ProfilsController($scope, $window, ProfilsService, ngDialog, ProfilsSer
     $scope.entreprise = {};
     $scope.loginEntreprise = function() {
         $scope.entreprise.sent = true;
-        /*AuthService.loginEntreprise($scope.entreprise).then(function (res) {
+        AuthService.loginEntreprise($scope.entreprise).then(function (res) {
             console.log(res.data);
-        });*/
+        });
     }
 
     $scope.resetMail = function() {

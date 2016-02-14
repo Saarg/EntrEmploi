@@ -80,5 +80,9 @@ module.exports = function(app, db, config) {
             res.json({ loggedIn: false });
         }
     });
+    // logout
+    app.get('/passwordless/logout', passwordless.logout(), function(res, req) {
+        res.json({ loggedIn: false, message: "vous avez été deconnecté"});
+    })
 
 }

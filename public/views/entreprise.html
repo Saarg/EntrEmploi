@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <h1 class="pull-left">{{ entreprise.mail }}</h1>
+        <button type="button" ng-click="logout()" class="btn btn-danger btn-sm pull-right">Deconnexion</button>
+    </div>
+    <div class="row">
+        <div ng-if="EEalert && !EEsuccess" class="alert alert-danger">{{ EEalert }}</div>
+        <div ng-if="EEsuccess && !EEalert" class="alert alert-success">{{ EEsuccess }}</div>
+
+        <form ng-submit="editEntreprise()">
+            <div class="form-group col-md-6">
+                <label for="nom">Nom</label>
+                <input class="form-control" ng-model="entreprise.nom" type="text" id="nom">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="tel">Telephone</label>
+                <input class="form-control" ng-model="entreprise.tel" type="text" id="tel">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="adresse">Adresse</label>
+                <input class="form-control" ng-model="entreprise.adresse" type="text" id="adresse">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="compAdresse">complement d'adresse</label>
+                <input class="form-control" ng-model="entreprise.compAdresse" type="text" id="compAdresse">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="ville">Ville</label>
+                <input class="form-control" ng-model="entreprise.ville" type="text" id="ville">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="codePostal">Code Postal</label>
+                <input class="form-control" ng-model="entreprise.codePostal" type="text" id="codePostal">
+            </div>
+
+            <div class="form-group col-md-12">
+                <button type="submit" class="btn btn-success btn-sm pull-right">Valider les changements</button>
+            </div>
+        </form>
+    </div>
+</div>
