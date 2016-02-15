@@ -2,7 +2,7 @@
     <div class="row">
         Pour acceder au cv veuillez entrer et confirmer votre adresse mail:
     </div>
-    <div class="row">
+    <div class="row" ng-if="!entreprise.sent">
         <form ng-submit="loginEntreprise()">
             <div class="form-group">
                 <label for="mail">Adresse mail</label>
@@ -11,7 +11,12 @@
             </div>
         </form>
     </div>
-    <div class="row">
-        Un mail contenant un lien vous serat envoyé, il vous suffirat de cliquer dessus por etre connecté
+    <div class="row" ng-if="entreprise.sent">
+        <p>
+            Un mail contenant votre lien de connexion vous a été envoyé a l'adresse {{entreprise.email}}, si vous n'avez toujours pas recu le mail dans quelques minutes <a ng-click="loginEntreprise()">cliquez ici</a><br/>
+            Si vous n'avez toujours pas recu le lien merci de verifier que le mail n'a pas été pris pour un spam.<br/>
+            <a ng-click="resetMail()">Changer l'adresse mail</a><br/>
+            En cas de problème technique merci d'envoyer un mail a l'adresse support@entremploi.org
+        </p>
     </div>
 </div>

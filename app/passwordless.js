@@ -58,11 +58,8 @@ module.exports = function(app, db, config) {
                         }
                         callback(null, entreprise.email);
                     });
-                    //callback(null, entreprise.email);
                 }
             });
-            //console.log(entreprise.email);
-            //callback(null, entreprise.email);
         })
     );
 
@@ -83,5 +80,9 @@ module.exports = function(app, db, config) {
             res.json({ loggedIn: false });
         }
     });
+    // logout
+    app.get('/passwordless/logout', passwordless.logout(), function(res, req) {
+        res.json({ loggedIn: false, message: "vous avez été deconnecté"});
+    })
 
 }

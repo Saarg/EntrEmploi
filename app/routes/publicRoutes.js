@@ -1,9 +1,10 @@
-var Offres = require('./../models/Offres');
-var Profils = require('./../models/Profils');
-var Entreprises = require('./../models/Partenaires');
-var MainArticles = require('./../models/MainArticles');
-var Prestations = require('./../models/Prestations');
-var Configs = require('./../models/Config');
+var Offres          = require('./../models/Offres');
+var Profils         = require('./../models/Profils');
+var Entreprises     = require('./../models/Partenaires');
+var MainArticles    = require('./../models/MainArticles');
+var Prestations     = require('./../models/Prestations');
+var Configs         = require('./../models/Config');
+var Entreprise      = require('./../models/Entreprise');
 
 module.exports = function(app) {
     // Config
@@ -91,6 +92,45 @@ module.exports = function(app) {
                 return;
             }
             res.json(count);
+        });
+    });
+    // Entreprises
+    app.get('/api/entreprise/:mail', function(req, res) {
+        Entreprise.findOne({ mail:req.params.mail },function(err, entreprise) {
+            if (err) {
+                res.json({ success: false, message: err });
+                return;
+            }
+            res.json(entreprise);
+        });
+    });
+    app.get('/api/entreprise/count', function(req, res) {
+        Entreprise.count(function(err, count) {
+            if (err) {
+                res.json({ success: false, message: err });
+                return;
+            }
+            res.json(count);
+        });
+    });
+    app.put('/api/entreprise/:entreprise_id', function(req, res) {
+        Entreprise.findById(req.params.entreprise_id, function(err, entreprise) {
+            if (err) res.send(err);
+            entreprise.mail = req.body.mail;
+            entreprise.nom = req.body.nom;
+            entreprise.tel = req.body.tel;
+            entreprise.adresse = req.body.adresse;
+            entreprise.compAdresse = req.body.compAdresse;
+            entreprise.ville = req.body.ville;
+            entreprise.codePostal = req.body.codePostal;
+
+            entreprise.save(function(err) {
+                if (err) {
+                    res.json({ success: false, message: err });
+                    return;
+                }
+                res.json({ success: true });
+            });
         });
     });
 

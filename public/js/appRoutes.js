@@ -47,6 +47,10 @@ angular.module('EntrEmploi').config(['$routeProvider', '$locationProvider', func
             }
         }
     })
+    .when('/profilEntreprise', {
+        templateUrl: 'views/entreprise.html',
+        controller: 'EntrepriseController'
+    })
     .otherwise({
         redirectTo: '/'
     });
