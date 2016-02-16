@@ -47,13 +47,20 @@ function ProfilsController($scope, $filter, $window, ProfilsService, ngDialog, P
     }
 
     // Filtres de recherche
-    $scope.filtre = {ville:0, villeList: ["All", "Brest", "Qimper"], job:0, jobList: ["All", "Comerce", "Marketing"]};
+    $scope.filtre = {ville:0, villeList: ["All"], job:0, jobList: ["All"]};
     $scope.showProfil = function(profil) {
+        // On ignore tous les profils sans CV
         if(!profil.cv)
             return false;
-        else if ($scope.filtre.ville != 0 && $scope.filtre.villeList[$scope.filtre.ville] != profil.ville)
+        // On en profite pour lister les villes et jobs
+        if($scope.filtre.villeList.indexOf(profil.ville.toLowerCase()) == -1)
+            $scope.filtre.villeList.push(profil.ville.toLowerCase());
+        if($scope.filtre.jobList.indexOf(profil.job.toLowerCase()) == -1)
+            $scope.filtre.jobList.push(profil.job.toLowerCase());
+        // On applique le filtre
+        if ($scope.filtre.ville != 0 && $scope.filtre.villeList[$scope.filtre.ville].toLowerCase() != profil.ville.toLowerCase())
             return false;
-        else if ($scope.filtre.job != 0 && $scope.filtre.jobList[$scope.filtre.job] != profil.job)
+        else if ($scope.filtre.job != 0 && $scope.filtre.jobList[$scope.filtre.job].toLowerCase() != profil.job.toLowerCase())
             return false;
         else
             return true;
