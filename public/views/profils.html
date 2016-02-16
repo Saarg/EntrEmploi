@@ -9,7 +9,21 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-md-6" ng-repeat="profil in profils" ng-if="profil.cv">
+        <form>
+            <div class="form-group col-md-6">
+                <label for="ville">Ville</label>
+                <select class="form-control" ng-model="filtre.ville"
+                                             ng-options="filtre.villeList.indexOf(selectedVille) as selectedVille for selectedVille in filtre.villeList" id="ville"></select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="job">métier</label>
+                <select class="form-control" ng-model="filtre.job"
+                                             ng-options="filtre.jobList.indexOf(selectedJob) as selectedJob for selectedJob in filtre.jobList" id="job"></select>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-md-6" ng-repeat="profil in profils" ng-if="showProfil(profil)">
             <h1 class="nom">{{ profil.nom }} {{ profil.prenom }}</h1>
             <p class="infos"> <i class="fa fa-map-marker"></i>
                 {{ profil.ville }} <i class="fa fa-sitemap"></i>

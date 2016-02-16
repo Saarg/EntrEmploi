@@ -1,8 +1,8 @@
 angular.module('EntrEmploi').controller('ProfilsController', ProfilsController);
 
-ProfilsController.$inject = ['$scope', '$window', 'ProfilsService', 'ngDialog', 'ProfilsService', 'AuthService'];
+ProfilsController.$inject = ['$scope', '$filter', '$window', 'ProfilsService', 'ngDialog', 'ProfilsService', 'AuthService'];
 
-function ProfilsController($scope, $window, ProfilsService, ngDialog, ProfilsService, AuthService) {
+function ProfilsController($scope, $filter, $window, ProfilsService, ngDialog, ProfilsService, AuthService) {
 
     ProfilsService.getProfils().then(function (res) {
         $scope.profils = res.data;
@@ -13,6 +13,8 @@ function ProfilsController($scope, $window, ProfilsService, ngDialog, ProfilsSer
         if( $scope.loggedIn )
             $scope.entreprise = res.data.entreprise;
     });
+
+    // Fonctions de login
 
     $scope.entreprise = {};
     $scope.loginEntreprise = function() {
@@ -43,4 +45,18 @@ function ProfilsController($scope, $window, ProfilsService, ngDialog, ProfilsSer
             scope: $scope
         });
     }
+
+    // Filtres de recherche
+    $scope.filtre = {ville:0, villeList: ["All", "Brest", "Qimper"], job:0, jobList: ["All", "Comerce", "Marketing"]};
+    $scope.showProfil = function(profil) {
+        if(!profil.cv)
+            return false;
+        else if ($scope.filtre.ville != 0 && $scope.filtre.villeList[$scope.filtre.ville] != profil.ville)
+            return false;
+        else if ($scope.filtre.job != 0 && $scope.filtre.jobList[$scope.filtre.job] != profil.job)
+            return false;
+        else
+            return true;
+    }
+
 }
