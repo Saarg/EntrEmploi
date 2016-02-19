@@ -1,7 +1,7 @@
-<div class="image-carousel">
+<div class="image-carousel" ng-if="images">
     <uib-carousel interval="intervalImages" template-url="templates/carousel.html">
         <uib-slide ng-repeat="image in images" active="image.active">
-            <img ng-src="{{image.link}}">
+            <img ng-src="{{image.value}}">
         </uib-slide>
     </uib-carousel>
 </div>

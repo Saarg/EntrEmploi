@@ -3,6 +3,18 @@
         <tabs>
             <pane class="admin-section" title="Page accueil" ng-if="accesLevel >= 2">
                 <div class="row">
+                    <h2>Edition du carousel</h2>
+                    <div class="col-md-3 item-list">
+                        <button type="button" ng-click="newImagePopup()" class="btn btn-primary col-xs-12">Ajouter une image</button>
+                        <ul>
+                            <li class="offre-item" ng-repeat="img in images" ng-click="activateImg(images.indexOf(img))" ng-class="{active : images.indexOf(img) === curImgIndex}">{{img._id}}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-9">
+                        <img class="logo" ng-show="images[curImgIndex]" ng-src="{{images[curImgIndex]}}" />
+                    </div>
+                </div>
+                <div class="row">
                     <h2  ng-if="!EAalert && !EAsuccess">Editer un article</h2>
                     <div ng-if="EAalert && !EAsuccess" class="alert alert-danger">{{ EAalert }}</div>
                     <div ng-if="EAsuccess && !EAalert" class="alert alert-success">{{ EAsuccess }}</div>

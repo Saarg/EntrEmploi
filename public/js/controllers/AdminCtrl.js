@@ -10,6 +10,9 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
     HomeService.getArticleCount().then(function(res){
         $scope.MainArticlesCount  = res.data;
     });
+    ConfigService.getConfig("carousel").then(function(res) {
+        $scope.carousel = res.data;
+    });
 
     var processArticle = function(a) {
         a.contenu = a.contenu.replace(/<br\s*[\/]?>/gi, "\n");
@@ -53,6 +56,18 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
         });
         $scope.newArticle = {};
         $scope.newArticle.media = "Aucun";
+    }
+    $scope.newImg = {};
+    $scope.newImagePopup = function () {
+        ngDialog.open({
+            template : '../templates/newImg.html',
+            className: 'ngdialog-theme-default',
+            disableAnimation : true,
+            scope: $scope
+        });
+    }
+    $scope.addImg = function() {
+        ConfigService.addConfig("carousel", $scope.newImg.image.dataURL);
     }
 
     // EDIT
@@ -102,6 +117,10 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
         delete $scope.AAalert;
         delete $scope.AAsuccess;
         $scope.curArticleIndex = index;
+    }
+    $scope.curImgIndex = 0;
+    $scope.activateImg = function(index) {
+        $scope.curImgIndex = index;
     }
     $scope.reload = function() {
         $window.location.reload(true);
