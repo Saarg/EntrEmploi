@@ -12,5 +12,8 @@
     "ng-dialog": "latest",
     "ng-file-upload": "latest",
     "ng-file-upload-shim": "latest"
+  },
+  "resolutions": {
+    "angular": "1.5.0"
   }
 }
