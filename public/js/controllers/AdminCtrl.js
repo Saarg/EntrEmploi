@@ -10,8 +10,8 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
     HomeService.getArticleCount().then(function(res){
         $scope.MainArticlesCount  = res.data;
     });
-    ConfigService.getConfig("carousel").then(function(res) {
-        $scope.carousel = res.data;
+    ConfigService.getConfigAll("carousel").then(function(res) {
+        $scope.images = res.data;
     });
 
     var processArticle = function(a) {
@@ -67,7 +67,10 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
         });
     }
     $scope.addImg = function() {
-        ConfigService.addConfig("carousel", $scope.newImg.image.dataURL);
+        ConfigService.addConfig("carousel", $scope.newImg.image.dataURL).then(function (res) {
+            $scope.images.push(res.data.config);
+        });
+        return 1;
     }
 
     // EDIT
@@ -106,6 +109,11 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
         HomeService.deleteArticle($scope.MainArticlesSorted[$scope.curArticleIndex]._id).then(function () {
             $scope.MainArticles.splice($scope.MainArticles.indexOf($scope.MainArticlesSorted[$scope.curArticleIndex]), 1);
             sortArticles();
+        });
+    }
+    $scope.deleteImage = function () {
+        ConfigService.deleteConfig($scope.images[$scope.curImgIndex]._id).then(function () {
+            $scope.images.splice($scope.curImgIndex, 1);
         });
     }
 

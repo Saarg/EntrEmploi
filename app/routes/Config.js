@@ -35,6 +35,16 @@ module.exports = function(app) {
             });
         });
     });
+    // DELETE
+    app.delete('/api/config/:config_id', function(req, res) {
+        Config.remove({_id: req.params.config_id}, function(err) {
+            if (err) {
+                res.json({ success: false, message: err });
+                return;
+            }
+            res.json({ success: true });
+        });
+    });
     // Upload Image
     app.post('/api/config/upload', function(req, res) {
         var data = new Buffer('');

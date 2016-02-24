@@ -10,8 +10,9 @@
                             <li class="offre-item" ng-repeat="img in images" ng-click="activateImg(images.indexOf(img))" ng-class="{active : images.indexOf(img) === curImgIndex}">{{img._id}}</li>
                         </ul>
                     </div>
-                    <div class="col-md-9">
-                        <img class="logo" ng-show="images[curImgIndex]" ng-src="{{images[curImgIndex]}}" />
+                    <div class="col-md-9" ng-if="images[curImgIndex]">
+                        <img class="col-md-12" ng-src="{{images[curImgIndex].value}}" />
+                        <button type="button" ng-click="deleteImage();" class="btn btn-danger btn-sm">Supprimer</button>
                     </div>
                 </div>
                 <div class="row">

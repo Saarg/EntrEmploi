@@ -21,6 +21,9 @@ function ConfigService($http, $window) {
         },
         getConfigAll : function(name) {
             return $http.get('/api/config/all/'+name);
+        },
+        deleteConfig : function(id) {
+            return $http.delete('/api/config/'+id +'?token='+ $window.sessionStorage.token);
         }
     }
 }
