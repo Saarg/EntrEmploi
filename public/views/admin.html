@@ -171,6 +171,38 @@
 
 
 
+            <!-- Prestations -->
+            <pane class="admin-section" title="Prestations" ng-if="accesLevel >= 0">
+                <div class="row">
+                    <div class="col-md-3 item-list">
+                        <button type="button" ng-click="newPrestationPopup()" class="btn btn-primary">Ajouter une prestation</button>
+                        <ul>
+                            <li class="item" ng-repeat="prestation in prestations" ng-click="activatePrestation(prestations.indexOf(prestation))" ng-class="{active : prestations.indexOf(prestation) === curPrestaIndex}">{{prestation.titre}}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-9 edit-offre">
+                        <form ng-submit="editPresta(curPrestaIndex)">
+
+                            <div class="form-group col-md-4">
+                                <input class="form-control" type="text" name="Titre" ng-model="prestations[curPrestaIndex].titre">
+                                <label>Titre</label>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <textarea class="form-control" name="description" rows="5" ng-model="prestations[curPrestaIndex].contenu" placeholder="Description"></textarea>
+                                <label>Description</label>
+                            </div>
+                            <input type="button" name="delete" value="Supprimer" ng-click="deletePresta(curPrestaIndex)">
+                            <input type="submit" name="name" value="Sauvegarder">
+                        </form>
+                    </div>
+                </div>
+            </pane>
+            <!-- fin prestations -->
+
+
+
+
+
 
 
             <!-- Candidats -->
