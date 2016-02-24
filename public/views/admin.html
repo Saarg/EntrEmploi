@@ -1,6 +1,8 @@
 <div class="admin-container">
     <div class="container">
         <tabs>
+
+            <!-- Page D'acceuil -->
             <pane class="admin-section" title="Page accueil" ng-if="accesLevel >= 2">
                 <div class="row">
                     <h2  ng-if="!EAalert && !EAsuccess">Editer un article</h2>
@@ -98,7 +100,15 @@
                     </form>
                 </div>
             </pane>
+            <!-- fin page d'acceuil -->
 
+
+
+
+
+
+
+            <!-- Offres -->
             <pane class="admin-section" title="Offres" ng-if="accesLevel >= 0">
                 <div class="row">
                     <div class="col-md-3 item-list">
@@ -155,7 +165,15 @@
                     </div>
                 </div>
             </pane>
+            <!-- fin Offres -->
 
+
+
+
+
+
+
+            <!-- Candidats -->
             <pane class="admin-section" title="Candidats" ng-if="accesLevel >= 0">
                 <div class="row">
                     <h2 ng-if="!EPalert && !EPsuccess">Gestion des Candidats</h2>
@@ -202,7 +220,14 @@
                     </div>
                 </div>
             </pane>
+            <!-- fin candidats -->
 
+
+
+
+
+
+            <!-- Site -->
             <pane class="admin-section" title="Gestion site" ng-if="accesLevel >= 2">
                 <div class="row">
                     <h2>Haut de page</h2>
@@ -313,6 +338,7 @@
                     </div>
                 </div>
             </pane>
+            <!-- fin site -->
 
         </tabs>
     </div>
