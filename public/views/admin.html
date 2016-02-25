@@ -177,21 +177,21 @@
                     <div class="col-md-3 item-list">
                         <button type="button" ng-click="newPrestationPopup()" class="btn btn-primary">Ajouter une prestation</button>
                         <ul>
-                            <li class="item" ng-repeat="prestation in prestations" ng-click="activatePrestation(prestations.indexOf(prestation))" ng-class="{active : prestations.indexOf(prestation) === curPrestaIndex}">{{prestation.titre}}</li>
+                            <li class="item" ng-repeat="prestation in prestations" ng-click="activatePrestation(prestations.indexOf(prestation))" ng-class="{active : prestations.indexOf(prestation) === curPrestationIndex}">{{prestation.titre}}</li>
                         </ul>
                     </div>
                     <div class="col-md-9 edit-offre">
-                        <form ng-submit="editPresta(curPrestaIndex)">
+                        <form ng-submit="editPrestation(curPrestationIndex)">
 
                             <div class="form-group col-md-4">
-                                <input class="form-control" type="text" name="Titre" ng-model="prestations[curPrestaIndex].titre">
+                                <input class="form-control" type="text" name="Titre" ng-model="prestations[curPrestationIndex].titre">
                                 <label>Titre</label>
                             </div>
                             <div class="form-group col-md-8">
-                                <textarea class="form-control" name="description" rows="5" ng-model="prestations[curPrestaIndex].contenu" placeholder="Description"></textarea>
+                                <textarea class="form-control" name="description" rows="5" ng-model="prestations[curPrestationIndex].description" placeholder="Description"></textarea>
                                 <label>Description</label>
                             </div>
-                            <input type="button" name="delete" value="Supprimer" ng-click="deletePresta(curPrestaIndex)">
+                            <input type="button" name="delete" value="Supprimer" ng-click="deletePrestation(curPrestationIndex)">
                             <input type="submit" name="name" value="Sauvegarder">
                         </form>
                     </div>

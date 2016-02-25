@@ -1,8 +1,22 @@
 angular.module('EntrEmploi').controller('AdminController', AdminController)
 
-AdminController.$inject =['$scope', '$filter', 'Upload', 'AdminService', 'HomeService', 'OffresService', 'ProfilsService', 'PartenairesService', 'StaffService', 'ConfigService', '$window', 'ngDialog'];
+AdminController.$inject =['$scope', '$filter', 'Upload', 'AdminService', 'HomeService', 'PrestationsService', 'OffresService', 'ProfilsService', 'PartenairesService', 'StaffService', 'ConfigService', '$window', 'ngDialog'];
 
-function AdminController($scope, $filter, Upload, AdminService, HomeService, OffresService, ProfilsService, PartenairesService, StaffService, ConfigService, $window, ngDialog) {
+function AdminController(
+    $scope,
+    $filter,
+    Upload,
+    AdminService,
+    HomeService,
+    PrestationsService,
+    OffresService,
+    ProfilsService,
+    PartenairesService,
+    StaffService,
+    ConfigService,
+    $window,
+    ngDialog
+) {
     $scope.accesLevel = $window.sessionStorage.accesLevel;
 
     // ======  HOME  ======
@@ -147,6 +161,47 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
         })
     }
 
+
+    // =========== PRESTATIONS ================ //
+
+    PrestationsService.getPrestations().then(function (res) {
+        $scope.prestations = res.data;
+    });
+
+    $scope.addPrestation = function (newPrestation) {
+        PrestationsService.postPrestation(newPrestation).then(function () {
+            $scope.prestations.push(newPrestation);
+        });
+        $scope.newPrestation = {}; // reset la nouvelle prestation
+    }
+
+    $scope.editPrestation = function (index) {
+        PrestationsService.editPrestation($scope.prestations[index]).then(function () {
+
+        });
+    }
+
+    $scope.curPrestationIndex = 0;
+
+    $scope.activatePrestation = function(index) {
+        $scope.curPrestationIndex = index;
+    }
+
+    $scope.newPrestation = {};
+    $scope.newPrestationPopup = function () {
+        ngDialog.open({
+            template : '../templates/newPrestation.html',
+            className: 'ngdialog-theme-default',
+            disableAnimation : true,
+            scope: $scope
+        });
+    }
+
+    $scope.deletePrestation = function (index) {
+        PrestationsService.deletePrestation($scope.prestations[index]).then(function () {
+            $scope.prestations.splice(index, 1);
+        })
+    }
     // ====== PROFIL ======
 
     ProfilsService.getProfils().then(function (res) {
@@ -231,7 +286,7 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
     // ====== STAFF  ======
     $scope.accesValues = ["Lecture CV & prestations","Ecriture CV & prestations","Administation du site"];
     if($scope.accesLevel == 3)
-        $scope.accesValues.push("Dev")
+    $scope.accesValues.push("Dev")
 
     $scope.loadUsers = function () {
         StaffService.getUsers().then(function(res){
