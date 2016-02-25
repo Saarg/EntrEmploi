@@ -22,7 +22,7 @@ function HomeController($scope, $filter, $sce, HomeService) {
 
     HomeService.getArticles().then(function(res){
         $scope.MainArticles  = $filter('orderBy')(res.data, 'priority');
-        for(i in $scope.MainArticles){
+        for(var i in $scope.MainArticles){
             $scope.MainArticles[i].Stitre = $scope.MainArticles[i].titre.split(" ", 2);
             $scope.MainArticles[i].lienMedia = $sce.trustAsResourceUrl($scope.MainArticles[i].lienMedia);
         }

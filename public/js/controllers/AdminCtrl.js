@@ -1,8 +1,8 @@
 angular.module('EntrEmploi').controller('AdminController', AdminController)
 
-AdminController.$inject =['$scope', '$filter', 'Upload', 'AdminService', 'HomeService', 'OffresService', 'ProfilsService', 'PartenairesService', 'StaffService', 'ConfigService', '$window', 'ngDialog'];
+AdminController.$inject =['$scope', '$log', '$filter', 'Upload', 'AdminService', 'HomeService', 'OffresService', 'ProfilsService', 'PartenairesService', 'StaffService', 'ConfigService', '$window', 'ngDialog'];
 
-function AdminController($scope, $filter, Upload, AdminService, HomeService, OffresService, ProfilsService, PartenairesService, StaffService, ConfigService, $window, ngDialog) {
+function AdminController($scope, $log, $filter, Upload, AdminService, HomeService, OffresService, ProfilsService, PartenairesService, StaffService, ConfigService, $window, ngDialog) {
     $scope.accesLevel = $window.sessionStorage.accesLevel;
 
     // ======  HOME  ======
@@ -41,7 +41,7 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
         HomeService.postArticle($scope.newArticle).then(function (res) {
             if(res.data.success){
                 delete $scope.AAalert;
-                a = res.data.article;
+                var a = res.data.article;
                 processArticle(a);
                 $scope.MainArticles.push(a);
                 sortArticles();
@@ -156,29 +156,28 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
     $scope.newProfil = {};
     $scope.addProfil = function () {
         ProfilsService.postProfil($scope.newProfil).then(function (res) {
-            success = res.data.success;
             if(res.data.success) {
                 $scope.profils.push(res.data.profil);
                 $scope.newProfil = {}; // reset
             } else {
-                console.error(res.data.message);
+                $log.error(res.data.message);
             }
         });
         return 1;
     }
 
     $scope.uploadCV = function() {
-        cur = $scope.profils[$scope.curProfilIndex];
+        var cur = $scope.profils[$scope.curProfilIndex];
         Upload.upload({
             headers: { "x-access-token": $window.sessionStorage.token },
             url: 'api/profils/upload/'+cur._id,
             method: 'POST',
             data: {file: cur.CV}
         }).progress(function(evt) {
-            console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
-        }).success(function(data, status, headers, config) {
+            $log.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+        }).success(function() {
             $scope.profils[$scope.curProfilIndex].cv = true;
-            console.log('done');
+            $log.log('done');
         });
     }
     $scope.editProfil = function () {

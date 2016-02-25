@@ -1,14 +1,14 @@
 angular.module('EntrEmploi').controller('EntrepriseController', EntrepriseController);
 
-EntrepriseController.$inject = ['$scope', '$window', 'EntrepriseService', 'AuthService'];
+EntrepriseController.$inject = ['$scope', '$log', '$window', 'EntrepriseService', 'AuthService'];
 
-function EntrepriseController($scope, $window, EntrepriseService, AuthService) {
+function EntrepriseController($scope, $log, $window, EntrepriseService, AuthService) {
 
     AuthService.isLoggedIn().then(function (res) {
         $scope.loggedIn = res.data.loggedIn;
         if( $scope.loggedIn )
             EntrepriseService.getEntreprise(res.data.entreprise).then(function (res) {
-                console.log(res.data);
+                $log.log(res.data);
                 $scope.entreprise = res.data;
             });
         else
@@ -22,7 +22,7 @@ function EntrepriseController($scope, $window, EntrepriseService, AuthService) {
 
     $scope.editEntreprise = function () {
         EntrepriseService.editEntreprise($scope.entreprise).then(function (res) {
-            console.log(res.data.success);
+            $log.log(res.data.success);
             if(res.data.success){
                 delete $scope.EEalert;
                 $scope.EEsuccess = "Votre profil a bien été modifié";

@@ -1,8 +1,8 @@
 angular.module('EntrEmploi').controller('ProfilsController', ProfilsController);
 
-ProfilsController.$inject = ['$scope', '$filter', '$window', 'ProfilsService', 'ngDialog', 'ProfilsService', 'AuthService'];
+ProfilsController.$inject = ['$scope', '$log', '$filter', '$window', 'ProfilsService', 'ngDialog', 'AuthService'];
 
-function ProfilsController($scope, $filter, $window, ProfilsService, ngDialog, ProfilsService, AuthService) {
+function ProfilsController($scope, $log, $filter, $window, ProfilsService, ngDialog, AuthService) {
 
     ProfilsService.getProfils().then(function (res) {
         $scope.profils = res.data;
@@ -20,7 +20,7 @@ function ProfilsController($scope, $filter, $window, ProfilsService, ngDialog, P
     $scope.loginEntreprise = function() {
         $scope.entreprise.sent = true;
         AuthService.loginEntreprise($scope.entreprise).then(function (res) {
-            console.log(res.data);
+            $log.log(res.data);
         });
     }
 
@@ -31,7 +31,7 @@ function ProfilsController($scope, $filter, $window, ProfilsService, ngDialog, P
 
     $scope.openCV = function(id) {
         if( $scope.loggedIn ) {
-            console.log($scope.entreprise);
+            $log.log($scope.entreprise);
             $window.open("CV/"+id, '_blank');
         } else {
             $scope.popupLogiEntreprise();

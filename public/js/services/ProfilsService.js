@@ -17,7 +17,7 @@ function ProfilsService($http, $window) {
                 prenom : profil.prenom,
                 ville : profil.ville,
                 job : profil.job,
-                accroche : profil.accroche,
+                accroche : profil.accroche
             });
         },
         editProfil : function (profil) {
@@ -27,7 +27,7 @@ function ProfilsService($http, $window) {
                 prenom : profil.prenom,
                 ville : profil.ville,
                 job : profil.job,
-                accroche : profil.accroche,
+                accroche : profil.accroche
             });
         },
         deleteProfil : function (profil) {

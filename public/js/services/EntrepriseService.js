@@ -1,8 +1,8 @@
 angular.module('EntrEmploi').factory('EntrepriseService', EntrepriseService);
 
-EntrepriseService.$inject = ['$http', '$window'];
+EntrepriseService.$inject = ['$http'];
 
-function EntrepriseService($http, $window) {
+function EntrepriseService($http) {
     return {
         getEntreprise : function(entreprise) {
             return $http.get('/api/entreprise/' + entreprise);

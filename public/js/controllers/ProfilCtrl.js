@@ -1,12 +1,12 @@
 angular.module('EntrEmploi').controller('ProfilController', ProfilController);
 
-ProfilController.$inject = ['$scope', '$window', 'StaffService'];
+ProfilController.$inject = ['$scope', '$log', '$window', 'StaffService'];
 
-function ProfilController($scope, $window, StaffService) {
+function ProfilController($scope, $log, $window, StaffService) {
 
     StaffService.getUser($window.sessionStorage.user_id).then(function (res) {
         $scope.user = res.data[0];
-        console.log(res.data[0]);
+        $log.log(res.data[0]);
     });
 
     $scope.logout = function() {
@@ -18,7 +18,7 @@ function ProfilController($scope, $window, StaffService) {
 
     $scope.editUser = function () {
         StaffService.editUser($scope.user).then(function (res) {
-            console.log(res.data.success);
+            $log.log(res.data.success);
             if(res.data.success){
                 delete $scope.EPalert;
                 $scope.EPsuccess = "Votre profil a bien été modifié";
