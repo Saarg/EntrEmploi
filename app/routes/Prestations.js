@@ -44,7 +44,6 @@ module.exports = function (app) {
     // DELETE
 
     app.delete('/api/prestations/:prestation_id', function (req, res) {
-        console.log(req);
         Prestations.remove({_id: req.params.prestation_id}, function (err) {
             if (err) {
                 res.json({ succes: false, message: err});
