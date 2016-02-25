@@ -1,0 +1,8 @@
+<div class="">
+    <h2>Creer Une nouvelle Prestation</h2>
+    <form ng-submit="addPrestation(newPrestation) && closeThisDialog()">
+        <input type="text" name="titre" ng-model="newPrestation.titre" placeholder="titre">
+        <textarea name="description" rows="5" ng-model="newPrestation.description" placeholder="Description"></textarea>
+        <input type="submit" name="name" value="Ajouter">
+    </form>
+</div>
