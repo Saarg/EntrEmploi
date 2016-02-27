@@ -1,6 +1,6 @@
 <div class="image-carousel" ng-if="images">
     <uib-carousel interval="intervalImages" template-url="templates/carousel.html">
-        <uib-slide ng-repeat="image in images" active="image.active">
+        <uib-slide ng-repeat="image in images.slice().reverse()" active="image.active">
             <img ng-src="{{image.value}}">
         </uib-slide>
     </uib-carousel>

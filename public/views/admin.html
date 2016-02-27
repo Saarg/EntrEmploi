@@ -7,7 +7,7 @@
                     <div class="col-md-3 item-list">
                         <button type="button" ng-click="newImagePopup()" class="btn btn-primary col-xs-12">Ajouter une image</button>
                         <ul>
-                            <li class="offre-item" ng-repeat="img in images" ng-click="activateImg(images.indexOf(img))" ng-class="{active : images.indexOf(img) === curImgIndex}">{{img._id}}</li>
+                            <li class="offre-item" ng-repeat="img in images.slice().reverse()" ng-click="activateImg(images.indexOf(img))" ng-class="{active : images.indexOf(img) === curImgIndex}">{{img._id}}</li>
                         </ul>
                     </div>
                     <div class="col-md-9" ng-if="images[curImgIndex]">

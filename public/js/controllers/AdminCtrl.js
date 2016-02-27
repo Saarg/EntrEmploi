@@ -67,7 +67,7 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
         });
     }
     $scope.addImg = function() {
-        ConfigService.addConfig("carousel", $scope.newImg.image.dataURL).then(function (res) {
+        ConfigService.addConfig("carousel", $scope.newImg.image.resized.dataURL).then(function (res) {
             $scope.images.push(res.data.config);
         });
         return 1;

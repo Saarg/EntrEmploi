@@ -5,7 +5,7 @@ ConfigService.$inject = ['$http', '$window'];
 function ConfigService($http, $window) {
     return {
         addConfig : function(name, value) {
-            return $http.post('/api/config', { token: $window.sessionStorage.token,
+            return $http.post('/api/config?token='+ $window.sessionStorage.token, {
                 name: name,
                 value: value
             });
