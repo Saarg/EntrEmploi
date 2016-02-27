@@ -16,6 +16,11 @@ function ConfigService($http, $window) {
                 value: value
             });
         },
+        editConfigById : function(id, value) {
+            return $http.put('/api/config/id/'+id, { token: $window.sessionStorage.token,
+                value: value
+            });
+        },
         getConfig : function(name) {
             return $http.get('/api/config/'+name);
         },

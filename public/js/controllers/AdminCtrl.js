@@ -87,6 +87,13 @@ function AdminController($scope, $filter, Upload, AdminService, HomeService, Off
             }
         });
     }
+    $scope.editImg = function() {
+        console.log($scope.images[$scope.curImgIndex]._id);
+        ConfigService.editConfigById($scope.images[$scope.curImgIndex]._id, $scope.images[$scope.curImgIndex].image.resized.dataURL).then(function (res) {
+
+        });
+        return 1;
+    }
     $scope.infoArticle = function () {
         $scope.currentArticle = $scope.MainArticlesSorted[$scope.curArticleIndex];
 

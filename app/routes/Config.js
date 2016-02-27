@@ -26,7 +26,24 @@ module.exports = function(app) {
             //config.name = req.body.name || req.params.name;
             config.value = req.body.value;
 
-            config.save(function(err) {
+            config.save(function(err, config) {
+                if (err) {
+                    res.json({ success: false, message: err });
+                    return;
+                }
+                res.json({ success: true });
+            });
+        });
+    });
+    app.put('/api/config/id/:config_id', function(req, res) {
+        Config.findById(req.params.config_id, function(err, config) {
+            if (err) {
+                res.send(err);
+                return;
+            }
+            config.value = req.body.value;
+
+            config.save(function(err, config) {
                 if (err) {
                     res.json({ success: false, message: err });
                     return;
