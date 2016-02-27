@@ -5,6 +5,26 @@
             <!-- Page D'acceuil -->
             <pane class="admin-section" title="Page accueil" ng-if="accesLevel >= 2">
                 <div class="row">
+                    <h2>Edition du carousel</h2>
+                    <div class="col-md-3 item-list">
+                        <button type="button" ng-click="newImagePopup()" class="btn btn-primary col-xs-12">Ajouter une image</button>
+                        <ul>
+                            <li class="offre-item" ng-repeat="img in images.slice().reverse()" ng-click="activateImg(images.indexOf(img))" ng-class="{active : images.indexOf(img) === curImgIndex}">image {{$index+1}}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-9" ng-if="images[curImgIndex]">
+                        <img class="col-md-12" ng-src="{{images[curImgIndex].image.resized.dataURL || images[curImgIndex].value}}" />
+
+                        <button type="button" ng-click="deleteImage();" class="btn btn-danger btn-sm pull-left">Supprimer</button>
+
+                        <button type="button" ng-click="editImg();" class="btn btn-success btn-sm pull-right">Modifier</button>
+                        <input class="pull-right" type="file" accept="image/*" image="images[curImgIndex].image"
+                        resize-max-height="400"
+                        resize-max-width="1300"
+                        resize-quality="0.7" />
+                    </div>
+                </div>
+                <div class="row">
                     <h2  ng-if="!EAalert && !EAsuccess">Editer un article</h2>
                     <div ng-if="EAalert && !EAsuccess" class="alert alert-danger">{{ EAalert }}</div>
                     <div ng-if="EAsuccess && !EAalert" class="alert alert-success">{{ EAsuccess }}</div>

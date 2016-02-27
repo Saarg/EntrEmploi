@@ -26,6 +26,9 @@ function AdminController(
     HomeService.getArticleCount().then(function(res){
         $scope.MainArticlesCount  = res.data;
     });
+    ConfigService.getConfigAll("carousel").then(function(res) {
+        $scope.images = res.data;
+    });
 
     var processArticle = function(a) {
         a.contenu = a.contenu.replace(/<br\s*[\/]?>/gi, "\n");
@@ -70,6 +73,21 @@ function AdminController(
         $scope.newArticle = {};
         $scope.newArticle.media = "Aucun";
     }
+    $scope.newImg = {};
+    $scope.newImagePopup = function () {
+        ngDialog.open({
+            template : '../templates/newImg.html',
+            className: 'ngdialog-theme-default',
+            disableAnimation : true,
+            scope: $scope
+        });
+    }
+    $scope.addImg = function() {
+        ConfigService.addConfig("carousel", $scope.newImg.image.resized.dataURL).then(function (res) {
+            $scope.images.push(res.data.config);
+        });
+        return 1;
+    }
 
     // EDIT
     $scope.currentArticle = {}
@@ -84,6 +102,13 @@ function AdminController(
                 $scope.EAalert = res.data.message;
             }
         });
+    }
+    $scope.editImg = function() {
+        console.log($scope.images[$scope.curImgIndex]._id);
+        ConfigService.editConfigById($scope.images[$scope.curImgIndex]._id, $scope.images[$scope.curImgIndex].image.resized.dataURL).then(function (res) {
+
+        });
+        return 1;
     }
     $scope.infoArticle = function () {
         $scope.currentArticle = $scope.MainArticlesSorted[$scope.curArticleIndex];
@@ -109,6 +134,11 @@ function AdminController(
             sortArticles();
         });
     }
+    $scope.deleteImage = function () {
+        ConfigService.deleteConfig($scope.images[$scope.curImgIndex]._id).then(function () {
+            $scope.images.splice($scope.curImgIndex, 1);
+        });
+    }
 
     // UTILS
     $scope.curArticleIndex = 0;
@@ -118,6 +148,10 @@ function AdminController(
         delete $scope.AAalert;
         delete $scope.AAsuccess;
         $scope.curArticleIndex = index;
+    }
+    $scope.curImgIndex = 0;
+    $scope.activateImg = function(index) {
+        $scope.curImgIndex = index;
     }
     $scope.reload = function() {
         $window.location.reload(true);

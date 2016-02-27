@@ -14,7 +14,22 @@ module.exports = function(app) {
                 res.json({ success: false, message: err });
                 return;
             }
-            res.json(config.value);
+            if(config)
+                res.json(config.value);
+            else
+                res.json(null);
+        });
+    });
+    app.get('/api/config/all/:name', function(req, res) {
+        Configs.find({ name:req.params.name },function(err, configs) {
+            if (err) {
+                res.json({ success: false, message: err });
+                return;
+            }
+            if(configs)
+                res.json(configs);
+            else
+                res.json(null);
         });
     });
     // Offres

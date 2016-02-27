@@ -1,0 +1,16 @@
+<div class="newImg">
+    <h2>Ajouter un candidat</h2>
+    <form ng-submit="addImg() && closeThisDialog()">
+        <div class="form-group">
+            <input class="col-xs-12" type="file" accept="image/*" image="newImg.image"
+            resize-max-height="400"
+            resize-max-width="1300"
+            resize-quality="0.7" />
+            <div class="col-md-12">
+                <img style="width:400px;" ng-show="newImg" ng-src="{{newImg.image.resized.dataURL}}" />
+            </div>
+            <button type="submit" class="btn btn-success btn-sm col-xs-12" ng-if="newImg.image.resized.dataURL">Valider</button>
+        </div>
+    </form>
+    <div class="filler"></div>
+</div>
