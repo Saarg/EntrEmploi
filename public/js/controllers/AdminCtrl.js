@@ -19,7 +19,7 @@ function AdminController(
     ngDialog
 ) {
 
-    $scope.accesLevel = $window.sessionStorage.accesLevel;
+    $scope.accesLevel = $window.localStorage.accesLevel;
 
     // ======  HOME  ======
     // GET
@@ -261,7 +261,7 @@ function AdminController(
     $scope.uploadCV = function() {
         var cur = $scope.profils[$scope.curProfilIndex];
         Upload.upload({
-            headers: { "x-access-token": $window.sessionStorage.token },
+            headers: { "x-access-token": $window.localStorage.token },
             url: 'api/profils/upload/'+cur._id,
             method: 'POST',
             data: {file: cur.CV}

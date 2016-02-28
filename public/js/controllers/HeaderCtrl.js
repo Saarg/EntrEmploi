@@ -19,7 +19,7 @@ function HeaderController($scope, $window, OffresService, AuthService, ConfigSer
     });
 
     // AUTH
-    if( $window.sessionStorage.token )
+    if( $window.localStorage.token )
         $scope.adminLoggedIn = true;
     else {
         AuthService.isLoggedIn().then(function (res) {

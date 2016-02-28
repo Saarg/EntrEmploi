@@ -11,7 +11,7 @@ function PrestationsService($http, $window) {
         // nouvelle prestation
         postPrestation : function (prestation) {
             return $http.post('/api/prestations', {
-                token: $window.sessionStorage.token,
+                token: $window.localStorage.token,
                 titre : prestation.titre,
                 description : prestation.description,
             });
@@ -19,14 +19,14 @@ function PrestationsService($http, $window) {
 
         editPrestation : function (prestation) {
             return $http.put('/api/prestations/' + prestation._id, {
-                token: $window.sessionStorage.token,
+                token: $window.localStorage.token,
                 titre : prestation.titre,
                 description : prestation.description
             });
         },
 
         deletePrestation : function (prestation) {
-            return $http.delete('/api/prestations/' + prestation._id + '?token=' + $window.sessionStorage.token);
+            return $http.delete('/api/prestations/' + prestation._id + '?token=' + $window.localStorage.token);
         }
     }
 }

@@ -4,15 +4,15 @@ ProfilController.$inject = ['$scope', '$log', '$window', 'StaffService'];
 
 function ProfilController($scope, $log, $window, StaffService) {
 
-    StaffService.getUser($window.sessionStorage.user_id).then(function (res) {
+    StaffService.getUser($window.localStorage.user_id).then(function (res) {
         $scope.user = res.data[0];
         $log.log(res.data[0]);
     });
 
     $scope.logout = function() {
-        delete $window.sessionStorage.token;
-        delete $window.sessionStorage.nom;
-        delete $window.sessionStorage.prenom;
+        delete $window.localStorage.token;
+        delete $window.localStorage.nom;
+        delete $window.localStorage.prenom;
         $window.location.reload(true);
     }
 

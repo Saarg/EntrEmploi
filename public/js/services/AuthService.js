@@ -11,7 +11,7 @@ function AuthService($http, $window, $location) {
             });
         },
         logged: function(){
-            var token = $window.sessionStorage.token;
+            var token = $window.localStorage.token;
             if(token){
                 var res = $http.post('/token/verify', { token: token });
                 if(res.success){
@@ -22,7 +22,7 @@ function AuthService($http, $window, $location) {
             return false;
         },
         decodeToken: function(){
-            var token   = $window.sessionStorage.token;
+            var token   = $window.localStorage.token;
             if(token){
                 var res = $http.post('/token/verify', { token: token });
                 if(res.success){
