@@ -259,7 +259,7 @@
                             <li class="offre-item"  ng-repeat="profil in profils"
                                                     ng-click="activateProfil(profils.indexOf(profil))"
                                                     ng-if="showProfil(profil)"
-                                                    ng-class="{active : profils.indexOf(profil) === curProfilIndex, 'alert-danger' : !profil.cv}">{{profil.nom}} - {{profil.prenom}}</li>
+                                                    ng-class="{active : profils.indexOf(profil) === curProfilIndex, 'alert-danger' : !profil.cv}">{{profil.prenom}} {{profil.nom}}</li>
                         </ul>
                     </div>
                     <div class="col-md-9 edit-offre">
