@@ -4,9 +4,11 @@ HeaderController.$inject = ['$scope', '$window', 'OffresService', 'AuthService',
 
 function HeaderController($scope, $window, OffresService, AuthService, ConfigService) {
     // GET HEADER LOGO
+    $scope.stockLogoSPF = "images/Logo-spf.png"
     ConfigService.getConfig("LogoSPF").then(function(res){
         $scope.logoSPF  = res.data;
     });
+    $scope.stockLogoEntrEmploi = "images/Logo-entremploi-xl.png"
     ConfigService.getConfig("LogoEntrEmploi").then(function(res){
         $scope.logoEntrEmploi  = res.data;
     });

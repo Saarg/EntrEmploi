@@ -158,7 +158,7 @@ function AdminController(
     }
 
     // =========== OFFRES ================ //
-
+    /*
     OffresService.getOffres().then(function (res) {
         $scope.offres = res.data;
     });
@@ -196,6 +196,7 @@ function AdminController(
             $scope.offres.splice(index, 1);
         })
     }
+    */
 
 
     // =========== PRESTATIONS ================ //
@@ -304,6 +305,29 @@ function AdminController(
         ProfilsService.deleteProfil($scope.profils[$scope.curProfilIndex]).then(function () {
             $scope.profils.splice($scope.curProfilIndex, 1);
         })
+    }
+
+    // Filtres de recherche
+    $scope.filtre = {ville:0, villeList: ["All"], job:0, jobList: ["All"], nom: "", prenom: ""};
+    $scope.showProfil = function(profil) {
+        // On en profite pour lister les villes et jobs
+        if($scope.filtre.villeList.indexOf(profil.ville.toLowerCase()) == -1)
+            $scope.filtre.villeList.push(profil.ville.toLowerCase());
+        if($scope.filtre.jobList.indexOf(profil.job.toLowerCase()) == -1)
+            $scope.filtre.jobList.push(profil.job.toLowerCase());
+        // On applique le filtre
+        if ($scope.filtre.ville != 0 && $scope.filtre.villeList[$scope.filtre.ville].toLowerCase() != profil.ville.toLowerCase())
+            return false;
+        else if ($scope.filtre.job != 0 && $scope.filtre.jobList[$scope.filtre.job].toLowerCase() != profil.job.toLowerCase())
+            return false;
+        else if ($scope.filtre.nom != "" && !profil.nom)
+            return false;
+        else if ($scope.filtre.nom != "" && profil.nom && $scope.filtre.nom.toLowerCase() != profil.nom.substring(0, $scope.filtre.nom.length).toLowerCase())
+            return false;
+        else if ($scope.filtre.prenom != "" && $scope.filtre.prenom.toLowerCase() != profil.prenom.substring(0, $scope.filtre.prenom.length).toLowerCase())
+            return false;
+        else
+            return true;
     }
 
     // ====== HEADER ======
