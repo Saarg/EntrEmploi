@@ -9,20 +9,20 @@ function PartenairesService($http, $window) {
         },
         postPartenaire : function (partenaire) {
             return $http.post('/api/partenaires', {
-                token: $window.sessionStorage.token,
+                token: $window.localStorage.token,
                 nom : partenaire.nom,
                 site : partenaire.site
             });
         },
         editPartenaire : function(partenaire) {
             return $http.put('/api/partenaires/' + partenaire._id, {
-                token: $window.sessionStorage.token,
+                token: $window.localStorage.token,
                 nom: partenaire.nom,
                 site: partenaire.site
             });
         },
         deletePartenaire : function(partenaire_id) {
-            return $http.delete( '/api/partenaires/' + partenaire_id +'?token='+ $window.sessionStorage.token);
+            return $http.delete( '/api/partenaires/' + partenaire_id +'?token='+ $window.localStorage.token);
         }
     }
 }

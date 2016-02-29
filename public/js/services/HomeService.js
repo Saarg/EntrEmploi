@@ -16,7 +16,7 @@ function HomeService($http, $window) {
             else if (newArticle.media == 'Vidéo') {
                 newArticle.lienMedia = newArticle.lienMedia.replace("watch?v=", "embed/");
             }
-            return $http.post('/api/mainArticles', { token: $window.sessionStorage.token,
+            return $http.post('/api/mainArticles', { token: $window.localStorage.token,
                 titre: newArticle.titre,
                 contenu: newArticle.contenu.replace(/\n/g, "<"+"br/>"),
                 priority: newArticle.priority,
@@ -33,7 +33,7 @@ function HomeService($http, $window) {
                 article.lienMedia = article.lienMedia.replace("watch?v=", "embed/");
             }
             return $http.put('/api/mainArticles/' + article._id, {
-                token: $window.sessionStorage.token,
+                token: $window.localStorage.token,
                 titre: article.titre,
                 contenu: article.contenu.replace(/\n/g, "<"+"br/>"),
                 media: article.media,
@@ -42,7 +42,7 @@ function HomeService($http, $window) {
             });
         },
         deleteArticle : function(article_id) {
-            return $http.delete( '/api/mainArticles/' + article_id +'?token='+ $window.sessionStorage.token);
+            return $http.delete( '/api/mainArticles/' + article_id +'?token='+ $window.localStorage.token);
         }
     }
 }

@@ -14,7 +14,7 @@ function OffresService($http, $window) {
         // nouvelle offre
         postOffre : function (offre) {
             return $http.post('/api/offres', {
-                token: $window.sessionStorage.token,
+                token: $window.localStorage.token,
                 titre : offre.titre,
                 contenu : offre.contenu,
                 entreprise : offre.entreprise,
@@ -30,7 +30,7 @@ function OffresService($http, $window) {
 
         editOffre : function (offre) {
             return $http.put('/api/offres/' + offre._id, {
-                token: $window.sessionStorage.token,
+                token: $window.localStorage.token,
                 titre : offre.titre,
                 contenu : offre.contenu,
                 entreprise : offre.entreprise,
@@ -45,7 +45,7 @@ function OffresService($http, $window) {
         },
 
         deleteOffre : function (offre) {
-            return $http.delete('/api/offres/' + offre._id + '?token=' + $window.sessionStorage.token);
+            return $http.delete('/api/offres/' + offre._id + '?token=' + $window.localStorage.token);
         }
     }
 }

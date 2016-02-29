@@ -1,24 +1,15 @@
 angular.module('EntrEmploi').controller('HomeController', HomeController);
 
-HomeController.$inject = ['$scope', '$filter', "$sce", 'HomeService'];
+HomeController.$inject = ['$scope', '$filter', "$sce", 'HomeService', 'ConfigService'];
 
-function HomeController($scope, $filter, $sce, HomeService) {
+function HomeController($scope, $filter, $sce, HomeService, ConfigService) {
     // Trucs pour le carousel
     $scope.intervalImages = 7000;
     $scope.interval = 6000;
-    $scope.slides = [
-        { text : "Super Equipe !" },
-        { text : "Pas Mal du tout" },
-        { text : "J'ai trouvé un boulot !" }
-    ];
 
-    $scope.images = [
-        { link :"http://lorempixel.com/1300/400/business/" },
-        { link :"http://lorempixel.com/1300/400/business/" },
-        { link :"http://lorempixel.com/1300/400/business/" },
-        { link :"http://lorempixel.com/1300/400/business/" },
-        { link :"http://lorempixel.com/1300/400/business/" }
-    ];
+    ConfigService.getConfigAll("carousel").then(function(res) {
+        $scope.images = res.data;
+    });
 
     HomeService.getArticles().then(function(res){
         $scope.MainArticles  = $filter('orderBy')(res.data, 'priority');
@@ -27,6 +18,4 @@ function HomeController($scope, $filter, $sce, HomeService) {
             $scope.MainArticles[i].lienMedia = $sce.trustAsResourceUrl($scope.MainArticles[i].lienMedia);
         }
     });
-
-    $scope.succes = 10;
 }

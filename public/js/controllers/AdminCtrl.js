@@ -19,12 +19,15 @@ function AdminController(
     ngDialog
 ) {
 
-    $scope.accesLevel = $window.sessionStorage.accesLevel;
+    $scope.accesLevel = $window.localStorage.accesLevel;
 
     // ======  HOME  ======
     // GET
     HomeService.getArticleCount().then(function(res){
         $scope.MainArticlesCount  = res.data;
+    });
+    ConfigService.getConfigAll("carousel").then(function(res) {
+        $scope.images = res.data;
     });
 
     var processArticle = function(a) {
@@ -70,6 +73,21 @@ function AdminController(
         $scope.newArticle = {};
         $scope.newArticle.media = "Aucun";
     }
+    $scope.newImg = {};
+    $scope.newImagePopup = function () {
+        ngDialog.open({
+            template : '../templates/newImg.html',
+            className: 'ngdialog-theme-default',
+            disableAnimation : true,
+            scope: $scope
+        });
+    }
+    $scope.addImg = function() {
+        ConfigService.addConfig("carousel", $scope.newImg.image.resized.dataURL).then(function (res) {
+            $scope.images.push(res.data.config);
+        });
+        return 1;
+    }
 
     // EDIT
     $scope.currentArticle = {}
@@ -84,6 +102,13 @@ function AdminController(
                 $scope.EAalert = res.data.message;
             }
         });
+    }
+    $scope.editImg = function() {
+        console.log($scope.images[$scope.curImgIndex]._id);
+        ConfigService.editConfigById($scope.images[$scope.curImgIndex]._id, $scope.images[$scope.curImgIndex].image.resized.dataURL).then(function (res) {
+
+        });
+        return 1;
     }
     $scope.infoArticle = function () {
         $scope.currentArticle = $scope.MainArticlesSorted[$scope.curArticleIndex];
@@ -109,6 +134,11 @@ function AdminController(
             sortArticles();
         });
     }
+    $scope.deleteImage = function () {
+        ConfigService.deleteConfig($scope.images[$scope.curImgIndex]._id).then(function () {
+            $scope.images.splice($scope.curImgIndex, 1);
+        });
+    }
 
     // UTILS
     $scope.curArticleIndex = 0;
@@ -119,12 +149,16 @@ function AdminController(
         delete $scope.AAsuccess;
         $scope.curArticleIndex = index;
     }
+    $scope.curImgIndex = 0;
+    $scope.activateImg = function(index) {
+        $scope.curImgIndex = index;
+    }
     $scope.reload = function() {
         $window.location.reload(true);
     }
 
     // =========== OFFRES ================ //
-
+    /*
     OffresService.getOffres().then(function (res) {
         $scope.offres = res.data;
     });
@@ -162,6 +196,7 @@ function AdminController(
             $scope.offres.splice(index, 1);
         })
     }
+    */
 
 
     // =========== PRESTATIONS ================ //
@@ -226,7 +261,7 @@ function AdminController(
     $scope.uploadCV = function() {
         var cur = $scope.profils[$scope.curProfilIndex];
         Upload.upload({
-            headers: { "x-access-token": $window.sessionStorage.token },
+            headers: { "x-access-token": $window.localStorage.token },
             url: 'api/profils/upload/'+cur._id,
             method: 'POST',
             data: {file: cur.CV}
@@ -270,6 +305,29 @@ function AdminController(
         ProfilsService.deleteProfil($scope.profils[$scope.curProfilIndex]).then(function () {
             $scope.profils.splice($scope.curProfilIndex, 1);
         })
+    }
+
+    // Filtres de recherche
+    $scope.filtre = {ville:0, villeList: ["All"], job:0, jobList: ["All"], nom: "", prenom: ""};
+    $scope.showProfil = function(profil) {
+        // On en profite pour lister les villes et jobs
+        if($scope.filtre.villeList.indexOf(profil.ville.toLowerCase()) == -1)
+            $scope.filtre.villeList.push(profil.ville.toLowerCase());
+        if($scope.filtre.jobList.indexOf(profil.job.toLowerCase()) == -1)
+            $scope.filtre.jobList.push(profil.job.toLowerCase());
+        // On applique le filtre
+        if ($scope.filtre.ville != 0 && $scope.filtre.villeList[$scope.filtre.ville].toLowerCase() != profil.ville.toLowerCase())
+            return false;
+        else if ($scope.filtre.job != 0 && $scope.filtre.jobList[$scope.filtre.job].toLowerCase() != profil.job.toLowerCase())
+            return false;
+        else if ($scope.filtre.nom != "" && !profil.nom)
+            return false;
+        else if ($scope.filtre.nom != "" && profil.nom && $scope.filtre.nom.toLowerCase() != profil.nom.substring(0, $scope.filtre.nom.length).toLowerCase())
+            return false;
+        else if ($scope.filtre.prenom != "" && $scope.filtre.prenom.toLowerCase() != profil.prenom.substring(0, $scope.filtre.prenom.length).toLowerCase())
+            return false;
+        else
+            return true;
     }
 
     // ====== HEADER ======

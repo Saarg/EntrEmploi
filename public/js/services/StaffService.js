@@ -5,14 +5,14 @@ StaffService.$inject = ['$http', '$window'];
 function StaffService($http, $window) {
     return {
         getUsers : function() {
-            return $http.get('/api/staff?token='+ $window.sessionStorage.token);
+            return $http.get('/api/staff?token='+ $window.localStorage.token);
         },
         getUser : function(userId) {
-            return $http.get('/api/staff/'+userId +'?token='+ $window.sessionStorage.token);
+            return $http.get('/api/staff/'+userId +'?token='+ $window.localStorage.token);
         },
         postUser : function (user) {
             return $http.post('/api/staff', {
-                token: $window.sessionStorage.token,
+                token: $window.localStorage.token,
                 nom: user.nom,
                 prenom: user.prenom,
                 accesLevel: user.accesLevel,
@@ -21,7 +21,7 @@ function StaffService($http, $window) {
         },
         editUser : function(user) {
             return $http.put('/api/staff/' + user._id, {
-                token: $window.sessionStorage.token,
+                token: $window.localStorage.token,
                 nom: user.nom,
                 prenom: user.prenom,
                 tel : user.tel,
@@ -35,7 +35,7 @@ function StaffService($http, $window) {
             });
         },
         deleteUser : function(user_id) {
-            return $http.delete( '/api/staff/' + user_id +'?token='+ $window.sessionStorage.token);
+            return $http.delete( '/api/staff/' + user_id +'?token='+ $window.localStorage.token);
         }
     };
 }

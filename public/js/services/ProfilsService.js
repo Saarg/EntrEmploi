@@ -12,7 +12,7 @@ function ProfilsService($http, $window) {
         },
         postProfil : function (profil) {
             return $http.post('/api/profils', {
-                token: $window.sessionStorage.token,
+                token: $window.localStorage.token,
                 nom : profil.nom,
                 prenom : profil.prenom,
                 ville : profil.ville,
@@ -22,7 +22,7 @@ function ProfilsService($http, $window) {
         },
         editProfil : function (profil) {
             return $http.put('/api/profils/' + profil._id, {
-                token: $window.sessionStorage.token,
+                token: $window.localStorage.token,
                 nom : profil.nom,
                 prenom : profil.prenom,
                 ville : profil.ville,
@@ -31,7 +31,7 @@ function ProfilsService($http, $window) {
             });
         },
         deleteProfil : function (profil) {
-            return $http.delete('/api/profils/' + profil._id + '?token=' + $window.sessionStorage.token);
+            return $http.delete('/api/profils/' + profil._id + '?token=' + $window.localStorage.token);
         }
     }
 }

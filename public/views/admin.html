@@ -5,6 +5,26 @@
             <!-- Page D'acceuil -->
             <pane class="admin-section" title="Page accueil" ng-if="accesLevel >= 2">
                 <div class="row">
+                    <h2>Edition du carousel</h2>
+                    <div class="col-md-3 item-list">
+                        <button type="button" ng-click="newImagePopup()" class="btn btn-primary col-xs-12">Ajouter une image</button>
+                        <ul>
+                            <li class="offre-item" ng-repeat="img in images.slice().reverse()" ng-click="activateImg(images.indexOf(img))" ng-class="{active : images.indexOf(img) === curImgIndex}">image {{$index+1}}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-9" ng-if="images[curImgIndex]">
+                        <img class="col-md-12" ng-src="{{images[curImgIndex].image.resized.dataURL || images[curImgIndex].value}}" />
+
+                        <button type="button" ng-click="deleteImage();" class="btn btn-danger btn-sm pull-left">Supprimer</button>
+
+                        <button type="button" ng-click="editImg();" class="btn btn-success btn-sm pull-right">Modifier</button>
+                        <input class="pull-right" type="file" accept="image/*" image="images[curImgIndex].image"
+                        resize-max-height="400"
+                        resize-max-width="1300"
+                        resize-quality="0.7" />
+                    </div>
+                </div>
+                <div class="row">
                     <h2  ng-if="!EAalert && !EAsuccess">Editer un article</h2>
                     <div ng-if="EAalert && !EAsuccess" class="alert alert-danger">{{ EAalert }}</div>
                     <div ng-if="EAsuccess && !EAalert" class="alert alert-success">{{ EAsuccess }}</div>
@@ -108,7 +128,7 @@
 
 
 
-            <!-- Offres -->
+            <!-- Offres
             <pane class="admin-section" title="Offres" ng-if="accesLevel >= 0">
                 <div class="row">
                     <div class="col-md-3 item-list">
@@ -165,7 +185,7 @@
                     </div>
                 </div>
             </pane>
-            <!-- fin Offres -->
+            fin Offres -->
 
 
 
@@ -208,13 +228,38 @@
             <!-- Candidats -->
             <pane class="admin-section" title="Candidats" ng-if="accesLevel >= 0">
                 <div class="row">
+                    <form>
+                        <div class="form-group col-md-3">
+                            <label>Nom</label>
+                            <input class="form-control" type="text" name="Nom" ng-model="filtre.nom">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Prenom</label>
+                            <input class="form-control" type="text" name="Prenom" ng-model="filtre.prenom">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="ville">Ville</label>
+                            <select class="form-control" ng-model="filtre.ville"
+                                                         ng-options="filtre.villeList.indexOf(selectedVille) as selectedVille for selectedVille in filtre.villeList" id="ville"></select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="job">métier</label>
+                            <select class="form-control" ng-model="filtre.job"
+                                                         ng-options="filtre.jobList.indexOf(selectedJob) as selectedJob for selectedJob in filtre.jobList" id="job"></select>
+                        </div>
+                    </form>
+                </div>
+                <div class="row">
                     <h2 ng-if="!EPalert && !EPsuccess">Gestion des Candidats</h2>
                     <div ng-if="EPalert && !EPsuccess" class="alert alert-danger">{{ EPalert }}</div>
                     <div ng-if="EPsuccess && !EPalert" class="alert alert-success">{{ EPsuccess }}</div>
                     <div class="col-md-3 item-list">
                         <button type="button" ng-click="newProfilPopup()" class="btn btn-primary col-xs-12">Ajouter un profil</button>
                         <ul>
-                            <li class="offre-item" ng-repeat="profil in profils" ng-click="activateProfil(profils.indexOf(profil))" ng-class="{active : profils.indexOf(profil) === curProfilIndex, 'alert-danger' : !profil.cv}">{{profil.nom}} - {{profil.prenom}}</li>
+                            <li class="offre-item"  ng-repeat="profil in profils"
+                                                    ng-click="activateProfil(profils.indexOf(profil))"
+                                                    ng-if="showProfil(profil)"
+                                                    ng-class="{active : profils.indexOf(profil) === curProfilIndex, 'alert-danger' : !profil.cv}">{{profil.prenom}} {{profil.nom}}</li>
                         </ul>
                     </div>
                     <div class="col-md-9 edit-offre">
