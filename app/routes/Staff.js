@@ -22,19 +22,19 @@ module.exports = function(app) {
     });
     // POST
     app.post('/api/staff', function(req, res) {
-	var staff = new Staff();
-    	staff.nom = req.body.nom;
-    	staff.prenom = req.body.prenom;
-    	staff.tel = req.body.tel;
-    	staff.mail = req.body.mail;
-    	staff.adresse = req.body.adresse;
-    	staff.compAdresse = req.body.compAdresse;
-    	staff.ville = req.body.ville;
-    	staff.codePostal = req.body.codePostal;
-    	staff.accesLevel = req.body.accesLevel;
-    	staff.passwd = staff.generateHash(req.body.passwd);
+        var staff = new Staff();
+        staff.nom = req.body.nom;
+        staff.prenom = req.body.prenom;
+        staff.tel = req.body.tel;
+        staff.mail = req.body.mail;
+        staff.adresse = req.body.adresse;
+        staff.compAdresse = req.body.compAdresse;
+        staff.ville = req.body.ville;
+        staff.codePostal = req.body.codePostal;
+        staff.accesLevel = req.body.accesLevel;
+        staff.passwd = staff.generateHash(req.body.passwd);
 
-    	staff.save(function(err, user) {
+        staff.save(function(err, user) {
             if (err) {
                 res.json({ success: false, message: err });
                 return;
@@ -70,7 +70,7 @@ module.exports = function(app) {
     });
     // DELETE
     app.delete('/api/staff/:staff_id', function(req, res) {
-	Staff.remove({_id: req.params.staff_id}, function(err, staff) {
+        Staff.remove({_id: req.params.staff_id}, function(err, staff) {
             if (err) {
                 res.json({ success: false, message: err });
                 return;

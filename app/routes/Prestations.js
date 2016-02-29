@@ -20,6 +20,29 @@ module.exports = function (app) {
         });
     });
 
+    //PUT EMAIL
+
+    app.put('/api/prestations/:prestation_id/:email', function (req, res) {
+        Prestations.findById(req.params.prestation_id, function (err, prestation) {
+
+            prestation.inscrits.push({
+                email: req.params.email
+            });
+
+            console.log(prestation);
+
+            prestation.save(function (err) {
+                if (err) {
+                    res.json({ success: false, message: err});
+                    return;
+                }
+                res.json({success: true});
+            });
+        })
+    })
+
+
+
     // PUT
 
     app.put('/api/prestations/:prestation_id', function (req, res) {
@@ -28,7 +51,8 @@ module.exports = function (app) {
 
             prestation.titre = req.body.titre;
             prestation.description = req.body.description;
-            prestation.inscrits = 0;
+            prestation.maxInscrits = req.body.maxInscrits;
+
             prestation._createur = req.decoded._id;
 
             prestation.save(function (err) {
