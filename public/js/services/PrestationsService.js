@@ -25,6 +25,12 @@ function PrestationsService($http, $window) {
             });
         },
 
+        inscrire : function (prestation) {
+            return $http.put('/api/prestations/' + prestation._id +"/" + prestation.email, {
+                token : $window.sessionStorage.token
+            })
+        },
+
         deletePrestation : function (prestation) {
             return $http.delete('/api/prestations/' + prestation._id + '?token=' + $window.sessionStorage.token);
         }
