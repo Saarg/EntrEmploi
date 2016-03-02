@@ -6,6 +6,8 @@ var Prestations     = require('./../models/Prestations');
 var Configs         = require('./../models/Config');
 var Entreprise      = require('./../models/Entreprise');
 
+
+
 module.exports = function(app) {
     // Config
     app.get('/api/config/:name', function(req, res) {
@@ -157,6 +159,26 @@ module.exports = function(app) {
                 return;
             }
             res.json(Prestations);
+        })
+    });
+
+
+    app.put('/prestations/:prestation_id/:email', function (req, res) {
+        Prestations.findById(req.params.prestation_id, function (err, prestation) {
+            if(err) {
+                res.send(err);
+                return;
+            }
+            prestation.inscrits.push(req.params.email);
+
+            prestation.save(function (err) {
+                if(err) {
+                    res.json({success: false, message: err})
+                    return;
+                }
+
+                res.json({success: true});
+            })
         })
     });
 }

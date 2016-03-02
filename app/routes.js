@@ -3,7 +3,7 @@ module.exports = function(app, db, config) {
     // authentication routes
     require('./routes/apiAuth')(app, config);
 
-    // routes qui ne passent pas par le middleware, donc sans auth (GET only)
+    // routes qui ne passent pas par le middleware, donc sans auth
     require('./routes/publicRoutes')(app);
 
     // Outils pour l'auth de la page admin et des entreprises
