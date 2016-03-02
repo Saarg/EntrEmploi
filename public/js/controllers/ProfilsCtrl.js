@@ -18,6 +18,9 @@ function ProfilsController($scope, $log, $filter, $window, ProfilsService, ngDia
 
     $scope.entreprise = {};
     $scope.loginEntreprise = function() {
+        if($scope.loggedIn)
+            return 1;
+
         $scope.entreprise.sent = true;
         AuthService.loginEntreprise($scope.entreprise).then(function (res) {
             $log.log(res.data);
