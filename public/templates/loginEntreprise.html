@@ -1,5 +1,5 @@
 <div class="loginEntreprise">
-    <div class="row">
+    <div class="row" ng-if="!entreprise.sent">
         Pour acceder au cv veuillez entrer et confirmer votre adresse mail:
     </div>
     <div class="row" ng-if="!entreprise.sent">
@@ -13,9 +13,9 @@
     </div>
     <div class="row" ng-if="entreprise.sent">
         <p>
-            Un mail contenant votre lien de connexion vous a été envoyé a l'adresse {{entreprise.email}}, si vous n'avez toujours pas recu le mail dans quelques minutes <a ng-click="loginEntreprise()">cliquez ici</a><br/>
-            Si vous n'avez toujours pas recu le lien merci de verifier que le mail n'a pas été pris pour un spam.<br/>
-            <a ng-click="resetMail()">Changer l'adresse mail</a><br/>
+            Un mail contenant votre lien de connexion vous a été envoyé a l'adresse {{entreprise.email}}<br/>
+            Si vous n'avez toujours pas recu le lien merci de verifier que le mail n'a pas été pris pour un spam.<br/><br/>
+            <a ng-click="resetMail()">Changer l'adresse mail</a><br/><br/>
             En cas de problème technique merci d'envoyer un mail a l'adresse support@entremploi.org
         </p>
     </div>

@@ -44,6 +44,7 @@ function AdminController(
             $scope.MainArticles  = res.data;
             for(var i in $scope.MainArticles){
                 processArticle($scope.MainArticles[i]);
+                if($scope.MainArticles[i].media == "Vidéo") { $scope.MainArticles[i].lienMediaYT = $scope.MainArticles[i].lienMedia }
             }
             sortArticles();
         });

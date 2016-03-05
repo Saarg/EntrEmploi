@@ -24,6 +24,8 @@ function ContactController($scope, ContactService) {
                 $scope.message = "Votre message a bien été envoyé.";
                 $scope.error = false;
                 sended = true;
+
+
             } else {
                 $scope.error = rep.error;
             }
