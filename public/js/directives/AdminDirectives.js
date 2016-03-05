@@ -68,7 +68,7 @@ function image($q, $window, $document) {
         var maxHeight = options.resizeMaxHeight || 300;
         var maxWidth = options.resizeMaxWidth || 250;
         var quality = options.resizeQuality || 0.7;
-        var type = options.resizeType || 'image/jpeg';
+        var type = options.resizeType || 'image/png';
 
         var canvas = getResizeArea();
 
@@ -131,9 +131,10 @@ function image($q, $window, $document) {
             var doResizing = function(imageResult, callback) {
                 createImage(imageResult.url, function(image) {
                     var dataURL = resizeImage(image, scope);
+                    var imageType = dataURL.substring(5, dataURL.indexOf(';'));
                     imageResult.resized = {
                         dataURL: dataURL,
-                        type: dataURL.match(/:(.+\/.+);/)[1]
+                        type: imageType
                     };
                     callback(imageResult);
                 });
