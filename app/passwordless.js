@@ -28,8 +28,10 @@ module.exports = function(app, db, config) {
             transporter.sendMail(mailOptions, function(error, info){
                 if(error){
                     console.error(error);
+                    callback(error);
                 } else {
                     console.log("message envoyé");
+                    callback();
                 }
             });
     });
@@ -60,7 +62,10 @@ module.exports = function(app, db, config) {
                     });
                 }
             });
-        })
+        }),
+        function(req, res) {
+            res.json({ send: true });
+        }
     );
 
     // route pour lire les CV
