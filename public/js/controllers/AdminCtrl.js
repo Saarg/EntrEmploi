@@ -414,6 +414,17 @@ function AdminController(
         $scope.curUserIndex = index;
     }
 
+    $scope.filtreStaff = {nom: "", prenom: ""};
+    $scope.showStaff = function(profil) {
+        // On applique le filtre
+        if ($scope.filtre.nom != "" && profil.nom && $scope.filtre.nom.toLowerCase() != profil.nom.substring(0, $scope.filtre.nom.length).toLowerCase())
+            return false;
+        else if ($scope.filtre.prenom != "" && $scope.filtre.prenom.toLowerCase() != profil.prenom.substring(0, $scope.filtre.prenom.length).toLowerCase())
+            return false;
+        else
+            return true;
+    }
+
     // ==== PARTENAIRE ====
     PartenairesService.getPartenaires().then(function (res) {
         $scope.partenaires = res.data;
