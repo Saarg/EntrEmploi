@@ -56,14 +56,14 @@
                                 <label for="media">Media</label>
                             </div>
                             <div class="form-group col-md-10" ng-if="MainArticlesSorted[curArticleIndex].media=='Photo'">
-                                <input class="col-md-4" type="file" accept="image/*" image="MainArticlesSorted[curArticleIndex].image"
-                                resize-max-height="300"
-                                resize-max-width="250"
+                                <input class="col-md-6" type="file" accept="image/*" image="MainArticlesSorted[curArticleIndex].image"
+                                resize-max-height="500"
+                                resize-max-width="500"
                                 resize-quality="0.7" />
-                                <img class="pull-right" ng-show="MainArticlesSorted[curArticleIndex].image" ng-src="{{MainArticlesSorted[curArticleIndex].image.resized.dataURL || MainArticlesSorted[curArticleIndex].image}}" />
+                                <img class="col-md-6" ng-show="MainArticlesSorted[curArticleIndex].image" ng-src="{{MainArticlesSorted[curArticleIndex].image.resized.dataURL || MainArticlesSorted[curArticleIndex].image}}" />
                             </div>
                             <div class="form-group col-md-10" ng-if="MainArticlesSorted[curArticleIndex].media=='Vidéo'">
-                                <input class="form-control" ng-model="MainArticlesSorted[curArticleIndex].lienMedia" type="text" name="lienYT" id="youtube-video">
+                                <input class="form-control" ng-model="MainArticlesSorted[curArticleIndex].lienMediaYT" type="text" name="lienYT" id="youtube-video">
                                 <label for="youtube-video">Lien de la video youtube</label>
                             </div>
                             <div class="form-group col-md-12">
@@ -103,14 +103,14 @@
                             <label for="media">Media</label>
                         </div>
                         <div class="form-group col-md-10" ng-if="newArticle.media=='Photo'">
-                            <input class="col-md-4" type="file" accept="image/*" image="newArticle.image"
+                            <input class="col-md-6" type="file" accept="image/*" image="newArticle.image"
                             resize-max-height="300"
                             resize-max-width="250"
                             resize-quality="0.7" />
-                            <img ng-show="newArticle.image" ng-src="{{newArticle.image.resized.dataURL}}" />
+                            <img class="col-md-6" ng-show="newArticle.image" ng-src="{{newArticle.image.resized.dataURL}}" />
                         </div>
                         <div class="form-group col-md-10" ng-if="newArticle.media=='Vidéo'">
-                            <input class="form-control" ng-model="newArticle.lienMedia" type="text" name="lienYT" id="youtube-video">
+                            <input class="form-control" ng-model="newArticle.lienMediaYT" type="text" name="lienYT" id="youtube-video">
                             <label for="youtube-video">Lien de la video youtube</label>
                         </div>
                         <div class="form-group col-md-12">
@@ -334,15 +334,28 @@
                 <hr/>
                 <div class="row">
                     <h2  ng-if="!ESalert && !ESsuccess">Gestion du staff</h2>
+
                     <div ng-if="ESalert && !ESsuccess" class="alert alert-danger">{{ ESalert }}</div>
                     <div ng-if="ESsuccess && !ESalert" class="alert alert-success">{{ ESsuccess }}</div>
+
+                    <form>
+                        <div class="form-group col-md-6">
+                            <label>Nom</label>
+                            <input class="form-control" type="text" name="Nom" ng-model="filtre.nom">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Prenom</label>
+                            <input class="form-control" type="text" name="Prenom" ng-model="filtre.prenom">
+                        </div>
+                    </form>
+
                     <div class="col-md-3 item-list">
                         <button type="button" ng-click="newUserPopup()" class="btn btn-primary col-xs-12">Ajouter un utilisateur</button>
                         <ul>
                             <li class="offre-item"  ng-repeat="user in users"
                                                     ng-click="activateUser(users.indexOf(user))"
                                                     ng-class="{active : users.indexOf(user) === curUserIndex}"
-                                                    ng-if="user.accesLevel < 3 || accesLevel == 3"
+                                                    ng-if="(user.accesLevel < 3 || accesLevel == 3) && showStaff(user)"
                                                     >{{user.nom}} - {{user.prenom}}</li>
                         </ul>
                     </div>

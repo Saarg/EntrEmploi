@@ -14,7 +14,7 @@ function HomeService($http, $window) {
             if(newArticle.media == 'Photo')
                 newArticle.lienMedia = newArticle.image.resized.dataURL;
             else if (newArticle.media == 'Vidéo') {
-                newArticle.lienMedia = newArticle.lienMedia.replace("watch?v=", "embed/");
+                newArticle.lienMedia = newArticle.lienMediaYT.replace("watch?v=", "embed/");
             }
             return $http.post('/api/mainArticles', { token: $window.localStorage.token,
                 titre: newArticle.titre,
@@ -30,7 +30,7 @@ function HomeService($http, $window) {
             } else if (article.media == 'Photo' && !article.lienMedia) {
                 article.media = 'Aucun';
             } else if (article.media == 'Vidéo' && article.lienMedia) {
-                article.lienMedia = article.lienMedia.replace("watch?v=", "embed/");
+                article.lienMedia = article.lienMediaYT.replace("watch?v=", "embed/");
             }
             return $http.put('/api/mainArticles/' + article._id, {
                 token: $window.localStorage.token,
