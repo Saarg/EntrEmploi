@@ -13,13 +13,15 @@ function PrestaController ($scope, PrestationsService, ngDialog) {
             template : '../templates/inscriptionPrestation.html',
             className : 'ngdialog-theme-default',
             disableAnimation : true,
-            scope: prestation
+            scope: $scope,
+            data : {prestation : prestation}
         })
     }
 
-    $scope.submit = function (prestation) {
-        PrestationsService.inscrire(prestation).then(function () {
-            prestation.email = "";
+    $scope.submit = function (prestation, email) {
+        PrestationsService.inscrirePrestation(prestation, email).then(function () {
+            email = "";
         });
+        return 1;
     }
 }

@@ -1,11 +1,11 @@
 module.exports = function(app, db, config) {
     // backend routes ===========================================================
+
+    // routes qui ne passent pas par le middleware, donc sans auth
+    require('./routes/publicRoutes')(app, config);
+
     // authentication routes
     require('./routes/apiAuth')(app, config);
-
-    // routes qui ne passent pas par le middleware, donc sans auth (GET only)
-    require('./routes/publicRoutes')(app);
-
     // Outils pour l'auth de la page admin et des entreprises
     require('./routes/Auth')(app);
 

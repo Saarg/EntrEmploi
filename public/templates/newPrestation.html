@@ -1,8 +1,27 @@
 <div class="contatiner">
     <h2>Creer Une nouvelle Prestation</h2>
     <form ng-submit="addPrestation(newPrestation) && closeThisDialog()">
-        <input type="text" name="titre" ng-model="newPrestation.titre" placeholder="titre">
-        <textarea name="description" rows="5" ng-model="newPrestation.description" placeholder="Description"></textarea>
+
+        <div class="form-group col-md-4">
+            <input class="form-control" type="text" name="Titre" ng-model="newPrestation.titre">
+            <label>Titre</label>
+        </div>
+
+        <div class="form-group col-md-8">
+            <textarea class="form-control" name="description" rows="5" ng-model="newPrestation.description" placeholder="Description"></textarea>
+            <label>Description</label>
+        </div>
+
+        <div class="form-group col-md-8">
+            <input type="number" class="form-control" name="maxInscrits" ng-model="newPrestation.maxInscrits"></textarea>
+            <label>Nombre d'inscrits minimum</label>
+        </div>
+
+        <div class="form-group col-md-8">
+            <textarea class="form-control" name="messageConfirmation" rows="5" ng-model="newPrestation.messageConfirmation" placeholder="message de Confirmation"></textarea>
+            <label>Message de confiramtion d'inscritpion</label>
+        </div>
+
         <input type="submit" name="name" value="Ajouter">
     </form>
 </div>

@@ -14,6 +14,8 @@ function PrestationsService($http, $window) {
                 token: $window.localStorage.token,
                 titre : prestation.titre,
                 description : prestation.description,
+                messageConfirmation : prestation.messageConfirmation,
+                maxInscrits : prestation.maxInscrits
             });
         },
 
@@ -21,14 +23,14 @@ function PrestationsService($http, $window) {
             return $http.put('/api/prestations/' + prestation._id, {
                 token: $window.localStorage.token,
                 titre : prestation.titre,
-                description : prestation.description
+                description : prestation.description,
+                messageConfirmation : prestation.messageConfirmation,
+                maxInscrits : prestation.maxInscrits
             });
         },
 
-        inscrire : function (prestation) {
-            return $http.put('/api/prestations/' + prestation._id +"/" + prestation.email, {
-                token : $window.sessionStorage.token
-            })
+        inscrirePrestation : function (prestation, email) {
+            return $http.put('/api/prestations/' + prestation._id + '/' + email);
         },
 
         deletePrestation : function (prestation) {
