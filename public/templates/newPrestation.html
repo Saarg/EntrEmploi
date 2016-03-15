@@ -3,17 +3,22 @@
     <form ng-submit="addPrestation(newPrestation) && closeThisDialog()">
 
         <div class="form-group col-md-4">
-            <input class="form-control" type="text" name="Titre" ng-model="prestations[curPrestationIndex].titre">
+            <input class="form-control" type="text" name="Titre" ng-model="newPrestation.titre">
             <label>Titre</label>
         </div>
-        
+
         <div class="form-group col-md-8">
-            <textarea class="form-control" name="description" rows="5" ng-model="prestations[curPrestationIndex].description" placeholder="Description"></textarea>
+            <textarea class="form-control" name="description" rows="5" ng-model="newPrestation.description" placeholder="Description"></textarea>
             <label>Description</label>
         </div>
 
         <div class="form-group col-md-8">
-            <textarea class="form-control" name="messageConfirmation" rows="5" ng-model="prestations[curPrestationIndex].messageConfirmation" placeholder="message de Confirmation"></textarea>
+            <input type="number" class="form-control" name="maxInscrits" ng-model="newPrestation.maxInscrits"></textarea>
+            <label>Nombre d'inscrits minimum</label>
+        </div>
+
+        <div class="form-group col-md-8">
+            <textarea class="form-control" name="messageConfirmation" rows="5" ng-model="newPrestation.messageConfirmation" placeholder="message de Confirmation"></textarea>
             <label>Message de confiramtion d'inscritpion</label>
         </div>
 
