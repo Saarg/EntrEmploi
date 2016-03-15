@@ -211,6 +211,15 @@
                                 <textarea class="form-control" name="description" rows="5" ng-model="prestations[curPrestationIndex].description" placeholder="Description"></textarea>
                                 <label>Description</label>
                             </div>
+                            <div class="form-group col-md-8">
+                                <textarea class="form-control" name="messageConfirmation" rows="5" ng-model="prestations[curPrestationIndex].messageConfirmation" placeholder="message de Confirmation"></textarea>
+                                <label>Message de confiramtion d'inscritpion</label>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <input type="number" name="maxInscrits" ng-model="prestations[curPrestationIndex].maxInscrits">
+                                <label>Nombre d'inscrits requis</label>
+                            </div>
+
                             <input type="button" name="delete" value="Supprimer" ng-click="deletePrestation(curPrestationIndex)">
                             <input type="submit" name="name" value="Sauvegarder">
                         </form>

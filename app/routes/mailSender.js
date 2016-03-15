@@ -1,7 +1,7 @@
 var nodemailer  = require('nodemailer');
 
 module.exports = function(app, config) {
-    app.post('/contact/send', function(req, res) {
+    app.post('/mail/send', function(req, res) {
         var transporter = nodemailer.createTransport("SMTP", {
             host: config.mail.host,
             secureConnection: config.mail.secureConnection,
@@ -13,8 +13,8 @@ module.exports = function(app, config) {
         });
         var mailOptions = {
             from: req.body.sender, // sender address
-            to: 'milsonneau.jean@free.fr', // list of receivers
-            subject: req.body.sujet, // Subject line
+            to: req.body.receivers || config.mail.contact, // list of receivers
+            subject: req.body.subject, // Subject line
             text: req.body.message, // plaintext body
         };
         transporter.sendMail(mailOptions, function(error, info){

@@ -22,5 +22,6 @@ function PrestaController ($scope, PrestationsService, ngDialog) {
         PrestationsService.inscrirePrestation(prestation, email).then(function () {
             email = "";
         });
+        return 1;
     }
 }

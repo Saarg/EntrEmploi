@@ -6,9 +6,9 @@ var Prestations     = require('./../models/Prestations');
 var Configs         = require('./../models/Config');
 var Entreprise      = require('./../models/Entreprise');
 
+var http            = require('easyhttp');
 
-
-module.exports = function(app) {
+module.exports = function(app, config) {
     // Config
     app.get('/api/config/:name', function(req, res) {
         Configs.findOne({ name:req.params.name },function(err, config) {
@@ -163,7 +163,7 @@ module.exports = function(app) {
     });
 
 
-    app.put('/prestations/:prestation_id/:email', function (req, res) {
+    app.put('/api/prestations/:prestation_id/:email', function (req, res) {
         Prestations.findById(req.params.prestation_id, function (err, prestation) {
             if(err) {
                 res.send(err);
@@ -171,12 +171,32 @@ module.exports = function(app) {
             }
             prestation.inscrits.push(req.params.email);
 
+            console.log(prestation.maxInscrits, prestation.inscrits.length);
+            if(prestation.inscrits.length >= prestation.maxInscrits) {
+                http.post('http://localhost:8080/mail/send', {
+                    sender : config.mail.email,
+                    receivers : config.mail.email,
+                    subject : "[" + prestation.titire + "] Il y a assz d'inscrits",
+                    message : prestation.inscrits.toString()
+                }, function (body, res) {
+                    console.log('email de maximum envoyé');
+                })
+            }
+
             prestation.save(function (err) {
                 if(err) {
                     res.json({success: false, message: err})
                     return;
                 }
 
+                http.post('http://localhost:8080/mail/send', {
+                    sender : config.mail.email,
+                    receivers : req.params.email,
+                    subject : "["+prestation.titre+"] Confimation d'inscription",
+                    message : prestation.messageConfirmation
+                }, function (body, res) {
+                    console.log('email sent !');
+                });
                 res.json({success: true});
             })
         })

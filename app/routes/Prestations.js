@@ -9,6 +9,8 @@ module.exports = function (app) {
         prestation.titre = req.body.titre;
         prestation.description = req.body.description;
         prestation.inscrits = [];
+        prestation.messageConfirmation = req.body.messageConfirmation;
+        prestation.maxInscrits = req.body.maxInscrits;
         prestation._createur = req.decoded._id;
 
         prestation.save(function (err) {
@@ -29,6 +31,7 @@ module.exports = function (app) {
 
             prestation.titre = req.body.titre;
             prestation.description = req.body.description;
+            prestation.messageConfirmation = req.body.messageConfirmation;
             prestation.maxInscrits = req.body.maxInscrits;
 
             prestation._createur = req.decoded._id;

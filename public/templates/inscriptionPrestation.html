@@ -1,5 +1,5 @@
 <div class="container">
-    <form ng-submit="submit(ngDialogData.prestation, email)">
+    <form ng-submit="submit(ngDialogData.prestation, email) && closeThisDialog()">
         <div class="form-group col-md-6">
             <label name="email">Entrez votre e-mail pour vous inscrire, nous vous recontacterons par la suite</label>
             <input type="email" name="email" placeholder="vous@exemple.com" ng-model="email">
