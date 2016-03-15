@@ -9,7 +9,7 @@ function ContactService($http) {
         },
         sendMail : function($scope) {
             var sujet = '[' + $scope.mail.nom + '] ' + $scope.mail.sujet
-            return $http.post('/contact/send', {
+            return $http.post('/mail/send', {
                 sender: $scope.mail.email,
                 sujet: sujet,
                 message: $scope.mail.message
