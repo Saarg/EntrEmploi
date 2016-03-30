@@ -127,75 +127,14 @@
 
 
 
-
-            <!-- Offres
-            <pane class="admin-section" title="Offres" ng-if="accesLevel >= 0">
-                <div class="row">
-                    <div class="col-md-3 item-list">
-                        <button type="button" ng-click="newOffrePopup()" class="btn btn-primary">Ajouter une offre</button>
-                        <ul>
-                            <li class="offre-item" ng-repeat="offre in offres" ng-click="activateOffre(offres.indexOf(offre))" ng-class="{active : offres.indexOf(offre) === curOffreIndex}">{{offre.titre}} - {{offre.location}}</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-9 edit-offre">
-                        <form ng-submit="editOffre(curOffreIndex)">
-
-                            <div class="form-group col-md-4">
-                                <input class="form-control" type="text" name="Titre" ng-model="offres[curOffreIndex].titre">
-                                <label>Titre</label>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <input class="form-control" type="text" name="entreprise" ng-model="offres[curOffreIndex].entreprise" placeholder="entreprise">
-                                <label>Entreprise</label>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <input class="form-control" type="text" name="siteEntreprise" ng-model="offres[curOffreIndex].siteEntreprise" placeholder="site web de l'entreprise">
-                                <label>Site web de L'entreprise</label>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <input class="form-control" type="text" name="numContact" ng-model="offres[curOffreIndex].numContact" placeholder="Télephone Contact">
-                                <label>Téléphone</label>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <input class="form-control" type="text" name="mailContact" ng-model="offres[curOffreIndex].mailContact" placeholder="Mail contact">
-                                <label>E-mail</label>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <input class="form-control" type="text" name="categ" ng-model="offres[curOffreIndex].categ" placeholder="catégorie">
-                                <label>Catégorie</label>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <input class="form-control" type="text" name="location" ng-model="offres[curOffreIndex].location" placeholder="Ville">
-                                <label>Ville</label>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <select class="form-control" name="contract" ng-model="offres[curOffreIndex].contract">
-                                    <option value="CDI">CDI</option>
-                                    <option value="CDD">CDD</option>
-                                </select>
-                                <label>Type de Contrat</label>
-                            </div>
-                            <div class="form-group col-md-8">
-                                <textarea class="form-control" name="description" rows="5" ng-model="offres[curOffreIndex].contenu" placeholder="Description"></textarea>
-                                <label>Description</label>
-                            </div>
-                            <input type="button" name="delete" value="Supprimer" ng-click="deleteOffre(curOffreIndex)">
-                            <input type="submit" name="name" value="Sauvegarder">
-                        </form>
-                    </div>
-                </div>
-            </pane>
-            fin Offres -->
-
-
-
-
-
             <!-- Prestations -->
             <pane class="admin-section" title="Prestations" ng-if="accesLevel >= 0">
                 <div class="row">
+                    <h2 ng-if="!EPRalert && !EPRsuccess">Gestion des préstations</h2>
+                    <div ng-if="EPRalert && !EPRsuccess" class="alert alert-danger">{{ EPRalert }}</div>
+                    <div ng-if="EPRsuccess && !EPRalert" class="alert alert-success">{{ EPRsuccess }}</div>
                     <div class="col-md-3 item-list">
-                        <button type="button" ng-click="newPrestationPopup()" class="btn btn-primary">Ajouter une prestation</button>
+                        <button type="button" ng-click="newPrestationPopup()" class="btn btn-primary col-xs-12">Ajouter une prestation</button>
                         <ul>
                             <li class="item" ng-repeat="prestation in prestations" ng-click="activatePrestation(prestations.indexOf(prestation))" ng-class="{active : prestations.indexOf(prestation) === curPrestationIndex}">{{prestation.titre}}</li>
                         </ul>
@@ -203,25 +142,28 @@
                     <div class="col-md-9 edit-offre">
                         <form ng-submit="editPrestation(curPrestationIndex)">
 
-                            <div class="form-group col-md-4">
-                                <input class="form-control" type="text" name="Titre" ng-model="prestations[curPrestationIndex].titre">
+                            <div class="form-group col-md-9">
                                 <label>Titre</label>
+                                <input class="form-control" type="text" name="Titre" ng-model="prestations[curPrestationIndex].titre">
+
                             </div>
-                            <div class="form-group col-md-8">
-                                <textarea class="form-control" name="description" rows="5" ng-model="prestations[curPrestationIndex].description" placeholder="Description"></textarea>
-                                <label>Description</label>
-                            </div>
-                            <div class="form-group col-md-8">
-                                <textarea class="form-control" name="messageConfirmation" rows="5" ng-model="prestations[curPrestationIndex].messageConfirmation" placeholder="message de Confirmation"></textarea>
-                                <label>Message de confiramtion d'inscritpion</label>
-                            </div>
-                            <div class="form-group col-md-8">
-                                <input type="number" name="maxInscrits" ng-model="prestations[curPrestationIndex].maxInscrits">
+                            <div class="form-group col-md-3">
                                 <label>Nombre d'inscrits requis</label>
+                                <input type="number" name="maxInscrits" ng-model="prestations[curPrestationIndex].maxInscrits">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label>Description</label>
+                                <textarea class="form-control" name="description" rows="5" ng-model="prestations[curPrestationIndex].description" placeholder="Description"></textarea>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label>Message de confirmation d'inscritpion</label>
+                                <textarea class="form-control" name="messageConfirmation" rows="5" ng-model="prestations[curPrestationIndex].messageConfirmation" placeholder="message de Confirmation"></textarea>
                             </div>
 
-                            <input type="button" name="delete" value="Supprimer" ng-click="deletePrestation(curPrestationIndex)">
-                            <input type="submit" name="name" value="Sauvegarder">
+                            <div class="form-group"  ng-if="accesLevel >= 1">
+                                <button type="button" name="delete" class="btn btn-danger btn-sm pull-left" ng-click="deletePrestation(curPrestationIndex)">Supprimer</button>
+                                <button type="submit" name="submit" class="btn btn-success btn-sm pull-right">Sauvegarder</button>
+                            </div>
                         </form>
                     </div>
                 </div>

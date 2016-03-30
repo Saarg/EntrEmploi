@@ -50,7 +50,7 @@ function ProfilsController($scope, $log, $filter, $window, ProfilsService, ngDia
     }
 
     // Filtres de recherche
-    $scope.filtre = {ville:0, villeList: ["All"], job:0, jobList: ["All"]};
+    $scope.filtre = {ville:0, villeList: ["Toutes villes"], job:0, jobList: ["Tous métier"]};
     $scope.showProfil = function(profil) {
         // On ignore tous les profils sans CV
         if(!profil.cv)

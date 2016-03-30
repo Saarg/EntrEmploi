@@ -252,8 +252,7 @@ a.anchor {
     .container {
         min-height: 25em;
         padding-top: 20px;
-        padding-bottom: 2em;
-
+        
         color: #fff;
         background: url('/images/footer-logo-spf.png') no-repeat scroll left top / 20% auto;
         background-position-y: 20px;
@@ -269,6 +268,16 @@ a.anchor {
     }
     ul {
         list-style: outside none none;
+        a {
+            color: #a0a0a0;
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+
+    p {
+        font-size: 0.8rem;
         a {
             color: #a0a0a0;
             &:hover {

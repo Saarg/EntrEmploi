@@ -158,48 +158,6 @@ function AdminController(
         $window.location.reload(true);
     }
 
-    // =========== OFFRES ================ //
-    /*
-    OffresService.getOffres().then(function (res) {
-        $scope.offres = res.data;
-    });
-
-    $scope.addOffre = function (newOffre) {
-        OffresService.postOffre(newOffre).then(function () {
-            $scope.offres.push(newOffre);
-        });
-        $scope.newOffre = {}; // reset la nouvelle offre
-    }
-
-    $scope.editOffre = function (index) {
-        OffresService.editOffre($scope.offres[index]).then(function () {
-
-        });
-    }
-
-    $scope.curOffreIndex = 0;
-    $scope.activateOffre = function(index) {
-        $scope.curOffreIndex = index;
-    }
-
-    $scope.newOffre = {};
-    $scope.newOffrePopup = function () {
-        ngDialog.open({
-            template : '../templates/newOffre.html',
-            className: 'ngdialog-theme-default',
-            disableAnimation : true,
-            scope: $scope
-        });
-    }
-
-    $scope.deleteOffre = function (index) {
-        OffresService.deleteOffre($scope.offres[index]).then(function () {
-            $scope.offres.splice(index, 1);
-        })
-    }
-    */
-
-
     // =========== PRESTATIONS ================ //
 
     PrestationsService.getPrestations().then(function (res) {
@@ -215,14 +173,22 @@ function AdminController(
     }
 
     $scope.editPrestation = function (index) {
-        PrestationsService.editPrestation($scope.prestations[index]).then(function () {
-
+        PrestationsService.editPrestation($scope.prestations[index]).then(function (res) {
+            if(res.data.success){
+                delete $scope.EPRalert;
+                $scope.EPRsuccess = "La prestation a bien été édité";
+            } else {
+                delete $scope.EPRsuccess;
+                $scope.EPRalert = res.data.message;
+            }
         });
     }
 
     $scope.curPrestationIndex = 0;
 
     $scope.activatePrestation = function(index) {
+        delete $scope.EPRalert;
+        delete $scope.EPRsuccess;
         $scope.curPrestationIndex = index;
     }
 
@@ -310,7 +276,7 @@ function AdminController(
     }
 
     // Filtres de recherche
-    $scope.filtre = {ville:0, villeList: ["All"], job:0, jobList: ["All"], nom: "", prenom: ""};
+    $scope.filtre = {ville:0, villeList: ["Toutes villes"], job:0, jobList: ["Tous métier"], nom: "", prenom: ""};
     $scope.showProfil = function(profil) {
         // On en profite pour lister les villes et jobs
         if($scope.filtre.villeList.indexOf(profil.ville.toLowerCase()) == -1)
