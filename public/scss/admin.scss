@@ -104,7 +104,16 @@
     }
 }
 
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+
 .item-list {
+    max-height: inherit;
+    overflow-y: auto;
     border-right: 1px solid #d9d9da;
 
     ul {
@@ -133,4 +142,12 @@
             }
         }
     }
+}
+
+.edit-item {
+
+}
+
+.staff {
+    max-height: 400px;
 }

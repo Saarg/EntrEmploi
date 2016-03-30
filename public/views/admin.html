@@ -6,6 +6,8 @@
             <pane class="admin-section" title="Page accueil" ng-if="accesLevel >= 2">
                 <div class="row">
                     <h2>Edition du carousel</h2>
+                </div>
+                <div class="row row-eq-height">
                     <div class="col-md-3 item-list">
                         <button type="button" ng-click="newImagePopup()" class="btn btn-primary col-xs-12">Ajouter une image</button>
                         <ul>
@@ -28,6 +30,8 @@
                     <h2  ng-if="!EAalert && !EAsuccess">Editer un article</h2>
                     <div ng-if="EAalert && !EAsuccess" class="alert alert-danger">{{ EAalert }}</div>
                     <div ng-if="EAsuccess && !EAalert" class="alert alert-success">{{ EAsuccess }}</div>
+                </div>
+                <div class="row row-eq-height">
                     <div class="col-md-3 item-list">
                         <ul>
                             <li class="offre-item" ng-repeat="article in MainArticlesSorted" ng-click="activateArticle(MainArticlesSorted.indexOf(article))"  ng-class="{active : MainArticlesSorted.indexOf(article) === curArticleIndex}">{{article.titre}}</li>
@@ -133,13 +137,15 @@
                     <h2 ng-if="!EPRalert && !EPRsuccess">Gestion des préstations</h2>
                     <div ng-if="EPRalert && !EPRsuccess" class="alert alert-danger">{{ EPRalert }}</div>
                     <div ng-if="EPRsuccess && !EPRalert" class="alert alert-success">{{ EPRsuccess }}</div>
+                </div>
+                <div class="row row-eq-height">
                     <div class="col-md-3 item-list">
                         <button type="button" ng-click="newPrestationPopup()" class="btn btn-primary col-xs-12">Ajouter une prestation</button>
                         <ul>
                             <li class="item" ng-repeat="prestation in prestations" ng-click="activatePrestation(prestations.indexOf(prestation))" ng-class="{active : prestations.indexOf(prestation) === curPrestationIndex}">{{prestation.titre}}</li>
                         </ul>
                     </div>
-                    <div class="col-md-9 edit-offre">
+                    <div class="col-md-9 edit-item">
                         <form ng-submit="editPrestation(curPrestationIndex)">
 
                             <div class="form-group col-md-9">
@@ -204,6 +210,8 @@
                     <h2 ng-if="!EPalert && !EPsuccess">Gestion des Candidats</h2>
                     <div ng-if="EPalert && !EPsuccess" class="alert alert-danger">{{ EPalert }}</div>
                     <div ng-if="EPsuccess && !EPalert" class="alert alert-success">{{ EPsuccess }}</div>
+                </div>
+                <div class="row row-eq-height">
                     <div class="col-md-3 item-list">
                         <button type="button" ng-click="newProfilPopup()" class="btn btn-primary col-xs-12">Ajouter un profil</button>
                         <ul>
@@ -213,7 +221,7 @@
                                                     ng-class="{active : profils.indexOf(profil) === curProfilIndex, 'alert-danger' : !profil.cv}">{{profil.prenom}} {{profil.nom}}</li>
                         </ul>
                     </div>
-                    <div class="col-md-9 edit-offre">
+                    <div class="col-md-9 edit-item">
                         <form ng-submit="editProfil()">
                             <div class="form-group col-md-6">
                                 <label>Nom</label>
@@ -288,7 +296,8 @@
 
                     <div ng-if="ESalert && !ESsuccess" class="alert alert-danger">{{ ESalert }}</div>
                     <div ng-if="ESsuccess && !ESalert" class="alert alert-success">{{ ESsuccess }}</div>
-
+                </div>
+                <div class="row">
                     <form>
                         <div class="form-group col-md-6">
                             <label>Nom</label>
@@ -299,7 +308,8 @@
                             <input class="form-control" type="text" name="Prenom" ng-model="filtre.prenom">
                         </div>
                     </form>
-
+                </div>
+                <div class="row row-eq-height staff">
                     <div class="col-md-3 item-list">
                         <button type="button" ng-click="newUserPopup()" class="btn btn-primary col-xs-12">Ajouter un utilisateur</button>
                         <ul>
@@ -310,7 +320,7 @@
                                                     >{{user.nom}} - {{user.prenom}}</li>
                         </ul>
                     </div>
-                    <div class="col-md-9 edit-offre">
+                    <div class="col-md-9 edit-item">
                         <form ng-submit="editUser(users[curUserIndex])">
                             <div class="form-group col-md-6">
                                 <label for="titre">Nom</label>
