@@ -12,7 +12,7 @@ var config          = require('./config/config.js');
 var db              = require('./config/db');
 
 // configuration ===========================================
-app.use(morgan('dev')); // log every request to the console
+// app.use(morgan('dev')); // log every request to the console
 
 mongoose.connect(db.url); // connect to our mongoDB database (commented out after you enter in your own credentials)
 
