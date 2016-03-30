@@ -1,4 +1,4 @@
-<div class="contatiner">
+<div class="contatiner" style="height: 400px;">
     <h2>Ajouter un utilisateur</h2>
     <form ng-submit="addUser() && closeThisDialog()">
         <div class="form-group">
@@ -18,7 +18,7 @@
             <select class="form-control" ng-model="newUser.accesLevel" ng-options="accesValues.indexOf(selectedItem) as selectedItem for selectedItem in accesValues" id="accesLevel" required></select>
         </div>
         <div class="form-group">
-            <input type="submit" name="name" value="Ajouter">
+            <button class="btn btn-success btn-sm col-xs-12" type="submit" name="name" value="Ajouter">Ajouter</input>
         </div>
     </form>
 </div>
