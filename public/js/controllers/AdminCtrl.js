@@ -373,8 +373,7 @@ function AdminController(
             $scope.users.splice(index, 1);
         });
     }
-
-    $scope.curUserIndex = 0;
+    $scope.curUserIndex = -1;
     $scope.activateUser = function(index) {
         delete $scope.ESalert;
         delete $scope.ESsuccess;
