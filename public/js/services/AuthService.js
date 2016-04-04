@@ -13,12 +13,22 @@ function AuthService($http, $window, $location) {
         logged: function(){
             var token = $window.localStorage.token;
             if(token){
-                var res = $http.post('/token/verify', { token: token });
+                var res = $http.post('/token/verify', { token: token })
+                res.then(function(res){
+                    if(res.data.success == false) {
+                        delete $window.localStorage.token;
+                        delete $window.localStorage.user_id
+                        delete $window.localStorage.nom;
+                        delete $window.localStorage.prenom;
+                        delete $window.localStorage.accesLevel;
+
+                        $window.location.reload();
+                    }
+                });
                 if(res.success){
                     return true;
                 }
             }
-            $location.path('/login');
             return false;
         },
         decodeToken: function(){
