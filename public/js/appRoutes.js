@@ -33,8 +33,11 @@ angular.module('EntrEmploi').config(['$routeProvider', '$locationProvider', func
         templateUrl: 'views/admin.html',
         controller: 'AdminController',
         resolve: {
-            logged: function(AuthService){
-                return AuthService.logged();
+            logged: function(AuthService, $location){
+                if(!AuthService.logged())
+                    $location.path('/login');
+
+                return true;
             }
         }
     })
@@ -42,8 +45,11 @@ angular.module('EntrEmploi').config(['$routeProvider', '$locationProvider', func
         templateUrl: 'views/profil.html',
         controller: 'ProfilController',
         resolve: {
-            logged: function(AuthService){
-                return AuthService.logged();
+            logged: function(AuthService, $location){
+                if(!AuthService.logged())
+                    $location.path('/login');
+
+                return true;
             }
         }
     })

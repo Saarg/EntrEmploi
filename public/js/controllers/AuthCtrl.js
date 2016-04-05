@@ -3,7 +3,7 @@ angular.module('EntrEmploi').controller('AuthController', AuthController);
 AuthController.$inject = ['$scope', 'AuthService', '$window', '$location'];
 
 function AuthController($scope, AuthService, $window, $location) {
-    if ($window.localStorage.nom) {
+    if (AuthService.logged()) {
         $location.path("/admin");
     }
 

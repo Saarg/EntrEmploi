@@ -115,20 +115,34 @@ header {
             position: absolute;
             top: 50%;
             right: 0;
+            margin: 0px;
 
-            margin: 0;
+            .navbar-collapse {
+                background-color: $blue;
+                position: absolute;
+                top: 40px;
+                left: -100px;
+                list-style-type: none;
+                width: 200px;
+                border: 0px;
+                font-size: larger;
+
+            }
+            .navbar-toggle {
+                border: 0px;
+                &:focus {
+                    background-color: transparent;
+                }
+                &:hover {
+                    transition: border-radius .1s;
+                    transition: background-color .3s;
+
+                    border-radius: 6px;
+                    background-color: darken($blue, 10%);
+                }
+            }
 
             transform: translate3d(0, -50%, 0);
-
-            @media (max-width: 33.9em) {
-                display: block;
-
-                position: fixed;
-
-                width: 0;
-                height: 100vh;
-                background-color: $blue;
-            }
             li {
                 padding-left: 2px;
                 a {
@@ -252,7 +266,7 @@ a.anchor {
     .container {
         min-height: 25em;
         padding-top: 20px;
-        
+
         color: #fff;
         background: url('/images/footer-logo-spf.png') no-repeat scroll left top / 20% auto;
         background-position-y: 20px;
