@@ -168,9 +168,9 @@ function AdminController(
     $scope.addPrestation = function (newPrestation) {
         PrestationsService.postPrestation(newPrestation).then(function () {
             $scope.prestations.push(newPrestation);
-            return 1;
         });
         $scope.newPrestation = {}; // reset la nouvelle prestation
+        return 1;
     }
 
     $scope.editPrestation = function (index) {
