@@ -123,18 +123,16 @@
         list-style: none;
 
         li {
-            margin: 0;
-            padding: 5px 0 5px 5px;
+            margin: 5px 0;
+            padding: 5px;
+
+            border-radius: 3px;
 
             @include transition(background-color .4s ease);
 
             &:hover {
                 cursor: pointer;
-
-                box-shadow: inset 1px 0 0 #a0a0a0,
-                inset -1px 0 0 #a0a0a0,
-                inset 0 1px 0 #a0a0a0,
-                inset 0 -1px 0 #a0a0a0;
+                background-color: lighten(#a0a0a0, 30%);
             }
 
             &.active {
@@ -142,6 +140,11 @@
             }
         }
     }
+}
+
+.add-item-button {
+    position: absolute;
+    bottom: 0;
 }
 
 ul.prestation-participants {
