@@ -147,24 +147,39 @@
                     </div>
                     <div class="col-xs-9 edit-item">
                         <form ng-submit="editPrestation(curPrestationIndex)">
+                            <div class="col-xs-12 col-sm-9">
+                                <div class="form-group">
+                                    <label>Titre</label>
+                                    <input class="form-control" type="text" name="Titre" ng-model="prestations[curPrestationIndex].titre">
 
-                            <div class="form-group col-xs-12 col-sm-9">
-                                <label>Titre</label>
-                                <input class="form-control" type="text" name="Titre" ng-model="prestations[curPrestationIndex].titre">
+                                </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <textarea class="form-control" name="description" rows="5" ng-model="prestations[curPrestationIndex].description" placeholder="Description"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Message de confirmation d'inscritpion</label>
+                                    <textarea class="form-control" name="messageConfirmation" rows="5" ng-model="prestations[curPrestationIndex].messageConfirmation" placeholder="message de Confirmation"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-3">
 
+                                <div class="form-group">
+                                    <label>Nombre d'inscrits requis</label>
+                                    <input type="number" name="maxInscrits" ng-model="prestations[curPrestationIndex].maxInscrits">
+                                </div>
+
+                                <div class="">
+                                    <label>Participants</label>
+                                    <ul>
+                                        <li class="prestation-participants" ng-repeat="participant in prestations[curPrestationIndex].inscrits track by $index">
+                                            {{participant}}
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="form-group col-xs-12 col-sm-3">
-                                <label>Nombre d'inscrits requis</label>
-                                <input type="number" name="maxInscrits" ng-model="prestations[curPrestationIndex].maxInscrits">
-                            </div>
-                            <div class="form-group col-xs-12">
-                                <label>Description</label>
-                                <textarea class="form-control" name="description" rows="5" ng-model="prestations[curPrestationIndex].description" placeholder="Description"></textarea>
-                            </div>
-                            <div class="form-group col-xs-12">
-                                <label>Message de confirmation d'inscritpion</label>
-                                <textarea class="form-control" name="messageConfirmation" rows="5" ng-model="prestations[curPrestationIndex].messageConfirmation" placeholder="message de Confirmation"></textarea>
-                            </div>
+
+                            <div class="clearfix"></div>
 
                             <div class="form-group"  ng-if="accesLevel >= 1">
                                 <button type="button" name="delete" class="btn btn-danger btn-sm pull-left" ng-click="deletePrestation(curPrestationIndex)">Supprimer</button>
@@ -197,12 +212,12 @@
                         <div class="form-group col-xs-3">
                             <label for="ville">Ville</label>
                             <select class="form-control" ng-model="filtre.ville"
-                                                         ng-options="filtre.villeList.indexOf(selectedVille) as selectedVille for selectedVille in filtre.villeList" id="ville"></select>
+                            ng-options="filtre.villeList.indexOf(selectedVille) as selectedVille for selectedVille in filtre.villeList" id="ville"></select>
                         </div>
                         <div class="form-group col-xs-3">
                             <label for="job">métier</label>
                             <select class="form-control" ng-model="filtre.job"
-                                                         ng-options="filtre.jobList.indexOf(selectedJob) as selectedJob for selectedJob in filtre.jobList" id="job"></select>
+                            ng-options="filtre.jobList.indexOf(selectedJob) as selectedJob for selectedJob in filtre.jobList" id="job"></select>
                         </div>
                     </form>
                 </div>
@@ -216,9 +231,9 @@
                         <button type="button" ng-click="newProfilPopup()" class="btn btn-primary col-xs-12">Ajouter un profil</button>
                         <ul>
                             <li class="offre-item"  ng-repeat="profil in profils"
-                                                    ng-click="activateProfil(profils.indexOf(profil))"
-                                                    ng-if="showProfil(profil)"
-                                                    ng-class="{active : profils.indexOf(profil) === curProfilIndex, 'alert-danger' : !profil.cv}">{{profil.prenom}} {{profil.nom}}</li>
+                            ng-click="activateProfil(profils.indexOf(profil))"
+                            ng-if="showProfil(profil)"
+                            ng-class="{active : profils.indexOf(profil) === curProfilIndex, 'alert-danger' : !profil.cv}">{{profil.prenom}} {{profil.nom}}</li>
                         </ul>
                     </div>
                     <div class="col-xs-9 edit-item">
@@ -314,10 +329,10 @@
                         <button type="button" ng-click="newUserPopup()" class="btn btn-primary col-xs-12">Ajouter un utilisateur</button>
                         <ul>
                             <li class="offre-item"  ng-repeat="user in users"
-                                                    ng-click="activateUser(users.indexOf(user))"
-                                                    ng-class="{active : users.indexOf(user) === curUserIndex}"
-                                                    ng-if="(user.accesLevel < 3 || accesLevel == 3) && showStaff(user)"
-                                                    >{{user.nom}} - {{user.prenom}}</li>
+                            ng-click="activateUser(users.indexOf(user))"
+                            ng-class="{active : users.indexOf(user) === curUserIndex}"
+                            ng-if="(user.accesLevel < 3 || accesLevel == 3) && showStaff(user)"
+                            >{{user.nom}} - {{user.prenom}}</li>
                         </ul>
                     </div>
                     <div class="col-xs-9 edit-item">
