@@ -171,7 +171,6 @@ module.exports = function(app, config) {
             }
             prestation.inscrits.push(req.params.email);
 
-            console.log(prestation.maxInscrits, prestation.inscrits.length);
             if(prestation.inscrits.length >= prestation.maxInscrits) {
                 http.post('http://localhost:8080/mail/send', {
                     sender : config.mail.email,

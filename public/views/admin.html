@@ -147,7 +147,7 @@
                     </div>
                     <div class="col-xs-9 edit-item">
                         <form ng-submit="editPrestation(curPrestationIndex)">
-                            <div class="col-xs-12 col-sm-9">
+                            <div class="col-xs-12 col-sm-8">
                                 <div class="form-group">
                                     <label>Titre</label>
                                     <input class="form-control" type="text" name="Titre" ng-model="prestations[curPrestationIndex].titre">
@@ -162,18 +162,19 @@
                                     <textarea class="form-control" name="messageConfirmation" rows="5" ng-model="prestations[curPrestationIndex].messageConfirmation" placeholder="message de Confirmation"></textarea>
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-3">
+                            <div class="col-xs-12 col-sm-4">
 
                                 <div class="form-group">
                                     <label>Nombre d'inscrits requis</label>
                                     <input type="number" name="maxInscrits" ng-model="prestations[curPrestationIndex].maxInscrits">
                                 </div>
 
-                                <div class="">
+                                <div>
                                     <label>Participants</label>
-                                    <ul>
-                                        <li class="prestation-participants" ng-repeat="participant in prestations[curPrestationIndex].inscrits track by $index">
+                                    <ul class="prestation-participants">
+                                        <li ng-repeat="participant in prestations[curPrestationIndex].inscrits track by $index">
                                             {{participant}}
+                                            <span class="glyphicon glyphicon-remove" ng-click="deleteParticipant(participant, $parent.curPrestationIndex)"></span>
                                         </li>
                                     </ul>
                                 </div>
