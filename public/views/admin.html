@@ -10,10 +10,10 @@
                     </div>
                     <div class="row row-eq-height">
                         <div class="col-xs-3 item-list">
+                            <button type="button" ng-click="newImagePopup()" class="btn btn-primary add-item-button">Ajouter une image</button>
                             <ul>
                                 <li class="offre-item" ng-repeat="img in images.slice().reverse()" ng-click="activateImg(images.indexOf(img))" ng-class="{active : images.indexOf(img) === curImgIndex}">image {{$index+1}}</li>
                             </ul>
-                            <button type="button" ng-click="newImagePopup()" class="btn btn-primary add-item-button">Ajouter une image</button>
                         </div>
                         <div class="col-xs-9" ng-if="images[curImgIndex]">
                             <img class="col-xs-12" ng-src="{{images[curImgIndex].image.resized.dataURL || images[curImgIndex].value}}" />
@@ -148,10 +148,10 @@
                 </div>
                 <div class="row row-eq-height">
                     <div class="col-xs-3 col-sm-3 item-list">
+                        <button type="button" ng-click="newPrestationPopup()" class="btn btn-primary add-item-button">Ajouter une prestation</button>
                         <ul>
                             <li class="item" ng-repeat="prestation in prestations" ng-click="activatePrestation(prestations.indexOf(prestation))" ng-class="{active : prestations.indexOf(prestation) === curPrestationIndex}">{{prestation.titre}}</li>
                         </ul>
-                        <button type="button" ng-click="newPrestationPopup()" class="btn btn-primary add-item-button">Ajouter une prestation</button>
 
                     </div>
                     <div class="col-xs-9 edit-item">
@@ -238,13 +238,13 @@
                 </div>
                 <div class="row row-eq-height">
                     <div class="col-xs-3 item-list">
+                        <button type="button" ng-click="newProfilPopup()" class="btn btn-primary add-item-button">Ajouter un profil</button>
                         <ul>
                             <li class="offre-item"  ng-repeat="profil in profils"
                             ng-click="activateProfil(profils.indexOf(profil))"
                             ng-if="showProfil(profil)"
                             ng-class="{active : profils.indexOf(profil) === curProfilIndex, 'alert-danger' : !profil.cv}">{{profil.prenom}} {{profil.nom}}</li>
                         </ul>
-                        <button type="button" ng-click="newProfilPopup()" class="btn btn-primary add-item-button">Ajouter un profil</button>
                     </div>
                     <div class="col-xs-9 edit-item">
                         <form ng-submit="editProfil()">
@@ -340,6 +340,7 @@
 
                     <div class="row row-eq-height staff">
                         <div class="col-xs-3 item-list">
+                            <button type="button" ng-click="newUserPopup()" class="btn btn-primary add-item-button">Ajouter un utilisateur</button>
                             <ul>
                                 <li class="offre-item"  ng-repeat="user in users"
                                 ng-click="activateUser(users.indexOf(user))"
@@ -347,7 +348,6 @@
                                 ng-if="(user.accesLevel < 3 || accesLevel == 3) && showStaff(user)"
                                 >{{user.nom}} - {{user.prenom}}</li>
                             </ul>
-                            <button type="button" ng-click="newUserPopup()" class="btn btn-primary add-item-button">Ajouter un utilisateur</button>
                         </div>
                         <div class="col-xs-9 edit-item">
                             <form ng-submit="editUser(users[curUserIndex])">
