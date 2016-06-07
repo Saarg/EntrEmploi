@@ -200,4 +200,16 @@ $blue: #244395;
             padding: 0;
         }
     }
+
+    .mentions-legales {
+        ul {
+            font-size: 1rem;
+            margin-bottom: 0px;
+            list-style-position: inside;
+            li{
+                list-style: none;
+                margin-top: 0px;
+            }
+        }
+    }
 }
