@@ -1,127 +1,135 @@
 <div class="admin-container">
     <div class="container">
         <tabs>
-
             <!-- Page D'acceuil -->
-            <pane class="admin-section" title="Page accueil" ng-if="accesLevel >= 2">
-                <div class="row">
-                    <h2>Edition du carousel</h2>
-                </div>
-                <div class="row row-eq-height">
-                    <div class="col-xs-3 item-list">
-                        <button type="button" ng-click="newImagePopup()" class="btn btn-primary col-xs-12">Ajouter une image</button>
-                        <ul>
-                            <li class="offre-item" ng-repeat="img in images.slice().reverse()" ng-click="activateImg(images.indexOf(img))" ng-class="{active : images.indexOf(img) === curImgIndex}">image {{$index+1}}</li>
-                        </ul>
-                    </div>
-                    <div class="col-xs-9" ng-if="images[curImgIndex]">
-                        <img class="col-xs-12" ng-src="{{images[curImgIndex].image.resized.dataURL || images[curImgIndex].value}}" />
+            <pane title="Page accueil" ng-if="accesLevel >= 2">
 
-                        <button type="button" ng-click="deleteImage();" class="btn btn-danger btn-sm pull-left">Supprimer</button>
+                <div class="admin-section">
+                    <div class="row">
+                        <h2>Edition du carousel</h2>
+                    </div>
+                    <div class="row row-eq-height">
+                        <div class="col-xs-3 item-list">
+                            <button type="button" ng-click="newImagePopup()" class="btn btn-primary add-item-button">Ajouter une image</button>
+                            <ul>
+                                <li class="offre-item" ng-repeat="img in images.slice().reverse()" ng-click="activateImg(images.indexOf(img))" ng-class="{active : images.indexOf(img) === curImgIndex}">image {{$index+1}}</li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-9" ng-if="images[curImgIndex]">
+                            <img class="col-xs-12" ng-src="{{images[curImgIndex].image.resized.dataURL || images[curImgIndex].value}}" />
 
-                        <button type="button" ng-click="editImg();" class="btn btn-success btn-sm pull-right">Modifier</button>
-                        <input class="pull-right col-xs-6" type="file" accept="image/*" image="images[curImgIndex].image"
-                        resize-max-height="400"
-                        resize-max-width="1300"
-                        resize-quality="0.7" />
+                            <button type="button" ng-click="deleteImage();" class="btn btn-danger btn-sm pull-left">Supprimer</button>
+
+                            <button type="button" ng-click="editImg();" class="btn btn-success btn-sm pull-right">Modifier</button>
+                            <input class="pull-right col-xs-6" type="file" accept="image/*" image="images[curImgIndex].image"
+                            resize-max-height="400"
+                            resize-max-width="1300"
+                            resize-quality="0.7" />
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <h2  ng-if="!EAalert && !EAsuccess">Editer un article</h2>
-                    <div ng-if="EAalert && !EAsuccess" class="alert alert-danger">{{ EAalert }}</div>
-                    <div ng-if="EAsuccess && !EAalert" class="alert alert-success">{{ EAsuccess }}</div>
-                </div>
-                <div class="row row-eq-height">
-                    <div class="col-xs-3 item-list">
-                        <ul>
-                            <li class="offre-item" ng-repeat="article in MainArticlesSorted" ng-click="activateArticle(MainArticlesSorted.indexOf(article))"  ng-class="{active : MainArticlesSorted.indexOf(article) === curArticleIndex}">{{article.titre}}</li>
-                        </ul>
+
+
+                <div class="admin-section">
+                    <div class="row">
+                        <h2  ng-if="!EAalert && !EAsuccess">Editer un article</h2>
+                        <div ng-if="EAalert && !EAsuccess" class="alert alert-danger">{{ EAalert }}</div>
+                        <div ng-if="EAsuccess && !EAalert" class="alert alert-success">{{ EAsuccess }}</div>
                     </div>
-                    <div class="col-xs-9 edit-article">
-                        <form ng-submit="editArticle()">
-                            <div class="form-group col-xs-12 col-sm-10 ">
-                                <input class="form-control" ng-model="MainArticlesSorted[curArticleIndex].titre" type="text" id="titre" required>
+                    <div class="row row-eq-height">
+                        <div class="col-xs-3 item-list">
+                            <ul>
+                                <li class="offre-item" ng-repeat="article in MainArticlesSorted" ng-click="activateArticle(MainArticlesSorted.indexOf(article))"  ng-class="{active : MainArticlesSorted.indexOf(article) === curArticleIndex}">{{article.titre}}</li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-9 edit-article">
+                            <form ng-submit="editArticle()">
+                                <div class="form-group col-xs-12 col-sm-10 ">
+                                    <input class="form-control" ng-model="MainArticlesSorted[curArticleIndex].titre" type="text" id="titre" required>
+                                    <label for="titre">Titre</label>
+                                </div>
+                                <div class="form-group col-xs-12 col-sm-2">
+                                    <input class="form-control" ng-model="MainArticlesSorted[curArticleIndex].priority" type="text" name="priority" id="position">
+                                    <label for="position">Position:</label>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <textarea class="form-control" ng-model="MainArticlesSorted[curArticleIndex].contenu" type="text" rows="5" name="contenu" id="article" required></textarea>
+                                    <label for="article">Article</label>
+                                </div>
+                                <div class="form-group col-xs-12 col-sm-2">
+                                    <select class="form-control" ng-model="MainArticlesSorted[curArticleIndex].media" id="media">
+                                        <option>Aucun</option>
+                                        <option>Photo</option>
+                                        <option>Vidéo</option>
+                                    </select>
+                                    <label for="media">Media</label>
+                                </div>
+                                <div class="form-group col-xs-12 col-sm-10" ng-if="MainArticlesSorted[curArticleIndex].media=='Photo'">
+                                    <input class="col-xs-6" type="file" accept="image/*" image="MainArticlesSorted[curArticleIndex].image"
+                                    resize-max-height="500"
+                                    resize-max-width="500"
+                                    resize-quality="0.7" />
+                                    <img class="col-xs-6" ng-show="MainArticlesSorted[curArticleIndex].image" ng-src="{{MainArticlesSorted[curArticleIndex].image.resized.dataURL || MainArticlesSorted[curArticleIndex].image}}" />
+                                </div>
+                                <div class="form-group col-xs-12 col-sm-10" ng-if="MainArticlesSorted[curArticleIndex].media=='Vidéo'">
+                                    <input class="form-control" ng-model="MainArticlesSorted[curArticleIndex].lienMediaYT" type="text" name="lienYT" id="youtube-video">
+                                    <label for="youtube-video">Lien de la video youtube</label>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <button type="submit" class="btn btn-success btn-sm pull-right">Modifier</button>
+                                    <button type="button" ng-click="infoArticle()" class="btn btn-primary btn-sm pull-right"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>
+                                    <button type="button" ng-click="deleteArticle();" class="btn btn-danger btn-sm pull-left">Supprimer</button>
+                                    <button type="reset" ng-click="reload();" class="btn btn-warning btn-sm pull-left hidden-xs">Reinitialiser</button>
+                                </div>
+                                <hr/>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-section">
+                    <div class="row">
+                        <h2  ng-if="!AAalert && !AAsuccess">Ajouter un article</h2>
+                        <div ng-if="AAalert && !AAsuccess" class="alert alert-danger">{{ AAalert }}</div>
+                        <div ng-if="AAsuccess && !AAalert" class="alert alert-success">{{ AAsuccess }}</div>
+                        <form ng-submit="addArticle()">
+                            <div class="form-group col-xs-12 col-sm-10">
+                                <input class="form-control" ng-model="newArticle.titre" type="text" name="titre" id="titre" required>
                                 <label for="titre">Titre</label>
                             </div>
                             <div class="form-group col-xs-12 col-sm-2">
-                                <input class="form-control" ng-model="MainArticlesSorted[curArticleIndex].priority" type="text" name="priority" id="position">
-                                <label for="position">Position:</label>
+                                <input class="form-control" ng-model="newArticle.priority" type="text" name="priority" id="position" required>
+                                <label for="position">Position</label>
                             </div>
                             <div class="form-group col-xs-12">
-                                <textarea class="form-control" ng-model="MainArticlesSorted[curArticleIndex].contenu" type="text" rows="5" name="contenu" id="article" required></textarea>
+                                <textarea class="form-control" ng-model="newArticle.contenu" type="text" rows="5" name="contenu" id="article" required></textarea>
                                 <label for="article">Article</label>
                             </div>
                             <div class="form-group col-xs-12 col-sm-2">
-                                <select class="form-control" ng-model="MainArticlesSorted[curArticleIndex].media" id="media">
+                                <select class="form-control" ng-model="newArticle.media" id="media">
                                     <option>Aucun</option>
                                     <option>Photo</option>
                                     <option>Vidéo</option>
                                 </select>
                                 <label for="media">Media</label>
                             </div>
-                            <div class="form-group col-xs-12 col-sm-10" ng-if="MainArticlesSorted[curArticleIndex].media=='Photo'">
-                                <input class="col-xs-6" type="file" accept="image/*" image="MainArticlesSorted[curArticleIndex].image"
-                                resize-max-height="500"
-                                resize-max-width="500"
+                            <div class="form-group col-xs-12 col-sm-10" ng-if="newArticle.media=='Photo'">
+                                <input class="col-xs-6" type="file" accept="image/*" image="newArticle.image"
+                                resize-max-height="300"
+                                resize-max-width="250"
                                 resize-quality="0.7" />
-                                <img class="col-xs-6" ng-show="MainArticlesSorted[curArticleIndex].image" ng-src="{{MainArticlesSorted[curArticleIndex].image.resized.dataURL || MainArticlesSorted[curArticleIndex].image}}" />
+                                <img class="col-xs-6" ng-show="newArticle.image" ng-src="{{newArticle.image.resized.dataURL}}" />
                             </div>
-                            <div class="form-group col-xs-12 col-sm-10" ng-if="MainArticlesSorted[curArticleIndex].media=='Vidéo'">
-                                <input class="form-control" ng-model="MainArticlesSorted[curArticleIndex].lienMediaYT" type="text" name="lienYT" id="youtube-video">
+                            <div class="form-group col-xs-12 col-sm-10" ng-if="newArticle.media=='Vidéo'">
+                                <input class="form-control" ng-model="newArticle.lienMediaYT" type="text" name="lienYT" id="youtube-video">
                                 <label for="youtube-video">Lien de la video youtube</label>
                             </div>
                             <div class="form-group col-xs-12">
-                                <button type="submit" class="btn btn-success btn-sm pull-right">Modifier</button>
-                                <button type="button" ng-click="infoArticle()" class="btn btn-primary btn-sm pull-right"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>
-                                <button type="button" ng-click="deleteArticle();" class="btn btn-danger btn-sm pull-left">Supprimer</button>
-                                <button type="reset" ng-click="reload();" class="btn btn-warning btn-sm pull-left hidden-xs">Reinitialiser</button>
+                                <button type="submit" class="btn btn-success btn-sm">Ajouter</button>
+                                <button type="reset" ng-click="reload();" class="btn btn-warning btn-sm pull-right">Reinitialiser</button>
                             </div>
-                            <hr/>
                         </form>
                     </div>
-                </div>
-                <hr/>
-                <div class="row">
-                    <h2  ng-if="!AAalert && !AAsuccess">Ajouter un article</h2>
-                    <div ng-if="AAalert && !AAsuccess" class="alert alert-danger">{{ AAalert }}</div>
-                    <div ng-if="AAsuccess && !AAalert" class="alert alert-success">{{ AAsuccess }}</div>
-                    <form ng-submit="addArticle()">
-                        <div class="form-group col-xs-12 col-sm-10">
-                            <input class="form-control" ng-model="newArticle.titre" type="text" name="titre" id="titre" required>
-                            <label for="titre">Titre</label>
-                        </div>
-                        <div class="form-group col-xs-12 col-sm-2">
-                            <input class="form-control" ng-model="newArticle.priority" type="text" name="priority" id="position" required>
-                            <label for="position">Position</label>
-                        </div>
-                        <div class="form-group col-xs-12">
-                            <textarea class="form-control" ng-model="newArticle.contenu" type="text" rows="5" name="contenu" id="article" required></textarea>
-                            <label for="article">Article</label>
-                        </div>
-                        <div class="form-group col-xs-12 col-sm-2">
-                            <select class="form-control" ng-model="newArticle.media" id="media">
-                                <option>Aucun</option>
-                                <option>Photo</option>
-                                <option>Vidéo</option>
-                            </select>
-                            <label for="media">Media</label>
-                        </div>
-                        <div class="form-group col-xs-12 col-sm-10" ng-if="newArticle.media=='Photo'">
-                            <input class="col-xs-6" type="file" accept="image/*" image="newArticle.image"
-                            resize-max-height="300"
-                            resize-max-width="250"
-                            resize-quality="0.7" />
-                            <img class="col-xs-6" ng-show="newArticle.image" ng-src="{{newArticle.image.resized.dataURL}}" />
-                        </div>
-                        <div class="form-group col-xs-12 col-sm-10" ng-if="newArticle.media=='Vidéo'">
-                            <input class="form-control" ng-model="newArticle.lienMediaYT" type="text" name="lienYT" id="youtube-video">
-                            <label for="youtube-video">Lien de la video youtube</label>
-                        </div>
-                        <div class="form-group col-xs-12">
-                            <button type="submit" class="btn btn-success btn-sm">Ajouter</button>
-                            <button type="reset" ng-click="reload();" class="btn btn-warning btn-sm pull-right">Reinitialiser</button>
-                        </div>
-                    </form>
                 </div>
             </pane>
             <!-- fin page d'acceuil -->
@@ -139,32 +147,49 @@
                     <div ng-if="EPRsuccess && !EPRalert" class="alert alert-success">{{ EPRsuccess }}</div>
                 </div>
                 <div class="row row-eq-height">
-                    <div class="col-xs-3 item-list">
-                        <button type="button" ng-click="newPrestationPopup()" class="btn btn-primary col-xs-12">Ajouter une prestation</button>
+                    <div class="col-xs-3 col-sm-3 item-list">
+                        <button type="button" ng-click="newPrestationPopup()" class="btn btn-primary add-item-button">Ajouter une prestation</button>
                         <ul>
                             <li class="item" ng-repeat="prestation in prestations" ng-click="activatePrestation(prestations.indexOf(prestation))" ng-class="{active : prestations.indexOf(prestation) === curPrestationIndex}">{{prestation.titre}}</li>
                         </ul>
+
                     </div>
                     <div class="col-xs-9 edit-item">
                         <form ng-submit="editPrestation(curPrestationIndex)">
+                            <div class="col-xs-12 col-sm-8">
+                                <div class="form-group">
+                                    <label>Titre</label>
+                                    <input class="form-control" type="text" name="Titre" ng-model="prestations[curPrestationIndex].titre">
 
-                            <div class="form-group col-xs-12 col-sm-9">
-                                <label>Titre</label>
-                                <input class="form-control" type="text" name="Titre" ng-model="prestations[curPrestationIndex].titre">
+                                </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <textarea class="form-control" name="description" rows="5" ng-model="prestations[curPrestationIndex].description" placeholder="Description"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Message de confirmation d'inscritpion</label>
+                                    <textarea class="form-control" name="messageConfirmation" rows="5" ng-model="prestations[curPrestationIndex].messageConfirmation" placeholder="message de Confirmation"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4">
 
+                                <div class="form-group">
+                                    <label>Nombre d'inscrits requis</label>
+                                    <input type="number" name="maxInscrits" ng-model="prestations[curPrestationIndex].maxInscrits">
+                                </div>
+
+                                <div>
+                                    <label>Participants</label>
+                                    <ul class="prestation-participants">
+                                        <li ng-repeat="participant in prestations[curPrestationIndex].inscrits track by $index">
+                                            {{participant}}
+                                            <span class="glyphicon glyphicon-remove" ng-click="deleteParticipant(participant, $parent.curPrestationIndex)"></span>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="form-group col-xs-12 col-sm-3">
-                                <label>Nombre d'inscrits requis</label>
-                                <input type="number" name="maxInscrits" ng-model="prestations[curPrestationIndex].maxInscrits">
-                            </div>
-                            <div class="form-group col-xs-12">
-                                <label>Description</label>
-                                <textarea class="form-control" name="description" rows="5" ng-model="prestations[curPrestationIndex].description" placeholder="Description"></textarea>
-                            </div>
-                            <div class="form-group col-xs-12">
-                                <label>Message de confirmation d'inscritpion</label>
-                                <textarea class="form-control" name="messageConfirmation" rows="5" ng-model="prestations[curPrestationIndex].messageConfirmation" placeholder="message de Confirmation"></textarea>
-                            </div>
+
+                            <div class="clearfix"></div>
 
                             <div class="form-group"  ng-if="accesLevel >= 1">
                                 <button type="button" name="delete" class="btn btn-danger btn-sm pull-left" ng-click="deletePrestation(curPrestationIndex)">Supprimer</button>
@@ -197,12 +222,12 @@
                         <div class="form-group col-xs-3">
                             <label for="ville">Ville</label>
                             <select class="form-control" ng-model="filtre.ville"
-                                                         ng-options="filtre.villeList.indexOf(selectedVille) as selectedVille for selectedVille in filtre.villeList" id="ville"></select>
+                            ng-options="filtre.villeList.indexOf(selectedVille) as selectedVille for selectedVille in filtre.villeList" id="ville"></select>
                         </div>
                         <div class="form-group col-xs-3">
                             <label for="job">métier</label>
                             <select class="form-control" ng-model="filtre.job"
-                                                         ng-options="filtre.jobList.indexOf(selectedJob) as selectedJob for selectedJob in filtre.jobList" id="job"></select>
+                            ng-options="filtre.jobList.indexOf(selectedJob) as selectedJob for selectedJob in filtre.jobList" id="job"></select>
                         </div>
                     </form>
                 </div>
@@ -213,12 +238,12 @@
                 </div>
                 <div class="row row-eq-height">
                     <div class="col-xs-3 item-list">
-                        <button type="button" ng-click="newProfilPopup()" class="btn btn-primary col-xs-12">Ajouter un profil</button>
+                        <button type="button" ng-click="newProfilPopup()" class="btn btn-primary add-item-button">Ajouter un profil</button>
                         <ul>
                             <li class="offre-item"  ng-repeat="profil in profils"
-                                                    ng-click="activateProfil(profils.indexOf(profil))"
-                                                    ng-if="showProfil(profil)"
-                                                    ng-class="{active : profils.indexOf(profil) === curProfilIndex, 'alert-danger' : !profil.cv}">{{profil.prenom}} {{profil.nom}}</li>
+                            ng-click="activateProfil(profils.indexOf(profil))"
+                            ng-if="showProfil(profil)"
+                            ng-class="{active : profils.indexOf(profil) === curProfilIndex, 'alert-danger' : !profil.cv}">{{profil.prenom}} {{profil.nom}}</li>
                         </ul>
                     </div>
                     <div class="col-xs-9 edit-item">
@@ -264,128 +289,135 @@
 
 
             <!-- Site -->
-            <pane class="admin-section" title="Gestion site" ng-if="accesLevel >= 2">
-                <div class="row">
-                    <h2>Haut de page</h2>
-                    <form class="col-xs-6" ng-submit="editLogoSPF()">
-                        <h3>Logo secours populaire</h3>
-                        <input class="col-xs-10" type="file" accept="image/*" image="logoSPF.image"
-                        resize-max-height="150"
-                        resize-max-width="300"
-                        resize-quality="0.7" />
-                        <button type="submit" class="btn btn-success btn-sm col-xs-2">Valider</button>
-                        <div class="col-xs-12">
-                            <img class="logo" ng-show="logoSPF.image" ng-src="{{logoSPF.image.resized.dataURL || logoSPF.image}}" />
-                        </div>
-                    </form>
-                    <form class="col-xs-6" ng-submit="editLogoEntrEmploi()">
-                        <h3>Logo EntrEmploi</h3>
-                        <input class="col-xs-10" type="file" accept="image/*" image="logoEntrEmploi.image"
-                        resize-max-height="150"
-                        resize-max-width="1000"
-                        resize-quality="0.7" />
-                        <button type="submit" class="btn btn-success btn-sm  col-xs-2">Valider</button>
-                        <div class="col-xs-12">
-                            <img class="logo" ng-show="logoEntrEmploi.image" ng-src="{{logoEntrEmploi.image.resized.dataURL || logoEntrEmploi.image}}" />
-                        </div>
-                    </form>
-                </div>
-                <hr/>
-                <div class="row">
-                    <h2  ng-if="!ESalert && !ESsuccess">Gestion du staff</h2>
-
-                    <div ng-if="ESalert && !ESsuccess" class="alert alert-danger">{{ ESalert }}</div>
-                    <div ng-if="ESsuccess && !ESalert" class="alert alert-success">{{ ESsuccess }}</div>
-                </div>
-                <div class="row">
-                    <form>
-                        <div class="form-group col-xs-6">
-                            <label>Nom</label>
-                            <input class="form-control" type="text" name="Nom" ng-model="filtre.nom">
-                        </div>
-                        <div class="form-group col-xs-6">
-                            <label>Prenom</label>
-                            <input class="form-control" type="text" name="Prenom" ng-model="filtre.prenom">
-                        </div>
-                    </form>
-                </div>
-                <div class="row row-eq-height staff">
-                    <div class="col-xs-3 item-list">
-                        <button type="button" ng-click="newUserPopup()" class="btn btn-primary col-xs-12">Ajouter un utilisateur</button>
-                        <ul>
-                            <li class="offre-item"  ng-repeat="user in users"
-                                                    ng-click="activateUser(users.indexOf(user))"
-                                                    ng-class="{active : users.indexOf(user) === curUserIndex}"
-                                                    ng-if="(user.accesLevel < 3 || accesLevel == 3) && showStaff(user)"
-                                                    >{{user.nom}} - {{user.prenom}}</li>
-                        </ul>
+            <pane title="Gestion site" ng-if="accesLevel >= 2">
+                <div class="admin-section">
+                    <div class="row">
+                        <h2>Haut de page</h2>
+                        <form class="col-xs-6" ng-submit="editLogoSPF()">
+                            <h3>Logo secours populaire</h3>
+                            <input class="col-xs-10" type="file" accept="image/*" image="logoSPF.image"
+                            resize-max-height="150"
+                            resize-max-width="300"
+                            resize-quality="0.7" />
+                            <button type="submit" class="btn btn-success btn-sm col-xs-2">Valider</button>
+                            <div class="col-xs-12">
+                                <img class="logo" ng-show="logoSPF.image" ng-src="{{logoSPF.image.resized.dataURL || logoSPF.image}}" />
+                            </div>
+                        </form>
+                        <form class="col-xs-6" ng-submit="editLogoEntrEmploi()">
+                            <h3>Logo EntrEmploi</h3>
+                            <input class="col-xs-10" type="file" accept="image/*" image="logoEntrEmploi.image"
+                            resize-max-height="150"
+                            resize-max-width="1000"
+                            resize-quality="0.7" />
+                            <button type="submit" class="btn btn-success btn-sm  col-xs-2">Valider</button>
+                            <div class="col-xs-12">
+                                <img class="logo" ng-show="logoEntrEmploi.image" ng-src="{{logoEntrEmploi.image.resized.dataURL || logoEntrEmploi.image}}" />
+                            </div>
+                        </form>
                     </div>
-                    <div class="col-xs-9 edit-item">
-                        <form ng-submit="editUser(users[curUserIndex])">
+                </div>
+
+                <div class="admin-section">
+                    <div class="row">
+                        <h2  ng-if="!ESalert && !ESsuccess">Gestion du staff</h2>
+
+                        <div ng-if="ESalert && !ESsuccess" class="alert alert-danger">{{ ESalert }}</div>
+                        <div ng-if="ESsuccess && !ESalert" class="alert alert-success">{{ ESsuccess }}</div>
+                    </div>
+                    <div class="row">
+                        <form>
                             <div class="form-group col-xs-6">
-                                <label for="titre">Nom</label>
-                                <input class="form-control" ng-model="users[curUserIndex].nom" type="text" id="nom" required>
+                                <label>Nom</label>
+                                <input class="form-control" type="text" name="Nom" ng-model="filtre.nom">
                             </div>
                             <div class="form-group col-xs-6">
-                                <label for="titre">Prenom</label>
-                                <input class="form-control" ng-model="users[curUserIndex].prenom" type="text" id="prenom" required>
-                            </div>
-                            <div class="form-group col-xs-6">
-                                <label for="titre">Nouveau mot de passe</label>
-                                <input class="form-control" ng-model="users[curUserIndex].newPasswd" type="password" id="newPasswf">
-                            </div>
-                            <div class="form-group col-xs-6">
-                                <label for="titre">niveau d'acces</label>
-                                <select class="form-control" ng-model="users[curUserIndex].accesLevel" ng-options="accesValues.indexOf(selectedItem) as selectedItem for selectedItem in accesValues" id="accesLevel" required></select>
-                            </div>
-                            <div class="form-group" ng-if="users[curUserIndex]._id">
-                                <button type="button" title="supprimer" class="btn btn-danger btn-sm pull-left" ng-click="deleteUser(curUserIndex)">Supprimer</button>
-                                <button type="submit" title="valider" class="btn btn-success btn-sm pull-right">Valider</button>
-                                <button type="button" title="info" class="btn btn-primary btn-sm pull-right" ng-click="infoUserPopup()"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>
+                                <label>Prenom</label>
+                                <input class="form-control" type="text" name="Prenom" ng-model="filtre.prenom">
                             </div>
                         </form>
                     </div>
 
-                </div>
-                <hr/>
-                <div class="row">
-                    <h2>Pied de page</h2>
-                    <div class="col-xs-4">
-                        <h3>Qui sommes nous?</h3>
-                        <ul>
-                            <li ng-repeat="article in MainArticlesSorted">{{ article.titre }}</li>
-                        </ul>
-                    </div>
-                    <div class="col-xs-4">
-                        <h3>Partenaires</h3>
-                        <form class="row" ng-repeat="partenaire in partenaires track by $index" ng-submit="editPartenaire(partenaire)">
-                            <div class="form-group">
-                                <input class="col-xs-5" ng-model="partenaire.nom" type="text" name="nom">
-                            </div>
-                            <div class="form-group">
-                                <input class="col-xs-5" ng-model="partenaire.site" type="text" name="site">
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" title="valider" class="btn btn-primary btn-xs pull-right"><span class="glyphicon glyphicon-ok"></span></button>
-                            </div>
-                            <div class="form-group">
-                                <button type="button" title="supprimer" class="btn btn-danger btn-xs pull-right" ng-click="deletePartenaire(partenaire)"><span class="glyphicon glyphicon-remove"></span></button>
-                            </div>
-                        </form>
-                        <div class="row">
-                            <button type="button" title="ajouter un partenaire" class="btn btn-success btn-xs col-xs-12" ng-click="PartenairePopup()"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                    <div class="row row-eq-height staff">
+                        <div class="col-xs-3 item-list">
+                            <button type="button" ng-click="newUserPopup()" class="btn btn-primary add-item-button">Ajouter un utilisateur</button>
+                            <ul>
+                                <li class="offre-item"  ng-repeat="user in users"
+                                ng-click="activateUser(users.indexOf(user))"
+                                ng-class="{active : users.indexOf(user) === curUserIndex}"
+                                ng-if="(user.accesLevel < 3 || accesLevel == 3) && showStaff(user)"
+                                >{{user.nom}} - {{user.prenom}}</li>
+                            </ul>
                         </div>
+                        <div class="col-xs-9 edit-item">
+                            <form ng-submit="editUser(users[curUserIndex])">
+                                <div class="form-group col-xs-6">
+                                    <label for="titre">Nom</label>
+                                    <input class="form-control" ng-model="users[curUserIndex].nom" type="text" id="nom" required>
+                                </div>
+                                <div class="form-group col-xs-6">
+                                    <label for="titre">Prenom</label>
+                                    <input class="form-control" ng-model="users[curUserIndex].prenom" type="text" id="prenom" required>
+                                </div>
+                                <div class="form-group col-xs-6">
+                                    <label for="titre">Nouveau mot de passe</label>
+                                    <input class="form-control" ng-model="users[curUserIndex].newPasswd" type="password" id="newPasswf">
+                                </div>
+                                <div class="form-group col-xs-6">
+                                    <label for="titre">niveau d'acces</label>
+                                    <select class="form-control" ng-model="users[curUserIndex].accesLevel" ng-options="accesValues.indexOf(selectedItem) as selectedItem for selectedItem in accesValues" id="accesLevel" required></select>
+                                </div>
+                                <div class="form-group" ng-if="users[curUserIndex]._id">
+                                    <button type="button" title="supprimer" class="btn btn-danger btn-sm pull-left" ng-click="deleteUser(curUserIndex)">Supprimer</button>
+                                    <button type="submit" title="valider" class="btn btn-success btn-sm pull-right">Valider</button>
+                                    <button type="button" title="info" class="btn btn-primary btn-sm pull-right" ng-click="infoUserPopup()"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>
+                                </div>
+                            </form>
+                        </div>
+
                     </div>
-                    <div class="col-xs-4">
-                        <h3>Où nous trouver?</h3>
-                        <form class="row" ng-repeat="ligne in addr track by $index" ng-submit="editAddr($index, ligne)">
-                            <div class="form-group">
-                                <input class="col-xs-10" ng-model="ligne" type="text" name="ligne">
+                </div>
+
+                <div class="admin-section">
+                    <div class="row">
+                        <h2>Pied de page</h2>
+                        <div class="col-xs-4 col-sm-3 pull-left">
+                            <h3>Qui sommes nous?</h3>
+                            <ul>
+                                <li ng-repeat="article in MainArticlesSorted">{{ article.titre }}</li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-4 col-sm-5 center">
+                            <h3>Partenaires</h3>
+                            <form class="row" ng-repeat="partenaire in partenaires track by $index" ng-submit="editPartenaire(partenaire)">
+                                <div class="form-group">
+                                    <input class="col-xs-5" ng-model="partenaire.nom" type="text" name="nom">
+                                </div>
+                                <div class="form-group">
+                                    <input class="col-xs-5" ng-model="partenaire.site" type="text" name="site">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" title="valider" class="btn btn-primary btn-xs pull-right"><span class="glyphicon glyphicon-ok"></span></button>
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" title="supprimer" class="btn btn-danger btn-xs pull-right" ng-click="deletePartenaire(partenaire)"><span class="glyphicon glyphicon-remove"></span></button>
+                                </div>
+                            </form>
+                            <div class="row">
+                                <button type="button" title="ajouter un partenaire" class="btn btn-success btn-xs col-xs-12" ng-click="PartenairePopup()"><span class="glyphicon glyphicon-plus-sign"></span></button>
                             </div>
-                            <div class="form-group">
-                                <button type="submit" title="valider" class="btn btn-primary btn-xs pull-right"><span class="glyphicon glyphicon-ok"></span></button>
-                            </div>
-                        </form>
+                        </div>
+                        <div class="col-xs-4 col-sm-3 pull-right">
+                            <h3>Où nous trouver?</h3>
+                            <form class="row" ng-repeat="ligne in addr track by $index" ng-submit="editAddr($index, ligne)">
+                                <div class="form-group">
+                                    <input class="col-xs-10" ng-model="ligne" type="text" name="ligne">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" title="valider" class="btn btn-primary btn-xs pull-right"><span class="glyphicon glyphicon-ok"></span></button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </pane>

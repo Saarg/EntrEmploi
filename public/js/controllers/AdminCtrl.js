@@ -162,14 +162,15 @@ function AdminController(
 
     PrestationsService.getPrestations().then(function (res) {
         $scope.prestations = res.data;
+        console.log($scope.prestations);
     });
 
     $scope.addPrestation = function (newPrestation) {
         PrestationsService.postPrestation(newPrestation).then(function () {
             $scope.prestations.push(newPrestation);
-            return 1;
         });
         $scope.newPrestation = {}; // reset la nouvelle prestation
+        return 1;
     }
 
     $scope.editPrestation = function (index) {
@@ -205,6 +206,12 @@ function AdminController(
     $scope.deletePrestation = function (index) {
         PrestationsService.deletePrestation($scope.prestations[index]).then(function () {
             $scope.prestations.splice(index, 1);
+        })
+    }
+
+    $scope.deleteParticipant = function (participant, index) {
+        PrestationsService.deleteParticipant(participant, $scope.prestations[index]).then(function () {
+            $scope.prestations[index].inscrits.splice($scope.prestations[index].inscrits.indexOf(participant), 1);
         })
     }
     // ====== PROFIL ======

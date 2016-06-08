@@ -57,6 +57,9 @@ angular.module('EntrEmploi').config(['$routeProvider', '$locationProvider', func
         templateUrl: 'views/entreprise.html',
         controller: 'EntrepriseController'
     })
+    .when('/mentions-legales', {
+        templateUrl: 'views/mentions-legales.html'
+    })
     .otherwise({
         redirectTo: '/'
     });

@@ -175,6 +175,12 @@ $blue: #244395;
                 font-weight: 500;
             }
         }
+
+        h3 {
+            color: #444;
+            text-decoration: underline;
+        }
+
         .carousel-temoignages {
             margin: 0 auto;
 
@@ -192,6 +198,18 @@ $blue: #244395;
             width: 100%;
             margin: 0;
             padding: 0;
+        }
+    }
+
+    .mentions-legales {
+        ul {
+            font-size: 1rem;
+            margin-bottom: 0px;
+            list-style-position: inside;
+            li{
+                list-style: none;
+                margin-top: 0px;
+            }
         }
     }
 }

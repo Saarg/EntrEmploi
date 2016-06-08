@@ -48,6 +48,23 @@ module.exports = function (app) {
 
     // DELETE
 
+    app.delete('/api/prestations/:prestation_id/participant/:participant', function (req, res) {
+        Prestations.findById(req.params.prestation_id, function (err, prestation) {
+            if (err) res.send(err);
+
+            prestation.inscrits.splice(prestation.inscrits.indexOf(req.params.participant), 1);
+
+            prestation.save(function (err) {
+                if (err) {
+                    res.json({ success: false, message: err});
+                    return;
+                }
+                res.json({success: true});
+            });
+        });
+    });
+
+
     app.delete('/api/prestations/:prestation_id', function (req, res) {
         Prestations.remove({_id: req.params.prestation_id}, function (err) {
             if (err) {

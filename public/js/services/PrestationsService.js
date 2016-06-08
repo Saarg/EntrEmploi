@@ -35,6 +35,10 @@ function PrestationsService($http, $window) {
 
         deletePrestation : function (prestation) {
             return $http.delete('/api/prestations/' + prestation._id + '?token=' + $window.localStorage.token);
+        },
+
+        deleteParticipant : function (participant, prestation) {
+            return $http.delete('/api/prestations/' + prestation._id + '/participant/' + participant + '?token=' + $window.localStorage.token);
         }
     }
 }
